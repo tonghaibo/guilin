@@ -1,0 +1,61 @@
+<?php Y_Widget::display('header',array('b_info'=>$this->id)); ?>
+<?php Y_Widget::display('top'); ?>
+<!--content -->
+<div id="content">
+	<?php Y_Widget::display('tips',array('b_info'=>$this->id)); ?>
+	<!--main -->
+	<div class="main clearfix">
+	<?php Y_Widget::display('left'); ?>
+	<!--box开始 -->
+	<div id="box" class="clearfix">
+<!-- 这里写内容-->
+<form action="#" method="post" id="addGroup">
+<table class="st nob">
+<tr>
+<td class="title"><span class="cred">*</span>组名称：</td>
+<td><input type="text" id="gname" name="gname" class="w250" title="组名称" onblur="checkZh(this,'#gname-tips')"/></td>
+<td class="info" id="gname-tips">定义组的名称</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">*</span>权限：</td>
+<td>
+<select name="power[]" multiple="multiple" class="h300">
+<?php 
+foreach($plist as $val){
+	echo '<option value="'.$val['id'].'" >';
+	echo str_repeat('&nbsp;&nbsp;&nbsp;',count(explode('-',$val['bpath']))-2).'| '.$val['name'];
+	echo '</option>';
+}
+?>
+</select>
+</td>
+<td class="info" id="des-tips">用于提示该节点是干吗用的,可以按住Ctrl多选</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">*</span>是否超级：</td>
+<td><input type="radio"  name="isSuper" value="1"/>是  <input type="radio"  name="isSuper" checked value="0"/>否</td>
+<td class="info">选择该项，则该组成员用于所有权限</td>
+</tr>
+<tr>
+<td></td>
+<td><input type="button" value="添加" name="bt" class="btn btn-green" onclick="subadd()" /></td>
+<td></td>
+</tr>
+</table>
+</form>
+<!-- 这里写内容结束-->
+	<!--box结束 -->
+	</div>
+	</div>
+	<!-- mainend-->
+</div>
+<script type="text/javascript">
+function subadd(){
+	if(checkZh('#gname','#gname-tips')){
+		document.getElementById('addGroup').submit();
+	}else{
+		return false;
+	}
+}
+</script>
+<?php Y_Widget::display('footer');?>

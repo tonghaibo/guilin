@@ -1,0 +1,205 @@
+<?php Y_Widget::display('header',array('b_info'=>$this->id)); ?>
+<?php Y_Widget::display('top'); ?>
+<!--content -->
+<div id="content">
+	<?php Y_Widget::display('tips',array('b_info'=>$this->id)); ?>
+	<!--main -->
+	<div class="main clearfix">
+	<?php Y_Widget::display('left'); ?>
+	<!--box开始 -->
+	<div id="box" class="clearfix">
+<!-- 这里写内容-->
+<div class="box">
+<form>
+<input type="hidden" name="ro" value="mod" />
+<input type="hidden" name="ac" value="hotel" />
+ID号：<input type="text" name="s_hid" class="w50" value="<?php echo $this->get('s_hid'); ?>" x-webkit-speech />
+名称：<input type="text" name="s_name" value="<?php echo $this->get('s_name'); ?>"  x-webkit-speech />
+类别：<select name="s_classes" class="w80">
+<option value="">--请选择--</option>
+<?php foreach(Ly_Items::getList('hotel','classes') as $val){
+	
+	echo '<option value="'.$val['id'].'"';
+	if($this->get('s_classes')==$val['id']){
+		echo ' selected ';
+	}
+	echo '>'.$val['name'].'</option>';
+} ?>
+</select>
+发布时间：<input type="text" name="s_pubtime1" class="w80" onfocus="SelectDate(this)" value="<?php echo $this->get('s_pubtime1'); ?>" />~
+<input type="text" name="s_pubtime2" class="w80" onfocus="SelectDate(this)" value="<?php echo $this->get('s_pubtime2'); ?>" />
+<br>
+管理者ID(邮箱)：<input type="text" name="s_uid" class="w100" value="<?php echo $this->get('s_uid'); ?>" x-webkit-speech />
+<input type="checkbox" name="s_ishot" value="1" <?php if($this->get('s_ishot')==1){ echo 'checked'; } ?> />推荐
+<?php $slist = Ly_Items::getList('public','status');
+foreach($slist as $s){
+	echo '<input type="checkbox" name="s_status[]" value="'.$s['id'].'"';
+	if($_GET['s_status'] && in_array($s['id'],$_GET['s_status'])){
+		echo ' checked ';
+	}
+	echo ' />'.$s['name'];
+}
+ ?>
+<input type="submit" value="查找" class="btn btn-green"/>
+</form>
+</div>
+<table class="st full" id="arealist">
+<thead>
+<tr>
+<th>ID号</th>
+<th>(推荐)名称</th>
+<th>管理者</th>
+<th>分类</th>
+<th>封面图片</th>
+<th>价格</th>
+<th>位置</th>
+<th>预定电话</th>
+<th>发布时间</th>
+<th>房间</th>
+<th>状态</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody>
+<?php 
+if($hlist){
+foreach($hlist as $val){
+	echo '<tr>';
+	echo '<td width="8%"><input type="checkbox" name="checkhid" value="'.$val['hid'].'" />'.$val['hid'].'</td>';
+	echo '<td width="15%">';
+	echo $val['ishot']?'<span class="icon icon-hot"></span>':'';
+	echo '<a href="hotel_detail.html?id='.$val['hid'].'" target="_blank">'.$val['name'].'</a>';
+	echo '</td>';
+	echo '<td width="10%"><a target="_blank" href="?ro=member&ac=member&s_uid='.$val['uid'].'">'.Ly_User::getEmail($val['uid']).'</a><span class="icon icon-user" onclick="eduser(this,'.$val['hid'].',\''.$val['uid'].'\')"></span></td>';
+	echo '<td width="5%">'.Ly_Items::getName('hotel','classes',$val['classes']).'</td>';
+	echo '<td width="10%"><img src="'.Y_Pr::image($val['img'],85,85).'" onclick="show(this)"  big="'.$val['img'].'"/></td>';
+	echo '<td width="4%" class="corange">￥'.$val['price'].'</td>';
+	echo '<td width="8%">'.$val['address'].'</td>';
+	echo '<td width="9%" class="cblue">'.$val['contact'].'</td>';
+	echo '<td width="8%">'.date('Y-m-d H:i',$val['pubtime']).'</td>';
+	echo '<td width="4%">'.Ly_Hotel_Rooms::getCount($val['hid']).' <a class="no" href="'.$this->getUrl().'&method=bed&hid='.$val['hid'].'"><span class="icon icon-edit" title="编辑房间"></span></a></td>';
+	echo '<td width="6%" class="showstatus" style="position:relative">';
+	echo '<div >'.$slist[$val['status']]['name'].'<span class="icon icon-desc"></span></div>';
+	echo '<ul class="dropmenu">';
+	foreach($slist as $s){
+		if($s['id']!=$val['status']){
+			echo '<li><a href="'.$this->getUrl().'&method=pass&hid='.$val['hid'].'&v='.$s['id'].'">'.$s['name'].'</a></li>';
+		}
+	}
+	echo '</ul>';
+	echo '</td>';
+	echo '<td>';
+	echo '<a  class="no" href="'.$this->getUrl().'&method=edit&hid='.$val['hid'].'"><span class="icon icon-edit" title="编辑"></span></a>';
+	echo ' <a class="no" href="javascript:void(0)" onClick="show_hotel('.$val['hid'].')"><span class="icon icon-more" title="查看详情"></span></a>';
+	if($val['ishot']){
+		echo ' <a class="no" href="'.$this->getUrl().'&method=hot&hid='.$val['hid'].'&hot=0"><span class="icon icon-down" title="取消推荐"></span></a>';
+	}else{
+		echo ' <a class="no" href="'.$this->getUrl().'&method=hot&hid='.$val['hid'].'&hot=1" ><span class="icon icon-up" title="推荐"></span> </a>';
+	}
+	echo '<a class="no" href="javascript:void(0)" onclick="showTags('.$val['hid'].')"><span class="icon icon-img"></span></a>';
+	echo '</td>';
+	
+	echo '</tr>';
+}
+}
+?>
+</tbody>
+<tfoot>
+<tr><td colspan="5"><input type="checkbox" id="checkAll" onclick="checkall('checkhid','checkID')"/>全/反 
+<?php foreach($slist as $s){
+	echo '<a href="javascript:void(0)" onclick="checkUp('.$s['id'].')" class="no">'.$s['name'].'</a>&nbsp;&nbsp;&nbsp;';
+} ?>
+<input type="hidden" id="checkID" />
+</td>
+<td colspan="7" style="text-align:right">
+<div id="ui-page"><?php echo $pages; ?></div>
+</td>
+</tr>
+</tfoot>
+</table>
+<?php echo $pages; ?>
+<!-- 这里写内容结束-->
+	<!--box结束 -->
+	</div>
+	</div>
+	<!-- mainend-->
+</div>
+<script type="text/javascript" src="public/js/calendar.js"></script>
+<script type="text/javascript" src="public/js/show.js"></script>
+<link rel="stylesheet" href="public/css/show/show.css" />
+<script type="text/javascript" src="public/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+//全选操作
+function checkUp(num){
+	var id = getIds('checkhid');
+	if(id==''){
+		show_msg.open('请先选择值！',4,2);
+		return;
+	}else{
+		show_comfirm.open(0,'确定要改变'+id+'这些项吗？',function(){
+			var url = '<?php echo $this->getUrl() ?>&method=pass&hid='+id+'&v='+num;
+			window.location.href = url;
+		});
+	}
+}
+function showTags(num){
+	var url = '?ro=mod&ac=tag&method=getTags&id='+num+'&t=h';
+	$.get(url,{},function(data){
+		var str = '<div style="padding:10px;">';
+		if(data!=''){
+			data = eval('('+data+')');
+			for(var a in data){
+				str += '<a href="javascript:void(0)">'+data[a].name+'</a>&nbsp;&nbsp;&nbsp;';
+			}
+			str += '<a href="?ro=mod&ac=tag&method=bind&id='+num+'&t=h">修改</a>';
+		}else{
+			str += '<span class="cred">暂且无任何标签！</span><a href="?ro=mod&ac=tag&method=bind&id='+num+'&t=h">添加</a>';
+		}
+		str += '</div>';
+		show_dialog.openHtml(str,'酒店标签：',350,200);
+	});
+}
+function show(obj){
+	var img = $(obj).attr('big');
+	show_dialog.openHtml('<div style="width:850px;height:500px;" class="bimg"><img style="border:1px solid #DD4B39" src="'+img+'"/></div>','查看大图:'+img,860,550);
+}
+function eduser(obj,id,uid){
+	var str = '';
+	str +='<div style="padding:10px;">';
+	var email = '';
+	str +='<input type="hidden" value="'+uid+'" id="uuid" />';
+	str += '<p>请输入用户ID或邮箱：<br><input type="text" id="uemail" class="w250" value="'+email+'" /></p>';
+	str += '<br /><div style="text-align:right"><button class="button8" id="upuser">确认</button>   <button class="button9" onclick="show_dialog.close()">取消</button></div>';
+	str +='</div>';
+	show_dialog.openHtml(str,'酒店管理员的添加或修改！',300,140);
+	$('#uemail').blur(function(){
+		$.post('govern.php?ro=mod&ac=hotel&method=upuser&s=e',{'d':$(this).val()},function(data){
+			if(data!=''){
+				$('#uuid').val(data);
+			}
+		})
+	});
+	$('#upuser').click(function(){
+		var uid = $('#uuid').val();
+		if(uid!=''){
+			$.post('govern.php?ro=mod&ac=hotel&method=upuser&s=u&hid='+id,{'d':uid},function(data){
+				if(data!=''){
+					$(obj).siblings('a').html(data);
+				}
+			});
+		}
+		show_dialog.close();
+	});
+};
+$(document).ready(function(){
+$('td.showstatus').hover(function(){
+	$(this).children('ul').show();
+	//$(this).parent('div').addClass('checkB');
+},function(){
+	$(this).children('ul').hide();
+	//$(this).parent('div').removeClass('checkB');
+});
+$('#arealist').dataTable();
+});
+</script>
+<?php Y_Widget::display('footer');?>

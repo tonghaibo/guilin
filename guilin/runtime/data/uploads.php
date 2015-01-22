@@ -1,0 +1,1 @@
+<?php {"pri":"id","0":"uid","1":"path","2":"suffix","3":"md5file","4":"des","5":"uptime","6":"size","7":"issys","8":"status"}yes

@@ -1,0 +1,85 @@
+<?php Y_Widget::display('header',array('b_info'=>$this->id)); ?>
+<?php Y_Widget::display('top'); ?>
+<!--content -->
+<div id="content">
+	<?php Y_Widget::display('tips',array('b_info'=>$this->id)); ?>
+	<!--main -->
+	<div class="main clearfix">
+	<?php Y_Widget::display('left'); ?>
+	<!--box开始 -->
+	<div id="box" class="clearfix">
+<!-- 这里写内容-->
+<div class="box">
+<select id="pr">
+<option value="0">--选择省份--</option>
+<?php 
+foreach($alist as $val){
+	echo '<option value="'.$val['id'].'">'.$val['name'].'</option>';
+	
+}
+ ?>
+</select>
+<select id="ci"><option value="0">--请选择--</option></select>
+<select id="ar"><option value="0">--请选择--</option></select>
+</div>
+<table class="st" id="arealist">
+<?php 
+foreach($alist as $val){
+	echo '<tr>';
+	echo '<td>'.$val['id'].'</td>';
+	echo '<td><input type="text" name="name" value="'.$val['name'].'"/></td>';
+	echo '<td><input type="text" name="sort" value="'.$val['sort'].'"/></td>';
+	echo '<td><a href="javascript:void(0)" class="no" onClick="up(this,'.$val['id'].')" title="保存"><span class="icon icon-save"></span></a></td>';
+	echo '</tr>';
+}
+ ?>
+</table>
+<!-- 这里写内容结束-->
+	<!--box结束 -->
+	</div>
+	</div>
+	<!-- mainend-->
+</div>
+<script type="text/javascript">
+function up(obj,num){
+	var trr = $(obj).parents('tr');
+	var tdd = trr.children('td');
+	var sort = tdd.eq(2).children('input').val();
+	var name = tdd.eq(1).children('input').val();
+	$.post('<?php echo $this->getUrl().'&method=edit'; ?>',{'id':num,'sort':sort,'name':name},function(data){
+		if(data==0){
+			uptips('更新成功！','ok');
+		}else{
+			uptips('更新失败！');
+		}
+	});
+}
+function chang(num,obj){
+	if(num!=0){
+		$.post('<?php echo $this->getUrl(); ?>',{'upid':num},function(data){
+			data = eval('('+data+')');
+			var str = '';
+			var list = '<option value="0">--请选择--</option>';
+			for(val in  data){
+				str += '<tr><td>';
+				str += data[val].id+'</td><td><input type="text" value="';
+				str += data[val].name+'" /></td><td><input type="text" value="';
+				str += data[val].sort+'" /></td>"';
+				str += '<td><a href="javascript:void(0)" onClick="up(this)">编辑</a></td></tr>';
+				list += '<option value="'+data[val].id+'">'+data[val].name+'</option>';
+			}
+			$('#arealist').html(str);
+			$(obj).html(list);
+		});
+	}
+}
+$(function(){
+$('#pr').change(function(){
+	chang($(this).val(),'#ci');
+});
+$('#ci').change(function(){
+	chang($(this).val(),'#ar');
+});
+});
+</script>
+<?php Y_Widget::display('footer');?>

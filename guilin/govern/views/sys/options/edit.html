@@ -1,0 +1,60 @@
+<?php Y_Widget::display('header',array('b_info'=>$this->id)); ?>
+<?php Y_Widget::display('top'); ?>
+<!--content -->
+<div id="content">
+	<?php Y_Widget::display('tips',array('b_info'=>$this->id)); ?>
+	<!--main -->
+	<div class="main clearfix">
+	<?php Y_Widget::display('left'); ?>
+	<!--box开始 -->
+	<div id="box" class="clearfix">
+<!-- 这里写内容-->
+<form action="#" method="post" id="editItems">
+<table class="st nob">
+<tr>
+<td class="title"><span class="cred">*</span>选项名称：</td>
+<td><input type="text" id="itemsname" value="<?php echo $iinfo['itemsname']; ?>" name="itemsname" class="w250" title="选项名称" onblur="checkZh(this,'#itemsname-tips')"/></td>
+<td class="info" id="itemsname-tips">用于标识选项</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">*</span>对应表名称：</td>
+<td>
+<input type="text" name="tabname" value="<?php echo $iinfo['tabname']; ?>" id="tabname" class="w250" title="对应表名称" onblur="checkStr(this,'#tabname-tips')" />
+</td>
+<td class="info" id="tabname-tips">填写对应的表名称，不写表前缀</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">*</span>字段名称：</td>
+<td>
+<input type="text" name="colname" value="<?php echo $iinfo['colname']; ?>" title="字段名称" id="colname" class="w250" title="登录密码" onblur="checkStr(this,'#colname-tips')" />
+</td>
+<td class="info" id="colname-tips">填写对应的字段名称</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">*</span>选项配置：</td>
+<td><textarea name="items" id="items" class="w500 h200" title="选项" onblur="checkLen(this,'#items-tips',2,1000)"><?php echo $iinfo['items']; ?></textarea></td>
+<td class="info" id="items-tips">请参照格式：1#邮件激活|2#密码找回|3#信息通知书写</td>
+</tr>
+<tr>
+<td></td>
+<td><input type="button" value="修改" name="bt" class="btn btn-green" onclick="subedit()" /></td>
+<td></td>
+</tr>
+</table>
+</form>
+<!-- 这里写内容结束-->
+	<!--box结束 -->
+	</div>
+	</div>
+	<!-- mainend-->
+</div>
+<script type="text/javascript">
+function subedit(){
+	if(checkZh('#itemsname','#itemsname-tips') && checkStr('#tabname','#tabname-tips') && checkStr('colname','#colname-tips') && checkLen('#items','#items-tips')){
+		document.getElementById('editItems').submit();
+	}else{
+		return false;
+	}
+}
+</script>
+<?php Y_Widget::display('footer');?>

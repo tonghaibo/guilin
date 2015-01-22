@@ -1,0 +1,45 @@
+<?php
+if($info){
+	foreach($info as $v){
+		echo '<div class="c_list c_mess">';
+		echo '<div class="face">';	
+		if($v['fromuid']==0){
+			echo '<a target="_blank" href="javascript:void(0)" title="系统">';
+			echo '<img  title="系统"  width="48" height="48" style="border:1px solid #eee" src="public/images/sys.jpg">';
+			echo '</a>';
+			echo '</div>';
+			echo '<div class="c_content">';
+			echo '<p class="mgb10">';
+			echo '<a target="_blank" href="javascript:void(0)" title="系统">系统</a>：';
+			echo '</p>';
+		}else{
+			$u = Ly_User::getBaseinfo($v['fromuid'],50);
+			echo '<a target="_blank" href="user.html?uid='.$v['fromuid'].'" title="'.$u['name'].'">';
+			echo '<img  title="'.($u['name']?$u['name']:'系统').'"  width="50" height="50" src="'.$u['userimg'].'">';
+			echo '</a>';
+			echo '</div>';
+			echo '<div class="c_content">';
+			echo '<p class="mgb10">';
+			echo '<a target="_blank" href="user.html?uid='.$v['fromuid'].'" title="'.$u['name'].'">'.$u['name'].'</a>：';
+			echo '</p>';
+		}
+		echo '<div class="c_window">';
+		echo '<div class="arrow"><em>◆</em><span>◆</span></div>';
+		echo '<div class="padtop10">'.$v['messages'].'</div>';
+		echo '<div class="c_bottom">';
+		echo '<span class="right">';
+		echo '<a onclick="readMsg(this,'.$v['id'].')" href="javascript:void(0)" >阅读</a>';
+		echo '<i class="W_vline"> | </i>';
+		echo '<a type="t" onclick="delMsg(this,'.$v['id'].')" href="javascript:void(0)">删除</a>';
+		echo '</span>';
+		echo '<span>'.date('m月d日 H:i',$v['messtime']).'</span>';
+		echo '</div>';
+		echo '</div>';
+		echo '</div>';
+		echo '</div>';
+	}
+	echo '<div class="Page1 margtop20">'.$pages.'</div>';
+}else{
+	echo '暂且没有任何数据';
+}
+?>

@@ -1,0 +1,165 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="gbk" />
+<meta http-equiv="x-ua-compatible" content="ie=7" />
+<link href="./css/top.css" rel="stylesheet" type="text/css" />
+<link href="./css/base.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/check.js"></script>
+<title>会员中心</title>
+</head>
+
+<body>
+<div id="list">
+<div class="list">
+<div class="login"><span id="top_user"><s>您好,欢迎来到欣欣!</s>&nbsp;<a rel="nofollow" href="/login.php" target="_self">请登录</a>&nbsp;<a rel="nofollow" href="/reg_cncn.php" target="_self">免费注册</a></span></div>
+<div class="quick_menu">
+<ul>
+<li id="a"><b><a href="/member/" target="_self" rel="nofollow">我的欣欣</a><s></s></b>
+    <ul class="more">
+    <li><a href="/member/" target="_self" rel="nofollow">我的订单</a></li>
+    <li><a href="/member/?action=favline" target="_self" rel="nofollow">我的收藏</a></li>
+    </ul>
+ | </li>
+<li>&nbsp;<a rel="nofollow" href="/guestbook/" target="_blank">建议与投诉</a> | </li>
+<li><a href="#" onClick="javascript:window.external.addFavorite(document.location.href, document.title)" target="_self">收藏</a> | </li>
+<li id="b"><b>网站导航<s></s></b>
+<div class="more">
+    <ul>
+    <li class="title">旅游产品</li>
+    <li><a href="http://wan.cncn.com/" target="_blank">欣欣商城</a></li>
+    <li><a href="http://jipiao.cncn.com/" target="_blank">特价机票</a></li>
+    <li><a href="http://jiudian.cncn.com" target="_blank">酒店预订</a></li>
+    <li><a href="http://qianzheng.cncn.com/" target="_blank">签证办理</a></li>
+    </ul>
+    <ul>
+    <li class="title">旅游指南</li>
+    <li><a href="http://www.cncn.com/jingdian/" target="_blank">旅游景点</a></li>
+    <li><a href="http://www.cncn.com/article/" target="_blank">游记攻略</a></li>
+    <li><a href="http://news.cncn.com" target="_blank">旅游资讯</a></li>
+    <li><a href="http://eat.cncn.com" target="_blank">欣欣美食</a></li>
+    </ul>
+    <ul>
+    <li class="title"><a href="http://tool.cncn.com/">出行百宝箱</a></li>
+    <li><a href="http://huoche.cncn.com/" target="_blank">火车时刻表</a></li>
+    <li><a href="http://dongche.cncn.com/" target="_blank">动车时刻表</a></li>
+    <li><a href="http://qiche.cncn.com/" target="_blank">汽车时刻表</a></li>
+    <li><a href="http://tianqi.cncn.com/" target="_blank">天气预报</a></li>
+    <li><a href="http://ditu.cncn.com/" target="_blank">电子地图</a></li>
+    <li><a href="http://bus.cncn.com/" target="_blank">公交查询</a></li>
+    </ul>
+    <ul class="bd0">
+    <li><a href="http://lxs.cncn.com/" target="_blank">旅行社联盟</a></li>
+    <li><a href="http://travel.cncn.com/" target="_blank">ChinaTravel</a></li>
+    </ul>
+</div></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="warpper">
+<div id="top">
+<div id="logo"><a href="/"><img src="http://s.cncnimg.cn/images/logo111011.png" alt="欣欣旅游网" title="欣欣旅游网" border="0" width="135" height="44" /></a>
+<span><strong><a href="/member/">会员中心</a></strong>
+</span>
+
+</div>
+</div>
+
+<div id="menu">
+<div class="menu">
+<ul>
+<li id="nav_home" class="nav_on"><span><a href="/" title="欣欣旅游网首页">首页</a></span></li>
+<li id="nav_zhoubian"><span><a href="/shenzhen/zhoubian" target="_self">周边游</a></span></li>
+<li id="nav_guonei"><span><a href="/shenzhen/guonei" target="_self">国内游</a></span></li>
+<li id="nav_chujing"><span><a href="/shenzhen/chujing" target="_self">出境游</a></span></li>
+<li id="nav_jingdian"><span><a href="/jingdian/">旅游景点</a></span></li>
+<li id="nav_jipiao"><span><a href="http://jipiao.cncn.com/">机票</a><s></s></span></li>
+<li id="nav_hotel"><span><a href="http://jiudian.cncn.com/">酒店</a></span></li>
+</ul>
+<div class="keyword"><a href="/city/">旅游城市</a><a href="/article/">旅游攻略</a><a href="http://news.cncn.com/">旅游资讯</a><a href="http://tool.cncn.com/" target="_blank">出行百宝箱</a><a href="http://lxs.cncn.com/" target="_blank">旅行社</a></div>
+
+</div>
+</div>
+<div class="bd_b3"></div>
+<script src="/js/common.js"></script>
+<script>
+function box(control){
+        var control = $(control);
+		control.onmouseover = function(){
+                this.className = "more_bg"
+            }
+		control.onmouseout = function(){
+			if(this.className=="more_bg"){
+				this.className = ""
+			}  
+		}			
+    }
+box("a");box("b");box("c");box("e");
+</script>
+<div id="member">
+  <div id="lft">
+<h2><a href="/member/">我的欣欣</a></h2>
+<div class="txt">
+	<ul>
+		<li class="more"><span><s></s>订单管理</span>
+		<ul>
+			<li><a href="?action=order_list">网店订单</a></li>
+			<li><a href="?action=wan_order_list">商城订单</a></li>
+			<!--<li><a href="?action=order_list&typeid=0">未确认订单</a></li>
+			<li><a href="?action=order_list&pay_status=0">待付款订单</a></li>-->
+			<li><a href="?action=toushu_list">投诉管理</a></li>		</ul>
+		</li>
+		<li class="line"></li>
+		<li class="more"><span><s></s>账户管理</span>
+		<ul>
+			<li><a href="?action=favline">我的收藏夹</a></li>			<li><a href="?action=comment_list">我的点评</a></li>
+			<li><a href="?action=guestbook_list">在线咨询</a></li>			<!--<li><a href="/">订阅管理</a></li>-->
+			<!--<li><a href="/">商城抵用券</a></li>-->
+			<li><a href="?action=profile">个人资料</a></li>
+            <li><a href="?action=password">修改密码</a></li>        		</ul>
+		</li>
+	</ul>
+</div>
+  </div>
+  <div class="club_list">
+<div class="ndwz"><span>您的位置：</span><a href="/">欣欣旅游网</a><em>></em><a href="/member/">会员中心</a><em>></em>我的订单</div>
+<div class="tit">
+<a href="?action=order_list" class="on">线路订单</a>
+<a href="?action=hotel_order_list&sv_id=2">门票订单</a>
+<a href="?action=hotel_order_list&sv_id=1">酒店订单</a>
+<a href="?action=hotel_order_list&sv_id=4">租车订单</a>
+<a href="?action=hotel_order_list&sv_id=5">会议订单</a>
+<a href="?action=hotel_order_list&sv_id=6">签证订单</a>
+<a href="?action=hotel_order_list&sv_id=3">导游订单</a>
+</div>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab mt10">
+<thead>
+<tr>
+<td align="center" colspan="2">预订产品信息</td>
+<td align="center">单价(元)</td>
+<td align="center">预定人数</td>
+<td align="center">出发日期</td>
+<td align="center">总金额(元)</td>
+<td align="center">状态</td>
+<td align="center">操作</td>
+</tr>
+</thead>
+<tbody>
+	<tr>
+        <td colspan="9" align="center">您还没有预定产品。</td>
+    </tr>
+</tbody>
+</table>
+<div class="number"></div>
+  </form>
+  </div>
+  </div>
+</div>
+<script src="http://www.cncn.com/checklogin_v4.php"></script>
+<div id="footer">
+<div id="ft">&copy; 2012 <a href="http://www.cncn.com">欣欣旅游网</a></div>
+<script src='http://w.cnzz.com/c.php?id=30028068' language='JavaScript' charset='gb2312'></script>
+</div></body>
+</html>

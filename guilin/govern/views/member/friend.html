@@ -1,0 +1,224 @@
+<?php Y_Widget::display('header',array('b_info'=>$this->id)); ?>
+<?php Y_Widget::display('top'); ?>
+<!--content -->
+<div id="content">
+	<?php Y_Widget::display('tips',array('b_info'=>$this->id)); ?>
+	<!--main -->
+	<div class="main clearfix">
+	<?php Y_Widget::display('left'); ?>
+	<!--box开始 -->
+	<div id="box" class="clearfix">
+<!-- 这里写内容-->
+<div class="box">
+输入用户ID查询：
+<form  method="get">
+<input type="hidden" name="ro" value="member" />
+<input type="hidden" name="ac" value="friend" />
+<input type="text" class="w80" name="uid" x-webkit-speech value="<?php echo $this->get('uid'); ?>" />
+<input type="submit" value="查询" class="btn btn-green" />
+</form>
+</div>
+<?php
+if($user){
+?>
+<table class="full st">
+<tr>
+<td class="w80" rowspan="3"><img src="<?php echo Ly_User::getUserimg($user['userimg'],85); ?>"  /></td>
+<td>用户UID:<a href="user.html?uid=<?php echo $this->get('uid');?>" title="访问该用户" target="_blank"><?php echo $user['uid']; ?></a></td>
+</tr>
+<tr>
+<td>注册邮箱：<a href="?ro=member&ac=member&s_uid=<?php echo $this->get('uid'); ?>" target="_blank" ><?php echo $user['email']; ?></a></td>
+<td>用户名：<span class="ctitle"><?php echo $user['name']; ?></span></td>
+<td>性别：<span class="ctitle"><?php echo $user['sex_name']; ?></span></td>
+<td>生日：<span class="ctitle"><?php echo $user['birthday']; ?></span></td>
+<td>年龄：<span class="ctitle"><?php echo $user['age']; ?></span></td>
+<td>城市：<span class="ctitle"><?php echo $user['city_name']; ?></span></td>
+</tr>
+<tr>
+<td>等级积分：<span class="ctitle"><?php echo $user['rank_name']; ?></span>(<span class="ctitle"><?php echo $user['rank']; ?></span>)</td>
+<td>用户等级：<span class="ctitle"><?php echo $user['grade_name']; ?></span></td>
+<td colspan="6">信息设置：评论:(<span class="ctitle"><?php echo $messset['comments']?'通知':'不通知'; ?></span>)
+,回复评论:(<span class="ctitle"><?php echo $messset['replay']?'通知':'不通知'; ?></span>)
+,关注:(<span class="ctitle"><?php echo $messset['attention']?'通知':'不通知'; ?></span>)
+,邮件周刊:(<span class="ctitle"><?php echo $messset['mail']?'接收':'不接收'; ?></span>)
+,私信:(<span class="ctitle"><?php echo Ly_Items::getName('message','messset',$messset['mess']); ?></span>)
+</td>
+</tr>
+<tr>
+<td colspan="7">
+<h5>最近访问的人：</h5>
+<?php
+if($visit){
+	echo '<ul>';
+	foreach($visit as $v){
+		$u = Ly_User::getBaseinfo($v['visituid']);
+		if($u){		
+			echo '<li class="fl w250">';
+			echo '<div style="float:left;width:65px;height:85px;">';
+			echo '<a href="?ro=member&ac=friend&uid='.$v['visituid'].'"><img style="border:1px solid #ccc;padding:2px;width:45px;height:45px"  src="'.Ly_User::getUserimg($u['userimg'],48).'" />';
+			echo $u['name'];
+			echo '</a>';
+			echo '</div>';
+			echo  'UID：<a href="govern.php?ro=member&ac=member&s_uid='.$v['visituid'].'" target="_blank">'.$v['visituid'].'</a>';
+			echo '<br>';
+			echo '时间：'.date('Y-m-d H:i',$v['pubtime']);
+			echo '</li>';
+			
+		}
+	}
+	echo '</ul>';
+}
+?>
+</td>
+</tr>
+<tr>
+<td colspan="7">
+<h5>最近访问TA的人：</h5>
+<?php
+if($visitme){
+	echo '<ul>';
+	foreach($visitme as $v){
+		$u = Ly_User::getBaseinfo($v['uid']);
+		if($u){		
+			echo '<li class="fl w250">';
+			echo '<div style="float:left;width:65px;height:85px;">';
+			echo '<a href="?ro=member&ac=friend&uid='.$v['uid'].'"><img style="border:1px solid #ccc;padding:2px;width:45px;height:45px" src="'.Ly_User::getUserimg($u['userimg'],48).'" />';
+			echo $u['name'];
+			echo '</a>';
+			echo '</div>';
+			echo 'UID：<a href="govern.php?ro=member&ac=member&s_uid='.$v['uid'].'" target="_blank">'.$v['uid'].'</a>';
+			echo '<br>';
+			echo '时间：'.date('Y-m-d H:i',$v['pubtime']);
+			echo '</li>';
+			
+		}
+	}
+	echo '</ul>';
+}
+?>
+</td>
+</tr>
+<tr>
+<td colspan="7">
+<h5>TA关注的人：</h5>
+<?php
+if($myfriend){
+	echo '<ul>';
+	foreach($myfriend as $v){
+		$u = Ly_User::getBaseinfo($v['fuid']);
+		if($u){		
+			echo '<li class="fl w250">';
+			echo '<div style="float:left;width:65px;height:85px;">';
+			echo '<a href="?ro=member&ac=friend&uid='.$v['fuid'].'"><img style="border:1px solid #ccc;padding:2px;width:45px;height:45px" src="'.Ly_User::getUserimg($u['userimg'],48).'" />';
+			echo $u['name'];
+			echo '</a>';
+			echo '</div>';
+			echo 'UID：<a href="govern.php?ro=member&ac=member&s_uid='.$v['fuid'].'" target="_blank">'.$v['fuid'].'</a>';
+			echo '<br>';
+			echo '备注：'.($v['name']?$v['name']:'无');
+			echo '<br>';
+			echo '时间：'.date('Y-m-d H:i',$v['pubtime']);
+			echo '</li>';
+			
+		}
+	}
+	echo '</ul>';
+}
+?>
+</td>
+</tr>
+<tr>
+<td colspan="7">
+<h5>关注TA的人：</h5>
+<?php
+if($myfensi){
+	echo '<ul>';
+	foreach($myfensi as $v){
+		$u = Ly_User::getBaseinfo($v['uid']);
+		if($u){		
+			echo '<li class="fl w250">';
+			echo '<div style="float:left;width:65px;height:85px;">';
+			echo '<a href="?ro=member&ac=friend&uid='.$v['uid'].'"><img style="border:1px solid #ccc;padding:2px;width:45px;height:45px" src="'.Ly_User::getUserimg($u['userimg'],48).'" />';
+			echo $u['name'];
+			echo '</a></div>';
+			echo 'UID：<a href="govern.php?ro=member&ac=member&s_uid='.$v['uid'].'" target="_blank">'.$v['uid'].'</a>';
+			echo '<br>备注：'.($v['name']?$v['name']:'无');
+			echo '<br>';
+			echo '时间：'.date('Y-m-d H:i',$v['pubtime']);
+			echo '</li>';
+			
+		}
+	}
+	echo '</ul>';
+}
+?>
+</td>
+</tr>
+<tr>
+<td colspan="7">
+<h5>最近写信给：</h5>
+<?php
+if($messto){
+	echo '<ul>';
+	foreach($messto as $v){
+		$u = Ly_User::getBaseinfo($v['touid']);
+		if($u){		
+			echo '<li class="fl w250">';
+			echo '<div style="float:left;width:65px;height:85px;">';
+			echo '<a href="?ro=member&ac=friend&uid='.$v['touid'].'"><img style="border:1px solid #ccc;padding:2px;width:45px;height:45px" src="'.Ly_User::getUserimg($u['userimg'],48).'" />';
+			echo $u['name'];
+			echo '</a></div>';
+			echo 'UID：<a href="govern.php?ro=member&ac=member&s_uid='.$v['touid'].'" target="_blank">'.$v['touid'].'</a>';
+			echo '<br>';
+			echo '时间：'.date('Y-m-d H:i',$v['messtime']);
+			echo '</li>';
+			
+		}
+	}
+	echo '</ul>';
+}
+?>
+</td>
+</tr>
+<tr>
+<td colspan="7">
+<h5>最近写信给：</h5>
+<?php
+if($tomess){
+	echo '<ul>';
+	foreach($tomess as $v){
+		$u = Ly_User::getBaseinfo($v['fromuid']);
+		if($u){		
+			echo '<li class="fl w250">';
+			echo '<div style="float:left;width:65px;height:85px;">';
+			echo '<a href="?ro=member&ac=friend&uid='.$v['fromuid'].'"><img style="border:1px solid #ccc;padding:2px;width:45px;height:45px" src="'.Ly_User::getUserimg($u['userimg'],48).'" />';
+			echo $u['name'];
+			echo '</a></div>';
+			echo 'UID：<a href="govern.php?ro=member&ac=member&s_uid='.$v['fromuid'].'" target="_blank">'.$v['fromuid'].'</a>';
+			echo '<br>';
+			echo '时间：'.date('Y-m-d H:i',$v['messtime']);
+			echo '</li>';
+			
+		}
+	}
+	echo '</ul>';
+}
+?>
+</td>
+</tr>
+</table>
+<?php
+}else{
+?>
+<div class="cred">没有匹配到该用户</div>
+<?php
+}
+
+?>
+<!-- 这里写内容结束-->
+	<!--box结束 -->
+	</div>
+	</div>
+	<!-- mainend-->
+</div>
+<?php Y_Widget::display('footer');?>

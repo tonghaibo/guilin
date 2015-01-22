@@ -1,0 +1,615 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1"><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>
+	订单列表
+</title><script type="text/javascript">var  _tcopentime=new Date().getTime();</script>
+<!--头部IE6背景处理-->
+<!--[if lte IE 6]>
+<script type="text/javascript" src="http://js.40017.cn/cn/new_ui/public/script/DD_belatedPNG.js"></script>
+<script type="text/javascript">
+DD_belatedPNG.fix('.sign_in_down img,.sign_in_up img, .mytc_up img, .mytc_down img, .sign_close img, .logo img, .hotline_tray img, .header_nav span, .footer_img');
+</script>
+<![endif]-->
+<!--头部IE6背景处理-->
+<link rel="stylesheet" type="text/css" href="./css/base_1.9.1.min.css?v=2012101115" media="screen" />
+<!--头部脚本-->
+<script type="text/javascript" src="./js/tc_top_1.1.js?v=201209210102"></script>
+
+<link rel="stylesheet" type="text/css" href="./css/base_zt.css?v=201100704" media="screen" /><link rel="stylesheet" type="text/css" href="./css/comm.css?v=20110725" media="screen" /><link rel="stylesheet" type="text/css" href="./css/l_jplist03.css?v=2012082404" media="screen" />
+    <script type="text/javascript" src="./js/tc_top_1.1.js?v=2011062403"></script>
+    <script type="text/javascript" src="./js/fish.js?v=2012011101"> </script>
+    <script type="text/javascript" src="./js/jquery_colorbox.js"></script> 
+    <script type="text/javascript" src="./js/date.1.2.js?v=20120523"></script> 
+    <script type="text/javascript">
+        (function () {
+            var firstFlight = {
+                //补寄行程单
+                mailItinUrl: "/AjaxHandler/FlightAjaxInterface.aspx",
+                //取消配送行程单
+                cMailItinUrl: "/AjaxHandler/FlightAjaxInterface.aspx",
+                //验客
+                vPassengerUrl: "/AjaxHandler/FlightAjaxInterface.aspx"
+            };
+            window._flight = function (type) { return firstFlight[type] };
+        } ());
+
+        //显示积分宝用户不可以参加验客、点评奖金等
+        function showcanNotYk() 
+        {
+            squl.create("UpTier",
+                        {
+                            upCol: "Div1", //弹出控件			
+                            exitList: "Img1,A1" //关闭触发器数组用,分割
+                        });
+        }
+    </script>  
+    <style type="text/css">table{border-spacing:0}.zclist01_01 table { border-spacing: 1px;}</style>
+</head>
+<body>
+    <span id="Head2"><div id="top" class=".none" ><div class="inside_top" style="height:29px;"><form id="login_form" action="" method="get"><div id="login_bar" class="none"><span class="top_hello ie6Text">您好，欢迎光临同程网！</span><a class="sgin_text loginText ie6Text" id="loginHref" href="http://passport.17u.cn/" nhref="http://passport.17u.cn/?pageurl={backurl}"onclick="this.href = this.getAttribute('nhref').replace('{backurl}', encodeURIComponent(window.location.href))" rel="nofollow">登录</a><a class="sgin_text ie6Text" nhref="http://passport.17u.cn/register/index/?pageurl={backurl}" onclick="this.href = this.getAttribute('nhref').replace('{backurl}', encodeURIComponent(window.location.href))" href="http://passport.17u.cn/register/index/" rel="nofollow">注册</a></div></form><form id="logout_form" action="" method="get"><div id="logged_bar" class=""><a id="user_name" href="http://member.17u.cn/" class="account_id">134qbkym407</a><span class="top_hello_u ie6Text">，您好</span><a id="sign_out_btn" class="btn_sign_out" title="退出" href="http://www.17u.cn/AjaxHelper/TopLoginHandler.aspx?action=exitnew" rel="nofollow"></a><a style="font-weight: bold;" class="fire_pay ie6Text" href="http://member.17u.cn/" rel="nofollow">订单快速支付</a><span id="logouting" class="wait4Exit none"><img alt="" src="http://img1.40017.cn/cn/new_ui/public/images/wait.gif" /></span></div></form><div class="express_anchor"><div id="myTc" class="ea_mytc"><div id="myTcTitle" class="set_float .set_float_on"><span class="mytc_span"><a href="http://member.17u.cn/" rel="nofollow">我的同程</a></span><span id="myTcArrow" class="mytc_down .mytc_up"><img alt="" src="http://img1.40017.cn/cn/new_ui/public/images/cn_common_new24.png" /></span></div><div id="ea_mytc_ul_backdrop" class="none"></div><ul id="ea_mytc_ul" class="none"><li><a href="http://member.17u.cn/" rel="nofollow">我的订单</a></li><li><a href="http://member.17u.cn/Member/MemberNoteList.aspx" rel="nofollow">站内信</a> </li><li><a href="http://member.17u.cn/Member/MemberInfomation.aspx" rel="nofollow">个人信息</a> </li><li><a href="http://member.17u.cn/Member/MemberAccountManager.aspx" rel="nofollow">修改密码</a> </li><!--<li><a href="http://member.17u.cn/Member/MemberBonusAccount.aspx" rel="nofollow">奖金账户</a> </li>--></ul></div><a class="ea_mobile_site ie6Text" href="http://www.17u.cn/subject/wap/" target="_blank">手机站</a><img style="float: left; margin: 8px 20px 0 -16px; margin-top: 7px\9; *margin-top: 7px; _margin-top: 8px;" src="http://img1.40017.cn/cn/new_ui/public/images/hot.gif" alt="hot" /><a class="ea_help ie6Text" rel="nofollow" href="http://www.17u.cn/help/" title="帮助中心" target="_blank">帮助</a><a id="bookmark" class="ea_collect ie6Text" href="javascript:void(0)" >收藏</a><span id="littletelephone_outer" class="top_tele" style="display:none"><span class="icon_tele"></span><span id="littletelephone"></span></span></div><div class="clear_float"></div></div><script type="text/javascript">var loginState = {name:"134qbkym407", state:100};new Ajax({url: "/Member/MemberLoginAjax.aspx?action=check"});initLog();</script></div><div id="header"><div class="logo"><a style="float: left;" title="同程网" href="http://www.17u.cn/"><img src="http://img1.40017.cn/cn/new_ui/public/images/logo_e.png?v=1" alt="同程网"></a> </div><div id="hotline_holder" class="hotline"><a href="http://www.17u.cn/zhuanti/xianjinquan/" class="tele_a" target="_blank" title="网上预订更优惠"></a><p id="headtelephone" class="hotline_num"></p></div><div class="clear_float"></div><div id="navigator" class="header_nav"><a class="navg" href="http://www.17u.cn/">首页</a><a class="navg" href="http://www.17u.cn/hotel/">酒店</a><a class="xiangdui navg hasPopman" onmouseover="document.getElementById('poper_1').style.width='36px';document.getElementById('poptxt_1').innerHTML='促销热卖'" onmouseout="document.getElementById('poper_1').style.width='0px';document.getElementById('poptxt_1').innerHTML='促'" href="http://www.17u.cn/dujiajiudian/">度假酒店<span id="poper_1" class="popman"><span class="bg bg_l"></span><span class="bg bg_r"></span><span id="poptxt_1" class="pop_txt">促</span></span></a><a class="navg" href="http://www.17u.cn/FlightQuery.aspx">机票</a><a class="xiangdui navg hasPopman" onmouseover="document.getElementById('poper_2').style.width='24px';document.getElementById('poptxt_2').innerHTML='升级版'" onmouseout="document.getElementById('poper_2').style.width='0px';document.getElementById('poptxt_2').innerHTML='新'" href="http://flights.17u.cn/">国际机票<span id="poper_2" class="popman"><span class="bg bg_l"></span><span class="bg bg_r"></span><span id="poptxt_2" class="pop_txt">新</span></span></a><a class="navg" href="http://www.17u.cn/scenery/">景点门票</a><a class="xiangdui navg hasPopman" onmouseover="document.getElementById('poper_3').style.width='36px';document.getElementById('poptxt_3').innerHTML='优惠特卖'" onmouseout="document.getElementById('poper_3').style.width='0px';document.getElementById('poptxt_3').innerHTML='惠'" href="http://www.17u.cn/selftrip/">自助游<span id="poper_3" class="popman"><span class="bg bg_l"></span><span class="bg bg_r"></span><span id="poptxt_3" class="pop_txt">惠</span></span></a><a class="navg" href="http://www.17u.cn/dujia/">国内游</a><a class="navg" href="http://www.17u.cn/dujia/chujing/">出境游</a><a class="navg" href="http://piao.17u.cn/">演出</a><a class="navg" href="http://zuche.17u.cn/">租车</a><a class="navg" href="http://tuan.17u.cn/">团购</a></div><div class="clear_float"></div><div id="id_more_nav" class="more_nav" onmouseover="this.className='more_nav more_nav_all';" onmouseout="this.className='more_nav';"><div class="clearfix more_title_bar"><span class="more_title">更多</span><span class="more_arrow"></span></div><div class="more_tray clearfix"><a class="header_right_li" href="http://www.17u.cn/gotocom.aspx?pageurl=http%3a%2f%2fwww.17u.com%2fdestination%2fguide.html" rel="nofollow" target="_blank">旅游攻略</a><a class="header_right_li" href="http://www.17u.cn/gotocom.aspx?pageurl=http%3a%2f%2fwww.17u.com%2fblog%2f" rel="nofollow" target="_blank">旅游博客</a><a class="header_right_li" href="http://www.17u.cn/zhuanti/" target="_blank">活动</a><a class="header_right_li" href="http://www.17u.cn/trip/" target="_blank">目的地</a><span class="clearfloat"></span></div></div></div></span>
+    <form method="post" action="FlightMemberOrderList.aspx" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTIwMjI1NDA0MjgPZBYEAgIPZBYCZg9kFgYCAQ8WAh4EVGV4dAXuATxwIGNsYXNzPSJwMDEiPjxhIGhyZWY9Ii8iPjxpbWcgc3JjPSJodHRwOi8vdXBsb2FkLjE3dS5jb20vdXBsb2FkZmlsZS8yMDA1LzExLzA4LzIvYm95LmdpZiIvPjwvYT48L3A+PHA+PGEgaHJlZj0iLyI+MTM0cWJreW00MDc8L2E+PC9wPjxwIGNsYXNzPSJwMDIiPjxpbWcgc3JjPSJodHRwOi8vaW1nMS40MDAxNy5jbi9jbi9uZXdfdWkvY29tcHJlaGVuc2l2ZS9pbWFnZXMvb3JkZXJfY2VudGVyL3YxLmdpZiIvPjwvcD5kAgMPFgIfAAWKATxsaT48YSBocmVmPSIvTWVtYmVyL01lbWJlckJvbnVzQWNjb3VudC5hc3B4Ij7lpZbph5HotKbmiLc8L2E+PC9saT48bGk+PGEgaHJlZj0iL01lbWJlci9NZW1iZXJDb3Vwb25BY2NvdW50LmFzcHgiPueOsOmHkeWIuOi0puaItzwvYT48L2xpPmQCBQ8WAh8ABfQCPGxpPjxhIGhyZWY9Ii9NZW1iZXIvTWVtYmVySW5mb21hdGlvbi5hc3B4Ij7kuKrkurrotYTmlpnorr7nva48L2E+PC9saT48bGk+PGEgaHJlZj0iL01lbWJlci9NZW1iZXJBY2NvdW50TWFuYWdlci5hc3B4Ij7otKblj7fnrqHnkIY8L2E+PC9saT48bGk+PGEgaHJlZj0iL01lbWJlci9NZW1iZXJDb21tb24uYXNweCI+5bi455So5peF5a6i6K6+572uPC9hPjwvbGk+PGxpPjxhIGhyZWY9Ii9NZW1iZXIvTWVtYmVyRGVsaXZlckFkZHJlc3MuYXNweCI+5pS26LSn5Zyw5Z2A6K6+572uPC9hPjwvbGk+PGxpPjxhIGNsYXNzPSJsaV9qb2ludGJnIiBocmVmPSIvTWVtYmVyL0NvQnJhbmRlZENhcmQuYXNweCI+6IGU5ZCN5Y2h57uR5a6a6K6+572uPC9hPjwvbGk+ZAIDDw8WAh4IU2VyaWFsSWQFATBkZGRwiwbNBsdvRwTulf5pcQgHM5cagA==" />
+</div>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWDAKJ4+9xAumU0ZgOApOgnawGAqnztt4FAvzNgrsCAtnSpKUJAs2ZlNsIArOIrfMNAoLO6JcHAq7nmL0NAvbSzqIJAreM5aENXQfU3nEGypHczsojaTpGE9kMHJA=" />
+</div>
+    <div id="content">
+        
+
+<div id="LiList" class="leftside">
+            <div class="left_head">
+                <h3>我的同程</h3>
+            </div>
+            <div class="left_main">
+                <div class="bordertop">
+                </div>
+                <div class="main01">
+                <p class="p01"><a href="/"><img src="http://upload.17u.com/uploadfile/2005/11/08/2/boy.gif"/></a></p><p><a href="/">134qbkym407</a></p><p class="p02"><img src="http://img1.40017.cn/cn/new_ui/comprehensive/images/order_center/v1.gif"/></p>
+                </div>
+                <div class="main02_head">
+                    <h3>我的订单</h3>
+                </div>
+                <ul class="main02" id="MyOrder">
+                <li><a href="/Hotel/HotelMemberOrderList.aspx">酒店订单</a></li>
+                <li><a href="/Flight/FlightMemberOrderList.aspx">机票订单</a></li>
+                <li><a href="/Scenery/SceneryMemberOrderList.aspx">景点订单</a></li>
+                <li><a href="/Ticket/TicketMemberOrderList.aspx">演出订单</a></li>
+                <li><a href="/Car/CarMemberOrderList.aspx">租车订单</a></li>
+                <li><a href="/dujia/DujiaOrderList.aspx">度假订单</a></li>
+                <li><a href="/selftrip/selftripOrderList.aspx">自助游订单</a></li>
+                </ul>
+                <div class="main02_head">
+                    <h3>我的账户</h3>
+                </div>
+                <ul class="main02">
+                   <li><a href="/Member/MemberBonusAccount.aspx">奖金账户</a></li><li><a href="/Member/MemberCouponAccount.aspx">现金券账户</a></li>
+                </ul>
+                <div class="main02_head">
+                    <h3>个人信息管理</h3>
+                </div>
+                <ul class="main02">
+                  <li><a href="/Member/MemberInfomation.aspx">个人资料设置</a></li><li><a href="/Member/MemberAccountManager.aspx">账号管理</a></li><li><a href="/Member/MemberCommon.aspx">常用旅客设置</a></li><li><a href="/Member/MemberDeliverAddress.aspx">收货地址设置</a></li><li><a class="li_jointbg" href="/Member/CoBrandedCard.aspx">联名卡绑定设置</a></li>
+                </ul>
+                <div class="main02_head">
+                    <h3>我的信息夹</h3>
+                </div>
+                <ul class="main02" id="ulMyInfo">
+                        <li><a href="/Member/MemberNoteList.aspx">站内信</a></li>
+                        <li><a href="http://zhidao.17u.cn/" target="_blank">我的提问与答复</a></li>
+                        <li><a href="/Member/membercommentsrecord.aspx">我的点评记录</a></li>
+                        <li><a href="/Hotel/uploading.aspx">我上传的酒店图片</a></li>
+                </ul>
+            </div>
+            <div class="left_img">
+                <a target="_blank" href="http://union.17u.cn/"><img src="http://img1.40017.cn/cn/new_ui/comprehensive/images/order_center/img01.gif"/></a>
+            </div>
+        </div>
+        <input name="ucMenu$hidTypeId" type="hidden" id="ucMenu_hidTypeId" value="2" />
+         <script src="./js/LeftUC.js" type="text/javascript"></script>
+         <script type="text/javascript" language="javascript">GetOrderLeftInfo();</script>
+        <div class="rightside">
+			<div class="sub_nav">
+				<a href="/">我的同程</a>&nbsp;&gt;&nbsp;机票订单
+			</div> 
+			<div class="jp_search" id="conditionSearch">
+            	<div class="search_info">
+					<span>乘机人姓名：</span>
+					<span>
+                    <input id="txtpassengerName" value="" type="text" class="input01" autocomplete="off" />
+					</span>
+					<span class="sp01">行程时间：</span>
+					<span>
+                        <input name="txtstartTime" type="text" id="txtstartTime" class="input02" /><div id="startTimeCal"></div>
+                    </span>
+					<span>&nbsp;&nbsp;到&nbsp;&nbsp;</span>
+					<span>
+                        <input name="txtendTime" type="text" id="txtendTime" class="input02" /><div id="endTimeCal"></div>
+                    </span>
+					<span class="sp01">类型：</span>
+					<span>
+                        <select name="ddlType" id="ddlType" class="select01">
+	<option value="全部">全部</option>
+	<option value="变更中的订单">变更中的订单</option>
+	<option value="未使用的订单">未使用的订单</option>
+	<option value="待点评的订单">待点评的订单</option>
+
+</select>
+					</span>
+					<span class="sp01">
+                        <a href="javascript:setIsSearch();" class="sbtn" id="btnSearch">搜 索</a>
+					</span>
+				</div> 
+			</div>
+			<div class="zclist01">
+				<div class="zchead01">
+					<ul id="infoBox">
+						<li id="btnLi_0" class="at">国内机票进行中订单</li>
+						<li id="btnLi_1" class="not">国内机票已结束订单</li>
+                        <li id="btnLi_2" class="not">国际机票订单列表</li>
+					</ul>
+                    <!--订单状态说明 start-->
+					<span id="moreStateTips" class="jp_m01right">
+						<span style="float:left;">订单状态说明</span>
+						<span class="m01_fd bubble">
+							<div class="m01_head">
+								<h3>订单状态说明</h3>
+							</div>
+							<div class="m01_info" id="InterStatus" >
+								<table width="405" border="0" cellspacing="0" cellpadding="0" class="orderdomestic_info">
+								  <tr>
+									<td width="90">1、特价申请中</td>
+									<td>同程网正在为您申请特价机票，请耐心等待</td>
+								  </tr>
+								  <tr>
+									<td>2、待付款</td>
+									<td>您的订单已成功提交，请尽快完成支付</td>
+								  </tr>
+								  <tr>
+									<td>3、进行中</td>
+									<td>同程正在出票中或正在处理您的订单</td>
+								  </tr>
+								  <tr>
+									<td>4、成功出票</td>
+									<td>已为您成功出票</td>
+								  </tr>
+								  <tr>
+									<td>5、待扣款</td>
+									<td>您的订单已成功提交</td>
+								  </tr>
+								  <tr>
+									<td>6、待点评</td>
+									<td>您的电子客票已使用，请对此次行程发表点评</td>
+								  </tr>
+								  <tr>
+									<td>7、待验客</td>
+									<td>您已点评,请对此次行程发表体验式博客</td>
+								  </tr>
+								  <tr>
+									<td>8、待处理</td>
+									<td>您的变更申请已提交，待同程处理中</td>
+								  </tr>
+								  <tr>
+									<td>9、变更中</td>
+									<td>您在同程网购买机票后，因某种原因，要求变更出行计划。</td>
+								  </tr>
+								  <tr>
+									<td>10、已取消</td>
+									<td>因某种原因，您取消了本次订单</td>
+								  </tr>
+								  <tr>
+									<td>11、已结束</td>
+									<td>此订单已结束</td>
+								  </tr>
+								  <tr>
+									<td>12、已退票</td>
+									<td>此订单全部乘客退票完毕</td>
+								  </tr>
+								  <tr>
+									<td>13、订单过期</td>
+									<td>此订单已经过期，无法使用</td>
+								  </tr>
+								</table>
+                                <table width="405" border="0" cellspacing="0" cellpadding="0" class="orderinter_info" style="display:none;">
+								  <tr>
+									<td width="90">1、待付款</td>
+									<td>您的订单已成功提交，请尽快完成支付</td>
+								  </tr>
+								  <tr>
+									<td>2、扣款中</td>
+									<td>您的信用卡扣款正在处理中</td>
+								  </tr>
+								  <tr>
+									<td>3、进行中</td>
+									<td>同程正在出票中或正在处理您的订单</td>
+								  </tr>
+								  <tr>
+									<td>4、成功出票</td>
+									<td>已为您成功出票</td>
+								  </tr>
+								  <tr>
+									<td>5、待点评</td>
+									<td>您的电子客票已使用，请对此次行程发表点评</td>
+								  </tr>
+								  <tr>
+									<td>6、待处理</td>
+									<td>您的变更申请已提交，待同程处理中</td>
+								  </tr>
+								  <tr>
+									<td>7、已取消</td>
+									<td>因某种原因，您取消了本次订单</td>
+								  </tr>
+								  <tr>
+									<td>8、已结束</td>
+									<td>此订单已结束</td>
+								  </tr>
+								</table>
+							</div>
+						</span>
+					</span>
+                    <!--订单状态说明 end-->
+				</div>
+				<div id="moreBtn" class="zclist01_info"> 
+					<div id="infoBox_0" class="zclist01_01">
+                        <!--进行中订单table 开始-->
+						<table border="0" cellspacing="1" cellpadding="1" id="ingordertable" style="display:block;"> 
+						  <tr>
+							<th width="104">订单号</th>
+                            
+                            <th width="182">航班信息</th>
+							<th width="137">起飞时间</th>
+							<th width="70">价格</th>
+                            
+							<th width="86">订单状态</th>
+							<th width="198">订单操作</th>
+						  </tr>
+						</table>
+                         <!--进行中订单table 结束-->
+
+                        <!--无数据table 开始-->
+						<table border="0" cellspacing="1" cellpadding="1" id="NoIngOrderTable" style="display:none;">
+						  <tr>
+							<th width="108">订单号</th>
+                            
+							<th width="174">航班信息</th>
+							<th width="135">起飞时间</th>
+							<th width="70">价格</th>
+                            
+							<th width="78">订单状态</th>
+							<th width="213">订单操作</th>
+						  </tr>
+						  <tr>
+							<td colspan="7" style="font-size:14px; text-align:center; padding:40px;">对不起，没有搜索到您查找的订单</td>
+						  </tr>
+						</table>
+                        <!--无数据table 结束-->
+                        <div>
+                            
+                        </div>
+					</div> 
+					<div id="infoBox_1" class="zclist01_01" style="display:none;">
+                        <!--已结束订单table 开始-->
+						<table border="0" cellspacing="1" cellpadding="1" id="endordertable">
+						   <tr>
+							<th width="104">订单号</th>
+							<th width="162">航班信息</th>
+							<th width="117">起飞时间</th>
+							<th width="50">价格</th>
+							<th width="61">点评奖金</th>
+							<th width="86">订单状态</th>
+							<th width="198">订单操作</th>
+						  </tr>
+						</table>
+                        <!--已结束订单table 结束-->
+
+                        <!--无数据table 开始-->
+						<table border="0" cellspacing="1" cellpadding="1"id="NoEndOrderTable" style="display:none;">
+						  <tr>
+							<th width="108">订单号</th>
+							<th width="154">航班信息</th>
+							<th width="115">起飞时间</th>
+							<th width="50">价格</th>
+							<th width="60">点评奖金</th>
+							<th width="78">订单状态</th>
+							<th width="213">订单操作</th>
+						  </tr>
+						  <tr>
+							<td colspan="7" style="font-size:14px; text-align:center; padding:40px;">对不起，没有搜索到您查找的订单</td>
+						  </tr>
+						</table>		
+                        
+                        <!--无数据table 结束-->
+                        <div>
+                            
+                        </div>
+					</div> 
+                    <div id="infoBox_2" class="zclist01_01" style="display:none;">
+                        <div class="zclist01_01">
+						    <table border="0" cellspacing="1" cellpadding="1">
+						       <tr>
+							    <th width="100">订单号</th>
+							    <th width="142">航班信息</th>
+							    <th width="107">起飞时间</th>
+							    <th width="47">价格</th>
+							    <th width="56">点评奖金</th>
+							    <th width="73">订单状态</th>
+							    <th width="197">订单操作</th>
+						      </tr>
+						    </table>
+				        </div>
+                        <div class="zclist01_02">
+						<table border="0" cellspacing="1" cellpadding="1" class="more_demand">
+						  <tr>
+							<td width="100" class="td_bor"><a href="#">F11011619293</a></td>
+							<td width="142" class="td_bor">
+								<p>上航 FM9452</p>
+								<p>呼和浩特→上海虹桥</p>
+							</td>
+							<td width="108" class="td_bor">2011.04.19  20:30</td>
+							<td width="47" class="td_bor"><font>¥<strong>1164</strong></font></td>
+							<td width="56" class="td_bor"><font>¥<strong>105</strong></font></td>
+							<td width="73" class="td_bor">已取消</td>
+							<td width="197" class="td_bor border_none">
+								<div class="btn_info">
+									<span class="btn"><a href="#" class="btn01_a">查看</a></span>
+									<span class="btn_more" style="z-index:90;">
+										<span class="more_01 text">更多操作</span>
+                                        <div class="poa_div bubble">
+											<table cellpadding="0" cellspacing="0" class="tab_1">
+												<tr>
+													<td class="td_no">&nbsp;</td>
+													<td class="td_px">&nbsp;</td>
+												</tr>
+											</table>
+	                                        <ul class="more_ul">
+												<li><a class="mailItin" href="#">补寄行程单</a></li>
+												<li><a class="cMailItin" href="#">取消配送行程单</a></li>
+											</ul>
+										</div>
+									</span>
+								</div>
+							</td>
+						  </tr>
+						  <tr>
+							<td class="td_bor"><a href="#">F11011619293</a></td>
+							<td class="td_bor">
+								<p>上航 FM9452</p>
+								<p>呼和浩特→上海虹桥</p>
+							</td>
+							<td class="td_bor">2011.04.19  20:30</td>
+							<td class="td_bor"><font>¥<strong>1164</strong></font></td>
+							<td class="td_bor"><font>¥<strong>105</strong></font></td>
+							<td class="td_bor">已结束</td>
+							<td class="td_bor border_none">
+								<div class="btn_info">
+									<span class="btn"><a href="#" class="btn01_a">查看</a></span>
+									<span class="btn_more" style="z-index:89;">
+										<span class="more_01 text">更多操作</span>
+                                        <div class="poa_div bubble">
+											<table cellpadding="0" cellspacing="0" class="tab_1">
+												<tr>
+													<td class="td_no">&nbsp;</td>
+													<td class="td_px">&nbsp;</td>
+												</tr>
+											</table>
+	                                        <ul class="more_ul">
+												<li><a class="mailItin" href="#">补寄行程单</a></li>
+												<li><a class="cMailItin" href="#">取消配送行程单</a></li>
+											</ul>
+										</div>
+									</span>
+								</div>
+							</td>
+						  </tr>
+						  <tr>
+							<td class="td_bor"><a href="#">F11011619293</a></td>
+							<td class="td_bor">
+								<p>上航 FM9452</p>
+								<p>呼和浩特→上海虹桥</p>
+							</td>
+							<td class="td_bor">2011.04.19  20:30</td>
+							<td class="td_bor"><font>¥<strong>1164</strong></font></td>
+							<td class="td_bor"><font>¥<strong>105</strong></font></td>
+							<td class="td_bor">已退票</td>
+							<td class="td_bor border_none">
+								<div class="btn_info">
+									<span class="btn"><a href="#" class="btn01_a">查看</a></span>
+									<span class="btn_more" style="z-index:88;">
+										<span class="more_01 text">更多操作</span>
+                                        <div class="poa_div bubble">
+											<table cellpadding="0" cellspacing="0" class="tab_1">
+												<tr>
+													<td class="td_no">&nbsp;</td>
+													<td class="td_px">&nbsp;</td>
+												</tr>
+											</table>
+	                                        <ul class="more_ul">
+												<li><a class="mailItin" href="#">补寄行程单</a></li>
+												<li><a class="cMailItin" href="#">取消配送行程单</a></li>
+											</ul>
+										</div>
+									</span>
+								</div>
+							</td>
+						  </tr>
+						</table>
+                        <table border="0" cellspacing="1" cellpadding="1" class="one_demand">
+						  <tr>
+							<td width="100" class=""><a href="#">F11011619293</a></td>
+							<td width="142" class="">
+								<p>上航 FM9452</p>
+								<p>呼和浩特→上海虹桥</p>
+							</td>
+							<td width="108" class="">2011.04.19  20:30</td>
+							<td width="47" class=""><font>¥<strong>1164</strong></font></td>
+							<td width="56" class=""><font>¥<strong>105</strong></font></td>
+							<td width="73" class="">已取消</td>
+							<td width="197" class="border_none">
+								<div class="btn_info">
+									<span class="btn"><a href="#" class="btn01_a">查看</a></span>
+									<span class="btn_more" style="z-index:90;">
+										<span class="more_01 text">更多操作</span>
+                                        <div class="poa_div bubble">
+											<table cellpadding="0" cellspacing="0" class="tab_1">
+												<tr>
+													<td class="td_no">&nbsp;</td>
+													<td class="td_px">&nbsp;</td>
+												</tr>
+											</table>
+	                                        <ul class="more_ul">
+												<li><a class="mailItin" href="#">补寄行程单</a></li>
+												<li><a class="cMailItin" href="#">取消配送行程单</a></li>
+											</ul>
+										</div>
+									</span>
+								</div>
+							</td>
+						  </tr>
+                        </table>
+                        </div>	
+					</div>
+				</div>
+			</div>
+		</div>
+    </div> 
+
+	<div id="bubbles" style="display:none">			
+		<!--保险验真说明-->
+		<div id="infoBubble" class="jp_msg01">
+			<div class="msg_info01">
+				<div class="msg_head">
+					<h3></h3>
+					<span class="exit_btn"><img src="http://img1.40017.cn/cn/new_ui/comprehensive/images/order_center/c_close.gif"></span>
+				</div>
+				<div class="msg_main01">
+				</div>
+			</div>
+		</div>
+		<!--取消保险的确认框-->
+		<div id="verifyBubble" class="jp_msg02">
+			<div class="msg_info01">
+				<div class="msg_head">
+					<h3></h3>
+					<span class="exit_btn"><img src="http://img1.40017.cn/cn/new_ui/comprehensive/images/order_center/c_close.gif"></span>
+				</div>
+				<div class="msg_main">
+					<div class="p03">
+					</div>
+					<div class="p02 p04">
+						<a href="#" class="btn04 confirm_btn exit_btn">确 定</a>
+						<a href="#" class="btn04 exit_btn">取 消</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--补寄行程单-->
+		<div id="tipsBubble" class="jp_to" style="display:block;">
+			<div class="jp_info">
+				<div class="jp_head">
+					<h3></h3>
+					<span class="exit_btn"><img src="http://img1.40017.cn/cn/new_ui/comprehensive/images/order_center/c_close.gif"/></span>
+				</div>
+				<div class="jp_main">
+					<div class="jp_01">很抱歉，行程单需在航班起飞后7日内领取。</div>
+					<div class="jp_02">
+						<a href="#" class="jp_btn01 exit_btn">确 定</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>	
+
+	<!-- 常用联系人 start -->
+	<div class="dimCity" id="dimCity_link" style="display:none;">
+		<iframe id="dimCity_frame" class="six_iframe"></iframe>
+	        <table id="dimCity_table" cellspacing="0" cellpadding="0" class="soso_tbl">
+		      <tbody> 
+                   
+		     </tbody>
+		</table>
+	</div> 
+    <!-- 常用联系人 end -->
+
+    <!--航班变动 start-->
+    <!--航变详情-->
+	<div id="lineChange" class="lcBubble">
+			<s>
+				<i></i>
+			</s>
+			<h3>航班变动详情</h3>
+			<table cellspacing="0" cellpadding="0" border="0" width="100%" class="lcList">
+				<tr>
+					<th width="110">监控创建时间</th>
+					<th width="55">航班类型</th>
+					<th width="170">原航班信息</th>
+					<th width="170">新航班信息</th>
+					<th>监控处理状态</th>
+				</tr>
+				<tr>
+					<td>2012-08-08  10:38</td>
+					<td>航班变动</td>
+					<td>上海→北京  MU1234<br/>
+						起飞时间：2012-08-08  12:00<br/>
+						抵达时间：2012-08-08  13:40<br/>
+					</td>
+					<td>
+						上海→北京  MU1234[C舱]<br/>
+						起飞时间：2012-08-08  13:00<br/>
+						抵达时间：2012-08-08  14:40
+					</td>
+					<td>
+						已处理<br/>
+						（确认航变）
+					</td>
+				</tr>
+			</table>
+	
+		</div>
+	<!--航线变更原因弹窗-->
+    <div id="clReason" class="clContent">
+			<s>
+				<i></i>
+			</s>
+			<p class="clMian"></p>
+		</div>
+    <!--航班变动 end-->
+
+    <!--积分宝用户不可以参加验客，点评等的提示 start-->      
+    <div id="bubbles" style="display:none;">  
+    <div class="jp_msg02" id="Div1">
+        <div class="msg_info01">
+            <div class="msg_head">
+                <h3>提示信息</h3>
+                <span class="exit_btn">
+                    <img src="http://img1.40017.cn/cn/new_ui/comprehensive/images/order_center/c_close.gif" id="Img1" />
+                </span>
+            </div>
+            <div class="msg_main">
+                <div class="p03">此订单已经参与支付宝的集分宝活动，<br />所以不能享受点评奖金、消费券、验<br />客此三类同程优惠。</div>
+                <div class="p02">
+                    <span><a  style="cursor:pointer;"  class="succ_btn01" id="A1">确 定</a> </span>
+                </div>
+            </div>
+        </div>
+    </div>  
+    </div>        
+    <!--积分宝用户不可以参加验客，点评等的提示 end-->
+
+    <input name="HidpassengerName" type="hidden" id="HidpassengerName" />
+    <input name="Hidstarttime" type="hidden" id="Hidstarttime" />
+    <input name="Hidendtime" type="hidden" id="Hidendtime" />
+    <input name="HidSearchType" type="hidden" id="HidSearchType" />
+    <input type="hidden" id="setIsSearch" />
+    </form> 
+	<script type="text/javascript" src="./js/jquery_colorbox.js"></script>  
+    
+    <script src="./js/airListJS_1.6.fwd.js?v=2012082705" type="text/javascript"></script>
+    
+    <div class="clear_float"></div>
+    <span id="Foot1"><div style="display:none">index</div><div id="footer"><ul class="foot_img"><li class="travel_img"><a rel="nofollow" href="http://www.17u.com/About17U/news_info296992.html" title="全球三大中文旅游网站" target="_blank">全球三大<br />中文旅游网站</a></li><li class="newtech_img"><a rel="nofollow" href="http://www.17u.com/About17U/news_info79679.html" title="国家高新技术企业" target="_blank">国家高新<br />技术企业</a></li><li class="example_img"><a rel="nofollow" href="http://www.mofcom.gov.cn/aarticle/b/c/201108/20110807700444.html" title="首批商务部电商示范企业" target="_blank">首批商务部<br />电商示范企业</a></li><li class="trveinfo_img"><a rel="nofollow" href="http://www.17u.com/about17u/news_info260515.html" title="旅游信息示范基地" target="_blank">旅游信息<br />示范基地</a></li><li class="iso_img"><a rel="nofollow" href="http://www.17u.com/about17u/news_info269930.html" title="ISO9001质量认证" target="_blank">ISO9001<br />质量认证</a></li><li class="quality_img"><a rel="nofollow" href="http://www.17u.com/About17U/news_info294558.html" title="著名商标品质保证" target="_blank">著名商标<br />品质保证</a></li><li class="credit_img"><a rel="nofollow" href="http://www.itrust.org.cn/yz/pjwx.asp?wm=1758957666" title="AAA级信用企业" target="_blank">AAA级<br />信用企业</a></li><li class="visa_img"><a rel="nofollow" href="https://ss.cnnic.cn/verifyseal.dll?sn=2010112300100002970&ct=df&pa=036218" title="可信网站" target="_blank"></a></li><li class="safety_img"><a rel="nofollow" href="http://js.cyberpolice.cn/webpage/index.jsp" title="网络报警" target="_blank"></a></li></ul><ul class="foot_list"><li><a rel="nofollow" href="http://www.17u.com/About17U/company.asp" title="关于同程" target="_blank">关于同程</a></li><li><a rel="nofollow" href="http://www.17u.cn/about/about17u/contactus.html" title="联系我们" target="_blank">联系我们</a></li><li><a rel="nofollow" href="http://www.17u.com/About17U/law.asp" title="法律声明" target="_blank">法律声明</a></li><li><a rel="nofollow" href="http://www.17u.net/zhaopin/position.html" title="诚聘英才" target="_blank">诚聘英才</a></li><li><a rel="nofollow" class="fon_f60" href="http://www.17u.cn/travel/advise/MyAdvice.aspx" title="投诉建议" target="_blank">投诉建议</a></li><li><a href="http://www.17u.cn/CnSiteMap.aspx" title="网站地图" target="_blank">网站地图</a></li><li><a href="http://www.17u.cn/FriendlyLink.aspx" title="友情链接" target="_blank">友情链接</a></li><li><a rel="nofollow" href="http://www.17u.cn/subject/jiudianjiameng.aspx" title="酒店加盟" target="_blank">酒店加盟</a></li><li><a rel="nofollow" href="http://union.17u.cn/" title="网站联盟" target="_blank">网站联盟</a></li><li><a rel="nofollow" href="http://www.jsgsj.gov.cn:60101/keyLicense/verifKey.jsp?serial=320000163820111222100000007960&signData=cwd7XQiM4ereg1SPfDjR74WjNUoc8HTXGNvOIMN9KmVcQ/nhl3KbMqOWEB4e/hyad+3PtaRqs8axI6ZMSlLbgVfeztkR7yKemsGaqp1q5DzNXTHOb9U6Y9d1U3zeUXdNFaV5ucBKYChp0asoSs2xcKk3VarulpR9jmCZcswYwJc=" title="营业执照" target="_blank">营业执照</a></li><li class="bor_non"><a rel="nofollow" href="http://www.17u.cn/subject/zizhi/" title="旅游度假租车业务资质" target="_blank">旅游度假租车业务资质</a></li></ul><p class="foot_info">Copyright © 2002-2012 版权所有<a title="同程网络科技股份有限公司" target="_blank" href="http://www.17u.cn/about/about17u/intro.html">同程网络科技股份有限公司</a><a title="苏ICP证B2-20100204" href="http://img1.40017.cn/cn/new_ui/public/images/ICP.jpg" target="_blank">苏ICP证B2-20100204</a>[乙测资字32005078]</p><p class="foot_info foot_info2">24小时服务热线：<span id="foottelephone" class="foot_str">4007-777-777</span>酒店<span class="foot_str">转1</span>机票<span class="foot_str">转2</span>景点及周边自助游<span class="foot_str">转3</span>演出<span class="foot_str">转4</span>租车<span class="foot_str">转5</span>旅游度假<span class="foot_str">转6</span>客户投诉<span class="foot_str">转7</span><br />尊敬的用户，同程网呼叫中心总部位于苏州，我们跟您联系时，来电将统一显示为：0512-82209000</p><div class="websi_box"><span>同程旗下网站：</span><a href="http://www.17u.cn/" title="同程网 WWW.17U.CN" class="tc_img" target="_blank"></a><a href="http://www.17u.com/" title="一起游 WWW.17U.COM" class="tcCom_img" target="_blank"></a><a href="http://www.17u.net/" title="旅交汇 WWW.17U.NET" class="tcNet_img" target="_blank"></a></div><div class="udiy" id="common-friendlink-footer"></div><div class="udiy" id="common-innerlink-footer"></div></div><script type="text/javascript">dumpRefid();var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-19436803-4']);_gaq.push(['_setCustomVar', 1, 'userId', '15384362', 2]);_gaq.push(['_setCustomVar', 2, 'refId', getRefid(), 2]);_gaq.push(['_setAllowHash', false]);_gaq.push(['_setAllowAnchor', true]);_gaq.push(['_addOrganic', 'baidu', 'wd']);_gaq.push(['_addOrganic', 'baidu', 'word']);_gaq.push(['_addOrganic', 'google', 'q']);_gaq.push(['_addOrganic', '118114', 'kw']);_gaq.push(['_addOrganic', 'bing', 'q']);_gaq.push(['_addOrganic', 'soso', 'w']);_gaq.push(['_addOrganic', 'youdao', 'q']);_gaq.push(['_addOrganic', 'sogou', 'query']);_gaq.push(['_setDomainName', '.17u.cn']);_gaq.push(['_trackPageview', '/公共/我的同程/机票订单/机票订单列表']);_gaq.push(['_trackPageLoadTime']);(function () {var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script><script type="text/javascript"> var _tcq = _tcq || []; var _timediff = -1; if (typeof _tcopentime != "undefined") { _timediff = new Date().getTime() - _tcopentime; } _tcq.push(['_serialid', '0']); _tcq.push(['_vrcode', '10002-2000-0']); _tcq.push(['_refId', getRefid()]); _tcq.push(['_userId', '15384362']); _tcq.push(['_openTime', _timediff]); _tcq.push(['_trackPageview', '/公共/我的同程/机票订单/机票订单列表']);</script><script type='text/javascript' src="./js/vst.ashx" charset="utf-8"></script><script language="javascript" type="text/javascript">try {var _tcProject = "index"; //当前项目var _tc400data = window._tc400data || {travel: { //度假（国内游、出境游）except: "big"//默认400电话 "big"为大的电话显示，"little"为小的电话显示},other: {//其它except: "big"}}} catch (e) { }</script><script type="text/javascript" language=javascript>//bookmarkvar TCRefid = getRefid(), TCPageNo = '/公共/我的同程/机票订单/机票订单列表';(function () {function fn() {var vst = document.createElement('script');vst.type = 'text/javascript';vst.async = true;vst.src = "http://js.40017.cn/cn/new_ui/public/script/bookmark.1.2.js?v=20120823";var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(vst, s);}if (window.addEventListener) {window.addEventListener("load", fn, false);}else if (window.attachEvent) {window.attachEvent("onload", fn);}})();(function () {var vst = document.createElement('script');vst.type = 'text/javascript';vst.async = true;vst.src = "http://www.17u.cn/AjaxHelper/TopLoginHandler.aspx?channel=index&action=check&callback=getLoginInfoCallback&asyncRefid=" + getRefid() + "&date=" + new Date();var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(vst, s);})();</script><script language="javascript" type="text/javascript" src="./js/Alliance.aspx" charset="uft-8"></script></span>
+    <script language="javascript" type="text/javascript" src="./js/NetSiteGuidec.aspx?GuidecId=1118759" charset="uft-8"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<?php Y_Widget::display('header',array('b_info'=>$this->id)); ?>
+<?php Y_Widget::display('top'); ?>
+<!--content -->
+<div id="content">
+	<?php Y_Widget::display('tips',array('b_info'=>$this->id)); ?>
+	<!--main -->
+	<div class="main clearfix">
+	<?php Y_Widget::display('left'); ?>
+	<!--box开始 -->
+	<div id="box" class="clearfix">
+<!-- 这里写内容-->
+<?php 
+$session = Y_Db::init('session');
+ ?>
+<table class="st full">
+<tr>
+<td class="ctitle w250">总在线人数</td>
+<td><span class="cred"><?php echo $session->count(); ?></span></td>
+</tr>
+<tr>
+<tr>
+<td class="ctitle w250">游客在线</td>
+<td><span class="cred"><?php echo $session->where(array('gid'=>0,'uid'=>0))->count(); ?></span></td>
+</tr>
+<tr>
+<td class="ctitle w250">当前管理员在线</td>
+<td><span class="cred"><?php echo  $session->where(array('gid!'=>0))->count();?></span></td>
+</tr>
+<tr>
+<td colspan="2">
+<?php 
+$gids = $session->where("gid!=0 group by gid")->field('gid')->order('uptime desc')->select();
+if($gids){
+foreach($gids as $g){
+echo Ly_Admin::getName($g['gid']).'&nbsp;&nbsp;&nbsp;';
+}
+}
+ ?>
+</td>
+</tr>
+<tr>
+<td class="ctitle w250">当前用户在线</td>
+<td><span class="cred"><?php echo  $session->where(array('uid!'=>0))->count();?></span></td>
+</tr>
+<tr>
+<td colspan="2">
+<?php 
+$uids = $session->where("uid!=0 group by uid")->field('uid')->order('uptime desc')->select();
+if($uids){
+foreach($uids as $u){
+echo '<a href="?ro=member&ac=member&s_uid='.$u['uid'].'" target="_blank">'.Ly_User::getEmail($u['uid']).'</a>&nbsp;&nbsp;&nbsp;';
+}
+}
+ ?>
+</td>
+</tr>
+</table>
+<!-- 这里写内容结束-->
+	<!--box结束 -->
+	</div>
+	</div>
+	<!-- mainend-->
+</div>
+<?php Y_Widget::display('footer');?>

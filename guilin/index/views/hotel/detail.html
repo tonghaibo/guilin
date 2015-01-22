@@ -1,0 +1,382 @@
+<?php Y_Widget::display('header',$web); ?>
+<!-- top开始 -->
+<?php Y_Widget::display('top'); ?>
+<!-- top结束 -->
+<!-- nav开始 -->
+<?php Y_Widget::display('nav'); ?>
+<!-- nav结束 -->
+<!-- content开始 -->
+<div id="content" class="clearfix MiddleBox ">
+<div id="main" class="clearfix" style="position:relative">
+<!-- 酒店开始-->
+<div class="hotel_detail clearfix">
+<?php
+if($hinfo){
+?>
+<!-- 标题-->
+<div class="info_title action">
+<h3 class="left">
+<span class="title"><?php echo $hinfo['name'].($hinfo['status']==0?'【预览】':''); ?></span>
+<?php
+if($hinfo['star']){
+?>
+<span class="star_bg_s"><span style="width:<?php echo $hinfo['star']*12; ?>px;" class="star_top_s"></span></span>	
+<?php }else{ ?>
+<span>[<?php echo Ly_Items::getName('hotel','classes',$hinfo['classes']); ?>]</span>
+<?php }
+?>
+								    
+</h3>
+<div class="left hotel_address">
+<a target="_blank" href="hotel.html?area=<?php echo $hinfo['area']; ?>"><?php echo Ly_Items::getName('public','area',$hinfo['area']); ?></a> <?php echo $hinfo['address']; ?>
+<a href="javascript:void(0)" onclick="show_map(<?php echo $hinfo['hid']; ?>)" class="ml10">查看地图</a>
+&nbsp;&nbsp;<a href="javascript:void(0)"><span class="favor">收藏 <?php echo $hinfo['shares']; ?></span></a>
+</div>
+<div class="right cf30">
+<span class="f20"><sup>￥</sup><b><?php echo $hinfo['price']; ?></b><sub>起</sub></span>
+</div>
+</div>
+<!-- 标题结束-->
+<!-- pic -->
+<div class="margtop10">
+<div class="pic_player">
+	<div class="pic_slide_pic ">
+	<img id="bPic" width="320" height="240" src="<?php echo Y_Pr::image($hinfo['img'],320,240); ?>"  title="<?php echo $hinfo['name']; ?>">
+	</div>
+	<div class="player_slide_list">
+		<ul id="picList" class="slide_pic_list layoutfix">
+		 <li><a href="javascript:void(0);" class="slide_pic_item hover"><img height="66" width="88" src="<?php echo Y_Pr::image($hinfo['img'],66,88); ?>" _src="<?php echo Y_Pr::image($hinfo['img'],320,240); ?>" title="酒店封面图"></a><span class="pic_list_name">酒店封面图</span></li>
+		<?php
+		if($hinfo['uploads']){
+			$imgs = explode(',',$hinfo['uploads']);
+			$num = count($imgs);
+			foreach($imgs as $k=>$v){
+				$im = Ly_Uploads::getPath($v);
+				if($k>8){
+				break;
+				}
+				if($im){
+				echo '<li><a href="javascript:void(0);" class="slide_pic_item"><img height="66" width="88" src="'.Y_Pr::image($im['path'],88,66).'" _src="'.Y_Pr::image($im['path'],320,240).'" title="'.$im['des'].'"></a><span class="pic_list_name">'.$im['des'].'</span></li>';
+				}
+				
+			}
+			if($num>8){
+				echo '<li class="s"><a id="morePics" href="#tag_imgs">查看更多图片('.($num-8).'张)</a></li>';
+			}
+		}
+		?>
+		</ul>
+	</div>
+</div>
+<div class="detail_info_com ">
+	<div class="detail_info_comment">
+        <a class="hotel_judge" href="#">
+            <span class="hotel_value"><?php echo $hinfo['comment']==0?'100':(round($hinfo['mark']/($hinfo['comment']*5),3)*100); ?>%</span>好评<br>
+            <span><?php echo $hinfo['comment']; ?></span>条入住客户点评
+        </a>
+    </div> 
+	<div class="latest_commnet">
+		<div class="latest_com_detail" title="<?php echo $hinfo['des']; ?>">
+		<strong class="f14">酒店简介</strong>
+		<?php echo Y_Pr::substr($hinfo['des'],0,100); ?>
+		<a href="#tag_des">详细</a>
+		</div>
+	<div class="impress">
+	<?php 
+	if($tags = Ly_Tags_Bind::getList(array('hid'=>$hinfo['hid']))){
+		foreach($tags as $k=>$v){
+			if($name=Ly_Tags::getName($v['tid'])){
+				echo '<span class="ittx'.($k%4).'"><a href="share.html?tagid='.$v['tid'].'" target="_blank">'.$name.'</a></span>';
+			}
+		}
+	}
+	?>
+	</div>
+	<div class="tel">免费预订热线:<b class="cf30 f14"><?php echo $hinfo['contact']; ?></b></div>
+	</div>
+</div>
+</div>
+<!-- pic-->
+<!-- 介绍-->
+<div class="leftPart">
+<div class="detail2_room_box">
+<div class="detail2_room_title"><h2>房型预订</h2>
+<div class="right">
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<span class="bds_more">更多</span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=0" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->
+</div>
+</div>
+</div>
+<div class="showroom">
+<table cellspacing="0" cellpadding="0" border="0" width="100%" class="bottom">
+<tbody>
+<tr>
+<th width="30%" style="text-align:left;padding-left:10px;">房型</th>
+<th width="10%">房价</th>
+<th width="10%">床型</th>
+<th width="10%">宽带</th>
+<th width="10%">早餐</th>
+<th width="10%">面积</th>
+<th width="10%">支付方式</th>
+<th width="10%">操作</th>
+</tr>
+<?php
+$bed = Ly_Hotel_Rooms::getList($hinfo['hid'],true);
+if($bed){
+	foreach($bed as $v){
+		echo '<tr class="itr">';
+		echo '<td class="itr1">'.$v['name'].'</td>';
+		echo '<td class="cf30">￥'.$v['price'].'</td>';
+		echo '<td title="双床">'.($v['bed']?Ly_Items::getName('hotel_rooms','bed',$v['bed']):'无').'</td>';
+		echo '<td>'.($v['broadband']?Ly_Items::getName('hotel_rooms','broadband',$v['broadband']):'无').'</td>';
+		echo '<td class="c369">'.($v['breakfast']?'有':'无').'</td>';
+		echo '<td>'.($v['area']?$v['area'].'平方米':'未知').'</td>';
+		echo '<td>'.($v['payment']?Ly_Items::getName('hotel_rooms','payment',$v['payment']):'无').'</td>';
+		echo '<td align="center">';
+		echo '<a rel="nofollow" target="_blank" class="button" href="hotel_order.html?id='.$hinfo['hid'].'&rid='.$v['rid'].'">立即预订</a>';
+		echo '</td>';
+	}
+}else{
+	echo '该酒店暂且没有可预订的房型';
+}
+?>
+</tbody>
+</table>
+</div>
+<div class="detail2_intro">
+	<div class="detail2_title">
+		<h3 id="tag_des"><strong>酒店详情</strong></h3>
+	</div>		
+	<div class="detail2_intro_txt">
+	<p class="intro_text"><?php echo $hinfo['des']; ?></p>
+	</div>		
+	<table width="659px" cellspacing="0" cellpadding="0" class="detail_extralist">
+	<tbody>
+		<tr>
+		<th><strong>基本信息</strong></th>
+		<td>
+		<span><?php echo $hinfo['ctime']; ?>年开业</span>&nbsp;&nbsp;
+		<span class="t">传真：<?php echo $hinfo['portraiture']; ?></span>&nbsp;&nbsp;
+		</td>
+		</tr>
+		<tr>
+	<th><strong>温馨提示</strong></th>
+		<?php 
+		if($hinfo['notice']){
+			echo '<td class="cf30">'.$hinfo['notice'].'</td>';
+		}else{
+			echo '<td>暂无提示</td>';
+		}
+		?>
+		
+	</tr>
+		<tr>
+		<th><strong>服务项目</strong></th>
+		<td>
+		<ul class="detail_extracontent">
+		<?php $servce=Ly_Items::getList('hotel','servers');
+		if($se=explode(',',$hinfo['servers'])){
+			foreach($servce as $v){
+				if(in_array($v['id'],$se)){
+					echo '<li>'.$v['name'].'</li>';
+				}
+			}
+		}else{
+			echo '<li>未做说明</li>';
+		}
+		?>
+		
+	</td>
+	</tr>
+	<tr>
+	<th>
+	<strong>娱乐设施</strong>
+	</th>
+	<td>
+	<ul class="detail_extracontent">
+	<?php $relaxation=Ly_Items::getList('hotel','relaxation');
+		if($se=explode(',',$hinfo['relaxation'])){
+			foreach($relaxation as $v){
+				if(in_array($v['id'],$se)){
+					echo '<li>'.$v['name'].'</li>';
+				}
+			}
+		}else{
+			echo '<li>未做说明</li>';
+		}
+		?>
+	</ul>
+	</td>
+	</tr>
+	<tr><th><strong>支持信用卡</strong></th><td>
+	<ul class="detail_extracontent">
+	<?php $dc=Ly_Items::getList('hotel','dc');
+		if($se=explode(',',$hinfo['dc'])){
+			foreach($dc as $v){
+				if(in_array($v['id'],$se)){
+					echo '<li>'.$v['name'].'</li>';
+				}
+			}
+		}else{
+			echo '<li>未做说明</li>';
+		}
+		?>
+	</ul>
+	</td>
+	</tr>
+	<tr>
+	<th><strong>交通指南</strong></th>
+		<td style="white-space:normal"><p><?php echo $hinfo['traffic']; ?></p></td>
+	</tr>
+	</tbody>
+</table>					
+</div>	
+<!--酒店图片 -->
+<div class="detail2_intro pkg_hotel" style="display:block">
+<div class="detail2_title " id="tag_imgs">
+	<h3><strong>酒店图集</strong></h3>
+</div>
+<div class="PicMaBox">
+<?php
+if($hinfo['uploads']){
+	$imgs = explode(',',$hinfo['uploads']);
+	$num = count($imgs);
+	foreach($imgs as $k=>$v){
+		$im = Ly_Uploads::getPath($v);
+		if($im){
+			echo '<div class="PicLeft left">';
+			echo '<div class="PicCon">';
+			echo '<a href="javascript:void(0)" title="'.$im['des'].'" ><img src="'.Y_Pr::image($im['path'],190,143).'" width="190" height="143" alt=""></a>';
+			echo '<span class="PicBd" title="'.$im['des'].'">'.$im['des'].'</span>';
+			echo '</div>';
+			echo '</div>';
+		}	
+	}
+}
+?>
+</div>
+</div>
+<!--酒店图片 -->
+<!--可能感兴趣 -->
+<div class="detail2_intro pkg_hotel" style="display:block">
+<div class="detail2_title " id="pnldivHotelList">
+	<a href="hotel.html" class="detail2_view_map">更多</a>
+	<h3><strong>附近酒店</strong></h3>
+</div>
+<ul class="detail2_periphery_hotels" style="margin-bottom:0px;">
+	<?php
+	$data = Ly_Hotel::getBinds(Ly_Tags_Bind::getTags(array('hid'=>$hinfo['hid']),true),$hinfo['hid'],9);
+	if($data){
+		foreach($data as $v){
+			echo '<li>';
+			echo '<a target="_blank" href="hotel_detail.html?id='.$v['hid'].'" class="pic">';
+			echo '<img src="'.Y_Pr::image($v['l1_img'],88,66).'" alt="'.$v['l1_name'].'">';
+			echo '</a>';
+			echo '<div class="name">';
+			echo '<a target="_blank" href="hotel_detail.html?id='.$v['hid'].'" title="'.$v['l1_name'].'">'.$v['l1_name'].'</a>';
+			echo '</div>';
+			echo '<div class="link">'.$v['l1_comment'].'条点评</div>';
+			echo '<div class="price"><strong>￥'.$v['l1_price'].'</strong>&nbsp;起</div>';
+			echo '</li>';
+		}
+	}
+	unset($data);
+	?>
+</ul>	
+</div>
+<!-- 可能感兴趣结束-->	
+<!--评论 -->
+<div class="detail2_intro pkg_hotel" style="display:block">
+<div class="detail2_title " id="tag_comment">
+<h3><strong>酒店评论</strong></h3>
+</div>
+<div id="comment_list"></div>
+</div>
+<!--评论结束 -->
+</div>
+<!-- 介绍结束-->
+
+<!--右侧 -->
+<div class="rightPart">    
+<div>
+<div class="dream-nav2">
+<ul>
+	<li><a href="#tag_des" class="cur">酒店详情</a></li>
+	<li><a href="#">酒店地图</a></li>
+	<li><a href="#tag_imgs">酒店图集</a></li>
+	<li><a href="#tag_comment">酒店点评</a></li>
+	<li><a href="#pnldivHotelList">附近酒店</a></li>
+	<li><a href="#ranking">酒店周边</a></li>
+</ul>  
+</div>
+</div> 
+        
+<div id="whyToChooseCNCN" class="column">
+<h6>酒店预订流程</h6>
+    <dl>
+<dt>免费预订</dt>
+<dt>短信确认</dt>
+<dt>到店付款</dt>
+</dl>
+</div>
+<div id="ranking" class="column mt5">
+<h5><span>热门线路推荐</span><a class="more" href="wayline.html">更多</a></h5>
+	<ol>
+	<?php
+	$d = Ly_Wayline::getBinds(Ly_Tags_Bind::getTags(array('hid'=>$hinfo['hid']),true),false,10);
+	if($d){
+		foreach($d as $v){
+			echo '<li><a target="_blank" href="wayline_detail.html?id='.$v['l1_wid'].'" title="'.$v['l1_name'].'">'.Y_Pr::substr($v['l1_name'],0,13,false).'</a><span>￥'.$v['l1_price'].'起</span></li>';
+		}
+	}
+	?>
+	</ol>
+</div>	
+</div>
+<!-- 右侧结束-->
+<?php }else{
+	echo '<span class="red">您访问的酒店不存在，或者已经被删！</span><a href="hotel.html">查看很多酒店</a>';
+}
+?>
+</div>
+<!--酒店结束-->
+</div>
+</div>
+<!--mian结束 -->
+</div>
+<!-- content结束 -->
+<!-- footer开始 -->
+<?php Y_Widget::display('footer'); ?>
+<!-- footer结束 -->
+<script type="text/javascript">
+function _Page(num){
+	CommentList('hotel_commentList.html?id=<?php echo $hinfo['hid']; ?>&page='+num,false);
+}
+function CommentList(url){ 
+    $('#comment_list').load(url);
+}
+$(function(){
+CommentList('hotel_commentList.html?id=<?php echo $hinfo['hid']; ?>');
+$('#picList img').hover(function(){
+	var par = $(this).parent();
+	$('#picList a').removeClass('hover');
+	par.addClass('hover');
+	$('#bPic').attr({'src':$(this).attr('_src'),'title':$(this).attr('title')});
+},function(){});
+});
+</script>
+</body>
+</html>

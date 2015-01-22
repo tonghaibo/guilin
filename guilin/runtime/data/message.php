@@ -1,0 +1,1 @@
+<?php {"pri":"id","0":"fromuid","1":"touid","2":"messages","3":"messtime","4":"gettime","5":"fromdel","6":"todel","7":"isread","8":"status"}yes

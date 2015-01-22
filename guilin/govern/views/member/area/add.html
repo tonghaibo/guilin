@@ -1,0 +1,94 @@
+<?php Y_Widget::display('header',array('b_info'=>$this->id)); ?>
+<?php Y_Widget::display('top'); ?>
+<!--content -->
+<div id="content">
+	<?php Y_Widget::display('tips',array('b_info'=>$this->id)); ?>
+	<!--main -->
+	<div class="main clearfix">
+	<?php Y_Widget::display('left'); ?>
+	<!--box开始 -->
+	<div id="box" class="clearfix">
+<!-- 这里写内容-->
+<form action="#" method="post" id="addArea">
+<table class="st nob">
+<tr>
+<td class="title"><span class="cred">*</span>父级地址：</td>
+<td>
+<select id="pr"><option value="0">--省份/直辖市--</option>
+<?php foreach($alist as $val){
+	echo '<option value="'.$val['id'].'">'.$val['name'].'</option>';
+} ?>
+</select>
+<select id="ci"><option value="0" >--请选择--</option></select>
+<select id="ar"><option value="0" >--请选择--</option></select>
+</td>
+<td class="info" id="rid-tips">请选择对应的父级地址，不选的话则为顶级</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">*</span>地区名称：</td>
+<td>
+<input type="text" id="name" name="name" class="w250" title="地区名称" onblur="checkLen(this,'#name-tips',2,20)" />
+</td>
+<td class="info" id="name-tips">地区名称</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">*</span>排序值：</td>
+<td><input type="text" class="w250" name="sort" id="sort" title="排序值" value="0" onblur="checkNum(this,'#sort-tips')" /></td>
+<td class="info" id="sort-tips">填写具体的积分上限</td>
+</tr>
+<tr>
+<td></td>
+<input type="hidden" id="upid" name="upid" value="0"/>
+<input type="hidden" id="level" name="level" value="1" />
+<td><input type="button" value="添加" name="bt" class="btn btn-green" onclick="subadd()" /></td>
+<td></td>
+</tr>
+</table>
+</form>
+<!-- 这里写内容结束-->
+	<!--box结束 -->
+	</div>
+	</div>
+	<!-- mainend-->
+</div>
+<script type="text/javascript">
+function subadd(){
+	if(checkLen('#name','#name-tips',2,20) && checkNum('#sort','#sort-tips')){
+		if($('#pr').val()!=0){
+			$('#level').val(2);
+		}
+		if($('#ci').val()!=0){
+			$('#level').val(3);
+		}
+		if($('#ar').val()!=0){
+			$('#level').val(4);
+		}
+		document.getElementById('addArea').submit();
+	}else{
+		return false;
+	}
+}
+function change(num,obj){
+	$('#upid').val(num);
+	$.post('<?php echo $this->getUrl(); ?>',{'upid':num},function(data){
+		data = eval('('+data+')');
+		var str = '<option value="0">--请选择--</option>';
+		for(val in data){
+			str += '<option value="'+data[val].id+'">'+data[val].name+'</option>';
+		}
+		$(obj).html(str);
+	});
+}
+$(function(){
+$('#pr').change(function(){
+	change($(this).val(),'#ci');
+});
+$('#ci').change(function(){
+	change($(this).val(),'#ar');
+});
+$('#ar').change(function(){
+	change($(this).val());
+});
+});
+</script>
+<?php Y_Widget::display('footer');?>

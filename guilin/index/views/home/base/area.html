@@ -1,0 +1,58 @@
+<dl class="set_area_list">
+<dd class="c66">选择你最想去的5个地方，让大家进一步了解你</dd>
+<dd>
+<?php 
+$area = Ly_Tags::getAll(1);
+$me = Ly_Tags_Bind::getTags(array('uid'=>$this->uid),true);
+if($me){
+$me = explode(',',$me);
+}
+foreach($area as $v){
+	if($me && in_array($v['id'],$me)){
+		echo '<a href="javascript:void(0)" tagid="'.$v['id'].'" sel="1" class="tags sel">'.$v['name'].'</a>';
+	}else{
+		echo '<a href="javascript:void(0)" tagid="'.$v['id'].'" sel="0" class="tags">'.$v['name'].'</a>';
+	}
+}
+  ?>
+</dd>
+<dd>
+<input type="submit" onclick="savetags()" value="点击保存" class="btn_a"/>
+</dd>
+</dl>
+<script type="text/javascript">
+function savetags(){
+var obj = $('.set_area_list a.tags[sel=1]');
+if(obj.length<1 || obj.length>5){
+	show_msg.open('选择的地方在1-5个之间!',2,2);
+	return false;
+}
+var value = new Array;
+obj.each(function(){
+	value.push($(this).attr('tagid'));
+});
+value = value.valueOf();
+$.post('home_dobase.html?do=uptags',{'val':value},function(d){
+	if(d=='0'){
+		show_msg.open('更新想去的5个地方成功！',3,1);
+	}else{
+		show_msg.open('更新想去的5个地方失败！',3,1);
+	}
+});
+return false;
+}
+$('.set_area_list a.tags').click(function(){
+	if($(this).attr('sel')==1){
+		$(this).removeClass('sel');
+		$(this).attr({'sel':0});
+	}else{
+		if($('.set_area_list a.tags[sel=1]').length<5){
+		$(this).addClass('sel');
+		$(this).attr({'sel':1});
+		}else{
+			show_msg.open('你的选择已经超过了5个！',2,2);
+			return;
+		}
+	}
+});
+</script>

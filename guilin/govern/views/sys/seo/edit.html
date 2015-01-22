@@ -1,0 +1,65 @@
+<?php Y_Widget::display('header',array('b_info'=>$this->id)); ?>
+<?php Y_Widget::display('top'); ?>
+<!--content -->
+<div id="content">
+	<?php Y_Widget::display('tips',array('b_info'=>$this->id)); ?>
+	<!--main -->
+	<div class="main clearfix">
+	<?php Y_Widget::display('left'); ?>
+	<!--box开始 -->
+	<div id="box" class="clearfix">
+<!-- 这里写内容-->
+<form action="#" method="post" id="addAdmin">
+<table class="st nob">
+<tr>
+<td class="title"><span class="cred">*</span>名称：</td>
+<td><input type="text" id="name" name="name" value="<?php echo $sinfo['name']; ?>" class="w250" title="名称" onblur="checkLen(this,'#name-tips',3,20)"/></td>
+<td class="info" id="name-tips">如：index_index(控制器_方法名)</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">*</span>页面标题：</td>
+<td>
+<input type="text" name="title" id="title" value="<?php echo $sinfo['title']; ?>" class="w250" title="页面标题" onblur="checkLen(this,'#title-tips',2,30)" />
+</td>
+<td class="info" id="title-tips">用于表示该帐号的管理员是谁</td>
+</tr>
+<tr>
+<td class="title">作者：</td>
+<td>
+<input type="text" name="author" value="<?php echo $sinfo['author']; ?>" id="author" class="w250" title="作者" onblur="checkLen(this,'#author-tips',2,20)" />
+</td>
+<td class="info" id="author-tips">填写页面作者</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">*</span>页面关键字：</td>
+<td><textarea id="keywords" name="keywords" title="关键字" class="w250 h100" onblur="checkLen(this,'#keywords-tips',5,200)"><?php echo $sinfo['keywords']; ?></textarea></td>
+<td class="info" id="keywords-tips">填写页面描叙</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">*</span>页面描叙：</td>
+<td><textarea id="des" name="des" title="页面描叙" class="w250 h200" onblur="checkLen(this,'#des-tips',5,300)"><?php echo $sinfo['des']; ?></textarea></td>
+<td class="info" id="des-tips">填写页面描叙</td>
+</tr>
+<tr>
+<td></td>
+<td><input type="button" value="添加" name="bt" class="btn btn-green" onclick="subadd()" /></td>
+<td></td>
+</tr>
+</table>
+</form>
+<!-- 这里写内容结束-->
+	<!--box结束 -->
+	</div>
+	</div>
+	<!-- mainend-->
+</div>
+<script type="text/javascript">
+function subadd(){
+	if(checkLen('#name','#name-tips',3,20) && checkLen('#title','#title-tips',2,30) && checkLen('#author','#author-tips',2,20) && checkLen('#keywords','#keywords-tips',5,200) && checkLen('#des','#des-tips',5,300)){
+		document.getElementById('addAdmin').submit();
+	}else{
+		return false;
+	}
+}
+</script>
+<?php Y_Widget::display('footer');?>

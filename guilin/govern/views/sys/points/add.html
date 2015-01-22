@@ -1,0 +1,94 @@
+<?php Y_Widget::display('header',array('b_info'=>$this->id)); ?>
+<?php Y_Widget::display('top'); ?>
+<!--content -->
+<div id="content">
+	<?php Y_Widget::display('tips',array('b_info'=>$this->id)); ?>
+	<!--main -->
+	<div class="main clearfix">
+	<?php Y_Widget::display('left'); ?>
+	<!--box开始 -->
+	<div id="box" class="clearfix">
+<!-- 这里写内容-->
+<form action="#" method="post" id="addPoints">
+<table class="st nob">
+<tr>
+<td class="title"><span class="cred">*</span>节点名称：</td>
+<td><input type="text" id="name" name="name" class="w250" title="节点名称" onblur="checkLen(this,'#name-tips',2,10)"/></td>
+<td class="info" id="name-tips">用于显示的名称</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">*</span>父节点ID：</td>
+<td>
+<select name="fid" id="fid" title="父节点ID">
+<option value="0">--请选择--</option>
+<?php 
+foreach($plist as $val){
+	echo '<option value="'.$val['id'].'">';
+	echo str_repeat('&nbsp;&nbsp;&nbsp;',count(explode('-',$val['bpath']))-2).'| '.$val['name'];
+	echo '</option>';
+}
+?>
+</select>
+</td>
+<td class="info" id="fid-tips">默认不选的话，则为顶级</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">*</span>controller名称：</td>
+<td><input type="text" id="control" name="control" title="controller名称" class="w250" onblur="checkW(this,'#control-tips')"/></td>
+<td class="info" id="control-tips">需要指定属于哪个控制器</td>
+</tr>
+<tr>
+<td class="title">action名称：</td>
+<td><input type="text" id="action" name="action" title="action名称" class="w250" onblur="checkW(this,'#action-tips')"/></td>
+<td class="info" id="action-tips">控制器下的action名</td>
+</tr>
+<tr>
+<td class="title">method名称：</td>
+<td><input type="text" id="method" name="method" class="w250" title="method名称" onblur="checkW(this,'#method-tips')"/></td>
+<td class="info" id="method-tips">action下的method名称</td>
+</tr>
+<tr>
+<td class="title">显示顺序：</td>
+<td><input type="text" id="sort" name="sort" class="w250" title="显示顺序" onblur="checkNum(this,'#sort-tips')"/></td>
+<td class="info" id="sort-tips">用于列表排序</td>
+</tr>
+<tr>
+<td class="title">是否为公众：</td>
+<td><input type="radio" name="ispublic" value="1"/>是 
+<input type="radio" value="0" name="ispublic" checked/>否</td>
+<td class="info">如果选择为是，则该方法，所有人都能访问</td>
+</tr>
+<tr>
+<td class="title">是否展示：</td>
+<td><input type="radio" name="isview" checked value="1"/>是 
+<input type="radio" value="0" name="isview" />否</td>
+<td class="info">用户列表的显示，用于区别内部ajax访问</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">*</span>描叙：</td>
+<td><textarea name="des" id="des" title="描叙内容" class="w250 h100" onblur="checkLen(this,'#des-tips',3,100)"></textarea></td>
+<td class="info" id="des-tips">用于提示该节点是干吗用的</td>
+</tr>
+<tr>
+<td></td>
+<td><input type="button" value="添加" name="bt" class="btn btn-green" onclick="subadd()" /></td>
+<td></td>
+</tr>
+</table>
+</form>
+<!-- 这里写内容结束-->
+	<!--box结束 -->
+	</div>
+	</div>
+	<!-- mainend-->
+</div>
+<script type="text/javascript">
+function subadd(){
+	if(checkLen('#name','#name-tips',2,10) && checkW('#control','#control-tips') && checkLen('#des','#des-tips',3,100)){
+		document.getElementById('addPoints').submit();
+	}else{
+		return false;
+	}
+}
+</script>
+<?php Y_Widget::display('footer');?>

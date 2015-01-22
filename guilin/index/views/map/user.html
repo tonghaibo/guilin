@@ -1,0 +1,27 @@
+<?php
+if(!$info){
+echo '<div style="text-align:center"><img src="public/images/content_blank.png" /><a onclick="show_dialog.close()" href="javascript:void(0)">暂且没有匹配到任何数据！</a></div>';
+//die;
+}
+?>
+<div>
+<?php
+foreach($info as $v){
+echo '<div class="list clearfix">';
+echo '<div class="left img">';
+echo '<a href="user.html?uid='.$v['uid'].'" titlle="'.$v['name'].'" target="_blank">';
+echo '<img src="'.Ly_User::getUserimg($v['userimg'],85).'">';
+echo '</a>';
+echo '</div>';
+echo '<div class="left ml10 des">';
+echo '<a href="user.html?uid='.$v['uid'].'" target="_blank">'.$v['name'].'</a> <a class="care_of c666" uid="'.$v['uid'].'" onclick="add_attention(this)" href="javascript:void(0)" title="加关注"><b class="orange">+</b>关注</a>';
+echo '<p class="c666">等级：'.Ly_User_Rank::getName($v['ranklevel']).'</p>';
+echo '<p class="c666">粉丝：<a href="user.html?uid='.$v['uid'].'&do=follow" target="_blank">'.$v['follow'].'</a>&nbsp;&nbsp;关注：<a href="user.html?uid='.$v['uid'].'&do=attention" target="_blank">'.$v['attention'].'</a></p>';
+echo '<p class="c666">签名：'.$v['sign'].'</p>';
+echo '</div></div>';
+}
+?>
+</div>
+<div style="clear:both;padding-top:10px;">
+<div class="Page1" style="text-align:left"><?php echo $pages; ?></div>
+</div>

@@ -1,0 +1,149 @@
+<?php Y_Widget::display('header',array('b_info'=>$this->id)); ?>
+<?php Y_Widget::display('top'); ?>
+<!--content -->
+<div id="content">
+	<?php Y_Widget::display('tips',array('b_info'=>$this->id)); ?>
+	<!--main -->
+	<div class="main clearfix">
+	<?php Y_Widget::display('left'); ?>
+	<!--box开始 -->
+	<div id="box" class="clearfix">
+<!-- 这里写内容-->
+<?php 
+$slist = Ly_Items::getList('apply','status');
+$sgrade = Ly_Items::getList('user','grade');
+ ?>
+ <form>
+<div class="box">用户ID：
+<input type="hidden" value="member" name="ro" />
+<input type="hidden" value="apply" name="ac" />
+<input type="text" class="w80" name="s_uid" value="<?php echo $this->get('s_uid'); ?>" />
+状态：
+<select name="v" class="w80">
+<option value="">-请选择-</option>
+<?php 
+foreach($slist as $v){
+	echo '<option ';
+	if(isset($_GET['v']) && $v['id']==$this->get('v')){
+		echo ' selected ';
+	}
+	echo ' value="'.$v['id'].'">'.$v['name'].'</option>';
+}
+ ?>
+</select>
+类型：
+<select name="gid" class="w80">
+<option value="">-请选择-</option>
+<?php 
+foreach($sgrade as $v){
+	echo '<option ';
+	if(isset($_GET['gid']) && $v['id']==$this->get('gid')){
+		echo ' selected ';
+	}
+	echo ' value="'.$v['id'].'">'.$v['name'].'</option>';
+}
+ ?>
+</select>
+姓名：
+<input type="text" class="w80" name="name" value="<?php echo $this->get('name'); ?>" x-webkit-speech />
+公司名称：
+<input type="text"  name="cpname" value="<?php echo $this->get('cpname'); ?>" x-webkit-speech />
+ID号：
+<input type="text" name="s_id" value="<?php echo $this->get('s_id'); ?>" class="w80" />
+<input class="btn btn-green" value="查看" type="submit" />
+</form>
+</div>
+<table class="st full">
+<tr>
+<th width="5%">ID号</th>
+<th width="6%">用户ID</th>
+<th width="15%">注册邮箱</th>
+<th width="8%">类型</th>
+<th width="8%">姓名</th>
+<th width="10%">手机</th>
+<th width="15%">证件</th>
+<th width="10%">证件照</th>
+<th width="5%">状态</th>
+<th width="8%">申请时间</th>
+<th>操作</th>
+</tr>
+<?php
+if($list){
+	foreach($list as $val){
+		echo '<tr>';
+		echo '<td class="w50"><input type="checkbox" name="ids" value="'.$val['id'].'" />'.$val['id'].'</td>';
+		echo '<td><a href="user.html?uid='.$val['uid'].'" target="_blank">'.$val['uid'].'</a></td>';
+		echo '<td>';
+		$name = Ly_User::getEmail($val['uid']);
+		echo '<span class="icon icon-mail" title="回馈" onclick="show_mess('.$val['uid'].',\''.$name.'\')"></span>';
+		echo '<a href="?ro=member&ac=member&s_uid='.$val['uid'].'" target="_blank">'.$name.'</a>';
+		echo '</td>';
+		echo '<td class="w80">'.$sgrade[$val['gid']]['name'].'</td>';
+		echo '<td>'.$val['name'].'</td>';
+		echo '<td>'.$val['mobile'].'</td>';
+		echo '<td>'.$val['card'].'</td>';
+		echo '<td><img src="'.Y_Pr::image($val['img'],80,60).'" onclick="show(this)" big="'.$val['img'].'"/></td>';
+		echo '<td class="showstatus" style="position:relative">';
+		echo '<div >'.$slist[$val['status']]['name'].'<span class="icon icon-desc"></span></div>';
+		echo '<ul class="dropmenu">';
+		foreach($slist as $s){
+			if($s['id']!=$val['status']){
+				echo '<li><a href="?ro=member&ac=apply&method=pass&id='.$val['id'].'&v='.$s['id'].'">'.$s['name'].'</a></li>';
+			}
+		}
+		echo '</ul>';
+		echo '</td>';
+		echo '<td>'.date('Y-m-d H:i',$val['applytime']).'</td>';
+		echo '<td><a href="javascript:void(0)" onclick="show_dialog.openUrl(\''.$this->getUrl().'&method=more&id='.$val['id'].'\',550,350,\'详细信息\')">更多</a></td>';
+		echo '</tr>';
+	}
+}else{
+	echo '<tr><td class="cred" colspan="13">没有匹配数据</td></tr>';
+}
+
+?>
+<tfoot>
+<tr>
+<td colspan="3"><input type="checkbox" id="checkAll" onclick="checkall('ids')">全/反
+<?php foreach($slist as $s){
+	echo '<a href="javascript:void(0)" onclick="checkUp('.$s['id'].')" class="no">'.$s['name'].'</a>&nbsp;&nbsp;&nbsp;';
+} ?>
+</td>
+<td colspan="10" style="text-align:right">
+<div id="ui-page"><?php echo $pages; ?></div>
+</td>
+</tr>
+</tfoot>
+</table>
+<!-- 这里写内容结束-->
+	<!--box结束 -->
+	</div>
+	</div>
+	<!-- mainend-->
+</div>
+<script type="text/javascript" src="public/js/show.js"></script>
+<link rel="stylesheet" href="public/css/show/show.css" />
+<script type="text/javascript">
+function checkUp(num){
+	var id = getIds('ids');
+	if(id==''){
+		show_msg.open('请先选择值！',4,2);
+		return;
+	}else{
+		show_comfirm.open(0,'确定要改变'+id+'这些项吗？',function(){
+			var url = '?ro=member&ac=apply&method=pass&id='+id+'&v='+num;
+			window.location.href = url;
+		});
+	}
+}
+$(document).ready(function(){
+$('td.showstatus').hover(function(){
+	$(this).children('ul').show();
+	//$(this).parent('div').addClass('checkB');
+},function(){
+	$(this).children('ul').hide();
+	//$(this).parent('div').removeClass('checkB');
+});
+});
+</script>
+<?php Y_Widget::display('footer');?>

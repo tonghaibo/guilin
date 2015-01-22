@@ -1,0 +1,1 @@
+<?php {"pri":"id","0":"tid","1":"title","2":"img","3":"address","4":"lng","5":"lat","6":"dates","7":"content","8":"uid","9":"pubtime","10":"pubip","11":"views","12":"comments","13":"shares","14":"uploads","15":"ishot","16":"status"}yes

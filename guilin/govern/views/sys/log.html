@@ -1,0 +1,68 @@
+<?php Y_Widget::display('header',array('b_info'=>$this->id)); ?>
+<?php Y_Widget::display('top'); ?>
+<!--content -->
+<div id="content">
+	<?php Y_Widget::display('tips',array('b_info'=>$this->id)); ?>
+	<!--main -->
+	<div class="main clearfix">
+	<?php Y_Widget::display('left'); ?>
+	<!--box开始 -->
+	<div id="box" class="clearfix">
+<!-- 这里写内容-->
+<div class="box">
+<select id="logfile">
+<option value="">--请选择--</option>
+<option value="error">系统错误</option>
+<option value="sql">SQL运行</option>
+<option value="syslogin">后台访问</option>
+<option value="mail">邮件发送</option>
+<option value="sys">后台操作</option>
+</select>
+选择需要查看的日志记录
+<select class="right" id="logdate">
+<option value="<?php echo date('Ym',time()); ?>"><?php echo date('Ym',time()); ?></option>
+</select>
+</div>
+<table class="st full" id="arealist">
+</table>
+
+<!-- 这里写内容结束-->
+	<!--box结束 -->
+	</div>
+	</div>
+	<!-- mainend-->
+</div>
+<link href="public/css/show/show.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="public/js/show.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#logfile').change(function(){
+		$.get('<?php echo $this->getUrl(); ?>&method=list',{'file':$(this).val()},function(data){
+			if(data!=''){
+				$('#logdate').html(data);
+			}
+		});
+		$.get('<?php echo $this->getUrl(); ?>',{'file':$(this).val(),'d':$('#logdate').val()},function(data){
+			$('#arealist').html(data);
+		});
+	});
+	$('#logdate').change(function(){
+		var file = $('#logfile').val();
+		if(file!='' || file!=0){
+			$.get('<?php echo $this->getUrl(); ?>',{'file':file,'d':$(this).val()},function(data){
+			$('#arealist').html(data);
+		});
+		}
+	});
+	
+});
+function _Page(num){
+	var file = $('#logfile').val();
+		if(file!='' || file!=0){
+			$.get('<?php echo $this->getUrl(); ?>',{'file':file,'d':$('#logdate').val(),'page':num},function(data){
+			$('#arealist').html(data);
+		});
+		}
+}
+</script>
+<?php Y_Widget::display('footer');?>

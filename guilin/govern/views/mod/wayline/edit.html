@@ -1,0 +1,165 @@
+<?php Y_Widget::display('header',array('b_info'=>$this->id)); ?>
+<?php Y_Widget::display('top'); ?>
+<!--content -->
+<div id="content">
+	<?php Y_Widget::display('tips',array('b_info'=>$this->id)); ?>
+	<!--main -->
+	<div class="main clearfix">
+	<?php Y_Widget::display('left'); ?>
+	<!--box开始 -->
+	<div id="box" class="clearfix">
+<!-- 这里写内容-->
+<div><span class="label label-red">基本信息</span><a href="<?php echo $this->getUrl(); ?>&act=days"><span class="label label-green">行程安排</span></a></div>
+<form action="#" method="post" id="addHotel">
+<table class="st nob">
+<tr>
+<td class="title"><span class="cred">*</span>线路名称：</td>
+<td>
+<input type="text" id="name" name="name" class="w250" title="线路名称" value="<?php echo $winfo['name']; ?>" onblur="checkLen(this,'#name-tips',2,100)" />
+</td>
+<td class="info" id="name-tips">请填写线路名称</td>
+</tr>
+<tr>
+<td class="title">封面图片：</td>
+<td>
+<div id="upimg" class="bimg">
+<img src="<?php echo Y_Pr::image(Ly_Uploads::getUrl($winfo['img']),85,85); ?>" />
+</div>
+<input type="hidden" id="img" value="<?php echo $winfo['img']; ?>" name="img"/>
+</td>
+<td class="info" id="img-tips">请上传封面图片</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">*</span>行程天数：</td>
+<td>
+<input type="text" id="days" value="<?php echo $winfo['days']; ?>" name="days" class="w100" title="行程天数" onblur="checkNum(this,'#days-tips')" value="1" />天
+</td>
+<td class="info" id="days-tips">行程总共安排天数</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">*</span>线路价格：</td>
+<td>
+成人<input type="text" class="w50" value="<?php echo $winfo['price']; ?>" name="price" id="price" title="价格"  onblur="checkFloat(this,'#price-tips')" />￥
+儿童<input type="text" class="w50" value="<?php echo $winfo['pricehalf']; ?>" name="pricehalf" id="pricehalf" title="价格"  onblur="checkFloat(this,'#price-tips')" />￥
+</td>
+<td class="info" id="price-tips">填写显示价格</td>
+</tr>
+<tr>
+<td class="title">包含消费：</td>
+<td>
+<textarea id="pricein" name="pricein" class="w250 h50" title="包含消费" onblur="checkLen(this,'#pricein-tips',2,400)"><?php echo $winfo['pricein']; ?></textarea>
+</td>
+<td class="info" id="pricein-tips">填写价格说明</td>
+</tr>
+<tr>
+<td class="title">不包含消费：</td>
+<td>
+<textarea id="priceout" name="priceout" class="w250 h50" title="不包含消费" onblur="checkLen(this,'#priceout-tips',2,400)"><?php echo $winfo['priceout']; ?></textarea>
+</td>
+<td class="info" id="priceout-tips">填写不包含消费说明</td>
+</tr>
+<tr>
+<td class="title">交通方式：</td>
+<td>
+<select id="trafficgo" title="去的交通方式" onchange="addtraffic()">
+<option value="">请选择</option>
+<?php 
+$traffic = Ly_Items::getList('public','traffic');
+foreach($traffic as $val){
+echo '<option>'.$val['name'].'</option>';
+}
+ ?>
+</select>去
+<select id="trafficback"  onchange="addtraffic()">
+<option value="">请选择</option>
+<?php 
+foreach($traffic as $val){
+echo '<option>'.$val['name'].'</option>';
+}
+ ?>
+ ?>
+</select>回
+<input type="traffic" name="traffic" id="traffic" value="<?php echo $winfo['traffic']; ?>" class="w100" title="交通方式" onblur="checkLen(this,'#traffic-tips')" />
+</td>
+<td class="info" id="traffic-tips">交通方式</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">*</span>预定电话：</td>
+<td>
+<input type="text" id="contact" name="contact" value="<?php echo $winfo['contact']; ?>" class="w250" title="预定电话" onblur="checkLen(this,'#contact-tips',7,12)" />
+</td>
+<td class="info" id="contact-tips">请填写预定电话</td>
+</tr>
+<tr>
+<td class="title">温馨提示：</td>
+<td><textarea id="notice" name="notice" class="w250 h100" title="温馨提示" onblur="checkLen(this,'#notice-tips',10,800)"><?php echo $winfo['notice']; ?></textarea></td>
+<td class="info" id="notice-tips">填写相关的提示！</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">&nbsp;&nbsp;</span>是否推荐：</td>
+<td>
+<input type="radio" name="ishot" value="0"  <?php if(!$winfo['ishot']){ echo 'checked'; } ?> />否 <input type="radio" name="ishot" value="1" <?php if($winfo['ishot']){ echo 'checked'; } ?> />是
+</td>
+<td class="info" id="ishot-tips">请选择是否推荐该线路</td>
+</tr>
+<tr>
+<td></td>
+<td><input type="button" value="保存" name="bt" class="btn btn-green" onclick="subadd()" /></td>
+<td></td>
+</tr>
+</table>
+</form>
+<!-- 这里写内容结束-->
+	<!--box结束 -->
+	</div>
+	</div>
+	<!-- mainend-->
+</div>
+<script type="text/javascript" src="public/js/show.js"></script>
+<link rel="stylesheet" href="public/css/show/show.css" />
+<script type="text/javascript" src="public/js/ajaxupload.3.5.js"></script>
+<script type="text/javascript">
+//交通方式
+function addtraffic(){
+	var str1 = $('#trafficgo').val();
+	if(str1!=''){
+		str1 +='去';
+	}
+	var str2 = $('#trafficback').val();
+	if(str2!=''){
+		str2 += '回';
+	}
+	$('#traffic').val(str1+str2);
+}
+function subadd(){
+	if(checkLen('#name','#name-tips',2,100) && checkFloat('#price','#price-tips') && checkFloat('#pricehalf','#price-tips') && checkNum('#days','#days-tips') && checkLen('#contact','#contact-tips',4,14)){
+		document.getElementById('addHotel').submit();
+	}else{
+		return false;
+	}
+}
+$(function(){
+//封面图片上传
+var upimg = $('#upimg');
+new AjaxUpload(upimg,{
+		name:'img',
+		action:'govern.php?ro=mod&ac=upimg',
+		onSubmit:function(file,ext){
+			if(!(ext && /^(jpg|png|jpeg|gif)$/.test(ext))){
+				show_msg.open('上传的文件的格式'+ext+'不被支持！',3,2);
+				return false;
+			}
+		},
+		onComplete:function(file,data){
+			//后台不限制上传数量
+			//num++;
+			if(data!=''){
+				data = eval('('+data+')');
+				$('#upimg').html('<img src="'+data.ismall+'" bsrc="'+data.path+'"/>');
+				$('#img').val(data.id);
+			}
+		}
+	});
+})
+</script>
+<?php Y_Widget::display('footer');?>

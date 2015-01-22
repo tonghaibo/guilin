@@ -1,0 +1,76 @@
+<?php Y_Widget::display('header',array('b_info'=>$this->id)); ?>
+<?php Y_Widget::display('top'); ?>
+<!--content -->
+<div id="content">
+	<?php Y_Widget::display('tips',array('b_info'=>$this->id)); ?>
+	<!--main -->
+	<div class="main clearfix">
+	<?php Y_Widget::display('left'); ?>
+	<!--box开始 -->
+	<div id="box" class="clearfix">
+<!-- 这里写内容-->
+<table class="st nob">
+<tr>
+<th>顶级节点</th>
+<th>二级节点</th>
+<th>三级节点</th>
+<th>操作<?php echo $this->id['id']; ?></th>
+</tr>
+<?php 
+if($plist){
+	echo '<tr>';
+	echo '<td><select id="f1"><option value="">--请选择--</option>';
+	foreach($plist as $val){
+		echo '<option value="'.$val['id'].'">'.$val['name'].'</option>';
+	}
+	echo '</select></td>';
+	echo '<td><select id="f2"><option value="">--请选择--</option></select></td>';
+	echo '<td><select id="f3"><option value="">--请选择--</option></select></td>';
+	echo '<td><a href="javascript:void(0)" class="no" onclick="_do(\'edit\')" ><span class="icon icon-edit"></span>编辑</a> <a href="javascript:void(0)" class="no" onclick="_do(\'del\')" ><span class="icon icon-del"></span>删除</a></td>';
+	echo '</tr>';
+}
+?>
+</table>
+<!-- 这里写内容结束-->
+	<!--box结束 -->
+	</div>
+	</div>
+	<!-- mainend-->
+</div>
+<script type="text/javascript">
+$('#f1').change(function(){
+	var id = $(this).val();
+	$.post('<?php echo $this->getUrl(); ?>&method=ajax',{'id':id},function(data){
+		data = eval('('+data+')');
+		var str = '<option value="">--请选择--</option>';
+		for(val in data){
+			str = str+'<option value="'+data[val].id+'">'+data[val].name+'</option>';
+		}
+		$('#f2').html(str);
+	});
+});
+$('#f2').change(function(){
+	var id = $(this).val();
+	$.post('<?php echo $this->getUrl(); ?>&method=ajax',{'id':id},function(data){
+		data = eval('('+data+')');
+		var str = '<option value="">--请选择--</option>';
+		for(val in data){
+			str = str+'<option value="'+data[val].id+'">'+data[val].name+'</option>';
+		}
+		$('#f3').html(str);
+	});
+});
+function _do(str){
+	var url = '<?php echo $this->getUrl(); ?>';
+	var id;
+	id = $('#f3').val();
+	if(!id){
+		id = $('#f2').val();
+	}
+	if(!id){
+		id = $('#f1').val();
+	}
+	link(url+'&method='+str+'&id='+id);
+}
+</script>
+<?php Y_Widget::display('footer');?>

@@ -1,0 +1,62 @@
+<?php 
+if($info){
+	echo '<ul>';
+	foreach($info as $v){
+		if($v['type']=='c'){
+			$c = Y_Db::init('content');
+			$c->where(array('id'=>$v['id'],'status'=>1));
+			$c->field(array('title','id','img','shares','uid'));
+			if($i=$c->find()){
+			echo '<li class="list_li">';
+			echo '<div class="f_status">收藏于 <span class="c999">'.date('Y-m-d H:i',$v['collecttime']).'</span></div>';
+			echo '<div class="text clearfix">';
+			echo '<p><span class="c369">[分享] </span><a href="share_detail.html?id='.$i['id'].'" title="'.$i['title'].'" target="_blank" class="mr5">'.$i['title'].'</a><span class="c999 favor">收藏('.$i['shares'].')</span></p>';
+			echo '<div class="padtop5">';
+			if($i['img']){
+					echo '<img class="left mr10" src="'.Y_Pr::image(Ly_Uploads::getUrl($i['img']),185,185).'" />';
+			}
+			echo '</div>';
+			echo '</li>';
+			}
+		}else if($v['type']=='w'){
+			$w = Y_Db::init('wayline');
+			$w->where(array('wid'=>$v['id'],'status'=>1));
+			$w->field(array('wid','name','img','shares'));
+			if($i=$w->find()){
+			echo '<li class="list_li">';
+			echo '<div class="f_status">收藏于 <span class="c999">'.date('Y-m-d H:i',$v['collecttime']).'</span></div>';
+			echo '<div class="text clearfix">';
+			echo '<p><span class="c369">[路线] </span><a href="wayline_detail.html?id='.$i['wid'].'" title="'.$i['name'].'" target="_blank" class="mr5">'.$i['name'].'</a><span class="c999 favor">收藏('.$i['shares'].')</span></p>';
+			echo '<div class="padtop5">';
+			if($i['img']){
+					echo '<img class="left mr10" src="'.Y_Pr::image(Ly_Uploads::getUrl($i['img']),185,185).'" />';
+			}
+			echo '</div>';
+			echo '</li>';
+			}
+		}else if($v['type']=='h'){
+			$h = Y_Db::init('hotel');
+			$h->where(array('hid'=>$v['id'],'status'=>1));
+			$h->field(array('hid','name','img','shares'));
+			if($i=$h->find()){
+			echo '<li class="list_li">';
+			echo '<div class="f_status">收藏于 <span class="c999">'.date('Y-m-d H:i',$v['collecttime']).'</span></div>';
+			echo '<div class="text clearfix">';
+			echo '<p><span class="c369">[酒店] </span><a href="wayline_detail.html?id='.$i['hid'].'" title="'.$i['name'].'" target="_blank" class="mr5">'.$i['name'].'</a><span class="c999 favor">收藏('.$i['shares'].')</span></p>';
+			echo '<div class="padtop5">';
+			if($i['img']){
+					echo '<img class="left mr10" src="'.Y_Pr::image($i['img'],185,185).'" />';
+			}
+			echo '</div>';
+			echo '</li>';
+			}
+		}
+		
+	}
+	echo '</ul>';
+	echo '<div class="clear"></div>';
+	echo '<div class="Page1 margtop10">'.$pages.'</div>';
+}else{
+	echo 'TA暂且没有任何收藏！';
+}
+ ?>

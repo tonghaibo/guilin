@@ -1,0 +1,30 @@
+<?php Y_Widget::display('header',$web); ?>
+<!-- top开始 -->
+<?php Y_Widget::display('top'); ?>
+<!-- top结束 -->
+<!-- nav开始 -->
+<?php Y_Widget::display('nav'); ?>
+<!-- nav结束 -->
+<!-- content开始 -->
+<div id="content" class="MiddleBox ">
+<div id="Main">
+<h2 class="M-bd">邮件发送成功</h2> 
+                <div class="yz-left-box">
+                    <div class="yz-left">
+                        <div class="yz-con-b yz-con-c">
+                            <p class="margtop5">修改密码连接已发送到<span class="cf60 bold"><a href="<?php echo $url; ?>" target="_blank"><?php echo $email; ?></a></span> 邮箱中，请点击邮件中链接修改密码!</p>
+                        </div>
+                        <div class="yz-pl"><a href="<?php echo $url; ?>" target="_blank" class="bc_butn_d"><span class="butn_d">立即点击前往您的邮箱</span></a></div>
+                    </div>
+                </div>
+                <div class="yz-right yz-rightb">
+                    <p class="yz-ps">没有收到激活邮件？<a href="javascript:void(0);" onclick="sendMailTip('<?php echo $email; ?>',2);return false;">点击重新发送一封</a><br>邮件将在5分钟之内发送到您的邮箱，为了保证您收到邮件，也请及时检查一下您的垃圾邮箱~</p>
+                    <span class="yz-tis yz-ti-b" style="display:none;" id="sendMailTip">验证邮件已经发出。</span>
+                </div>
+</div>
+</div>
+<!-- content结束 -->
+<script type="text/javascript" src="./public/js/regLogin.js"></script>
+<!-- footer开始 -->
+<?php Y_Widget::display('footer'); ?>
+<!-- footer结束 -->

@@ -1,0 +1,92 @@
+<?php Y_Widget::display('header',array('b_info'=>$this->id)); ?>
+<?php Y_Widget::display('top'); ?>
+<!--content -->
+<div id="content">
+	<?php Y_Widget::display('tips',array('b_info'=>$this->id)); ?>
+	<!--main -->
+	<div class="main clearfix">
+	<?php Y_Widget::display('left'); ?>
+	<!--box开始 -->
+	<div id="box" class="clearfix">
+<!-- 这里写内容-->
+<div class="box">
+<form>
+<input type="hidden" name="ro" value="mod" />
+<input type="hidden" name="ac" value="comment" />
+类型(<span class="cred">*</span>)
+<select name="t" class="w80">
+<option value="">-请选择-</option>
+<option value="content" <?php  if($this->get('t')=='content'){ echo 'selected'; } ?>>文章</option>
+<option value="hotel" <?php  if($this->get('t')=='hotel'){ echo 'selected'; } ?> >酒店</option>
+<option value="wayline" <?php  if($this->get('t')=='wayline'){ echo 'selected'; } ?> >线路</option>
+</select>
+对应(文章,酒店,线路)ID:
+<input type="text" class="w80" name="tid" value="<?php echo $this->get('tid'); ?>" x-webkit-speech />
+UID:
+<input type="text" class="w80" name="uid" value="<?php echo $this->get('uid'); ?>" x-webkit-speech />
+评论ID：
+<input type="text" class="w80" name="s_id" value="<?php echo $this->get('s_id'); ?>" x-webkit-speech />
+<input type="submit" value="查找" class="btn btn-green"/>
+<input type="reset" value="重置" class="btn btn"/>
+</form>
+</div>
+<?php
+if($this->get('t')){
+?>
+<table class="st full">
+<?php
+if($strlist){
+	echo $strlist;
+}
+?>
+<tfoot>
+<tr>
+<td colspan="3">
+<input type="checkbox" id="checkAll" onclick="checkall('checkid')"/>全/反 
+<a href="javascript:void(0)" onclick="checkUp()" class="no">删除</a>
+</td>
+<td colspan="9" style="text-align:right">
+<div id="ui-page"><?php echo $pages; ?></div>
+</td>
+</tr>
+</tfoot>
+</table>
+<?php
+}
+?>
+<!-- 这里写内容结束-->
+	<!--box结束 -->
+	</div>
+	</div>
+	<!-- mainend-->
+</div>
+<script type="text/javascript" src="public/js/show.js"></script>
+<link rel="stylesheet" href="public/css/show/show.css" />
+<script type="text/javascript">
+function checkUp(){
+	var id = getIds('checkid');
+	if(id==''){
+		show_msg.open('请先选择值！',4,2);
+		return;
+	}else{
+		show_comfirm.open(0,'确定要改变'+id+'这些项吗？',function(){
+			var url = '?ro=mod&ac=comment&method=del&id='+id+'&t='+'<?php echo $this->get('t'); ?>';
+			window.location.href = url;
+		});
+	}
+}
+function send(obj){
+	var id = $(obj).attr('id');
+	var name = $(obj).attr('name');
+	var val = $(obj).val();
+	var url = '<?php echo $this->getUrl(); ?>&method=edit&id='+id+'&t='+'<?php echo $this->get('t'); ?>';
+	$.post(url,{'value':val,'name':name},function(d){
+		if(d==0){
+			show_msg.open('更新成功！',3,1);
+		}else{
+			show_msg.open('更新失败！',4,2);
+		}
+	});
+}
+</script>
+<?php Y_Widget::display('footer');?>

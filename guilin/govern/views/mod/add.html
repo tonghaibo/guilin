@@ -1,0 +1,205 @@
+<?php Y_Widget::display('header',array('b_info'=>$this->id)); ?>
+<?php Y_Widget::display('top'); ?>
+<!--content -->
+<div id="content">
+	<?php Y_Widget::display('tips',array('b_info'=>$this->id)); ?>
+	<!--main -->
+	<div class="main clearfix">
+	<?php Y_Widget::display('left'); ?>
+	<!--box开始 -->
+	<div id="box" class="clearfix">
+<!-- 这里写内容-->
+<form action="#" method="post" id="addMod">
+<table class="st nob">
+<tr>
+<td class="title"><span class="cred">*</span>所属模块：</td>
+<td>
+<select name="pid" id="pid"><option value="0">--请选择--</option>
+<?php foreach($mlist as $val){
+	echo '<option value="'.$val['id'].'">'.$val['name'].'</option>';
+} ?>
+</select>
+<select name="spid" id="spid"><option value="0">--请选择--</option>
+</select>
+</td>
+<td class="info" id="mid-tips">请选择对应的发表模块</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">*</span>标题：</td>
+<td>
+<input type="text" id="title" name="title" class="w250" title="标题" onblur="checkLen(this,'#title-tips',2,20)" />
+</td>
+<td class="info" id="title-tips">请填写标题</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">*</span>地点：</td>
+<td>
+<input type="text" id="place" name="place" class="w250" title="地方" value="桂林市" />
+<span class="bicon bicon-map"></span>
+</td>
+<td class="info" id="place-tips">请填写具体的位置</td>
+</tr>
+
+<tr>
+<td class="title"><span class="cred">*</span>时间：</td>
+<td>
+<input type="text" id="happenday" name="happenday" class="w250" title="时间" onfocus="SelectDate(this)" onblur="checkLen(this,'#place-tips',2,20)" />
+</td>
+<td class="info" id="happenday-tips">请填写时间</td>
+</tr>
+
+
+<tr>
+<td class="title"><span class="cred">*</span>是否推荐：</td>
+<td><input type="radio" name="hots" value="0"  checked />否 <input type="radio" name="hots" value="1" />是</td>
+<td class="info" id="sort-tips">请确认是否推荐</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">*</span>内容描叙：</td>
+<td>
+<div class="editbox">
+<div class="editbox-h"><span onclick="upImg('cbox')">图片</span> | <span>链接</span></div>
+<div class="editbox-b">
+<iframe id="cbox" width="100%" height="100%" scroll="no" frameborder="0"></iframe>
+</div>
+</div>
+</td>
+</tr>
+<td></td>
+<tr>
+<td></td>
+<!--经纬度 -->
+<input type="hidden" id="lng" />
+<input type="hidden" id="lat" />
+<td><input type="button" value="发布" name="bt" class="btn btn-green" onclick="subadd()" /></td>
+<td></td>
+</tr>
+</table>
+</form>
+<!-- 这里写内容结束-->
+	<!--box结束 -->
+	</div>
+	</div>
+	<!-- mainend-->
+</div>
+<script type="text/javascript" src="public/js/calendar.js"></script>
+<script type="text/javascript" src="public/js/show.js"></script>
+<link rel="stylesheet" href="public/css/show/show.css" />
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.3"></script>
+<script type="text/javascript" src="public/js/ajaxupload.3.5.js"></script>
+<script type="text/javascript">
+function chMod(num){
+	if(num!=0 || num!=''){
+		$.getJSON('<?php echo $this->getUrl();?>',{'pid':num},function(data){
+			if(data!=''){
+				var str = '<option value="0">--请选择--</option>';
+				for(v in data){
+					str += '<option value="'+data[v].id+'">'+data[v].name+'</option>';
+				}
+				$('#spid').html(str);
+			}
+		});
+	}
+}
+//绑定
+$(function(){
+	$('#pid').change(function(){
+		var num = $(this).val();
+		chMod(num);
+	});
+	//弹出地图
+	$('.bicon-map').hover(function(){
+		$(this).addClass('hover');
+	},function(){ $(this).removeClass('hover'); });
+	$('.bicon-map').click(function(){
+		var str = "<div id='bmap' style='width:490px;height:480px'></div>";
+		show_dialog.openHtml(str,'点击选择所在地','500','500');
+		var map = new BMap.Map('bmap');
+		map.setMinZoom(12);
+		var point = new BMap.Point(110.296457,25.279863);
+		map.centerAndZoom(point,13);
+		map.addOverlay(new BMap.Marker(point));
+		map.setMaxZoom(19);
+		map.enableScrollWheelZoom();
+		map.addControl(new BMap.MapTypeControl());
+		map.addEventListener("click", function(e){
+		$('#lng').val(e.point.lng);
+		$('#lat').val(e.point.lat);
+		var myGeo = new BMap.Geocoder();
+		var pt = e.point
+		myGeo.getLocation(pt,function(rs){
+			var addComp = rs.addressComponents;
+			var str = addComp.city+''+addComp.district+''+addComp.street+''+addComp.streetNumber;
+			$('#place').val(str);
+		});
+});
+	});
+	//绑定搜素
+	$('#place').blur(function(){
+		var add = $(this).val();
+		var myGeo = new BMap.Geocoder();
+		myGeo.getPoint(add,function(p){
+			if(p!=''){
+				$('#lng').val(p.lng);
+				$('#lat').val(p.lat);
+			}
+		},'桂林市');
+	});
+})
+function subadd(){
+	if(checkLen('#name','#name-tips',2,20) && checkLen('#url','#url-tips',2,50) && checkNum('#sort','#sort-tips')){
+		document.getElementById('addMod').submit();
+	}else{
+		return false;
+	}
+}
+//图片上传
+function upImg(obj){
+	var str = '<div id="upimg" style="text-align:center;padding:10px;"><ul style="height:200px;">';
+	str += '<li style="display:block;height:85px;width:85px;border:1px solid #ccc;float:left;margin-left:10px;margin-bottom:10px;cursor:pointer;text-aligin:center;line-height:85px;color:#329ECC"><span id="upimgspan">点击上传</span></li>';
+	str += '</ul>';
+	str += '<div style="clear:both;text-align:right"><button class="button8" onClick="insertImg()" >确定</button> <button class="button9" onClick="show_dialog.close()">取消</button></div></div>'
+	show_dialog.openHtml(str,'提示：蓝绿色框住的将设为封面','430','300');
+	var upimg = $('#upimgspan');
+	var num = 0;
+	new AjaxUpload(upimg,{
+		name:'img',
+		action:'govern.php?ro=mod&ac=add&method=upimg',
+		onSubmit:function(file,ext){
+			if(!(ext && /^(jpg|png|jpeg|gif)$/.test(ext))){
+				show_msg.open('上传的文件的格式'+ext+'不被支持！',3,2);
+				return false;
+			}
+		},
+		onComplete:function(file,data){
+			//后台不限制上传数量
+			num++;
+			if(data!=''){
+				data = eval('('+data+')');
+				var str = '<li';
+				if(num==1){
+					str += ' class="img sel">';
+				}else{
+					str += ' class="img">';
+				}
+				str += '<img src="'+data.ismall+'" big="'+data.ibig+'" />';
+				str += '</li>';
+				$('#upimg ul').append(str);
+				$('#upimg li.img').toggle(function(){
+					$(this).addClass('sel').siblings().removeClass('sel');
+				},function(){
+					$(this).removeClass('sel');
+				});
+			}
+		}
+	});
+}
+//图片插入
+function insertImg(){
+	var src = $('#upimg li.img img').attr('big');
+	var mam = $('#cbox').val();
+	mam += '<img src="'+src+'" />';
+	$('#cbox').val(mam);
+}
+</script>
+<?php Y_Widget::display('footer');?>

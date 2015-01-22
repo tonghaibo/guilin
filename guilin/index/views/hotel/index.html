@@ -1,0 +1,166 @@
+<?php Y_Widget::display('header',$web); ?>
+<!-- top开始 -->
+<?php Y_Widget::display('top'); ?>
+<!-- top结束 -->
+<!-- nav开始 -->
+<?php Y_Widget::display('nav'); ?>
+<!-- nav结束 -->
+<!-- content开始 -->
+<div id="content" class="clearfix MiddleBox ">
+<div id="main" class="clearfix">
+<!-- 左侧开始-->
+<div class="area_side clearfix">
+<h2>地区</h2>
+<div class="items">
+<a href="?area=0&type=<?php echo $this->get('type'); ?>&star=<?php echo $this->get('star'); ?>&price=<?php echo $this->get('price'); ?>&sort=<?php echo $this->get('sort'); ?>" <?php  if(!$this->get('area')){ echo 'class="sel"';}  ?>>不限</a>
+<?php
+$area = Ly_Items::getList('public','area');
+if($area){
+	foreach($area as $v){
+		echo '<a href="?area='.$v['id'].'&type='.$this->get('type').'&price='.$this->get('price').'&star='.$this->get('star').'&sort='.$this->get('sort').'" ';
+		if($v['id']==$this->get('area')){
+			echo ' class="sel" ';
+		}
+		echo '>'.$v['name'].'</a>';
+	}
+}
+?>
+</div>
+<h2>类型</h2>
+<div class="items">
+<a href="?type=0&area=<?php echo $this->get('area'); ?>&star=<?php echo $this->get('star'); ?>&price=<?php echo $this->get('price'); ?>&sort=<?php echo $this->get('sort'); ?>" <?php  if(!$this->get('type')){ echo 'class="sel"';}  ?>>不限</a>
+<?php
+$type = Ly_Items::getList('hotel','classes');
+if($type){
+	foreach($type as $v){
+		echo '<a href="?type='.$v['id'].'&price='.$this->get('price').'&area='.$this->get('area').'&star='.$this->get('star').'&sort='.$this->get('sort').'" ';
+		if($v['id']==$this->get('type')){
+			echo ' class="sel" ';
+		}
+		echo '>'.$v['name'].'</a>';
+	}
+}
+?>
+</div>
+<h2>星级</h2>
+<div class="items">
+<a href="?star=0&type=<?php echo $this->get('type'); ?>&area=<?php echo $this->get('area'); ?>&price=<?php echo $this->get('price'); ?>&sort=<?php echo $this->get('sort'); ?>" <?php  if(!$this->get('star')){ echo 'class="sel"';}  ?>>不限</a>
+<?php
+	for($i=1;$i<=5;$i++){
+		echo '<a href="?star='.$i.'&price='.$this->get('price').'&type='.$this->get('type').'&area='.$this->get('area').'&sort='.$this->get('sort').'" ';
+		if($i==$this->get('star')){
+			echo ' class="sel" ';
+		}
+		echo '>'.$i.'级</a>';
+	}
+?>
+</div>
+<h2>价格</h2>
+<div class="items">
+<a href="?price=0&type=<?php echo $this->get('type'); ?>&star=<?php echo $this->get('star'); ?>&area=<?php echo $this->get('area'); ?>&sort=<?php echo $this->get('sort'); ?>" <?php  if(!$this->get('price')){ echo 'class="sel"';}  ?>>不限</a>
+<?php
+$price = Ly_Items::getList('hotel','price');
+if($price){
+	foreach($price as $v){
+		echo '<a href="?price='.$v['id'].'&star='.$this->get('star').'&type='.$this->get('type').'&area='.$this->get('area').'&sort='.$this->get('sort').'" ';
+		if($v['id']==$this->get('price')){
+			echo ' class="sel" ';
+		}
+		echo '>'.$v['name'].'元</a>';
+	}
+}
+?>
+</div>
+<h2>热门线路<a href="wayline.html" class="more_icon right">更多</a></h2>
+<ul class="t_wayline">
+<li>
+<a href=""><img src="public/images/index_act.jpg" width="155px"/></a>
+</li>
+<?php
+$wayline = Ly_Wayline::getHots(8);
+foreach($wayline as $v){
+	echo '<li>';
+	echo '<a href="wayline_detail.html?id='.$v['wid'].'" target="_blank"><span class="ftst">·</span>【'.$v['days'].'日游】'.$v['name'].'</a>';
+	echo '</li>';
+	
+}
+?>
+</ul>
+</div>
+<!-- 左侧结束 -->
+<!-- 内容开始-->
+<div class="area_main clearfix">
+<!-- 导行开始-->
+<div class="rcp_all_t">
+<div class="action">
+    <span class="right" id="recipeorder">
+    查看:
+	<a href="?type=<?php echo $this->get('type'); ?>&area=<?php echo $this->get('area'); ?>&star=<?php echo $this->get('star'); ?>&price=<?php echo $this->get('price'); ?>&sort=price" title="按价格" <?php if($this->get('sort')=='price'){ echo 'class="b orange"'; } ?>>按价格</a>
+	<a href="?type=<?php echo $this->get('type'); ?>&area=<?php echo $this->get('area'); ?>&star=<?php echo $this->get('star'); ?>&price=<?php echo $this->get('price'); ?>&sort=ishot" title="按热度"  <?php if($this->get('sort')=='ishot' || $this->get('sort')==''){ echo 'class="b orange"'; } ?>>按热度</a>
+	<a href="?type=<?php echo $this->get('type'); ?>&area=<?php echo $this->get('area'); ?>&star=<?php echo $this->get('star'); ?>&price=<?php echo $this->get('price'); ?>&sort=mark" title="按好评" <?php if($this->get('sort')=='mark'){ echo 'class="b orange"'; } ?> >按好评</a>
+    </span>
+    <h2 class="item_title">酒店列表</h2>
+</div>
+<div class="selection clearfix" style="">
+    <span class="right c666">您还可以<a href="map.html">地图</a>查找酒店</span>
+    <span class="left">匹配：<span class="cf30"><?php echo $hotel_totel; ?></span>个酒店</span>
+</div>
+</div>
+<!-- 导行结束-->
+<!-- 列表酒店-->
+<ul class="rec_hotel clearfix margtop10">
+<?php
+if($hotel_list){
+	foreach($hotel_list as $k=>$v){
+		echo '<li class="item">';
+		echo '<div class="hp">';
+		echo '<a target="_blank" href="hotel_detail.html?id='.$v['hid'].'" class="btn_show_price">';
+		echo '<img title="'.$v['name'].'" alt="'.$v['name'].'" src="'.Y_Pr::image($v['img'],230,154).'" >';
+		echo '<b class="icon_price"><em>起</em>'.$v['price'].'</b>';
+		echo '</a>';
+		echo '</div>';
+		echo '<div class="hn">';
+		echo '<a href="hotel_detail.html?id='.$v['hid'].'" class="btn_show_price" title="'.$v['name'].'">'.Y_Pr::substr($v['name'],0,20).'</a>';
+		echo '</div>';
+		echo '<div class="address" title="'.$v['address'].'">地址：'.Y_Pr::substr($v['address'],0,20,false).'</div>';
+		echo '<div class="com">';
+		if($v['star']){
+		echo '<span class="star_bg_s" title="星级'.$v['star'].'"><span style="width:'.(12*$v['star']).'px;" class="star_top_s"></span></span>';
+		}else{
+			echo '<span title="类型" class="c999">类型：'.$type[$v['classes']-1]['name'].'</span>';
+		}
+		echo '<a target="_blank" href="hotel_detail.html?id='.$v['hid'].'#tag_comment"><span class="reply-count" title="评论">'.$v['comment'].'</span></a>';
+		echo '<a  class="mr10 right" href="javascript:void(0)" onclick="addfavor('.$v['hid'].',\'h\')" title="添加收藏"><span class="favor" style="line-height: 16px;">'.$v['shares'].'</span></a>';
+		echo '</div>';
+		echo '</li>';
+	}
+}else{
+	echo '<li class="red">暂且没有匹配到任何数据</li>';
+}
+?>
+</ul>
+<!-- 列表酒店结束-->
+<div class="Page1">
+<?php echo $hotel_pages; ?>
+</div>
+</div>
+<!-- 内容结束-->
+</div>
+<!--mian结束 -->
+</div>
+<!-- content结束 -->
+<!-- footer开始 -->
+<?php Y_Widget::display('footer'); ?>
+<!-- footer结束 -->
+<script type="text/javascript">
+$(function(){
+$('.rec_hotel li.item:nth-child(3n)').addClass('last');
+$('.rec_hotel li.item').hover(function(){
+	$(this).addClass('hover');
+},function(){
+	$(this).removeClass('hover');
+});
+});
+</script>
+</body>
+</html>

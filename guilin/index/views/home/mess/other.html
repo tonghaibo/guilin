@@ -1,0 +1,38 @@
+<?php
+if($info){
+	foreach($info as $v){
+		echo '<div class="c_list c_mess">';
+		echo '<div class="face">';
+		$u = Ly_User::getBaseinfo($v['touid'],50);
+		echo '<a target="_blank" href="user.html?uid='.$v['touid'].'" title="'.$u['name'].'">';
+		echo '<img  title="'.($u['name']?$u['name']:'系统').'"  width="50" height="50" src="'.$u['userimg'].'">';
+		echo '</a>';
+		echo '</div>';
+		echo '<div class="c_content">';
+		echo '<p class="mgb10">';
+		echo '我<a target="_blank" href="user.html?uid='.$v['touid'].'" title="'.($u['name']?$u['name']:'系统').'">@'.($u['name']?$u['name']:'系统').'</a>：';
+		echo '</p>';
+		echo '<div class="c_window">';
+		echo '<div class="arrow"><em>◆</em><span>◆</span></div>';
+		echo '<div class="padtop10">'.$v['messages'].'</div>';
+		echo '<div class="c_bottom">';
+		echo '<span class="right">';
+		if($v['isread']==0){
+			echo '<span>TA还未读</span>';
+		}else{
+			echo '<span>TA阅读于：'.date('Y-m-d H:i',$v['gettime']).'</span>';
+		}
+		echo '<i class="W_vline"> | </i>';
+		echo '<a type="m" onclick="delMsg(this,'.$v['id'].')" href="javascript:void(0)">删除</a>';
+		echo '</span>';
+		echo '<span>'.date('m月d日 H:i',$v['messtime']).'</span>';
+		echo '</div>';
+		echo '</div>';
+		echo '</div>';
+		echo '</div>';
+	}
+	echo '<div class="Page1 margtop20">'.$pages.'</div>';
+}else{
+	echo '暂且没有任何数据';
+}
+?>

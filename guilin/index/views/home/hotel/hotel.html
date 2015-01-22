@@ -1,0 +1,78 @@
+<table class="tb">
+<thead>
+<tr>
+<th style="width:15%">酒店ID</th>
+<th style="width:35%">酒店名称</th>
+<th style="width:20%">创建时间</th>
+<th style="width:10%">状态</th>
+<th style="width:20%">操作</th>
+</tr>
+</thead>
+<tbody>
+<?php
+if($info){
+	$status = Ly_Items::getList('public','status');
+	foreach($info as $v){
+		echo '<tr>';
+		echo '<td>'.$v['hid'].'</td>';
+		echo '<td><a href="hotel_detail.html?id='.$v['hid'].'" target="_blank">'.($v['ishot']?'<img src="public/images/hot.png" class="left"/>&nbsp;':'').$v['name'].'</a></td>';
+		echo '<td>'.date('Y-m-d H:i',$v['pubtime']).'</td>';
+		foreach($status as $s){
+			if($s['id']==$v['status']){
+				echo '<td>'.$s['name'].'</td>';
+			}
+		}
+		echo '<td><a href="javascript:void(0)" onclick="changebox(\'#edit_hotel\','.$v['hid'].')">编辑</a> '.($v['status']==2?'<a href="javascript:void(0)" onclick="unclosehotel(this)" hid="'.$v['hid'].'">开启</a>':'<a href="javascript:void(0)" onclick="closehotel(this)" hid="'.$v['hid'].'">关闭</a>').' <a href="javascript:void(0)" onclick="delhotel(this)" hid="'.$v['hid'].'">删除</a></td>';
+		echo '</tr>';
+	}
+}else{
+	echo '<tr><td colspan="5">您暂且还没添加任何酒店,<a target="_blank" href="home_dohotel.html?do=add">赶紧去添加</a></td></tr>';
+}
+?>
+</tbody>
+<?php
+if($pages){
+	echo '<tfoot>';
+	echo '<tr><td style="padding-top:8px;" colspan="5"><div class="Page1">'.$pages.'</div></td></tr>';
+	echo '</tfoot>';
+}
+?>
+</table>
+<script type="text/javascript">
+function unclosehotel(obj){
+	show_comfirm.open(0,'重新开启酒店,需要审核！',function(){
+	var hid = $(obj).attr('hid');
+	$.post('home_dohotel.html?do=do',{'hid':hid,'s':'0'},function(d){
+		if(d=='0'){
+			$(obj).html('已开启').attr('onclick','');
+		}else{
+			show_msg.open('重新开启酒店失败！',3,2);
+		}
+	});
+	});
+}
+function closehotel(obj){
+	show_comfirm.open(0,'您确定要关闭该酒店吗？',function(){
+		var hid = $(obj).attr('hid');
+	$.post('home_dohotel.html?do=do',{'hid':hid,'s':2},function(d){
+		if(d=='0'){
+			$(obj).html('已关闭').attr('onclick','');
+		}else{
+			show_msg.open('关闭酒店失败！',3,2);
+		}
+	});
+	});
+}
+function delhotel(obj){
+show_comfirm.open(0,'您确定要删除该酒店吗',function(){
+	var hid = $(obj).attr('hid');
+	$.post('home_dohotel.html?do=do',{'hid':hid,'s':3},function(d){
+		if(d=='0'){
+			$(obj).parents('tr').remove();
+		}else{
+			show_msg.open('删除酒店失败！',3,2);
+		}
+	});
+});
+}
+</script>

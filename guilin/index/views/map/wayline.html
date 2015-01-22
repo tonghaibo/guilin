@@ -1,0 +1,26 @@
+<?php
+if(!$info){
+echo '<div style="text-align:center"><img src="public/images/content_blank.png" /><a onclick="show_dialog.close()" href="javascript:void(0)">暂且没有匹配到任何数据！</a></div>';
+die;
+}
+?>
+<div>
+<?php
+foreach($info as $v){
+echo '<div class="list clearfix">';
+echo '<div class="left img">';
+echo '<a href="wayline_detail.html?id='.$v['wid'].'" titlle="'.$v['name'].'" target="_blank">';
+echo '<img src="'.Y_Pr::image(Ly_Uploads::getUrl($v['img']),85,85).'">';
+echo '</a>';
+echo '</div>';
+echo '<div class="left ml10 des">';
+echo '<a href="wayline_detail.html?id='.$v['wid'].'" target="_blank">'.$v['name'].'</a>';
+echo '<p class="c666">行程安排：'.$v['days'].'天</p>';
+echo '<p class="c666">成人：<span class="cf60">'.$v['price'].'</span>元 儿童：<span class="cf60">'.$v['pricehalf'].'</span>元</p>';
+echo '</div></div>';
+}
+?>
+</div>
+<div style="clear:both;padding-top:10px;">
+<div class="Page1" style="text-align:left"><?php echo $pages; ?></div>
+</div>

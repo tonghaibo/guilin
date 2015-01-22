@@ -1,0 +1,65 @@
+<?php Y_Widget::display('header',$web); ?>
+<!-- top开始 -->
+<?php Y_Widget::display('top'); ?>
+<!-- top结束 -->
+<!-- nav开始 -->
+<?php Y_Widget::display('nav'); ?>
+<!-- nav结束 -->
+<!-- content开始 -->
+<div id="content" class="MiddleBox ">
+           <div id="Main">
+                <div id="M-left">
+                    <h2 class="M-bd">登录游桂林网</h2>
+                    <form action="<?php echo Y::Config('sys','domain'); ?>index_loginin.html" method="post" name="loginform" id="loginform">
+                        <ul class="ul-hd">
+                            <li>
+							<input type="hidden" name="referer_url" value="<?php echo $_SERVER['HTTP_REFERER']; ?>" />
+                                <div class="rtable-t left"><span class="rt-b">*</span> 邮箱/手机：</div>
+                                <input name="loginName" maxlength="50" onblur="lcLoginName(this.value);linputBlur(this);" onfocus="linputFocus(this)" class="li-input" id="loginName" value="" tabindex="1" type="text"/>
+                                <div class="li-Prompt left" id="loginNameTip" style="display:none;"></div>
+                            </li>
+                            <li>
+                                <div class="rtable-t left"><span class="rt-b">*</span> 输入密码：</div>
+                                <input name="password" class="li-input" maxlength="50" onblur="lcPass(this.value);linputBlur(this);" onfocus="linputFocus(this)" id="password" tabindex="2" type="password"/>
+                                <div class="li-Prompt left" id="passwordTip" style="display:none;"></div>
+                            </li>
+                                                        <li>
+                                <div class="rtable-t rtable-lnow"></div>
+                                <div class="bc-dx">
+                                    <input name="agreement" id="s_hc" checked="checked" class="bc_check" tabindex="4" type="checkbox"/>
+                                    <label class="bc_lab2" for="s_hc">一个周内保持登录</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="rtable-t rtable-lnow"></div>
+                                <div class="bc-dlu">
+                                    <a href="javascript:void(0);" class="bc_butn_a left" onclick="submitLoginForm();return false;" tabindex="5">
+                                        <span class="butn_a">登 录</span></a><a href="<?php echo Y::Config('sys','domain'); ?>index_getpass.html" target="_blank" class="fgt-word">忘记密码？</a>
+                                </div>
+                            </li>
+                            <li class="mnone">
+                                <div class="rtable-t rtable-lnow"></div>
+                                <div class="bc-hz">
+                                    <span class="bc-hz-p">您还可以使用以下合作网站账号登录游桂林网：</span>
+                                    <div class="bc-other-logo">
+                                        <span class="bc-logo-all bc-logo-qq"><s></s><a href="#">QQ</a></span>
+                                        <span class="bc-logo-all bc-logo-sina"><s></s><a href="#">新浪微博</a></span>
+                                        <span class="bc-logo-all bc-logo-ren"><s></s><a href="#">人人网</a></span>
+                                        <span class="bc-logo-all bc-logo-kaixin"><s></s><a href="#">开心网</a></span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+                <div id="M-right">
+                    <p class="M-r-title">还没有游桂林账号？<br />10秒钟就能注册一个</p>
+                    <a href="<?php echo Y::Config('sys','domain'); ?>index_reg.html" class="bc_butn_b"><span class="butn_b">立即点击注册</span></a>
+                </div>
+            </div>
+</div>
+<!-- content结束 -->
+<script type="text/javascript" src="<?php echo Y::Config('sys','domian'); ?>public/js/regLogin.js"></script>
+<!-- footer开始 -->
+<?php Y_Widget::display('footer'); ?>
+<!-- footer结束 -->

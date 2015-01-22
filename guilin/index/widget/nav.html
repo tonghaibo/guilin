@@ -1,0 +1,47 @@
+<div class="MiddleBox logo">
+<a href="index.html" class="left"><img src="<?php echo Y::Config('sys','domain'); ?>public/images/logo1.gif" /></a>
+<div class="right ads">
+<?php 
+if($banner=Y::Lang('ad','banner')){
+	echo '<a href="'.$banner['url'].'" title="'.$banner['title'].'" ><img src="public/uploads/ads/'.$banner['img'].'" width="800px" height="52px"/></a>';
+	echo '<a href="javascript:void(0)" onclick="$(this).parents(\'div.ads\').remove()"class="btn">关闭</a>';
+}
+?>
+</div>
+</div>
+<div class="nav">
+<div class="MiddleBox">
+<ul class="NavList">
+<?php 
+$navlist=Y::Lang('index','nav'); 
+if($navlist && is_array($navlist)){
+	foreach($navlist as $val){
+		echo '<li';
+		//根据控制器来判断当前
+		if(Y::$controller.'.html'==$val['url']){
+			echo ' class="NavAc"><span>'.$val['name'].'</span>';
+		}else{
+			echo '><a href="'.$val['url'].'">'.$val['name'].'</a>';
+		}
+		echo '</li>';
+	}
+}
+?>
+</ul>
+<div class="SearchBox">
+	<form target="_blank" action="search.html" method="get" id="sform">
+		<input type="text" data_tip="搜景点,酒店" value="搜景点,酒店" x-webkit-speech class="SearchText" id="SearchText" autocomplete="off" name="keywords" style="color: rgb(153, 153, 153);">
+		<input type="submit" class="SearchBtn" value="" onclick="return false;">
+	</form>
+	<div class="SearchTips" id="SearchTips">
+		<ul class="SearchTipsList">
+			<li id="map" >搜索含<span>&nbsp;</span>的景点</li>
+			<li id="hotel">搜索含<span>&nbsp;</span>的酒店</li>
+			<li id="wayline">搜索含<span>&nbsp;</span>的路线</li>
+			<li id="share">搜索含<span>&nbsp;</span>的分享</li>
+			<li id="user">搜索含<span>&nbsp;</span>的用户</li>
+		</ul>
+	</div>
+</div>
+</div>
+</div>

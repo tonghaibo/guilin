@@ -1,0 +1,106 @@
+<?php Y_Widget::display('header',array('b_info'=>$this->id)); ?>
+<?php Y_Widget::display('top'); ?>
+<!--content -->
+<div id="content">
+	<?php Y_Widget::display('tips',array('b_info'=>$this->id)); ?>
+	<!--main -->
+	<div class="main clearfix">
+	<?php Y_Widget::display('left'); ?>
+	<!--box开始 -->
+	<div id="box" class="clearfix">
+<!-- 这里写内容-->
+<div class="box">
+<form>
+<input type="hidden" name="ro" value="<?php echo $this->get('ro'); ?>" />
+<input type="hidden" name="ac" value="<?php echo $this->get('ac'); ?>" />
+ID：<input type="text" name="id" value="<?php echo $this->get('id');; ?>" x-webkit-speech="" />
+用户ID(0群发)：<input type="text" name="uid" value="<?php echo $this->get('uid'); ?>" x-webkit-speech="" />
+标题：<input type="text" name="title" value="<?php echo $this->get('title');; ?>" x-webkit-speech="" />
+<input type="submit" value="查找" class="btn btn-green"/>
+</form>
+</div>
+<table class="st full" id="arealist">
+<tr>
+<th width="10%">ID</th>
+<th width="15%">用户</th>
+<th width="20%">标题</th>
+<th width="20%">描叙</th>
+<th width="12%">发布时间</th>
+<th width="8%">状态</th>
+<th>操作</th>
+</tr>
+<?php 
+if($info){
+$slist = Ly_Items::getList('public','status');
+foreach($info as $val){
+	echo '<tr>';
+	echo '<td><input type="checkbox" name="checkid" value="'.$val['id'].'" />'.$val['id'].'</td>';
+	echo '<td>'.($val['uid']==0?'群发':'<a href="govern.php?ro=member&ac=member&s_uid='.$val['uid'].'" target="_blank">'.Ly_User::getName($val['uid']).'</a>').'['.$val['uid'].']</td>';
+	echo '<td><a href="'.$val['url'].'" target="_blank">'.$val['title'].'</a></td>';
+	echo '<td>'.$val['notice'].'</td>';
+	echo '<td>'.date('Y-m-d H:i',$val['pubtime']).'</td>';
+	echo '<td width="10%" class="showstatus" style="position:relative">';
+	echo '<div >'.$slist[$val['status']]['name'].'<span class="icon icon-desc"></span></div>';
+	echo '<ul class="dropmenu">';
+	foreach($slist as $s){
+		if($s['id']!=$val['status']){
+			echo '<li><a href="'.$this->getUrl().'&method=do&id='.$val['id'].'&s='.$s['id'].'">'.$s['name'].'</a></li>';
+		}
+	}
+	echo '</ul>';
+	echo '</td>';
+	echo '<td><a href="'.$this->getUrl().'&method=edit&id='.$val['id'].'" class="no" ><span class="icon icon-edit"></span>编辑</a><a href="'.$this->getUrl().'&method=del&id='.$val['id'].'" class="no"><span class="icon icon-del"></span>删除</a></td>';
+	echo '</tr>';
+	
+}
+}
+?>
+<tfoot>
+<tr>
+<td colspan="3">
+<input type="checkbox" id="checkAll" onclick="checkall('checkid')"/>全/反 
+<?php foreach($slist as $s){
+	echo '<a href="javascript:void(0)" onclick="checkUp('.$s['id'].')" class="no">'.$s['name'].'</a>&nbsp;&nbsp;&nbsp;';
+} ?>
+
+</td>
+<td colspan="4" style="text-align:right">
+<div id="ui-page"><?php echo $pages; ?></div>
+</td>
+</tr>
+</tfoot>
+</table>
+
+<!-- 这里写内容结束-->
+	<!--box结束 -->
+	</div>
+	</div>
+	<!-- mainend-->
+</div>
+<?php Y_Widget::display('footer');?>
+<script type="text/javascript" src="public/js/show.js"></script>
+<link rel="stylesheet" href="public/css/show/show.css" />
+<script type="text/javascript">
+//全选操作
+function checkUp(num){
+	var id = getIds('checkid');
+	if(id==''){
+		show_msg.open('请先选择值！',4,2);
+		return;
+	}else{
+		show_comfirm.open(0,'确定要改变'+id+'这些项吗？',function(){
+			var url = '<?php echo $this->getUrl() ?>&method=do&id='+id+'&s='+num;
+			window.location.href = url;
+		});
+	}
+}
+$(document).ready(function(){
+$('td.showstatus').hover(function(){
+	$(this).children('ul').show();
+	//$(this).parent('div').addClass('checkB');
+},function(){
+	$(this).children('ul').hide();
+	//$(this).parent('div').removeClass('checkB');
+});
+});
+</script>

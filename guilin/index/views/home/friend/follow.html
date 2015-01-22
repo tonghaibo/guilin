@@ -1,0 +1,36 @@
+<?php
+if($info){
+	echo '<ul class="img_text user_list_d clearfix" style="display: block;">';
+	$model = Y_Db::init('user');
+	$model->field(array('uid','name','userimg','follow','attention','sign','signview','provinceid','cityid'));
+	foreach($info as $v){
+	$u = $model->where(array('uid'=>$v['uid']))->find();
+	if($u){
+		echo '<li>';
+		echo '<div class="img tc">';
+		echo '<p class="mgb5">';
+		echo '<a href="user.html?uid='.$u['uid'].'" title="'.$u['name'].'" target="_blank">';
+		echo '<img src="'.Ly_User::getUserimg($u['userimg'],85).'" alt="" width="70" height="70"></a>';
+		echo '</p>';
+		echo '<p>';
+		if(Ly_Friend::isFriend($u['uid'],$this->uid)){
+			echo '<a title="取消关注" href="javascript:void(0)" uid="'.$u['uid'].'" onclick="del_attention(this)" class="care_of rel-follow">取消关注</a>';
+		}else{
+			echo '<a title="取消关注" href="javascript:void(0)" uid="'.$u['uid'].'" onclick="add_attention(this)" class="care_of rel-follow"><b class="orange">+</b>关注</a>';
+		}
+		echo '</p></div>';
+		echo '<div class="text"><p><a href="user.html?uid='.$u['uid'].'" title="'.$u['name'].'" target="_blank" class="mgr5">'.$u['name'].'</a><i class="mod_v"></i></p>';
+		echo '<p>'.Ly_Area::getName($u['provinceid']).' '.Ly_Area::getName($u['cityid']).'</p>';
+		echo '<p><span class="mgr5">粉丝：'.$u['follow'].'</span> 关注：'.$u['attention'].'</p>';
+		echo '<p class="c999">自我描述：'.($u['signview']?'<span class="red">系统自动屏蔽</span>':$u['sign']).'</p>';
+		echo '</div>';
+		echo '</li>';
+	}
+	}
+	echo '</ul>';
+	echo '<div class="Page1">'.$pages.'</div>';
+}else{
+	echo '<p class="f14 mgb10 margtop20 tc"  style="display: block;">';
+	echo '<img src="public/images/content_blank.png" class="v_m">你还没有关注任何人！赶紧邀请好友来游桂林吧！<a href="home_friend?do=guess" >也可以去看看你可能感兴趣的人</a>！</p>';
+}
+?>

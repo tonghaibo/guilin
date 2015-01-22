@@ -1,0 +1,13 @@
+RewriteEngine On
+#禁止索引目录
+Options -Indexes
+#真实存在
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+#伪静态 index_index.html index.php?ro=index&ac=index
+RewriteRule ^([a-z]+)\.html(.*)$   index.php?ro=$1$2 [QSA,PT,L]
+RewriteRule ^([a-z]+)_([a-zA-Z]+)\.html(.*)$   index.php?ro=$1&ac=$2$3 [QSA,PT,L]
+#ErrorDocument 401 'err/401.php'
+#ErrorDocument 403 'err/403.php'
+#ErrorDocument 404 "/guilin/guilin/err/404.html"
+#ErrorDocument 500 err/500.php

@@ -1,0 +1,42 @@
+<div id="footer">
+<div class="warp">
+	<div class="abat">
+	<b>游桂林网</b>
+	<?php 
+	$footerlist=Y::Lang('index','footer'); 
+	if($footerlist && is_array($footerlist)){
+		foreach($footerlist as $val){
+			echo '<a target="_blank" href="'.$val['url'].'"';
+			if($val['gl']==1){
+				echo ' style="color:#f30" ';
+			}
+			echo '>'.$val['name'].'</a>';
+		}
+	}
+	?>
+	</br>
+	<b>合作伙伴</b>
+	<?php
+	$links = Y::Lang('index','links');
+	if($links && is_array($links)){
+		foreach($links as $v){
+			echo '<a href="'.$v['url'].'" target="_blank">'.$v['name'].'</a>  ';
+		}
+	}
+	?>
+	</div>
+	<div class="fSpacing">
+	<div class="left">
+	关注游桂林网，乐享旅游：<a class="isSyncIcon isSyncSinaOn" target="_blank" href="http://weibo.com/yuexinok" title="新浪微博" rel="nofollow"></a><a class="isSyncIcon isSyncQqOn" target="_blank" href="http://t.qq.com/yuexinok/" title="腾讯微博" rel="nofollow"></a></div>
+	<span class="Copy_style">&copy;2009-<script type="text/javascript">var date = new Date();document.write(date.getFullYear());</script>&nbsp;&nbsp;游桂林网&nbsp;&nbsp;All Rights Reserved.</span><a href="http://www.miibeian.gov.cn" target="_blank"><?php echo Y::Config('sys','icp'); ?></a>
+	</div>
+</div>
+</div>
+<!-- 意见反馈-->
+<div class="FeedBackBtn"><a href="javascript:void(0)" onclick="return show_feedback();">意见反馈</a></div>
+<!-- 返回顶部-->
+<div class="W8_gotop" id="pl_part_goTop">
+	<a hidefocus="true" onclick="return false;" href="javascript:;">
+		<span><em class="sj">♦</em><em class="fk">▐</em>返回顶部</span>
+	</a>
+</div>

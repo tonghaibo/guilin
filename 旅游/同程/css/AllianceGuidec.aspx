@@ -1,0 +1,1 @@
+tcGuidec_AllianceConfigCallBack$({"results":{"gn":["机票客服","酒店客服","景区客服"],"group":"在线客服","gl":[1118759,1517566,1517607]},"responseHeader":{}})

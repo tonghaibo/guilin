@@ -1,0 +1,193 @@
+<?php Y_Widget::display('header',array('b_info'=>$this->id)); ?>
+<?php Y_Widget::display('top'); ?>
+<!--content -->
+<div id="content">
+	<?php Y_Widget::display('tips',array('b_info'=>$this->id)); ?>
+	<!--main -->
+	<div class="main clearfix">
+	<?php Y_Widget::display('left'); ?>
+	<!--box开始 -->
+	<div id="box" class="clearfix">
+<!-- 这里写内容-->
+<table class="st nob">
+<tr>
+<td class="title"><?php echo $hotel['name']; ?></td>
+<tr>
+<td>
+<img src="<?php  echo Y_Pr::image($hotel['img']); ?>" />
+</td>
+</tr>
+</table>
+<div class="corange" style="padding-left:10px;height:30px;line-height:30px;background: whiteSmoke;border-left: 2px solid #DEDEDE;">酒店配置房间：</div>
+<table class="st nob">
+<?php 
+if($rlist){
+foreach($rlist as $r){
+?>
+<tr>
+<td><img style="cursor:pointer" onclick="upimg(this)" src="<?php echo Y_Pr::image(Ly_Uploads::getUrl($r['img']),85,85); ?>" width="60px" />
+<input type="hidden" value="1" name="img" />
+</td>
+<td>名称：<input type="text" name="name" class="w100" value="<?php echo $r['name']; ?>"/></td>
+<td>价格：<input type="text" name="price" style="width:50px;" value="<?php echo $r['price']; ?>" /></td>
+<td><select name="bed"><option value="">-型号-</option>
+<?php if($barra=Ly_Items::getList('hotel_rooms','bed')){
+	foreach($barra as $val){
+		echo '<option value="'.$val['id'].'"';
+		if($val['id']==$r['bed']){
+			echo ' selected ';
+		}
+		echo '>'.$val['name'].'</option>';
+	}
+} ?>
+</select></td>
+<td><select name="broadband"><option value="0">-宽带-</option>
+<?php if($brarra=Ly_Items::getList('hotel_rooms','broadband')){
+	foreach($brarra as $val){
+		echo '<option value="'.$val['id'].'"';
+		if($val['id']==$r['broadband']){
+			echo ' selected ';
+		}
+		echo '>'.$val['name'].'</option>';
+	}
+} ?>
+</select></td>
+<td><select name="breakfast"><option value="0">-早餐-</option>
+<option value="0" <?php if($r['breakfast']==0){ echo 'breakfast'; } ?> >无</option>
+<option value="1" <?php if($r['breakfast']==1){ echo 'breakfast'; } ?> >有</option>
+</select></td>
+<td><select name="payment"><option value="0">-支付方式-</option>
+<?php if($parra=Ly_Items::getList('hotel_rooms','payment')){
+	foreach($parra as $val){
+		echo '<option value="'.$val['id'].'"';
+		if($val['id']==$r['payment']){
+			echo ' selected ';
+		}
+		echo '>'.$val['name'].'</option>';
+	}
+} ?>
+</select></td>
+<td>大小：<input type="text" name="area" style="width:50px;" value="<?php echo $r['area']; ?>"/></td>
+<td><input type="checkbox" name="isfull" value="1" <?php if($r['isfull']==1){ echo 'checked'; } ?>/>满房</td>
+<td><select name="s"><option value="0">-状态-</option>
+<option value="0" <?php if($r['status']==0){ echo 'selected'; } ?> >未审核</option>
+<option value="1" <?php if($r['status']==1){ echo 'selected'; } ?> >通过</option>
+<option value="2" <?php if($r['status']==2){ echo 'selected'; } ?> >删除</option>
+</select></td>
+<td><span class="icon icon-edit" title="编辑" onclick="subform(this,<?php echo $r['rid']; ?>)"></span></td>
+</tr>
+<?php
+}
+}
+ ?>
+<tr>
+<td><img style="cursor:pointer" onclick="upimg(this)" src="<?php echo Y_Pr::image('1',85,85); ?>" width="60px" />
+<input type="hidden" value="1" name="img" />
+</td>
+<td>名称：<input type="text" name="name" class="w100"/></td>
+<td>价格：<input type="text" name="price" style="width:50px;"/></td>
+<td><select name="bed"><option value="">-型号-</option>
+<?php if($barra=Ly_Items::getList('hotel_rooms','bed')){
+	foreach($barra as $val){
+		echo '<option value="'.$val['id'].'">'.$val['name'].'</option>';
+	}
+} ?>
+</select></td>
+<td><select name="broadband"><option value="0">-宽带-</option>
+<?php if($brarra=Ly_Items::getList('hotel_rooms','broadband')){
+	foreach($brarra as $val){
+		echo '<option value="'.$val['id'].'">'.$val['name'].'</option>';
+	}
+} ?>
+</select></td>
+<td><select name="breakfast"><option value="0">-早餐-</option>
+<option value="0">无</option>
+<option value="1">有</option>
+</select></td>
+<td><select name="payment"><option value="0">-支付方式-</option>
+<?php if($parra=Ly_Items::getList('hotel_rooms','payment')){
+	foreach($parra as $val){
+		echo '<option value="'.$val['id'].'">'.$val['name'].'</option>';
+	}
+} ?>
+</select></td>
+<td>大小：<input type="text" name="area" style="width:50px;"/></td>
+<td><input type="checkbox" name="isfull" value="1"/>满房</td>
+<td><select name="s"><option value="0">-状态-</option>
+<option value="0">未审核</option>
+<option value="1">通过</option>
+<option value="2">删除</option>
+</select></td>
+<td><span class="icon icon-save" title="保存" onclick="subform(this,0)"></span><span class="icon icon-add" style="cursor:pointer" title="添加" onclick="addtr(this)"></span></td>
+</tr>
+</table>
+<!-- 这里写内容结束-->
+	<!--box结束 -->
+	</div>
+	</div>
+	<!-- mainend-->
+</div>
+<script type="text/javascript" src="public/js/calendar.js"></script>
+<script type="text/javascript" src="public/js/show.js"></script>
+<link rel="stylesheet" href="public/css/show/show.css" />
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.3"></script>
+<script type="text/javascript" src="public/js/ajaxupload.3.5.js"></script>
+<script type="text/javascript">
+function addtr(obj){
+var tr = $(obj).parents('tr');
+tr.after('<tr>'+tr.html()+'</tr>');
+}
+function subform(obj,num){
+	var tr = $(obj).parents('tr');
+	var name = tr.children().children("input[name='name']").val();
+	var price = tr.children().children("input[name='price']").val();
+	var bed = tr.children().children("select[name='bed']").val();
+	var broadband = tr.children().children("select[name='broadband']").val();
+	var breakfast = tr.children().children("select[name='breakfast']").val();
+	var payment = tr.children().children("select[name='payment']").val();
+	var status = tr.children().children("select[name='s']").val();
+	var area = tr.children().children("input[name='area']").val();
+	var isfull = tr.children().children("input[name='isfull']:checked").val();
+	if(isfull==undefined){
+		isfull =0;
+	}
+	var img = tr.children().children("input[name='img']").val();
+	var url = '<?php echo $this->getUrl() ?>&act=add';
+	if(num!=0){
+		url += '&rid='+num;
+	}
+	$.post(url,{'name':name,'price':price,
+	'bed':bed,'broadband':broadband,'breakfast':breakfast,'status':status,'area':area,'isfull':isfull,'payment':payment,'img':img
+	},function(data){
+		if(data==1){
+			show_msg.open('操作成功！',3,1);
+		}else{
+			show_msg.open('操作失败！',3,2);
+		}
+	});
+}
+function upimg(obj){
+	//暂且15张
+	var val = $(obj).siblings('input[type="hidden"]');
+	var img = $(obj);
+	new AjaxUpload(img,{
+		name:'img',
+		action:'govern.php?ro=mod&ac=upimg',
+		onSubmit:function(file,ext){
+			if(!(ext && /^(jpg|png|jpeg|gif)$/.test(ext))){
+				show_msg.open('上传的文件的格式'+ext+'不被支持！',3,2);
+				return false;
+			}
+		},
+		onComplete:function(file,data){
+			if(data!=''){
+				data = eval('('+data+')');
+				$(obj).attr({'src':data.ismall});
+				val.val(data.id);				
+			}
+		}
+	});
+	
+}
+</script>
+<?php Y_Widget::display('footer');?>

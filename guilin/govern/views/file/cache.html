@@ -1,0 +1,127 @@
+<?php Y_Widget::display('header',array('b_info'=>$this->id)); ?>
+<?php Y_Widget::display('top'); ?>
+<!--content -->
+<div id="content">
+	<?php Y_Widget::display('tips',array('b_info'=>$this->id)); ?>
+	<!--main -->
+	<div class="main clearfix">
+	<?php Y_Widget::display('left'); ?>
+	<!--box开始 -->
+	<div id="box" class="clearfix">
+<!-- 这里写内容-->
+<div class="box box-info">
+缓存文件列表：<span id="html_dir"></span><a href="javascript:void(0)" onclick="topdir()" class="right no">&nbsp;&nbsp;&nbsp;顶级目录</a>
+<a href="javascript:void(0)" onclick="back()" class="right no">&nbsp;&nbsp;&nbsp;上一级</a>
+<a href="javascript:void(0)" onclick="del('dd','dd0','all')" class="right no">一键清除</a>
+</div>
+<table class="st full" id="html_list">
+<th>文件名</th>
+<th>类型</th>
+<th>大小</th>
+<th>创建时间</th>
+<th>修改时间</th>
+<th>访问时间</th>
+<th>操作</th>
+<?php 
+if($html){
+	foreach($html as $val){
+		echo '<tr class="list">';
+		if($val['type']=='dir'){
+			echo '<td><span class="icon icon-dir"></span><a href="javascript:void(0)" onclick="forward(\''.$val['name'].'\')" >'.$val['name'].'</a></td>';
+			echo '<td>目录</td>';
+		}else{
+			echo '<td><span class="icon icon-file"></span><a href="'.Y::Config('sys','domain').'index/html/'.$val['name'].'" target="_blank">'.$val['name'].'</a></td>';
+			echo '<td>文件</td>';
+		}
+		echo '<td>'.Y_Pr::size($val['size']).'</td>';
+		echo '<td>'.date('Y-m-d H:i:s',$val['ctime']).'</td>';
+		echo '<td>'.date('Y-m-d H:i:s',$val['mtime']).'</td>';
+		echo '<td>'.date('Y-m-d H:i:s',$val['atime']).'</td>';
+		echo '<td>';
+		if($val['type']=='dir'){
+			echo '<span class="icon icon-right" title="下一级" onclick="forward(\''.$val['name'].'\')"></span>';
+			if($val['size']==0){
+				echo '<span class="icon icon-del" title="删除" onclick="del(\''.$val['name'].'\',true)" ></span>';
+			}
+		}else{
+			echo '<span class="icon icon-del" title="删除" onclick="del(\''.$val['name'].'\')" ></span>';
+		}
+		echo '</td>';
+		echo '</tr>';
+	}
+}
+
+?>
+</table>
+<!-- 这里写内容结束-->
+	<!--box结束 -->
+	</div>
+	</div>
+	<!-- mainend-->
+</div>
+<script type="text/javascript" src="public/js/show.js"></script>
+<link rel="stylesheet" href="public/css/show/show.css" />
+<script type="text/javascript">
+function refresh(){
+	var obj = $('#html_dir');
+	var tab = $('#html_list');
+	var dir = obj.html();
+	$.post('<?php echo $this->getUrl(); ?>',{'dir':dir},function(data){
+		$('#html_list tr.list').remove();
+		tab.append(data);
+		obj.html(dir);
+	});
+};
+function back(){
+	var obj = $('#html_dir');
+	var tab = $('#html_list');
+	var dir = obj.html();
+	dir = dir.substr(0,dir.lastIndexOf('/'));
+	dir = dir.split('/');
+	dir.pop();
+	dir = dir.join('/');
+	if(dir!=''){
+		dir += '/';
+	}
+	$.post('<?php echo $this->getUrl(); ?>',{'dir':dir},function(data){
+		$('#html_list tr.list').remove();
+		tab.append(data);
+		obj.html(dir);
+	});
+};
+function topdir(){
+	var obj = $('#html_dir');
+	var tab = $('#html_list');
+	$.post('<?php echo $this->getUrl(); ?>',{'dir':''},function(data){
+		if(data!=''){
+			$('#html_list tr.list').remove();
+			tab.append(data);
+			obj.html('');
+		}
+	});
+};
+function forward(name){
+	var obj = $('#html_dir');
+	var tab = $('#html_list');
+	var dir = obj.html()+name+'/';
+	$.post('<?php echo $this->getUrl(); ?>',{'dir':dir},function(data){
+			$('#html_list tr.list').remove();
+			tab.append(data);
+			obj.html(dir);
+			//show_msg.open('改目录下无任何文件！',2,3);
+	});
+};
+function del(name,flag,all){
+	var obj = $('#html_dir');
+	var dir = obj.html()+name;
+	$.post('<?php echo $this->getUrl(); ?>&method=del',{'name':dir,'flag':flag,'all':all},function(data){
+			if(data==1){
+				show_msg.open('删除文件成功！',4,1);
+			}else{
+				show_msg.open('删除文件失败！',4,2);
+			}
+	});
+	refresh();
+}
+</script>
+<?php Y_Widget::display('footer');?>

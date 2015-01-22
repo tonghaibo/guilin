@@ -1,0 +1,75 @@
+<?php Y_Widget::display('header',array('b_info'=>$this->id)); ?>
+<?php Y_Widget::display('top'); ?>
+<!--content -->
+<div id="content">
+	<?php Y_Widget::display('tips',array('b_info'=>$this->id)); ?>
+	<!--main -->
+	<div class="main clearfix">
+	<?php Y_Widget::display('left'); ?>
+	<!--box开始 -->
+	<div id="box" class="clearfix">
+<!-- 这里写内容-->
+<form action="#" method="post" id="addAdmin">
+<table class="st nob">
+<tr>
+<td class="title"><span class="cred">*</span>主题：</td>
+<td><input type="text" id="subject" name="subject" class="w300" value="<?php echo $info['subject']; ?>" title="名称" onblur="checkLen(this,'#subject-tips',2,20)"/></td>
+<td class="info" id="subject-tips">填写模版主题</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">*</span>类型：</td>
+<td>
+<select name="tpltype" id="tpltype" title="类型" onblur="isSelect(this,'#tpltype-tips')">
+<option value="">--请选择--</option>
+<?php 
+foreach(Ly_Items::getList('mailtpl','tpltype') as $v){
+	echo '<option value="'.$v['id'].'"';
+	if($v['id']==$info['tpltype']){
+		echo ' selected ';
+	}
+	echo '>'.$v['name'].'</option>';
+}
+ ?>
+ </select>
+</td>
+<td class="info" id="tpltype-tips">用选择模版类型</td>
+</tr>
+<tr>
+<td class="title">参考值：</td>
+<td colspan="2">
+{host}网站地址，{hostmail}系统邮件地址，{name}用户名，{url}链接地址，{email}用户注册邮箱
+</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">*</span>模版内容：</td>
+<td><textarea id="des" name="des" title="内容" class="w500 h300" onblur="checkLen(this,'#des-tips',5,10000)"><?php echo $this->delSlashes($info['content']); ?></textarea></td>
+<td class="info" id="des-tips">填写模版内容</td>
+</tr>
+<tr>
+<td class="title">是否启用</td>
+<td><input type="radio" value="0" name="flag" <?php  if($info['flag']!=1){ echo 'checked'; } ?> />否<input type="radio" value="1" <?php  if($info['flag']==1){ echo 'checked'; } ?>  name="flag" />是</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><input type="button" value="添加" name="bt" class="btn btn-green" onclick="subadd()" /></td>
+<td></td>
+</tr>
+</table>
+</form>
+<!-- 这里写内容结束-->
+	<!--box结束 -->
+	</div>
+	</div>
+	<!-- mainend-->
+</div>
+<script type="text/javascript">
+function subadd(){
+	if(checkLen('#subject','#subject-tips',2,20) && isSelect('#tpltype','#tpltype-tips') && checkLen('#des','#des-tips',5,10000)){
+		document.getElementById('addAdmin').submit();
+	}else{
+		return false;
+	}
+}
+</script>
+<?php Y_Widget::display('footer');?>

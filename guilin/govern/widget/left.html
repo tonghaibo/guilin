@@ -1,0 +1,36 @@
+<div class="left">
+<div id="ms">
+<ul>
+<?php 
+	$li = Ly_Points::getSublist();
+	if($li){
+		foreach($li as $val){
+			echo '<li class="mitem';
+			if($val['action']==Y::$action){
+				echo ' msel"><div class="kls">'.'<a href="?ro='.Y::$controller.'&ac='.$val['action'].'">'.$val['name'].'</a>'.'</div>';
+			}else{
+				echo '"><a class="kl" href="?ro='.Y::$controller.'&ac='.$val['action'].'">'.$val['name'].'</a>';
+			}
+			echo '</li>';
+		}
+	}
+ ?>
+</ul>
+</div>
+<div id="bms">
+<div class="lnsep"></div>
+<div>
+<ul id="tbd" class="med">
+<?php 
+	$li = Ly_Points::getSubsublist();
+	if($li){
+		echo '<li class="tbos" >'.$aid['name'].'</li>';
+		foreach($li as $val){
+			echo '<li class="tbou"><a href="govern.php?ro='.Y::$controller.'&ac='.$val['action'].'&method='.$val['method'].'" class="q qs">'.$val['name'].'</a></li>';
+		}
+	}
+ ?>
+</ul>
+</div>
+</div>
+</div>

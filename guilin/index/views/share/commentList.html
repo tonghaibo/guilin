@@ -1,0 +1,64 @@
+<?php
+if($comment){
+	$num = count($comment);
+	$min = ($page-1)*10;
+	$max = $page*10;
+	foreach($comment as $k=>$v){
+			//继续
+			if($k<$min || $k>=$max){
+				continue;
+			}
+			echo '<div class="Evaluate_list clearfix">';
+			echo '<div class="Evaluate_img">';
+			echo '<a target="_blank" href="user.html?uid='.$v['uid'].'"><img width="36" height="36" src="'.Y_Pr::image(Ly_User::getUserimg($v['l1_userimg'])).'"></a>';
+			echo '</div>';
+			echo '<div class="Evauate_title">';
+			echo '<div class="Evauate_titop">';
+			echo '<span class="title_left"><a target="_blank" href="user.html?uid='.$v['uid'].'">'.$v['l1_name'].'</a></span>';
+			echo '<span class="title_date">'.date('Y-m-d H:i:s',$v['pubtime']).'</span>';
+			echo '</div>';
+			echo '<div class="Evauate_Introduction" id="text98884">'.$v['comments'].'</div>';
+			echo '<div style="float:right;padding-right:10px;text-align: right;height:22px;">';
+            echo '<a href="javascript:void(0);" onclick="reply(\''.$v['l1_name'].'\',\''.$v['id'].'\',\''.$v['uid'].'\');" style="padding-right:5px;">回复</a>';
+			echo '</div>';
+			//这里是
+			if($v['_child']){
+				$v['_child'] = array_reverse($v['_child']);
+				foreach($v['_child'] as $j){
+					echo '<div class="box_img">';
+					echo '<div class="Reply_box">';
+					echo '<div class="Eeply_main clearfix">';
+					echo '<div class="Evaluate_list EvaluateStyle">';
+					echo '<div class="Evaluate_img">';
+					echo '<a target="_blank" href="user.html?uid='.$j['uid'].'"><img width="36" height="36" src="'.Ly_User::getUserimg($j['l1_userimg'],48).'"></a>';
+					echo '</div>';
+					echo '<div class="Evauate_title">';
+					echo '<div class="Evauate_titop">';
+					echo '<span class="title_left"><a target="_blank" href="user.html?uid='.$j['uid'].'">'.$j['l1_name'].'</a></span>';
+					echo '<span class="title_date">'.date('Y-m-d H:i:s',$j['pubtime']).'</span>';
+					echo '</div>';
+					echo '<div class="Evauate_Introduction">'.$j['comments'].'</div>';
+					echo '</div>';
+					echo '<div style="float:right;padding-right:10px;">';
+					echo '<a href="javascript:void(0);" onclick="reply(\''.$j['l1_name'].'\',\''.$v['id'].'\',\''.$j['uid'].'\');" style="padding-right:5px;">回复</a>';
+					echo '</div>';
+					echo '</div>';
+					echo '</div>';
+					echo '</div>';
+					echo '</div>';
+				}
+			}
+			echo '</div>';
+			echo '</div>';
+		}
+	}
+?>
+<div class="Page1" style="text-align:center">
+<?php
+if($num>10){
+$pages = new Y_Page($num,10);
+echo $pages->showAjax();
+}
+
+?>
+</div>

@@ -1,0 +1,59 @@
+<?php Y_Widget::display('header',$web); ?>
+<!-- top开始 -->
+<?php Y_Widget::display('top'); ?>
+<!-- top结束 -->
+<!-- nav开始 -->
+<?php Y_Widget::display('nav'); ?>
+<!-- nav结束 -->
+<!-- content开始 -->
+<div id="content" class="clearfix MiddleBox ">
+<div id="main" class="clearfix">
+<?php Y_Widget::display('home_right',$user); ?>
+<!--you侧 -->
+<div class="area_main">
+<h2 id="box_title" class="dhead mgb10">
+   <a title="我关注的人" <?php if(!in_array($this->get('do'),array('follow','guess','invite'))){ echo 'class="sel"'; } ?> href="javascript:void(0)"  onclick="changebox(this)" rel="index" p=1 load=0>我关注的人</a>
+   <a title="我的粉丝" <?php if($this->get('do')=='follow'){ echo 'class="sel"'; } ?> href="javascript:void(0)"  onclick="changebox(this)" rel="follow" p=1 load=0>我的粉丝</a>
+   <a title="邀请好友" <?php if($this->get('do')=='invite'){ echo 'class="sel"'; } ?> href="javascript:void(0)"  onclick="changebox(this)" rel="invite" p=1 load=0>邀请好友</a>
+   <a title="猜你喜欢" <?php if($this->get('do')=='guess'){ echo 'class="sel"'; } ?> href="javascript:void(0)"  onclick="changebox(this)" rel="guess" p=1 load=0>猜你喜欢</a>
+   </h2>
+<div class="c_box"></div>
+<div class="c_box"></div>
+<div class="c_box"></div>
+<div class="c_box"></div>
+</div>
+<!--you侧结束 -->
+</div>
+<!--mian结束 -->
+</div>
+<!-- content结束 -->
+<!-- footer开始 -->
+<?php Y_Widget::display('footer'); ?>
+<!-- footer结束 -->
+<script type="text/javascript">
+function changebox(obj,page){
+	if(typeof(page)=='undefined'){
+		var page = $(obj).attr('p');
+	}
+	$(obj).addClass('sel').siblings().removeClass('sel');
+	var i = $(obj).index();
+	$('.c_box').eq(i).show().siblings('.c_box').hide();
+	if($(obj).attr('p')!=page || $(obj).attr('load')==0){
+		$('.c_box').eq(i).html('<div style="text-align:center;padding-top:20px;"><img src="public/images/wait3.gif" /></div>');
+		$('.c_box').eq(i).load('home_dofriend.html?do='+$(obj).attr('rel')+'&page='+page,{});
+		$(obj).attr('p',page);
+		$(obj).attr('load',1);
+	}
+	
+}
+function _Page(page){
+	changebox('#box_title a.sel',page);
+	var mtrTop=$('#box_title').offset().top-65;
+    $("html,body").scrollTop(mtrTop);
+ };
+$(function(){
+	changebox('#box_title a.sel',1);
+});
+</script>
+</body>
+</html>

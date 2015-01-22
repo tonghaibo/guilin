@@ -1,0 +1,1 @@
+<?php {"pri":"rid","0":"hid","1":"name","2":"price","3":"bed","4":"broadband","5":"breakfast","6":"payment","7":"area","8":"status","9":"img","10":"isfull"}yes

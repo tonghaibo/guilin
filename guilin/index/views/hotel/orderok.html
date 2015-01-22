@@ -1,0 +1,125 @@
+<?php Y_Widget::display('header',$web); ?>
+<!-- top开始 -->
+<?php Y_Widget::display('top'); ?>
+<!-- top结束 -->
+<!-- nav开始 -->
+<?php Y_Widget::display('nav'); ?>
+<!-- nav结束 -->
+<!-- content开始 -->
+<div id="content" class="clearfix MiddleBox ">
+<div id="main" class="clearfix" style="position:relative">
+<div class="conall">
+<?php $areaname=Ly_Items::getName('public','area',$hotel['area']); ?>
+	<div class="ndwz">您的位置：<a href="hotel.html">旅游入住</a>&gt;<a href="hotel.html?area=<?php echo $hotel['area']; ?>"><?php echo $areaname; ?>酒店</a> &gt; <a href="hotel_detail.html?id=<?php echo $this->get('id'); ?>" title="<?php echo $hotel['name']; ?>"><?php echo $hotel['name']; ?></a></div>
+	<div id="new_conten">
+		<div id="newRight">
+		<div class="order_input mg_t8">
+			<div class="tit"><h3>订单信息</h3></div>
+			<div class="txt">
+			<ul>
+				<li>
+				<div class="txt99">&nbsp;&nbsp;</div>
+					<div class="field99 f18 green">
+					<img src="public/images/ico_ok.gif" />订单提交成功！														
+					<a target="_blank" href="javascript:window.print();">打印</a>
+					</div>
+				</li>
+				<li>
+				<div class="txt99">订单编号：</div>
+					<div class="field99"><?php echo $order['oid'];?></div>
+				</li>	
+				<li>
+				<div class="txt99">入住房型：</div>
+					<div class="field99">
+						<?php 
+						foreach($rooms as $v){
+							if($order['rid']==$v['rid']){
+								echo $v['name'].'('.Ly_Items::getName('hotel_rooms','bed',$v['bed']).')'.$v['area'].'平方米';
+							}
+						}
+						?>														
+					</div>
+				</li>				
+				<li>
+					<div class="txt99">入住日期：</div>
+					<div class="field99"><?php echo $order['starttime']; ?></div>
+				</li>				
+				<li>
+					<div class="txt99">入住天数：</div>
+					<div class="field99"><?php echo $order['days']; ?></div>
+				</li>				
+			<li>
+				<div class="txt99">房间数量：</div>
+				<div class="field99"><?php echo $order['num']; ?></div>
+			</li>				
+				<li style="line-height:24px;">
+						<div class="txt99">应付金额：</div>
+						<div class="field99"><em class="price f18">￥<?php echo $order['price']; ?></em></div>
+				</li>
+			</ul>		
+				</div>
+		</div>
+		<div class="order_input">
+		<div class="tit"><h3>入住信息</h3></div>
+		<div class="txt">
+		<ul>
+		<li>
+			<div class="txt99">入住人：</div>
+			<div class="field99"><?php echo $order['name']; ?></div>
+		</li>
+		<li><div class="txt99">联系人手机：</div>
+		<div class="field99"><?php echo $order['mobile']; ?></div>
+		</li>
+		<li><div class="txt99">身份证件号：</div>
+		<div class="field99"><?php echo $order['card']; ?></div>
+		</li>
+		<li><div class="txt99">备注信息：</div>
+		<div class="field99"><?php echo $order['mark']; ?></div>
+		</li>
+		</ul>
+		<div class="tips1">付款方式：无需提前付款，直接到酒店前台付款<span><br>如果入住当天，不能在最晚保留时间前到店，请您事先联系酒店，协商房间的保留事宜，以免房间被过时取消。</span></div>
+		</div>
+		</div>
+		</div><!--newRight-->
+		<div id="newLeft">
+			<div class="list_hot" style="margin-top:8px">
+		    	<div class="txt txt1">
+		    	<div style="font-size:12px;line-height:24px; height:50px; width:100%;" class="borderBottom">
+					<img  src="<?php echo Y_Pr::image($hotel['img'],88,66); ?>" style="float:left; margin-right:5px">		    		
+		    		<div style="vertical-align:top">
+						<p>
+							<a href="hotel_detail.html?id=<?php echo $this->get('id'); ?>" title="<?php echo $hotel['name']; ?>"><?php echo $hotel['name']; ?></a>
+														
+						</p>
+					</div>
+				</div>
+		    	<p style="font-size:13px;line-height:24px">地   址：<?php echo $hotel['address']; ?>		    	
+		    	</p>
+		    	<p style="font-size:13px;line-height:24px">星   级：<span class="star_bg_s"><span style="width:<?php echo $hotel['star']*12 ?>px;" class="star_top_s"></span></span></p>
+		    	<p style="font-size:13px;line-height:24px">类   型：<?php echo Ly_Items::getName('hotel','classes',$hotel['classes']); ?></p>
+		    	<p style="font-size:13px;line-height:24px">咨   询：<?php echo $hotel['contact']; ?></p>
+				</div>
+		        <div class="why_cncn">
+		    	<h5>为什么选择游桂林</h5>
+		        <dl>
+		        	<dt>保证低价</dt>
+		            <dd>网络预订最低价</dd>
+		            <dt>保证有房</dt>
+		            <dd>到店无房赔付首晚房费</dd>
+		            <dt>7*24小时服务</dt>
+		            <dd>提供优质服务，线上线下均可享受，服务热线：40076-40075</dd>
+		        </dl>
+		   	 	</div>
+		   	 </div>
+		</div>
+	</div>
+</div>
+</div>
+<!--mian结束 -->
+</div>
+<!-- content结束 -->
+<!-- footer开始 -->
+<?php Y_Widget::display('footer'); ?>
+<!-- footer结束 -->
+</body>
+</html>

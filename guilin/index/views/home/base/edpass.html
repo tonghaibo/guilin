@@ -1,0 +1,57 @@
+<dl class="set_area_list">
+<dd class="c666">密码由6~16个半角字符(字符、数字、符号)组成，区分大小写，建议使用数字、符号、字母组合，增强密码安全性</dd>
+<dd>
+<div class="channel">当前密码：</div>
+<div class="attr">
+<input class="txt" name="oldpwd" style="width:200px;" id="oldpwd" type="password" maxlength="16" value=""><span class="w_prom" style="display: none; margin-left: 5px;"></span><i class="r_pts" style="display: none; margin-left: 5px;"></i></div>
+</dd>
+<dd>
+<div class="channel">新的密码：</div>
+<div class="attr">
+<input class="txt" name="newpwd" style="width:200px;" id="newpwd" type="password" maxlength="16" value=""><span class="w_prom" style="display: none; margin-left: 5px;"></span><i class="r_pts" style="display: none; margin-left: 5px;"></i></div>
+</dd>
+<dd>
+<div class="channel">确认密码：</div>
+<div class="attr">
+<input class="txt" name="newpwd2" style="width:200px;" id="newpwd2" type="password" maxlength="16" value=""><span class="w_prom" style="display: none; margin-left: 5px;"></span><i class="r_pts" style="display: none; margin-left: 5px;"></i></div>
+</dd>
+<dd>
+<div class="channel"></div>
+<div class="attr">
+<input class="btn_a f14" type="submit" onclick="sendpass()"  value="保存设置">
+</div>
+</dd>
+</dl>
+<script type="text/javascript">
+function sendpass(){
+	var regx = /^\S{6,20}$/;
+	var old = $('#oldpwd').val();
+	if(!regx.test(old)){
+	 show_msg.open('当前密码输入格式不正确！',3,2);
+	 return;
+	}
+	var newpwd = $('#newpwd').val();
+	if(!regx.test(newpwd)){
+	 show_msg.open('新的密码输入格式不正确！',3,2);
+	 return;
+	}
+	var newpwd2 = $('#newpwd2').val();
+	if(newpwd2!=newpwd){
+		show_msg.open('确认密码与新的密码不一致！',3,2);
+		return;
+	}
+	if(old==newpwd){
+		show_msg.open('当前密码与新的密码是一致的！',3,2);
+		return;
+	}
+	$.post('home_dobase.html?do=uppass',{'old':old,'newpwd':newpwd},function(d){
+		if(d=='0'){
+			show_msg.open('修改密码成功！',3,1);
+		}else if(d=='1'){
+			show_msg.open('当前密码输入不正确！',3,2);
+		}else{
+			show_msg.open('修改密码失败！',3,2);
+		}
+	});
+}
+</script>

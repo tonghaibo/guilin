@@ -1,0 +1,25 @@
+<div class="dianpin">
+<?php
+if($comment){
+	foreach($comment as $v){
+		echo '<dl>';
+		echo '<dt>';
+		echo '<span class="comment_rank">';
+		echo '<span class="comment_t">卫生：</span><span class="comment_r">'.$v['health'].'分</span>';
+		echo '<span class="comment_t">服务：</span><span class="comment_r">'.$v['service'].'分</span>';
+		echo '<span class="comment_t">设备：</span><span class="comment_r">'.$v['device'].'分</span>';
+		echo '</span>';
+		echo '发表于：'.date('Y-m-d H:i:s',$v['pubtime']).'</dt>';
+		echo '<dd>'.$v['comments'].'</dd>';
+		echo '</dl>';
+	}
+}else{
+	echo '暂且无任何人评论';
+}
+?>
+</div>
+<div class="Page1" style="text-align:center">
+<?php
+echo $pages;
+?>
+</div>

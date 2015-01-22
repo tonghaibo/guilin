@@ -1,0 +1,160 @@
+@charset "utf-8";
+/* CSS Document */
+.clearfix{zoom:1;}
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+
+.addtion_menu a.tuniu_wb, .sitenav_mobile, .hot_keyword, .nav_list li span.remai, .nav_list li span.tejia, .nav_list li span.fanxian, .nav_c .nav_word{ background:url(../../images/common/20x500.png) no-repeat;}
+.search_panel button, .search_panel button:hover{ background:url(../../images/common/pro_icon.png?v=6) no-repeat;}
+.nav, .nav_list li a:hover, .nav_list li a.cur_nav, .nav_list li a.cur_nav:hover{ background:url(../../images/common/nav.png?v=20120907) no-repeat;}
+
+/*===========site_nav=========*/
+.site_nav{ background:#eee; border-bottom:1px solid #ccc; height:24px; line-height:24px;}
+.site_nav_inner{ position:relative; z-index:1; width:1000px; margin:0 auto;}
+
+.login_info{ float:left;}
+.login_info a{ padding:0 5px; color:#4e9700; text-decoration:none;}
+.login_info a:link{ padding:0 5px; color:#4e9700; text-decoration:none;}
+.login_info span.user_name{ padding:0 8px;}
+.login_info .infor_color{ color:#666;}
+.login_info a.sitenav_mobile{ background-position:1px -2px; float:left; padding:0 0 0 20px; margin:0 10px 0 0; color:#404040; }
+.login_info a:hover{ color:#f60;}
+.addtion_menu{ position:absolute; right:0; top:1px;}
+.addtion_menu a{ padding:0 3px; color:#404040;}
+.addtion_menu a:link{ padding:0 3px; color:#404040; text-decoration:none;}
+.addtion_menu a.tuniu_wb{ background-position:-2px -31px; padding:0 0 0 20px; margin:0 10px 0;}
+.addtion_menu a:hover{ color:#f60;}
+
+/*===========search=========*/
+.header{ width:1000px; margin:0px auto;}
+.logo{ float:left; width:290px; height:80px; margin:10px 0 0 0;}
+.logo h1{ float:left; width:163px; height:55px; margin:5px 0 0 0;}
+.logo h2{ float:left; width:163px; height:55px; margin:5px 0 0 0;}
+.logo div.logocon{ float:left; width:163px; height:55px; margin:5px 0 0 0;}
+.city_tab{ float:left; margin:18px 0 0 10px;}
+.city_tab .city_layout{ position:relative; z-index:2000;}
+.city_tab a.change_city{ position:relative; display:block; border:1px solid #fff; border-bottom:none; background:#fff; color:#404040; margin:0 0 -1px; width:60px; text-align:center; height:14px; padding:2px; color:#404040; white-space:nowrap; z-index:10;}
+.city_tab a.change_city:link{ text-decoration:none;}
+.city_tab a.change_city:hover{ color:#f60;}
+
+.city_tab .show_city{ float:left; display:none; position:absolute; left:0; background:#fff; border:1px solid #f90; width:400px; z-index:9;}
+.city_tab .show_city dl{ border-bottom:1px dotted #e6e6e6; overflow:hidden; width:400px; height:24px; line-height:24px; padding:8px 0; margin:0 0 -1px;}
+.city_tab .show_city dl.btr_none{ border-bottom:none;}
+.city_tab .show_city dt{ float:left; color:#666; width:60px; text-align:center;}
+.city_tab .show_city dd{ float:left;}
+.city_tab .show_city dd a{ margin:0 15px 0 0; color:#404040;}
+.city_tab .show_city dd a:link{ margin:0 15px 0 0; color:#404040; text-decoration:none;}
+.city_tab .show_city dd a:hover{ color:#f60;}
+.city_tab .show_city dd span{ color:#999; margin:0 15px 0 0;}
+.city_tab .depart_city{ font-size:14px; font-weight:700; padding:0 0 0 5px;}
+
+.city_tab.change_tab a.change_city{  border:1px solid #f90; border-bottom:none;}
+.city_tab.change_tab .show_city{ display:block;}
+
+.search{ float:left; width:450px; height:90px; margin:0 20px 0 0;}
+.search_panel{ margin:17px 0 0 0; border-radius:2px 0 0 2px;}
+.search_panel_fields{ float:left; position:relative; background:#ff7a21; width:348px; height:30px; }
+.search_panel input{ position:absolute; top:2px; left:2px; border:0 none; width:338px; height:16px; padding:5px; box-shadow:2px 2px 2px #ffe4d2 inset; font-size:14px; color:#404040;}
+.search_panel button{ float:left; width:98px; height:30px; border:0 none; background-position:0 -397px; cursor:pointer; font-size:16px; font-weight:700; color:#fff;}
+.search_panel button:hover{ background-position:0 -427px;}
+.search_hots{ clear:both; padding:10px 0 0 0;}
+.hot_keyword{ color:#4e9700; background-position:-2px -57px; padding:0 0 0 20px;}
+.hot_keyword a{ padding:0 5px; color:#999;}
+.hot_keyword a:link{ padding:0 5px; color:#999; text-decoration:none;}
+.hot_keyword a:hover{ color:#f60;}
+
+.tuniu_phone, .ad_wrap{ float:left; height:52px; overflow:hidden; padding:0 0 0 15px; width:225px; margin:25px 0 0 0; text-align:center;}
+.tuniu_phone .left_part{float:left;position:relative;}
+.tuniu_phone .right_part{float:left;}
+.tuniu_24{ position:relative;top:0;right:0;}
+.tuniu_400{ position: relative; top:0; right:0; color: #CC3300; font-family: Arial,Helvetica,sans-serif; font-size: 18px; text-align:right;}
+
+/*==========xiala==========*/
+.autocomplete-w1 { position:absolute; top:0px; left:0px; margin:8px 0 0 6px; /* IE6 fix: */ _background:none; _margin:0; }
+.autocomplete { border:1px solid #eaeaea; background:#FFF; cursor:default; text-align:left; max-height:350px; overflow:auto; margin:-6px 6px 6px -6px; padding:0 5px; /* IE6 specific: */ _height:350px;  _margin:0; _overflow-x:hidden; }
+.autocomplete .selected { background:#F0F0F0; }
+.autocomplete div { padding:2px 5px; white-space:nowrap; }
+.autocomplete strong { font-weight:normal; color:#3399FF; }
+/*===========nav=========*/
+.nav{ background-position:0 0; width:1000px; height:36px; line-height:36px; margin:2px auto; overflow:visible;}
+.nav_main{ display:block; height:36px; float:left; padding:0 0 0 9px;}
+.nav_list{}
+.nav_list li{ position:relative; float:left; overflow:visible;}
+.nav_list li a{ float:left; display:block; width:auto; height:36px; color:#fff; font-weight:700; font-size:14px; padding:0 10px; text-decoration:none;}
+.nav_list li a:hover{ background-position:0 -36px; height:36px; color:#fff; text-decoration:none;}
+/*.nav_list li a.cur_nav, .nav_list li a.cur_nav:hover{position:relative; background-position:0 -72px; color:#404040; height:40px; line-height:40px; margin:-2px 0; width:auto; text-decoration:none;}*/
+.nav_list li a.cur_nav, .nav_list li a.cur_nav:hover{position:relative; background-position:0 -72px; color:#404040; height:36px; line-height:36px; margin:0; width:auto; text-decoration:none;}
+.nav_list li span.remai, .nav_list li span.tejia, .nav_list li span.fanxian{ position:absolute; top:-7px; right:0px; display:block; width:30px; height:17px; line-height:17px; text-indent:-20000em;}
+.nav_list li span.remai{ background-position:0 -943px;}
+.nav_list li span.tejia{ background-position:0 -967px;}
+.nav_list li span.fanxian{ background-position:0 -990px;}
+
+.nav_c{width:147px;height:33px;float:right;background-position:right -35px;font-size:12px;line-height:34px;overflow:hidden}
+.nav_c li{padding:2px 4px 0 4px;float:left;font-weight:bold}
+.nav_c .nav_word{ margin-left:-2px; padding-right:15px; background-position:25px -303px; color:#f90}
+.nav_c a:link, .nav_c a:visited{color:#fff;text-decoration:none}
+.nav_c a:hover{color:#ff9900}
+
+/* right nav css */
+#nav_c 
+{
+	width:147px;
+	height:33px;
+	float:right;
+	background-position:right -35px;
+	font-size:12px;
+	line-height:34px;
+	overflow:hidden;
+}
+#nav_c li {
+	padding:2px 4px 0 4px;
+	float:left;
+	font-weight:bold;
+}
+#nav_c #nav_word {
+	margin-left:-2px;
+	padding-right:15px;
+	background:url(http://img1.tuniucdn.com/u/v1/img/bg_ico.gif?v=10) no-repeat;
+	background-position:35px 17px;
+	color:#f90;
+}
+#nav_c a:link,#nav_c a:visited{color:#fff;text-decoration:none;}
+#nav_c a:hover{color:#ff9900;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

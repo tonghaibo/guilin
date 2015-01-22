@@ -1,0 +1,1 @@
+<?php {"pri":"id","0":"name","1":"level","2":"usetype","3":"upid","4":"sort"}yes

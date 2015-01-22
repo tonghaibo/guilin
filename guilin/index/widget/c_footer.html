@@ -1,0 +1,20 @@
+</div>
+<!--中间结束 -->
+<!--底部 -->
+<div id="Footer">
+		<p>
+		<?php 
+	$footerlist=Y::Lang('index','footer'); 
+	if($footerlist && is_array($footerlist)){
+		foreach($footerlist as $val){
+			echo '<a target="_blank" href="'.$val['url'].'">'.$val['name'].'</a>&nbsp;&nbsp;';
+		}
+	}
+	?>
+		</p>
+		<p class="fSpacing"><?php echo Y::Config('sys','icp'); ?><br><span class="Copy_style">Copyright ? <script>var date = new Date();document.write(date.getFullYear());</script>&nbsp;&nbsp;<?php echo Y::Config('sys','domain'); ?></span></p>
+
+</div>
+<!--底部结束-->
+</body>
+</html>

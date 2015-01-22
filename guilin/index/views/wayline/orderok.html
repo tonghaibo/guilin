@@ -1,0 +1,134 @@
+<?php Y_Widget::display('header',$web); ?>
+<!-- top开始 -->
+<?php Y_Widget::display('top'); ?>
+<!-- top结束 -->
+<!-- nav开始 -->
+<?php Y_Widget::display('nav'); ?>
+<!-- nav结束 -->
+<!-- content开始 -->
+<div id="content" class="clearfix MiddleBox ">
+<div id="main" class="clearfix" style="position:relative">
+<div class="conall">
+<?php 
+if($wayline){
+?>
+	<div class="ndwz">您的位置：<a href="index.html">游桂林网</a> &gt; <a href="wayline.html">线路预定</a> &gt; <a href="wayline_detail.html?id=<?php echo $wayline['wid']; ?>" title="<?php echo $wayline['name']; ?>"><?php echo $wayline['name']; ?></a></div>
+	<div id="new_conten">
+		<div id="newRight">
+		<form name="bookform" action="#" method="POST">
+		<input type="hidden" name="wid" value="<?php echo $wayline['wid']; ?>" />
+		<div class="order_input mg_t8">
+			<div class="tit"><h3>订单信息</h3></div>
+			<div class="txt">
+			<ul>
+				<li>
+				<div class="txt99">&nbsp;&nbsp;</div>
+					<div class="field99 f18 green">
+					<img src="public/images/ico_ok.gif" />订单提交成功！														
+					<a target="_blank" href="javascript:window.print();">打印</a>
+					</div>
+				</li>
+				<li>
+					<div class="txt99">订单编号：</div>
+					<div class="field99">
+						<?php echo $order['oid']; ?>
+					</div>
+				</li>	
+				<li>
+					<div class="txt99">价格说明：</div>
+					<div class="field99">
+					&nbsp;&nbsp;
+					成人：<em class="cf60">￥<?php echo $wayline['price']; ?></em>
+					&nbsp;&nbsp;
+					儿童：<em class="cf60">￥<?php echo $wayline['pricehalf']; ?></em>
+					</div>
+				</li>
+				<li>
+					<div class="txt99">出发日期：</div>
+					<div class="field99">
+						<?php echo $order['starttime']; ?>
+					</div>
+				</li>				
+				<li>
+					<div class="txt99">参团人数：</div>
+					<div class="field99">
+						<?php echo $order['adult']; ?>
+						<?php echo $order['child']; ?>
+					</div>
+				</li>							
+				<li style="line-height:24px;">
+						<div class="txt99">应付金额：</div>
+						<div class="field99">
+							<em class="price f18" id="totalprice">￥<?php echo $order['price']; ?></em>
+						</div>
+				</li>
+			</ul>		
+				</div>
+		</div>
+		<div class="order_input">
+		<div class="tit"><h3>代表人信息</h3></div>
+		<div class="txt">
+		<ul>
+		<li>
+			<div class="txt99"><span class="red">*</span>姓名：</div>
+			<div class="field99">
+			<?php echo $order['name']; ?>
+			</div>
+		</li>
+		<li><div class="txt99"><span class="red">*</span>联系人手机：</div>
+		<?php echo $order['mobile']; ?>
+		</li>
+		<li><div class="txt99"><span class="red">*</span>身份证件号：</div>
+		<?php echo $order['card']; ?>
+		</li>
+		<li><div class="txt99">备注信息：</div>
+		<?php echo $order['mark']; ?>
+		<span>(留言给旅行社)</span>
+		</li>
+		</ul>
+		<div class="tips1" style="clear:both;">付款方式：无需提前付款，直接到旅行社前台付款<span><br>请您及时到旅行社签订参团协议，如想取消请及时通告。</span></div>
+		</div>
+		</div>
+		</div><!--newRight-->
+		<div id="newLeft">
+			<div class="list_hot" style="margin-top:8px">
+		    	<div class="txt txt1">
+		    	<div style="font-size:12px;line-height:24px; height:50px; width:100%;" class="borderBottom">
+					<img height="50px" src="<?php echo Y_Pr::image(Ly_Uploads::getUrl($wayline['img']),85,85) ?>" style="float:left; margin-right:5px">		    		
+		    		<div style="vertical-align:top">
+						<p>
+							<a href="wayline.detail.html?id=<?php echo $wayline['wid']; ?>" title="<?php echo $wayline['name']; ?>"><?php echo $wayline['name']; ?></a>							
+						</p>
+					</div>
+				</div>
+		    	<p style="font-size:13px;line-height:24px">交   通：<?php echo $wayline['traffic']; ?>	    	
+		    	</p>
+		    	<p style="font-size:13px;line-height:24px">联   系：<?php echo $wayline['contact']; ?></p>
+		    	</div>
+		        <div class="why_cncn">
+		    	<h5>为什么选择游桂林</h5>
+		        <dl>
+		        	<dt>保证低价</dt>
+		            <dd>网络预订最低价</dd>
+		            <dt>保证有房</dt>
+		            <dd>到店无房赔付首晚房费</dd>
+		            <dt>7*24小时服务</dt>
+		            <dd>提供优质服务，线上线下均可享受，服务热线：40076-40075</dd>
+		        </dl>
+		   	 	</div>
+		   	 </div>
+		</div>
+	</div>
+	<?php }else{
+		echo '<span class="red">您访问的线路不存在或者已经被删除！</span>';
+	} ?>
+</div>
+</div>
+<!--mian结束 -->
+</div>
+<!-- content结束 -->
+<!-- footer开始 -->
+<?php Y_Widget::display('footer'); ?>
+<!-- footer结束 -->
+</body>
+</html>

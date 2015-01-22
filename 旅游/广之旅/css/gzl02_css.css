@@ -1,0 +1,52 @@
+@charset "gb2312";
+body {margin:0px;}
+div,ul,ol,li,img,p {margin:0px auto; padding:0px; border:0px;}
+ul,ol {list-style-type:none;}
+
+/*.gzl02_toolbar,.gzl02_toolbar div.main,.gzl02_vice-toolbar,.gzl02_top_banner,.gzl02_navigationbar {margin:0px auto; padding:0px; border:0px;}*/
+.gzl02_toolbar div.main a.button01,.gzl02_toolbar div.main div.gzl02_call,.gzl02_toolbar div.main div.gzl02_call a,.gzl02_navigationbar li a:hover,.gzl02_navigationbar li a.hover {background:url(../images/gzl02_top_puzzle.png) no-repeat;}
+
+.gzl02_toolbar {width:100%; height:27px; background:#ecebeb; border-bottom:1px #d8d8d8 solid;}
+.gzl02_toolbar div.main {width:980px; height:27px; position:relative;}
+.gzl02_toolbar div.main div.left_button {position:absolute; top:3px; left:0px;}
+.gzl02_toolbar div.main div.left_button a {height:20px; display:block; float:left; margin-right:5px; background-position:0px 0px; font:13px/20px Arial, "宋体"; color:#fff; text-decoration:none; padding:0px 10px;}
+.gzl02_toolbar div.main div.left_button a:hover {background-position:0px -20px;}
+.gzl02_toolbar div.main div.gzl02_call {width:80px; height:25px; background-position:-177px -25px; position:absolute; top:1px; right:90px;}
+.gzl02_toolbar div.main div.gzl02_call a {width:80px; height:25px; display:block; background-position:-177px 0px;}
+.gzl02_toolbar div.main a.gzl02_help {font:13px/16px Arial, "宋体"; color:#666; position:absolute; top:7px; right:0px;}
+.gzl02_toolbar div.main a.gzl02_help:hover {color:#999;}
+.gzl02_vice-toolbar {width:980px; height:29px; position:relative;}
+.gzl02_vice-toolbar div.text01 {position:absolute; bottom:7px; left:0px; font:13px/16px Arial, "宋体"; color:#666;}
+.gzl02_vice-toolbar div.text01 a {font:13px/16px Arial, "宋体"; color:#518d00; padding:0px 5px;}
+.gzl02_vice-toolbar div.text01 a:hover {color:#999;}
+.gzl02_vice-toolbar div.text02 {position:absolute; bottom:7px; left:350px; font:13px/16px Arial, "宋体"; color:#333;}
+.gzl02_vice-toolbar div.text03 {position:absolute; bottom:7px; right:0px; font:13px/16px Arial, "宋体"; color:#ccc;}
+.gzl02_vice-toolbar div.text03 a {font:13px/16px Arial, "宋体"; color:#666; padding:0px 5px;}
+.gzl02_vice-toolbar div.text03 a:hover {color:#999;}
+.gzl02_top_banner {width:980px; height:90px; position:relative; padding-bottom:8px;}
+.gzl02_top_banner div.logo {position:absolute; top:0px; left:0px; width:210px; height:90px; background:url(../images/gzl02_logo.jpg) no-repeat;}
+.gzl02_top_banner div.logo a {width:210px; height:90px; display:block;}
+
+.gzl02_top_banner div.banner {position:absolute; top:0px; right:0px; width:760px; height:90px;}
+.gzl02_navigationbar {width:980px; height:32px; background:url(../images/gzl02_navigationbar_bg.jpg) no-repeat; padding:1px 0px 9px 0px;}
+.gzl02_navigationbar li {height:32px; float:left; position:relative;}
+.gzl02_navigationbar li.li01,.gzl02_navigationbar li.li01 a {width:55px; color:#fff;}
+.gzl02_navigationbar li.li02,.gzl02_navigationbar li.li02 a {width:65px; color:#fff;}
+.gzl02_navigationbar li.li03,.gzl02_navigationbar li.li03 a {width:75px; color:#fff;}
+.gzl02_navigationbar li span {width:1px; height:13px; background:#b1d569; position:absolute; right:-1px; top:10px; overflow:hidden;}
+.gzl02_navigationbar li a {height:32px; text-align:center; display:block; font:800 13px/32px Arial, "宋体"; color:#fff; text-decoration:none;}
+.gzl02_navigationbar li a:hover {background-position:-259px -35px; color:#fff;}
+.gzl02_navigationbar li a.hover {background-position:-259px 0px; color:#fff;}
+.gzl02_navigationbar li a.hover:hover {background-position:-259px -35px; color:#fff;}
+
+/*2011/04/15 绵羊修改*/
+/*.gzl02_left_keyword,.gzl02_left_keyword ul,.gzl02_left_keyword li,.gzl02_left_keyword a {margin:0px auto; padding:0px; border:0px;}*/
+.gzl02_left_keyword {width:239px; border:1px #ccc solid; float:left; margin-bottom:8px;}
+.gzl02_left_keyword div.title {width:239px; height:29px; background:url(../images/i_box_topbg.gif) repeat-x; font:800 14px/29px Arial, "宋体"; color:#fff; text-indent:10px;}
+.gzl02_left_keyword ul {width:221px; padding:10px 0px;}
+.gzl02_left_keyword ul a {font:12px/20px Arial, "宋体"; color:#333; text-decoration:none; white-space:nowrap;}
+.gzl02_left_keyword ul span.span01 {display:inline-block; width:10px; height:10px; font:10px/20px Arial; color:#ccc;}
+.gzl02_left_keyword ul:hover a {color:#537900;}
+.gzl02_left_keyword ul:hover a:hover {background:#fba53d; color:#fff;}
+.l_box1 ul li a {white-space:nowrap; padding:0px 4px;}
+

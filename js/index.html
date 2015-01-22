@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+ <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+ <head>
+ <script type="text/javascript" src="jquery.min.js"></script>
+ <script type="text/javascript" src="farbtastic/farbtastic.js"></script>
+ <script type="text/javascript">
+ jQuery(document).ready(function() {
+    jQuery("select").AddIncSearch({
+        maxListSize   : 200,
+        maxMultiMatch : 100,
+        warnMultiMatch : 'top matches ...',
+        warnNoMatch    : 'no matches ...'
+    });
+ });
+ </script>
+ <body>
+ <form>
+   <select>
+     <option value="1">Hello</option>
+     <option value="2">You</option>
+	 <option value="1">Hello</option>
+     <option value="2">You</option>
+	 <option value="1">Hello</option>
+     <option value="2">You</option>
+   </select>
+ </form>
+ </body>
+ </html>

@@ -1,0 +1,41 @@
+<?php Y_Widget::display('header',array('b_info'=>$this->id)); ?>
+<?php Y_Widget::display('top'); ?>
+<!--content -->
+<div id="content">
+	<?php Y_Widget::display('tips',array('b_info'=>$this->id)); ?>
+	<!--main -->
+	<div class="main clearfix">
+	<?php Y_Widget::display('left'); ?>
+	<!--box开始 -->
+	<div id="box" class="clearfix">
+<!-- 这里写内容-->
+<form action="#" method="post" id="editPass">
+<table class="st nob">
+<tr>
+<td class="title"><span class="cred">*</span>登录密码：</td>
+<td><input type="password"  id="password" name="password" class="w250" title="登录密码" onblur="checkPass(this,'#password-tips')"/></td>
+<td class="info" id="password-tips">管理员登录时用的密码</td>
+</tr>
+<tr>
+<td></td>
+<td><input type="button" value="修改密码" name="bt" class="btn btn-green" onclick="subpass()" /></td>
+<td></td>
+</tr>
+</table>
+</form>
+<!-- 这里写内容结束-->
+	<!--box结束 -->
+	</div>
+	</div>
+	<!-- mainend-->
+</div>
+<script type="text/javascript">
+function subpass(){
+	if(checkPass('#password','#password-tips')){
+		document.getElementById('editPass').submit();
+	}else{
+		return false;
+	}
+}
+</script>
+<?php Y_Widget::display('footer');?>

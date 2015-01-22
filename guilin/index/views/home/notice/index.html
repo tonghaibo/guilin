@@ -1,0 +1,38 @@
+<?php  
+if($info){
+	echo '<ul class="message_list">';
+	foreach($info as $v){
+		echo '<li>';
+		echo '<span class="date">'.date('Y-m-d H:i',$v['pubtime']);
+		if($v['uid']!=0){
+			echo ' <a href="javascript:void(0)" onclick="delnotice(this,'.$v['id'].')">删除</a></span>';
+		}else{
+			echo '</span>';
+		}
+		echo '<span class="icons"><img src="public/images/Lquote.gif" /></span>';
+		echo '<div class="text" style="line-height:18px;">';
+		if($v['url']){
+		echo '<a href="'.$v['url'].'"><b>'.$v['title'].'</b></a><br>';
+		}else{
+		echo '<b>'.$v['title'].'</b><br>';
+		}
+		echo $v['notice'];
+		if($v['url']){
+		echo '&nbsp;&nbsp;<a href="'.$v['url'].'" target="_blank">查看详情</a>';
+		}
+		echo '</div></li>';
+	}
+	echo '</ul>';
+}else{
+	echo '暂且没有任何通知';
+}
+?>
+<script type="text/javascript">
+function delnotice(obj,id){
+show_comfirm.open(1,'确定要删除该通知吗？',function(){
+	$.get('home_donotice.html?do=del',{'id':id},function(){
+		$(obj).parents('li').remove();
+	});
+})
+}
+</script>

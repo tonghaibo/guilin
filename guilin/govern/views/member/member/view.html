@@ -1,0 +1,60 @@
+<link rel="stylesheet" href="./public/css/admin/admin.css" type="text/css">
+<!-- 这里写内容-->
+<table class="st nob" width="100%" >
+<tr>
+    <td width="10%" rowspan="5"><img src="<?php echo Ly_User::getUserimg($u['userimg'],120); ?>" /></td>
+    <td width="20%" >用&nbsp;&nbsp;户：<span class="ctitle"><a href="user.html?uid=<?php echo $u['uid'] ?>" target="_blank"><?php echo $u['name']; ?></a></span></td>
+    <td width="25%">邮&nbsp;&nbsp;箱：<span class="ctitle"><?php echo ($u['rzemail']?'<span class="icon icon-ok"></span>':'<span class="icon icon-error"></span>').$u['email']; ?></span></td>
+    <td width="30%">手&nbsp;&nbsp;机：<span class="ctitle"><?php echo ($u['rzmobile']?'<span class="icon icon-ok"></span>':'<span class="icon icon-error"></span>').$u['mobile']; ?></span></td>
+  </tr>
+  <tr>
+    <td width="20%">性&nbsp;&nbsp;别：<span class="ctitle"><?php echo Ly_Items::getName('user','sex',$u['sex']); ?></span></td>
+    <td width="25%">年&nbsp;&nbsp;龄：<span class="ctitle"><?php echo Ly_User::getAge($u['birth_year']); ?></span></td>
+    <td width="30%">生&nbsp;&nbsp;日：<span class="ctitle"><?php echo $u['birthday']; ?></span></td>
+  </tr>
+  <tr>
+    <td width="20%">真&nbsp;&nbsp;名：<span class="ctitle"><?php echo $u['realname']; ?></span></td>
+    <td width="25%">城&nbsp;&nbsp;市：<span class="ctitle"><?php echo Ly_Area::getAddress($u['cityid']); ?></span></td>
+	<td width="30%">证&nbsp;&nbsp;件：<span class="ctitle"><?php echo ($u['rzcredit']?'<span class="icon icon-ok"></span>':'<span class="icon icon-error"></span>').$u['credit']; ?></span></td>
+  </tr>
+  <tr>
+    <td width="20%">收&nbsp;&nbsp;入：<span class="ctitle"><?php echo Ly_Items::getName('user','income',$u['income']); ?></span></td>
+    <td width="25%">职&nbsp;&nbsp;业：<span class="ctitle"><?php echo Ly_Items::getName('user','jobs',$u['jobs']); ?></span></td>
+	<td width="30%">教&nbsp;&nbsp;育：<span class="ctitle"><?php echo Ly_Items::getName('user','education',$u['education']); ?></span></td>
+  </tr>
+  <tr>
+    <td width="20%">状&nbsp;&nbsp;态：<span class="ctitle"><?php echo Ly_Items::getName('user','status',$u['status']); ?></span></td>
+    <td width="25%">等&nbsp;&nbsp;级：<span class="ctitle"><?php echo Ly_User_Rank::getName($u['ranklevel']).'('.$u['rank'].')'; ?></span></td>
+	<td width="30%">管&nbsp;&nbsp;理：<span class="ctitle"><?php echo Ly_Items::getName('user','grade',$u['grade']); ?></span></td>
+  </tr>
+  <tr>
+    <th style="font-weight:normal">登录信息：<span class="ctitle"><?php echo $u['logins']; ?>次</span></th>
+    <th style="font-weight:normal" colspan="5">最近登录：<span class="ctitle"><?php echo date('Y-m-d,H:i:s',$u['logintime']).'(<a href="govern.php?ro=index&ac=ip&ip='.$u['loginip'].'" target="_blank">'.$u['loginip'].'</a>)'; ?></span>
+	&nbsp;&nbsp;&nbsp;&nbsp;注册信息：<span class="ctitle"><?php echo date('Y-m-d,H:i:s',$u['regtime']).'(<a href="govern.php?ro=index&ac=ip&ip='.$u['regip'].'" target="_blank">'.$u['regip'].'</a>)'; ?></span>
+	</th>
+  </tr>
+  <tr>
+    <td>信息统计：</td>
+    <td colspan="5">分享：<span class="ctitle"><a target="_blank" href="govern.php?ro=mod&ac=content&s_uid=<?php echo $u['uid'];?>"><?php echo $u['shares']; ?></a></span>
+	&nbsp;&nbsp;关注：<span class="ctitle"><a href="govern.php?ro=member&ac=friend&uid=<?php echo $u['uid'] ?>" target="_blank"><?php echo $u['attention']; ?></a></span>
+	&nbsp;&nbsp;粉丝：<span class="ctitle"><a href="govern.php?ro=member&ac=friend&uid=<?php echo $u['uid'] ?>" target="_blank"><?php echo $u['follow']; ?></a></span>
+	&nbsp;&nbsp;收集：<span class="ctitle"><?php echo $u['collect']; ?></span>
+	&nbsp;&nbsp;消息：<span class="ctitle"><a href="govern.php?ro=member&ac=mess&touid=<?php echo $u['uid'] ?>" target="_blank"><?php echo $u['message']; ?></a></span>
+	&nbsp;&nbsp;积分：<span class="ctitle"><a target="_blank" href="govern.php?ro=member&ac=rank&uid=<?php echo $u['uid']; ?>"><?php echo $u['rank']; ?></a></span>
+	&nbsp;&nbsp;人气：<span class="ctitle"><?php echo $u['views']; ?></span>
+	</td>
+  </tr>
+  <tr>
+  <td valign="top">证件图片：</td>
+  <td colspan="5" valign="top">
+  <?php
+  if($u['creditimg']){
+	echo '<img src="'.Y_Pr::image($u['creditimg'],300,180).'" />';
+  }else{
+	echo '暂且没有上传任何证件！';
+  }
+  ?>
+  </td>
+  </tr>
+</table>
+<!-- 这里写内容结束-->

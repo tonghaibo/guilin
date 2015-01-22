@@ -1,0 +1,108 @@
+<?php Y_Widget::display('header',array('b_info'=>$this->id)); ?>
+<?php Y_Widget::display('top'); ?>
+<!--content -->
+<div id="content">
+	<?php Y_Widget::display('tips',array('b_info'=>$this->id)); ?>
+	<!--main -->
+	<div class="main clearfix">
+	<?php Y_Widget::display('left'); ?>
+	<!--box开始 -->
+	<div id="box" class="clearfix">
+<!-- 这里写内容-->
+<div class="box box-info">用户积分记录，用户ID
+<input type="text" class="w80" id="uid_ss" value="<?php echo $this->get('uid'); ?>" />
+<button class="btn" onclick="change()">查看</button> 积分(可为负)<input type="text" class="w50" id="rank_ss" value="5" />
+<button class="btn btn-green" onclick="award()">奖励</button>
+</div>
+<table class="st full">
+<tr>
+<th width="10%">ID号</th>
+<th width="10%">用户ID</th>
+<th width="15%">邮箱</th>
+<th width="15%">记录</th>
+<th width="5%">积分</th>
+<th width="8%">操作剩余</th>
+<th width="17%">更新时间</th>
+<th width="5%">操作人员</th>
+<th width="15%">操作</th>
+</tr>
+<?php
+if($llist){
+	foreach($llist as $val){
+		echo '<tr>';
+		echo '<td><input type="checkbox" name="uid" value="'.$val['id'].'" />'.$val['id'].'</td>';
+		echo '<td><a title="访问该用户" target="_blank" href="user.html?uid='.$val['uid'].'">'.$val['uid'].'</a></td>';
+		echo '<td><a href="?ro=member&ac=member&s_uid='.$val['uid'].'" target="_blank">'.Ly_User::getEmail($val['uid']).'</a></td>';
+		echo '<td>'.$val['action'].'</td>';
+		echo '<td>'.$val['rank'].'</td>';
+		echo '<td>'.$val['afterrank'].'</td>';
+		echo '<td>'.date('Y-m-d H:i:s',$val['dotime']).'</td>';
+		echo '<td>'.($val['gid']?(Ly_Admin::getName($val['gid'])):'自动').'</td>';
+		echo '<td><a class="no" href="'.$this->getUrl().'&method=del&id='.$val['id'].'"><span class="icon icon-del"></span>删除</a></td>';
+		echo '</tr>';
+	}
+}else{
+	echo '<tr><td class="cred" colspan="9">没有匹配数据</td></tr>';
+}
+
+?>
+<tr>
+<td colspan="3"><input type="checkbox" id="checkAll" onclick="checkall('uid')">全/反 <a href="javascript:void(0)" onclick="del()">删除</a></td>
+<td colspan="6" style="text-align:right">
+<div id="ui-page"><?php echo $pages; ?></div>
+</td>
+</tr>
+</table>
+<div class="box box-info">用户积分控制表</div>
+<table class="st full">
+<tr >
+<th width="5%">ID</th>
+<th width="25%">名称</th>
+<th width="10%">类型</th>
+<th width="10%">积分数</th>
+<th width="10%">单日上限</th>
+<th>操作</th>
+</tr>
+<?php 
+foreach($rlist as $val){
+	echo '<tr>';
+	echo '<td>'.$val['id'].'</td>';
+	echo '<td>'.$val['name'].'</td>';
+	echo '<td>'.($val['type']?'<span class="cred">惩罚</span>':'<span class="cgren">奖励</span>').'</td>';
+	echo '<td>'.$val['rank'].'</td>';
+	echo '<td>'.($val['dayrank']?$val['dayrank']:'无限制').'</td>';
+	echo '<td><a class="no" href="'.$this->getUrl().'&method=edit&id='.$val['id'].'"><span class="icon icon-edit"></span>编辑</a></td>';
+	echo '</tr>';
+}
+ ?>
+</table>
+<!-- 这里写内容结束-->
+	<!--box结束 -->
+	</div>
+	</div>
+	<!-- mainend-->
+</div>
+<script type="text/javascript">
+function del(){
+	var id = getIds('uid');
+	if(id==''){
+		uptips('请选择值！');
+		return;
+	}else{
+		var url='<?php echo $this->getUrl() ?>&method=del&id='+id;
+		window.location.href=url;
+	}
+}
+function award(){
+	var uid = $('#uid_ss').val();
+	var rank = $('#rank_ss').val();
+	var url='?ro=member&ac=rank&method=award&uid='+uid+'&rank='+rank;
+	window.location.href=url;
+}
+function change(){
+	var uid = $('#uid_ss').val();
+	var url='?ro=member&ac=rank&uid='+uid;
+	window.location.href=url;
+}
+</script>
+<?php Y_Widget::display('footer');?>

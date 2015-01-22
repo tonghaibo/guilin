@@ -1,0 +1,96 @@
+<?php Y_Widget::display('header',$web); ?>
+<!-- top开始 -->
+<?php Y_Widget::display('top'); ?>
+<!-- top结束 -->
+<!-- nav开始 -->
+<?php Y_Widget::display('nav'); ?>
+<!-- nav结束 -->
+<!-- content开始 -->
+<div id="content" class="clearfix MiddleBox ">
+<div id="main" class="clearfix">
+<div class="hdBar clearfix">
+	<div class="hotNav">
+    <span>热门标签：</span>
+	<a href="share.html?sText=<?php echo $this->get('sText'); ?>" <?php if(!$this->get('tagid')){ echo 'class="sel"'; }; ?>>全部</a>
+	<?php
+	$hot = Ly_Tags::getHot(30);
+	if($hot){
+		foreach($hot as $v){
+			echo '<a href="?tagid='.$v['id'].'&sText='.$this->get('sText').'" ';
+			if($this->get('tagid')==$v['id']){
+				echo ' class="sel" ';
+			}
+			echo '>'.$v['name'].'</a>';
+		}
+	}
+	?>
+    </div>
+	<div class="sForm">
+	<form>
+	<span class="c999">标题搜索：</span>
+	<input type="hidden" name="tagid" value="<?php echo $this->get('tagid'); ?>" />
+	<input type="text" class="txt" name="sText" value="<?php echo $this->get('sText'); ?>" />
+	<input type="submit" value="搜素" class="btn" onmouseover="this.className='btnHover'" onmouseout="this.className='btn'"/>
+	<a href="share_pub.html" style="background: #ffaa48;color: #fff;border-color: #ffaa48;text-decoration: none;padding: 5px 8px;float:right;border-radius: 5px;font-size:14px;">发布分享</a>
+	</form>
+	</div>
+</div>
+<!-- 导行结束-->
+<!--main内容 -->
+<div class="list_items">
+<ul class="clearfix margtop10">
+<?php
+if($list){
+	foreach($list as $v){
+		echo '<li>';
+		echo '<div class="img">';
+		echo '<a href="share_detail.html?id='.$v['id'].'" title="'.$v['title'].'" target="_blank">';
+		$img = Ly_Uploads::getPath($v['img']);
+		echo '<img src="'.Y_Pr::image($img['path'],185,185).'" title="'.$img['des'].'">';
+		echo '</a>';
+		echo '<span class="bg"></span>';
+		echo '<a href="share_detail.html?id='.$v['id'].'" title="'.$v['title'].'" target="_blank" class="name_up">'.Y_Pr::substr($v['title'],0,20,false).'</a>';
+		echo '</div>';
+		echo '<div class="info">';
+		echo '<span class="right c999">'.date('m-d H:i',$v['pubtime']).'</span>';
+		echo '<a href="user.html?uid='.$v['l1_uid'].'" title="'.$v['l1_name'].'" target="_blank" class="photo">';
+		echo '<img src="'.Y_Pr::Image(Ly_User::getUserimg($v['l1_userimg']),48,48).'" alt="'.$v['l1_name'].'" width="22" height="22"></a>';
+		echo '<a href="user.html?uid='.$v['l1_uid'].'" title="'.$v['l1_name'].'" target="_blank">'.$v['l1_name'].'</a>';
+		echo '</div>';
+		echo '<p class="clearfix margtop5">';
+		echo '<span title="评论" class="message c666 left">评论 <a href="share_detail.html?id='.$v['id'].'#commentAnchor" target="_blank">'.$v['comments'].'</a></span>';
+		echo '<span title="浏览" class="browse c666 right">浏览 '.$v['views'].'</span>';
+		echo '</p>';
+		echo '</li>';
+	}
+}else{
+	echo '<li class="red">已经没有更多匹配数据了</li>';
+}
+?>
+</ul>
+<div class="Page1">
+<?php
+echo $_pages;
+?>
+</div>
+</div>
+<!--main内容结束 -->
+</div>
+<!--mian结束 -->
+</div>
+<!-- content结束 -->
+<!-- footer开始 -->
+<?php Y_Widget::display('footer'); ?>
+<!-- footer结束 -->
+<script type="text/javascript">
+$(function(){
+$('.list_items li:nth-child(4n)').addClass('last');
+$('.list_items li').hover(function(){
+	$(this).addClass('hover');
+},function(){
+	$(this).removeClass('hover');
+});
+});
+</script>
+</body>
+</html>

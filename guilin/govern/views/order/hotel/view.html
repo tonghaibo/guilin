@@ -1,0 +1,55 @@
+<link rel="stylesheet" href="./public/css/admin/admin.css" type="text/css">
+<!-- 这里写内容-->
+<table class="st nob" width="100%" >
+<tr>
+<?php 
+$hotel = Ly_Hotel::getBase($info['hid']);
+ ?>
+    <td rowspan="5"><img src="<?php echo Y_Pr::image($hotel['img'],120,120); ?>" /></td>
+    <td colspan="3">名&nbsp;&nbsp;称：<a target="_blank" href="hotel_detail.html?id=<?php echo $info['hid']; ?>"><?php echo $hotel['name']; ?></a></td>
+	</tr>
+  <tr>
+	<td>酒店ID：<span class="ctitle"><?php echo $info['hid']; ?></span></td>
+    <td>联&nbsp;&nbsp;系：<span class="ctitle"><?php echo $hotel['contact']; ?></span></td>
+	<td>发&nbsp;布&nbsp;人：<span class="ctitle"><?php echo Ly_User::getEmail($hotel['uid']); ?></span></td>
+  </tr>
+  <tr>
+    <td>姓&nbsp;&nbsp;名：<span class="ctitle"><?php echo $info['name']; ?></span></td>
+    <td>手&nbsp;&nbsp;机：<span class="ctitle"><?php echo $info['mobile']; ?></span></td>
+	<td>证&nbsp;&nbsp;件：<span class="ctitle"><?php echo $info['card']; ?></span></td>
+  </tr>
+  <tr>
+	<td>预定者：<span class="ctitle"><?php echo Ly_User::getName($info['uid']); ?></td>
+	
+    <td>天&nbsp;&nbsp;数：<span class="ctitle"><?php echo $info['days']; ?></span></td>
+    <td>入住时间：<span class="ctitle"><?php echo $info['starttime']; ?></span></td>
+  </tr>
+  <tr>
+    <td>下单时间：<span class="ctitle"><?php echo date('Y-m-d H:i:s',$info['ordertime']); ?></span></td>
+    <td>成交时间：<span class="ctitle"><?php echo $info['oktime']?date('Y-m-d H:i:s',$info['oktime']):''; ?></span></td>
+	<td>状&nbsp;&nbsp;态：<span class="ctitle"><?php echo Ly_Items::getName('order','status',$info['status']); ?></span></td>
+  </tr>
+  <tr>
+ <?php  $room = Ly_Hotel_Rooms::getBase($info['rid']);?>
+    <th style="font-weight:normal;text-align:center;vertical-align:middle"><img src="<?php echo Y_Pr::image(Ly_Uploads::getUrl($room['img']),50,50); ?>" />&nbsp;&nbsp;<span class="ctitle"><?php echo $room['name']; ?></span></th>
+    <th style="font-weight:normal" colspan="5">单价：<span class="corange"><?php echo $room['price']; ?>元</span>
+	&nbsp;&nbsp;预定数量：<span class="ctitle"><?php echo $info['num']; ?></span>
+	&nbsp;&nbsp;应支付:<span class="corange"><?php echo $info['price']; ?>元</span>
+	&nbsp;&nbsp;已支付:<span class="corange"><?php echo $info['handsel']+0.0; ?>元</span>
+	&nbsp;&nbsp;支付状态:<span class="ctitle"><?php echo $info['isorder']?'已支付':'未支付'; ?></span>
+	</th>
+  </tr>
+  <tr>
+  <td valign="top">备注信息：</td>
+  <td colspan="5">
+  <?php
+  if($info['mark']){
+	echo '<span class="ctitle">'.$info['mark'].'</span>';
+  }else{
+	echo '暂且无任何备注！';
+  }
+  ?>
+  </td>
+  </tr>
+</table>
+<!-- 这里写内容结束-->

@@ -1,0 +1,229 @@
+/* CSS Document */
+/*作者：yuexinok@126.com*/
+/*时间：2011-09-26日*/
+/*公用全局部分*/
+html,body,section,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td{margin:0;padding:0;outline:0}
+body{font: 12px Arial;color:#333;background:#fff url('../images/fabric_plaid.jpg');}
+img{border:0}
+a{ color: #2595B7;text-decoration:none; }
+a:hover { color: #F60;text-decoration: underline;}
+body {
+font: 12px Arial,Microsoft Yahei;
+color: #333;
+background: #ebeef6;
+}
+.header {
+height: 102px;
+background: url(../images/headerbg.gif) 0 0 repeat-x;
+}
+.middle970 {
+margin: 0 auto;
+width: 990px;
+zoom: 1;
+overflow: hidden;
+}
+.kxlogo {
+float: left;
+width: 202px;
+height: 65px;
+background: url(../images/logo1.gif) no-repeat;
+text-indent: -9999em;
+margin: 20px 0 0 3px;
+}
+.backindex {
+float: right;
+padding-left: 33px;
+background: url(../images/bcindex.gif) 0 0 no-repeat;
+height: 19px;
+line-height: 19px;
+font-size: 15px;
+color: #8792bf;
+margin-top: 55px;
+}
+.bannerbg {
+height: 275px;
+background: url(../images/bannerbg.jpg) 0 0 repeat-x;
+}
+.banner {
+height: 268px;
+background: url(../images/banner.jpg) center top no-repeat;
+}
+.padtop10 {
+padding-top: 10px;
+}
+#Footer {
+height: 89px;
+background: #FFF url(../images/footer_03.gif) repeat-x;
+padding-top: 22px;
+margin-top: 20px;
+}
+#Footer p {
+text-align: center;
+line-height: 24px;
+color: #fff;
+}
+#Footer .fSpacing {
+word-spacing: 0.1em;
+}
+#Footer a {
+color: #fff;
+}
+#Footer p span {
+padding: 0 4px;
+color: #fff;
+}
+#box-float {
+float: left;
+position: relative;
+}
+.Main_left {
+float: left;
+width: 198px;
+padding: 0 0 0 24px;
+}
+.MenuHd {
+width: 145px;
+display: block;
+line-height: 40px;
+font-size: 16px;
+text-align: center;
+color: #434f74;
+cursor: pointer;
+font-weight:normal;
+}
+.MenuHd a {
+display: block;
+color: #434f74;
+text-decoration:none;
+}
+.MenuHd_Ac {
+background: url(../images/navhdbg.gif) no-repeat;
+color: #2f3853;
+cursor: auto;
+font-size: 18px;
+line-height: 44px;
+}
+.Main_right {
+float: right;
+width: 748px;
+letter-spacing: 0.3px;
+}
+.Commondiv {
+zoom: 1;
+clear: both;
+background: #f7f8fb;
+border: 1px solid #dee2ee;
+padding: 23px 30px 43px 35px;
+font-family: Microsoft YaHei;
+color: #596b86;
+}
+.ComPcon {
+display: block;
+line-height: 24px;
+padding-top: 30px;
+}
+.Mod_Shad {
+height: 15px;
+background: url(../images/rbg_03.png) right 0 no-repeat;
+margin-bottom: 10px;
+}
+.Con_p {
+display: block;
+line-height: 24px;
+padding-bottom: 35px;
+}
+.f14 {
+font-size: 14px;
+}
+.Com_Title {
+font-size: 30px;
+color: #5a627a;
+}
+.Com_Map {
+background: #ebeef6 url(../images/map.png) center center no-repeat;
+padding: 8px;
+height: 216px;
+width: 655px;
+margin: 25px 0;
+}
+.Pro_Con {
+line-height: 24px;
+padding-top: 20px;
+}
+.Partner_Logo {
+overflow: hidden;
+zoom: 1;
+margin-top: 40px;
+border: 1px solid #dee2ee;
+border-right: none;
+border-top: none;
+width: 676px;
+}
+.Partner_Logo li {
+float: left;
+width: 168px;
+height: 118px;
+border: 1px solid #dee2ee;
+border-left: none;
+border-bottom: none;
+text-align: center;
+padding-top: 6px;
+}
+.Partner_more {
+overflow: hidden;
+zoom: 1;
+padding: 30px 0;
+}
+.Partner_more li {
+float: left;
+width: 92px;
+height: 30px;
+line-height: 30px;
+overflow: hidden;
+padding-right: 5px;
+}
+.Partner_more .Partner_h2 {
+width: 100%;
+font-size: 20px;
+padding-bottom: 5px;
+}
+.Serv_Mod {
+padding-top: 20px;
+line-height: 24px;
+}
+.Serv_link {
+height: 30px;
+margin-top: 30px;
+}
+.Serv_link a {
+display: block;
+margin: 0;
+}
+.Serv_link a:hover{color:#fff;}
+.Pnline_Sq, .Online_Sq {
+height: 30px;
+line-height: 30px;
+color: #fff;
+width: 76px;
+text-align: center;
+background: url(../images/online.png) center 3px no-repeat;
+margin-left: 10px;
+display: none;
+}
+.left{float:left}
+.Serv_color {
+color: #ff7a00;
+}
+.CommondivHeight {
+min-height: 450px;
+_height: 450px;
+}
+.Cus_box {
+padding: 20px 0 10px;
+}
+.Cus_list {
+clear: both;
+overflow: hidden;
+zoom: 1;
+line-height: 30px;
+}

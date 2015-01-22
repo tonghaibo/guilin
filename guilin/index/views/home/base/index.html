@@ -1,0 +1,269 @@
+<dl class="set_area_list">
+<dd class="c666">填写个人介绍让大家更加了解你，方便大家彼此交流！</dd>
+<dd>
+<div class="channel"><span style="font-size:10px;font-weight:normal;color:#f60">*</span>昵称：</div>
+<div class="attr">
+<label>
+<input class="txt" type="text" id="b_name" value="<?php echo $info['name']; ?>"/>
+</label>
+</div>
+</dd>
+<dd>
+<div class="channel"><span style="font-size:10px;font-weight:normal;color:#f60">*</span>性别：</div>
+<div class="attr">
+<label><input class="radio_select" type="radio" name="b_sex" value="1" <?php if($info['sex']==1){ echo 'checked'; } ?> >男</label>
+<label><input class="radio_select" type="radio" name="b_sex" value="2" <?php if($info['sex']==2){ echo 'checked'; } ?>>女</label>
+</div>
+</dd>
+<dd>
+<div class="channel"><span style="font-size:10px;font-weight:normal;color:#f60">*</span>生日：</div>
+<div class="attr">
+<select id="birth_year" class="txt" onchange="change_day()">
+<option value="0">年</option>
+<?php
+$year = date('Y')-1;
+for($i=$year;$i>1950;$i--){
+	echo '<option value="'.$i.'" ';
+	if($info['birth_year']==$i){
+		echo ' selected ';
+	}
+	echo '>'.$i.'</option>';
+}
+ ?>
+</select>
+<select id="birth_month" onchange="change_day()" class="txt">
+<option value="0" >月</option>
+<?php
+for($i=1;$i<=12;$i++){
+	echo '<option value="'.$i.'" ';
+	if($info['birth_month']==$i){
+		echo ' selected ';
+	}
+	echo '>'.$i.'</option>';
+}
+?>
+</select>
+</select>
+<select id="birth_day" class="txt" disabled>
+<option value="0">日</option>
+<?php
+if($info['birth_day']){
+	echo '<option value="'.$info['birth_day'].'" selected>'.$info['birth_day'].'</option>';
+}
+?>
+</select>
+<span class="prom">请放心填写，年份信息完全保密。</span>
+</div>
+</dd>
+<dd>
+<div class="channel"><span style="font-size:10px;font-weight:normal;color:#f60">*</span>所在地：</div>
+<div class="attr">
+<select onchange="change_city(this)" name="province" class="txt">
+<option value="0">-请选择省份-</option>
+<?php 
+foreach(Ly_Area::getList() as $v){
+	echo '<option value="'.$v['id'].'"';
+	if($info['provinceid']==$v['id']){
+		echo ' selected ';
+	}
+	echo '>'.$v['name'].'</option>';
+}
+ ?>
+</select> 
+<select id="b_city" name="city" disabled class="txt">
+<option value="0">-请选择城市-</option>
+<?php
+if($info['cityid']){
+	echo '<option value="'.$info['cityid'].'" selected>'.Ly_Area::getName($info['cityid']).'</option>';
+}
+?>
+</select>
+</div>
+</dd>
+<dd>
+<div class="channel">职业：</div>
+<div class="attr">
+<select name="jobs" class="txt">
+<option value="0">-请选择职业-</option>
+<?php
+foreach(Ly_Items::getList('user','jobs') as $v){
+	echo '<option value="'.$v['id'].'"';
+	if($v['id']==$info['jobs']){
+		echo ' selected ';
+	}
+	echo '>'.$v['name'].'</option>';
+}
+?>
+</select> 
+</div>
+</dd>
+<dd>
+<div class="channel">教育程度：</div>
+<div class="attr">
+<select name="education" class="txt">
+<option value="0">-请选择教育程度-</option>
+<?php
+foreach(Ly_Items::getList('user','education') as $v){
+	echo '<option value="'.$v['id'].'"';
+	if($v['id']==$info['education']){
+		echo ' selected ';
+	}
+	echo '>'.$v['name'].'</option>';
+}
+?>
+</select> 
+</div>
+</dd>
+<dd>
+<div class="channel">收入水平：</div>
+<div class="attr">
+<select name="income" class="txt">
+<option value="0">-请选择收入水平-</option>
+<?php
+foreach(Ly_Items::getList('user','income') as $v){
+	echo '<option value="'.$v['id'].'"';
+	if($v['id']==$info['income']){
+		echo ' selected ';
+	}
+	echo '>'.$v['name'].'</option>';
+}
+?>
+</select> 
+</div>
+</dd>
+<dd>
+<div class="channel"><span style="font-size:10px;font-weight:normal;color:#f60">*</span>个性签名：</div>
+<div class="attr">
+<?php if($info['signview']){
+	echo '<span class="red">您的个性签名，现处于屏蔽状态，请及时跟换</span><br>';
+} ?>
+<textarea class="txt" name="sign" id="bio" style="width:220px;height:50px;" maxlength="140"><?php echo $info['sign']; ?></textarea>
+<p class="prom">
+请用一句话展示个性的你，将展示在的个人主页，
+还可以输入<span id="bio-len" class="red">140</span>个字。</p></div>
+</dd>
+<dd>
+<div class="channel"></div>
+<div class="attr">
+<input class="btn_basic btn_a ft14" type="submit"  onclick="send_base()" value="保存设置"></div>
+</dd>
+</dl>
+<script type="text/javascript">
+function change_day(){
+	var obj = $('#birth_day');
+	var year = $('#birth_year').val();
+	var str = '<option value="0">日</option>';
+	if(year==0){
+		obj.attr({disabled:true});
+		obj.html(str);
+		return false;
+	}
+	var month = $('#birth_month').val();
+	if(month==0){
+		obj.attr({disabled:true});
+		obj.html(str);
+		return false;
+	}
+	month++;
+	if(month>12){
+		month -= 12;
+		year++;
+	}
+	var date = new Date(year,month-1,1);
+	var day = new Date(date.getTime()-1000*60*60*24);
+	day = day.getDate();
+	for(var i=1;i<=day;i++){
+		str += '<option value="'+i+'">'+i+'</option>';
+	}
+	obj.html(str);
+	obj.attr({disabled:false});
+}
+function change_city(obj){
+	var pid = $(obj).val();
+	var city = $('#b_city');
+	var str = '<option value="0">-请选择城市-</option>';
+	if(pid==0){
+		city.html(str);
+		city.attr({disabled:true});
+		return false;
+	}
+	$.post('home_dobase.html?do=getCity',{pid:pid},function(d){
+		if(d){
+			d = eval(d);
+			for(var a in d){
+				str += '<option value="'+d[a].id+'">'+d[a].name+'</option>';
+			}
+			city.attr({disabled:false});
+			city.html(str);
+		}
+	});
+}
+function send_base(){
+	var data = new Object;
+	data.name = $.trim($('#b_name').val());
+	var regix = /^[a-zA-Z_\-0-9\u4e00-\u9fa5]{2,10}$/;
+	if(!regix.test(data.name)){
+		show_msg.open('昵称在2-10个字符之间,且不能有特殊字符',2,2);
+		return false;
+	}
+	data.sex = parseInt($('input[name=b_sex]:checked').val());
+	if(!data.sex || typeof(data.sex)=='undefined'){
+		show_msg.open('请选择您的性别',2,2);
+		return false;
+	}
+	data.year = parseInt($('#birth_year').val());
+	if(data.year==0){
+		show_msg.open('请选择生日年份',2,2);
+		return false;
+	}
+	data.month = parseInt($('#birth_month').val());
+	if(data.month==0){
+		show_msg.open('请选择生日月份',2,2);
+		return false;
+	}
+	data.day = parseInt($('#birth_day').val());
+	if(data.day==0){
+		show_msg.open('请选择生日月份',2,2);
+		return false;
+	}
+	data.provinceid = parseInt($('select[name=province]').val());
+	if(data.provinceid==0){
+		show_msg.open('请选择省份！',2,2);
+		return false;
+	}
+	data.cityid = parseInt($('select[name=city]').val());
+	if(data.cityid==0){
+		show_msg.open('请选择城市！',2,2);
+		return false;
+	}
+	data.jobs = parseInt($('select[name=jobs]').val());
+	data.education = parseInt($('select[name=education]').val());
+	data.income = parseInt($('select[name=income]').val());
+	data.sign = $.trim($('textarea[name=sign]').val());
+	if(data.sign.length<2 || data.sign.length>140){
+		show_msg.open('个性签名字符长度在2-140之间！',2,2);
+		return false;
+	}
+	$.post('home_dobase.html?do=up',data,function(d){
+		if(d){
+			d = eval('('+d+')');
+			if(d.error=='0'){
+				show_msg.open('更新资料成功！',2,1);
+			}else{
+				show_msg.open(d.msg,2,2);
+			}
+		}
+	});
+	return false;
+}
+$(function(){
+$('#bio').keyup(function(){
+	var len = 140-$.trim($(this).val()).length;
+	$('#bio-len').html(len);
+	if(len<0){
+		show_msg.open('您输入的字数已超出140个字');
+	}
+});
+$('#bio-len').html(140-($('#bio').val()).length);
+});
+</script>

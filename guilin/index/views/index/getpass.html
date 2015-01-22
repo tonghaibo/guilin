@@ -1,0 +1,73 @@
+<?php Y_Widget::display('header',$web); ?>
+<!-- top开始 -->
+<?php Y_Widget::display('top'); ?>
+<!-- top结束 -->
+<!-- nav开始 -->
+<?php Y_Widget::display('nav'); ?>
+<!-- nav结束 -->
+<!-- content开始 -->
+<div id="content" class="MiddleBox ">
+
+<div id="Main">
+<h2 class="M-bd">找回密码</h2>
+<form action="?" method="post" name="loginform" id="resetPassForm">
+<ul class="ul-hd">
+<li>
+<div class="rtable-t rtable-tb left"><span class="rt-b">*</span> 请输入您的注册邮箱：</div>
+<input name="loginName" maxlength="50" onblur="lcLoginName(this.value);linputBlur(this);" onfocus="linputFocus(this)" class="li-input" id="loginName" value="<?php echo $name; ?>" tabindex="1" type="text">
+<div class="li-Prompt left" id="loginNameTip" style="display: none; "></div>
+</li>
+<li>
+<div class="rtable-t rtable-tb left"><span class="rt-b">*</span> 输入验证码：</div>
+<input name="code" type="text" class="li-input li-iptwo" id="code" tabindex="4" onfocus="changeVCode(0);linputFocus(this)" onblur="lcVcode(this.value);linputBlur(this);" value="<?php echo $vcode; ?>">
+<img id="validatecode" style="display:none" onclick="changeVCode(1)" class="yz-img left" align="absmiddle" height="30" width="81" src="">
+<div class="other-li" id="showCode" style="">
+<a href="javascript:void(0);" onclick="changeVCode(1);return false;">换一组</a><br>请输入图片中的字母。
+</div>
+<div class="li-Prompt left" id="codeTip" style="display:none; "></div>
+</li>
+<li>
+<div class="rtable-t rtable-tb rtable-lnow"></div>
+<div class="bc-dlu">
+<a class="bc_butn_d left" href="javascript:void(0);" onclick="submitResetPassForm();return false;"><span class="butn_d">申请重置密码</span></a>
+</div>
+</li>
+</ul>
+</form>
+</div>
+</div>
+<!-- content结束 -->
+<script type="text/javascript" src="<?php echo Y::Config('sys','domain'); ?>public/js/regLogin.js"></script>
+<script type="text/javascript">
+var errorCode = "<?php echo $error; ?>";
+if(errorCode){
+switch(errorCode){
+case '1':
+ lshowTip('loginNameTip',1);
+ break;
+case '4':
+lshowTip('loginNameTip',4);
+break;
+case '7':
+if(document.getElementById('code')){
+lshowTip('codeTip',7);
+}else{
+alert('非法提交表单');
+}
+break;
+case '8':
+alert('您今天发送短信数量已经达到上限，请24小时后再试。');
+break;
+}
+}
+function submitResetPassForm(){
+  var verLoginName = lcLoginName(document.getElementById('loginName').value);
+  var verCode = lcVcode(document.getElementById('code').value);
+  if(verLoginName && verCode){
+    document.getElementById('resetPassForm').submit();
+  }
+}
+</script>
+<!-- footer开始 -->
+<?php Y_Widget::display('footer'); ?>
+<!-- footer结束 -->

@@ -1,0 +1,160 @@
+<?php Y_Widget::display('header',$web); ?>
+<!-- top开始 -->
+<?php Y_Widget::display('top'); ?>
+<!-- top结束 -->
+<!-- nav开始 -->
+<?php Y_Widget::display('nav'); ?>
+<!-- nav结束 -->
+<!-- content开始 -->
+<div id="content" class="clearfix MiddleBox ">
+<div id="main" class="clearfix">
+<!--左侧 -->
+<div class="area_main">
+<div class="other_user_item clearfix">
+<div class="img">
+<span class="photo">
+<img class="noevent" width="185px" height="185px" src="<?php echo Ly_User::getUserimg($uinfo['userimg'],200); ?>" title="<?php echo $uinfo['name']; ?>">
+</span></div>
+<div class="text">
+    <div class="clearfix">
+		<h1>
+	    <?php echo $uinfo['name'];?>&nbsp;
+		<span class="f12 n"><?php echo Ly_User_Rank::getName($uinfo['ranklevel']); ?></span>
+		<span class="f12">
+		<?php if(Y_Session::get('uid')!=$uinfo['uid']){
+			//关注
+			if(Ly_Friend::isFriend($uinfo['uid'])){
+				echo '<a href="javascript:void(0)" onclick="del_attention(this)" uid="'.$uinfo['uid'].'" class="btn_g" title="取消关注">-关注</a>';
+			}else{
+				echo '<a href="javascript:void(0)" onclick="add_attention(this)" class="btn_a" uid="'.$uinfo['uid'].'" title="添加关注">+关注</a>';
+			}
+			//私信
+			echo '&nbsp;<a href="javascript:void(0)" onclick="send_msg(this);" title="'.$uinfo['name'].'" uid="'.$uinfo['uid'].'" class="btn_a">发私信</a>';
+		} ?>
+		
+		</span>
+	    </h1>
+    </div>
+    <p class="margbottom5">
+	<span class="right c999">浏览量：<?php echo $uinfo['views']; ?></span>
+	<a href="user.html?uid=<?php echo $uinfo['uid'] ?>" title="<?php echo $uinfo['name']; ?>"><?php echo Y::Config('sys','domain').'user.html?uid='.$uinfo['uid']; ?></a></p>
+    <p class="margbottom5">
+	<span title="性别" style="line-height:16px;" class="<?php echo $uinfo['sex']?($uinfo['sex']==1?'sex sexman':'sex'):'' ?>"></span>
+	<span><?php echo Ly_Area::getName($uinfo['cityid']); ?></span>
+	<span class="mr10 c666">
+	年龄：<?php if($uinfo['birth_year']){ echo date('Y')-$uinfo['birth_year'].''; }else{ echo 0; } ?>岁
+	</span>
+	<span class="c666">
+	积分: <?php echo $uinfo['rank']; ?>
+	</span>
+	</p>
+	<p class="margbottom5 c999">注册时间：<?php echo date('Y-m-d',$uinfo['regtime']); ?></p>
+	<p class="margbottom5 c999">签名：<?php if($uinfo['signview']){ echo '<span class="cf60">系统屏蔽显示</span>'; }else{ echo '<span class="c369">'.$uinfo['sign'].'</span>'; } ?></p>
+    <div class="attention_rltv for_m">
+    <ul class="clearfix">
+		<li><a href="javascript:void(0)" onclick="changebox('#box_title a[rel=share]')" title="分享"><span class="num"><?php echo $uinfo['shares']; ?></span><span class="c666">分享</span></a></li>
+        <li><a href="javascript:void(0)" title="收集"><span class="num"><?php echo $uinfo['collect']; ?></span><span class="c666">收集</span></a></li>
+        <li><a href="javascript:void(0)" onclick="changebox('#box_title a[rel=attention]')" title="关注"><span class="num"><?php echo $uinfo['attention']; ?></span><span class="c666">关注</span></a></li>
+        <li><a href="javascript:void(0)" onclick="changebox('#box_title a[rel=follow]')" title="粉丝"><span class="num"><?php echo $uinfo['follow']; ?></span><span class="c666">粉丝</span></a></li>
+    </ul>
+    </div>
+    </div>
+</div>
+<!--小导行 -->
+<h2 id="box_title" class="dhead margbottom10">
+<a title="分享"  href="javascript:void(0)"  onclick="changebox(this)" <?php if(!in_array($this->get('do'),array('attention','follow'))){ echo 'class="sel"'; } ?> rel="share" p=1 load=0>分享</a>
+<a title="TA的关注" href="javascript:void(0)" onclick="changebox(this)" <?php if($this->get('do')=='attention'){ echo 'class="sel"'; } ?> rel="attention" p=1 load=0>TA的关注</a>
+<a title="TA的粉丝" href="javascript:void(0)" onclick="changebox(this)" <?php if($this->get('do')=='follow'){ echo 'class="sel"'; } ?> rel="follow" p=1 load=0>TA的粉丝</a>
+</h2>
+<!--小导行结束 -->
+<!--主题内容 -->
+<div id="c_box">
+<!--分享 -->
+<div class="li_box" style="display:none" ></div>
+<!-- 关注-->
+<div class="li_box" style="display:none" ></div>
+<!-- 粉丝-->
+<div class="li_box" style="display:none" ></div>
+</div>
+<!-- 主题内容结束-->
+</div>
+<!--左侧结束 -->
+<!--右侧开始 -->
+<div class="area_side">
+<div class="margbottom20">
+<h2 class="item_t">TA想去的地方</h2>
+<div class="tags margtop10">
+<?php
+$me = Ly_Tags_Bind::getTags(array('uid'=>$uinfo['uid']));
+if($me){
+foreach($me as $v){
+	echo '<a class="bg'.mt_rand(0,3).'" href="share.html?tagid='.$v['id'].'" target="_blank">'.$v['name'].'</a>';
+}
+}else{
+	echo 'TA还没添加任何想去的地方 <a href="home_base.html?do=area">查看我的</a>';
+}
+?>
+</div>
+</div>	
+<div class="bean_list">
+	<h2 class="item_t">最近来访</h2>
+	<ul class="img_text_v clearfix">
+	<?php
+	$visit = Ly_User_Visit::getList($uinfo['uid'],false,8);
+	if($visit){
+		foreach($visit as $k=>$v){
+			$n = Ly_User::getBaseinfo($v['uid'],48);
+			if($n){
+			if($k%4==0 && $k>0){
+				echo '<li class="last tc">';
+			}else{
+				echo '<li class="tc">';
+			}
+			echo '<a href="user.html?uid='.$v['uid'].'" title="'.$n['name'].'" target="_blank"><img src="'.$n['userimg'].'" /></a>';
+			echo '<a href="user.html?uid='.$v['uid'].'" title="'.$n['name'].'" target="_blank">'.$n['name'].'</a>';
+			echo '<p class="tc c999">'.date('m-d H:i',$v['pubtime']).'</p>';
+			echo '</li>';
+			}
+		}
+	}
+	?>
+	</ul>
+</div>
+<!--广告预留 -->
+</div>
+<!--右侧结束 -->
+</div>
+<!--mian结束 -->
+</div>
+<!-- content结束 -->
+<!-- footer开始 -->
+<?php Y_Widget::display('footer'); ?>
+<!-- footer结束 -->
+<script type="text/javascript">
+function changebox(obj,page){
+	if(typeof(page)=='undefined'){
+		var page = $(obj).attr('p');
+	}
+	$(obj).addClass('sel').siblings().removeClass('sel');
+	var i = $(obj).index();
+	$('.li_box').eq(i).show().siblings().hide();
+	if($(obj).attr('p')!=page || $(obj).attr('load')==0){
+		$('.li_box').eq(i).addClass('li_load');
+		$('.li_box').eq(i).load('user_'+$(obj).attr('rel')+'.html?page='+page,{uid:'<?php echo $uinfo['uid']; ?>'});
+		$(obj).attr('p',page);
+		$(obj).attr('load',1);
+		$('.li_box').eq(i).removeClass('li_load');
+	}
+	
+}
+function _Page(page){
+	changebox('#box_title a.sel',page);
+	var mtrTop=$('#box_title').offset().top-65;
+    $("html,body").scrollTop(mtrTop);
+ };
+$(function(){
+	changebox('#box_title a.sel',1);
+});
+</script>
+</body>
+</html>

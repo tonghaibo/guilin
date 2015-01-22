@@ -1,0 +1,1 @@
+<?php {"0":"wid","1":"hid","2":"cid","3":"uid","pri":"tid"}yno

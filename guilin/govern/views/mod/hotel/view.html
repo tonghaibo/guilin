@@ -1,0 +1,124 @@
+<link rel="stylesheet" href="./public/css/admin/admin.css" type="text/css">
+<!-- 这里写内容-->
+<div style="padding:5px;">
+<table class="st nob" width="100%" >
+<tr>
+    <td width="15%" rowspan="6"><a href="hotel_detail.html?id=<?php echo $info['hid']; ?>" target="_blank"><img src="<?php echo Y_Pr::image($info['img'],120,120); ?>" /></a></td>
+    <td colspan="3">名&nbsp;&nbsp;称：<a href="hotel_detail.html?id=<?php echo $info['hid']; ?>" target="_blank"><?php echo $info['name'].($info['ishot']?'<span class="icon icon-hot"></span>':''); ?></a></td>
+   </tr>
+<tr>
+	<td width="40%">统&nbsp;&nbsp;计：评论：<a target="_blank" href="?ro=mod&ac=comment&t=hotel&tid=<?php echo $info['hid'];  ?>"><?php echo $info['comment']; ?></a>&nbsp;&nbsp;订单：<a target="_blank" href="?ro=order&ac=hotel&s_hid=<?php echo $info['hid']; ?>"><?php echo Ly_Hotel_Order::getCount($info['hid']); ?></a></td>
+	<td width="20%">酒店类型：<span class="ctitle"><?php echo Ly_Items::getName('hotel','classes',$info['classes']); ?></span></td>
+    <td>酒店代表：<a href="?ro=member&ac=member&s_uid=<?php echo $info['uid']; ?>" target="_blank"><?php echo Ly_User::getEmail($info['uid']); ?></a></td>
+  </tr>
+  <tr>
+    <td>联系电话：<span class="ctitle"><?php echo $info['contact']; ?></span></td>
+    <td>显示价：<span class="ctitle"><?php echo $info['price'].'元'; ?></span></td>
+    <td>总分数：<span class="ctitle"><?php echo $info['mark'].'元';  ?></span></td>
+  </tr>
+  <tr>
+    <td>交通方式：<span class="ctitle"><?php echo $info['traffic']; ?></span></td>
+    <td colspan="2">温馨提示：<span class="ctitle"><?php echo $info['notice']; ?></span></td>
+</tr>
+  <tr>
+    <td>发布时间：<span class="ctitle"><?php echo date('Y-m-d H:i',$info['pubtime']); ?></span></td>
+    <td colspan="2">酒店地址：<span class="ctitle"><?php echo $info['address']; ?></span></td>
+</tr>
+  <tr>
+    <td>状&nbsp;&nbsp;态：<span class="ctitle"><?php echo Ly_Items::getName('public','status',$info['status']); ?></span></td>
+    <td>传真号：<span class="ctitle"><?php echo $info['portraiture']; ?></span></td>
+
+	<td>成立时间：<span class="ctitle"><?php echo $info['ctime']; ?></span></td>
+</tr>
+  <tr>
+  <td valign="top">详情描叙：</td>
+  <td colspan="5">
+  <?php
+ echo $info['des'];
+  ?>
+  </td>
+  </tr>
+  <tr>
+  <td valign="top">服务项目：</td>
+  <td colspan="5">
+  <?php
+ if($info['servers']){
+	$s = explode(',',$info['servers']);
+	$list = Ly_Items::getList('hotel','servers');
+		foreach($list as $i){
+			if(in_array($i['id'],$s)){
+				echo '<span class="ctitle">'.$i['name'].'</span>&nbsp;&nbsp;';
+			}
+		}
+ }
+  ?>
+  </td>
+  </tr>
+  <tr>
+  <td valign="top">支持信用卡：</td>
+  <td colspan="5">
+  <?php
+ if($info['dc']){
+	$s = explode(',',$info['dc']);
+	$list = Ly_Items::getList('hotel','dc');
+		foreach($list as $i){
+			if(in_array($i['id'],$s)){
+				echo '<span class="ctitle">'.$i['name'].'</span>&nbsp;&nbsp;';
+			}
+		}
+ }
+  ?>
+  </td>
+  </tr>
+  <tr>
+  <td valign="top">休闲设备：</td>
+  <td colspan="5">
+  <?php
+ if($info['relaxation']){
+	$s = explode(',',$info['relaxation']);
+	$list = Ly_Items::getList('hotel','relaxation');
+		foreach($list as $i){
+			if(in_array($i['id'],$s)){
+				echo '<span class="ctitle">'.$i['name'].'</span>&nbsp;&nbsp;';
+			}
+		}
+ }
+  ?>
+  </td>
+  </tr>
+  <tr>
+  <td valign="top">酒店图集：</td>
+  <td colspan="5">
+  <?php
+ if($info['uploads']){
+	$s = explode(',',$info['uploads']);
+		foreach($s as $i){
+			$img = Ly_Uploads::getPath($i);
+			echo '<img src="'.Y_Pr::image($img['path'],50,50).'"  title="'.$img['des'].'"/>&nbsp;&nbsp;';
+		}
+ }
+  ?>
+  </td>
+  </tr>
+  <?php
+  $days = Y_Db::init('hotel_rooms');
+  $days = $days->where(array('hid'=>$info['hid']))->select();
+  if($days){
+	foreach($days as $v){
+		echo '<tr>';
+		echo '<td valign="top">'.($v['img']?'<img src="'.Y_Pr::image(Ly_Uploads::getUrl($v['img']),30,30).'" />':'').'房间：<span class="ctitle">'.$v['name'].'</span></td>';
+		echo '<td valign="top" colspan="2">床型:<span class="ctitle">'.Ly_Items::getName('hotel_rooms','bed',$v['bed']).'</span>';
+		echo '支付:<span class="ctitle">'.Ly_Items::getName('hotel_rooms','payment',$v['payment']).'</span>';
+		echo '&nbsp;早餐:'.($v['breakfast']?'有':'无').')';
+		echo '&nbsp;宽带:<span class="ctitle">'.($v['broadband']?'有':'无').'</span>';
+		echo '&nbsp;大小:<span class="ctitle">'.$v['area'].'</span>';
+		echo '&nbsp;满房:<span class="ctitle">'.($v['isfull']?'是':'否').'</span>';
+		echo '&nbsp;状态:<span class="ctitle">'.($v['status']?'删除':'正常').'</span></td>';
+		echo '<td>价格：<span class="corange">'.$v['price'].'</span>元</td>';
+		echo '</tr>';
+	}
+  }
+  ?>
+</table>
+<!-- 这里写内容结束-->
+</div>

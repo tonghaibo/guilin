@@ -1,0 +1,45 @@
+<?php
+if($info){
+echo '<ul class="rec_hotel">';
+$model = Y_Db::init('hotel');
+$model->field(array('hid','name','img','price','shares','comment','address'));
+foreach($info as $v){
+	$model->where(array('hid'=>$v['id'],'status'=>1));
+	if($i=$model->find()){
+	echo '<li class="item c_collect">';
+	echo '<div class="hp">';
+	echo '<a target="_blank" href="hotel_detail.html?id='.$i['hid'].'" class="btn_show_price">';
+	echo '<img title="'.$i['name'].'" src="'.Y_Pr::image($i['img'],230,154).'">';
+	echo '</a>';
+	echo '</div>';
+	echo '<div class="hn"><a href="hotel_detail.html?id=10" class="btn_show_price" title="'.$i['name'].'">'.$i['name'].'&nbsp;&nbsp;<em class="orange">￥'.$i['price'].'</em></a></div>';
+	echo '<div class="address" title="'.$i['address'].'">地址：'.$i['address'].'</div>';
+	echo '<div class="com c999">';
+	echo '收集于:'.date('m月d日 H:i',$v['collecttime']);
+	echo '<a target="_blank" href="hotel_detail.html?id='.$i['hid'].'#tag_comment">';
+	echo '<span class="reply-count" title="评论">'.$i['comment'].'</span></a>';
+	echo '<a class="mr10 right" href="javascript:void(0)" >';
+	echo '<span class="favor" style="line-height: 16px;">'.$i['shares'].'</span></a>';
+	echo ' <a href="javascript:void(0)" type="h" onclick="delCollect(this,'.$i['hid'].')" title="取消收藏">取消</a>';
+	echo '</div></li>';
+	}
+}
+echo '</ul>';
+echo '<div style="clear:both" class="Page1 clearfix">'.$pages.'</div>';
+?>
+<script type="text/javascript">
+$(function(){
+$('.rec_hotel li.item:nth-child(2n)').addClass('last');
+$('.rec_hotel li.item').hover(function(){
+	$(this).addClass('hover');
+},function(){
+	$(this).removeClass('hover');
+});
+});
+</script>
+<?php
+}else{
+	echo '<p class="f14 mgb10 margtop20"  style="display: block;text-align:center">';
+	echo '<img src="public/images/content_blank.png" class="v_m">暂且没有任何数据<a href="hotel.html" >建议去查看合适的酒店！</a></p>';
+}
+?>

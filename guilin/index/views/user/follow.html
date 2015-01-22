@@ -1,0 +1,38 @@
+<?php 
+if($info){
+	echo '<ul>';
+	foreach($info as $v){
+		echo '<li class="list_li">';
+		echo '<a href="user.html?uid='.$v['l1_uid'].'" title="'.$v['l1_name'].'" target="_blank" class="img"><img src="'.Ly_User::getUserimg($v['l1_userimg'],48).'" alt="" width="48"></a>';
+		echo '<div class="f_status">';
+		if(Y_Session::get('uid')!=$v['l1_uid']){
+			//关注
+			if(Ly_Friend::isFriend($v['l1_uid'])){
+				echo '<a href="javascript:void(0)" onclick="del_attention(this)" uid="'.$v['l1_uid'].'" class="btn_g" title="取消关注">-关注</a>';
+			}else{
+				echo '<a href="javascript:void(0)" onclick="add_attention(this)" class="btn_a" uid="'.$v['l1_uid'].'" title="添加关注">+关注</a>';
+			}
+			//私信
+			echo '&nbsp;<a href="javascript:void(0)" onclick="send_msg(this);" title="'.$v['l1_name'].'" uid="'.$v['l1_uid'].'" class="btn_a">发私信</a>';
+		}
+		echo '</div>';
+		echo '<div class="text">';
+		echo '<p><a href="user.html?uid='.$v['l1_uid'].'" title="'.$v['l1_name'].'" target="_blank" class="mr5">'.$v['l1_name'].'</a><span class="c999">粉丝('.$v['l1_follow'].')</span></p>';
+		echo '<p>签名：'.($v['l1_signview']?'<span class="cf60">系统屏蔽显示</span>':$v['l1_sign']).'</p>';
+		$tags = Ly_Tags_Bind::getTags(array('uid'=>$v['l1_uid']));
+		if($tags){
+			echo '<p class="tags">想去的地方：';
+			foreach($tags as $g){
+				echo '<a href="share.html?tagid='.$g['id'].'" target="_blank" class="bg'.mt_rand(0,3).'">'.$g['name'].'</a>';
+			}
+			echo '</p>';
+		}
+		echo '</li>';
+	}
+	echo '</ul>';
+	echo '<div class="clear"></div>';
+	echo '<div class="Page1 margtop10">'.$pages.'</div>';
+}else{
+	echo 'TA暂且没有关注任何人！';
+}
+ ?>

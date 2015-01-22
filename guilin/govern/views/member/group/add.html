@@ -1,0 +1,53 @@
+<?php Y_Widget::display('header',array('b_info'=>$this->id)); ?>
+<?php Y_Widget::display('top'); ?>
+<!--content -->
+<div id="content">
+	<?php Y_Widget::display('tips',array('b_info'=>$this->id)); ?>
+	<!--main -->
+	<div class="main clearfix">
+	<?php Y_Widget::display('left'); ?>
+	<!--box开始 -->
+	<div id="box" class="clearfix">
+<!-- 这里写内容-->
+<form action="#" method="post" id="addRank">
+<table class="st nob">
+<tr>
+<td class="title"><span class="cred">*</span>组名ID：</td>
+<td><input type="text" id="rid" name="rid" class="w250" title="组名ID" value="<?php echo $max['rid']+1; ?>" onblur="checkNum(this,'#rid-tips')"/></td>
+<td class="info" id="rid-tips">定义组的ID,系统已经自动在已有组的基础上加1处理，这项可以不动</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">*</span>组名称：</td>
+<td>
+<input type="text" id="name" name="name" class="w250" title="组名称" onblur="checkLen(this,'#name-tips',2,15)" />
+</td>
+<td class="info" id="name-tips">组名称</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">*</span>等级分数限制：</td>
+<td><input type="text" class="w250" name="rank" id="rank" title="等级分数限制" onblur="checkNum(this,'#rank-tips')" /></td>
+<td class="info" id="rank-tips">填写具体的积分上限</td>
+</tr>
+<tr>
+<td></td>
+<td><input type="button" value="添加" name="bt" class="btn btn-green" onclick="subadd()" /></td>
+<td></td>
+</tr>
+</table>
+</form>
+<!-- 这里写内容结束-->
+	<!--box结束 -->
+	</div>
+	</div>
+	<!-- mainend-->
+</div>
+<script type="text/javascript">
+function subadd(){
+	if(checkNum('#rid','#rid-tips') && checkLen('#name','#name-tips',2,15) && checkNum('#rank','#rank-tips') && checkSize('#rank','#rank-tips',<?php echo $max['rank']; ?>)){
+		document.getElementById('addRank').submit();
+	}else{
+		return false;
+	}
+}
+</script>
+<?php Y_Widget::display('footer');?>

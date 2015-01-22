@@ -1,0 +1,418 @@
+<dl class="set_area_list">
+<dd class="c666">认真填写，让客户全面了解您的酒店</dd>
+<dd>
+<div class="channel"><span style="font-size:10px;font-weight:normal;color:#f60">*</span>类型：</div>
+<div class="attr">
+<?php
+echo '<select class="txt" name="classes">';
+echo '<option value="0">--请选择--</option>';
+foreach(Ly_Items::getList('hotel','classes') as $v){
+	echo '<option value="'.$v['id'].'">'.$v['name'].'</option>';
+}
+echo '</select>';
+echo '<select class="txt" name="star">';
+echo '<option value="0">--无星级--</option>';
+for($i=1;$i<6;$i++){
+	echo '<option value="'.$i.'">星'.$i.'</option>';
+}
+echo '</select>';
+?>
+</div>
+</dd>
+<dd>
+<div class="channel"><span style="font-size:10px;font-weight:normal;color:#f60">*</span>酒店名称：</div>
+<div class="attr">
+<input class="txt"  name="name" type="text" style="width:275px;"/>
+</div>
+</dd>
+<dd>
+<div class="channel"><span style="font-size:10px;font-weight:normal;color:#f60">*</span>位置：</div>
+<div class="attr">
+<?php
+echo '<select class="txt" name="area">';
+echo '<option value="0">--选择区--</option>';
+foreach(Ly_Items::getList('public','area') as $v){
+	echo '<option value="'.$v['id'].'">'.$v['name'].'</option>';
+}
+echo '</select>';
+?>
+&nbsp;<input type="text"  name="address" class="txt"/>
+ <span class="c666">填写具体的酒店位置,3-30字之间</span>
+</div>
+</dd>
+<dd>
+<div class="channel"><span style="font-size:10px;font-weight:normal;color:#f60">*</span>显示价格：</div>
+<div class="attr">
+<input type="text" class="txt" name="price"/>
+<span class="c666">*用于显示酒店整体标价，建议填写平均价或最低价</span>
+</div>
+</dd>
+<dd>
+<div class="channel">交通指南：</div>
+<div class="attr">
+<p class="prom">*如公交路线，打的路线，从各方向乘车路线(300字以内)</p>
+<textarea class="txt" name="traffic" style="width:360px;height:100px;"></textarea>
+</div>
+</dd>
+<dd>
+<div class="channel"><span style="font-size:10px;font-weight:normal;color:#f60">*</span>预定电话：</div>
+<div class="attr">
+<input type="text" class="txt" name="contact"/>
+<b>传真号：</b><input type="text" name="fax" class="txt" />
+</div>
+</dd>
+<dd>
+<div class="channel">成立时间：</div>
+<div class="attr">
+<input type="text" onfocus="SelectDate(this)" name="cdate" class="txt" />
+</div>
+</dd>
+<dd>
+<div class="channel"><span style="font-size:10px;font-weight:normal;color:#f60">*</span>酒店描叙：</div>
+<div class="attr">
+<p class="prom">*请用300字以内的文字描写一下自己的酒店</p>
+<textarea class="txt" name="des"  style="width:360px;height:150px;" maxlength="140"></textarea>
+</div>
+</dd>
+<dd>
+<div class="channel">服务项目：</div>
+<div class="attr">
+<?php
+foreach(Ly_Items::getList('hotel','servers') as $v){
+	echo '<input type="checkbox" name="servers" value="'.$v['id'].'" /> '.$v['name'].' ';
+}
+?>
+</div>
+</dd>
+<dd>
+<div class="channel">娱乐设施：</div>
+<div class="attr">
+<?php
+foreach(Ly_Items::getList('hotel','relaxation') as $v){
+	echo '<input type="checkbox" name="relaxation" value="'.$v['id'].'" /> '.$v['name'].' ';
+}
+?>
+</div>
+</dd>
+<dd>
+<div class="channel">支持信用卡：</div>
+<div class="attr">
+<?php
+foreach(Ly_Items::getList('hotel','dc') as $v){
+	echo '<input name="dc" type="checkbox" value="'.$v['id'].'" /> '.$v['name'].' ';
+}
+?>
+</div>
+</dd>
+<dd>
+<div class="channel">温馨提示：</div>
+<div class="attr">
+<p class="prom">*请控制在300字内</p>
+<textarea name="notice" class="txt" style="width:220px;height:80px;"></textarea>
+</div>
+</dd>
+<dd>
+<div class="channel"><span style="font-size:10px;font-weight:normal;color:#f60">*</span>上传图集：</div>
+<div class="attr">
+<a href="javascript:void(0)" onclick="add_img()" title="添加图片">图片<img src="public/images/add.png" /></a>
+<span>点击图片选择封面图</span>
+<div class="img_list">
+<ul>
+<input type="hidden" name="img" id="img" value="" />
+</ul>
+</div>
+</div>
+</dd>
+<dd>
+<div class="channel"><span style="font-size:10px;font-weight:normal;color:#f60">*</span>添加房间：</div>
+<div class="attr">
+<a href="javascript:void(0)" onclick="addroom()" title="添加房间">房间<img src="public/images/add.png" /></a>
+</div>
+</dd>
+<dd>
+<p style="display:none" id="room_list">
+名称：<input type="text" name="roomname" style="width:100px;" class="txt" />
+价格：<input type="text" name="roomprice" style="width:50px;" class="txt" />
+<select class="txt" name="roombed" style="width:65px;">
+<option value="0">-床型-</option>
+<?php 
+foreach(Ly_Items::getList('hotel_rooms','bed') as $v){
+	echo '<option '.$v['id'].'>'.$v['name'].'</option>';
+}
+ ?>
+</select>
+<select class="txt" name="roombroadband" style="width:65px;">
+<option value="0" >-宽带-</option>
+<?php 
+foreach(Ly_Items::getList('hotel_rooms','broadband') as $v){
+	echo '<option '.$v['id'].'>'.$v['name'].'</option>';
+}
+ ?>
+</select>
+<select class="txt" name="roombreakfast" style="width:65px;">
+<option value="0">-早餐-</option>
+<option value="0">无</option>
+<option value="1">有</option>
+</select>
+<select class="txt" name="roompayment" style="width:65px;">
+<option value="0">-支付-</option>
+<?php 
+foreach(Ly_Items::getList('hotel_rooms','payment') as $v){
+	echo '<option '.$v['id'].'>'.$v['name'].'</option>';
+}
+ ?>
+</select>
+大小<input type="text" name="roomsize" class="txt" style="width:50px;"/>
+ <a href="javascript:void(0)" onclick="$(this).parents('p').remove();">删除</a>
+</p>
+</dd>
+<dd>
+<input class="btn_basic btn_a ft14" type="submit"  onclick="send_add()" value="保存酒店"></div>
+</dd>
+</dl>
+<script type="text/javascript" src="public/js/ajaxfileupload.js"></script>
+<script type="text/javascript">
+function addroom(){
+var str = $('#room_list').html();
+$('#room_list').after('<p class="rooms" style="height:35px">'+str+'</P>');
+}
+function add_img(){
+ var str = '<div style="margin-top:20px;padding:10px;">';
+ str +='<p style="height:40px;"><span>上传图片：</span><input type="file" name="fileToUpload"  id="fileToUpload" /></p>';
+ str +='<p style="height:40px;"><span>图片描叙：</span><input type="text" id="img_des" style="width:200px;" class="txt" /></p>';
+ str += '<p style="height:40px;"><button class="button" onclick="up_img()">上传</button>&nbsp;<span class="red" id="img_msg"></span></p>';
+ str += '</div>';
+ show_dialog.open(str,350,180);
+}
+function up_img(){
+var txt = $.trim($('#fileToUpload').val());
+var regx = /^.+.(gif|jpeg|bmp|jpg|png)/i;
+var des = $.trim($('#img_des').val());
+if(regx.test(txt)){
+	$("#loadimg")
+	.ajaxStart(function(){
+		$(this).show();
+	})
+	.ajaxComplete(function(){
+		$(this).hide();
+	});
+	jQuery.ajaxFileUpload({
+		url:'index.php?ro=share&ac=upimg',
+		secureuri:false,
+		fileElementId:'fileToUpload',
+		dataType:'json',
+		data:{des:des},
+		success: function (data, status){
+			if(typeof(data.error) != 'undefined'){
+				if(data.error != ''){
+					$('#img_msg').html(data.msg).show();
+				}else{
+					var str = '<li><div><span>';
+					str += '<input type="hidden" name="uploads" value="'+data.msg.id+'" />';
+					str += '<img src="'+data.msg.small+'" title="'+data.msg.des+'" ids="'+data.msg.id+'" onclick="insertimg(this)" />';
+					str += '</span></div><a href="javascript::void(0)" onclick="delimg(this)" class="close">关闭</a></li>';
+					$('.img_list ul').append(str);
+					show_dialog.close();
+				}
+			}
+		},
+		error: function (data, status, e){
+			alert(e);
+		}
+	});
+	return false;
+}else{
+$('#img_msg').html('请上传图片格式的文件！').show();
+}
+return false;
+}
+function delimg(obj){
+	if($(obj).parents('li').find('img').attr('ids')==$('#img').val()){
+		$('#img').val('');
+	}
+	$(obj).parents('li').remove();
+	
+}
+function insertimg(obj){
+	$('.img_list li').removeClass('sel');
+	$(obj).parents('li').addClass('sel');
+	$('#img').val($(obj).attr('ids'));
+}
+function send_add(){
+var data = new Object;
+data.send = 'add';
+//类型
+data.classes = $('select[name=classes]').val();
+if(data.classes=='0'){
+show_msg.open('请选择酒店类型！',3,2);
+$('select[name=classes]').focus();
+return;
+}
+//星级
+data.star = $('select[name=star]').val();
+//名称
+data.name = $.trim($('input[name=name]').val());
+if(data.name.length<5 || data.name.length>25){
+$('input[name=name]').focus();
+show_msg.open('酒店名称长度在5-25个字之间',3,2);
+return;
+}
+//所在地
+data.area = $('select[name=area]').val();
+if(data.area==0){
+show_msg.open('请选择地区！',3,2);
+$('select[name=area]').focus();
+return false;
+}
+data.address = $.trim($('input[name=address]').val());
+if(data.address.length<3 || data.address.length>30){
+show_msg.open('详细地址填写过短(3-30字)',3,2);
+$('input[name=address]').focus();
+return;
+}
+//价格
+data.price = $.trim($('input[name=price]').val());
+var regx = /^[1-9][0-9]{0,4}\.?[0-9]{0,2}$/;
+if(!regx.test(data.price)){
+show_msg.open('请填写合法的价格',3,2);
+$('input[name=price]').focus();
+return;
+}
+//交通指南
+data.traffic = $.trim($('textarea[name=traffic]').val());
+//预定电话
+data.contact = $.trim($('input[name=contact]').val());
+if(data.contact.length<7 || data.contact.length>15){
+show_msg.open('请填写合法预定电话！',3,2);
+$('input[name=contact]').focus();
+return;
+}
+//传真
+data.fax = $.trim($('input[name=fax]').val());
+//成立时间
+data.cdate = $.trim($('input[name=cdate]').val());
+if(data.cdate.length>0){
+	regx = /^\d{4}\-\d{2}\-\d{2}$/;
+	if(!regx.test(data.cdate)){
+		show_msg.open('成立时间输入不合法！',3,2);
+		$('input[name=cdate]').fucos();
+		return;
+	}
+}
+//描叙
+data.des = $.trim($('textarea[name=des]').val());
+if(data.des.length<10 || data.des.length>500){
+	show_msg.open('酒店描叙10-500字以内',3,2);
+	$('textarea[name=des]').focus();
+	return;
+}
+//服务项目
+data.servers = new Array;
+$('input[name=servers]:checked').each(function(){
+	data.servers.push($(this).val());
+});
+data.servers=data.servers.join(',');
+//娱乐项目
+data.relaxation = new Array;
+$('input[name=relaxation]:checked').each(function(){
+	data.relaxation.push($(this).val());
+});
+data.relaxation=data.relaxation.join(',');
+//信用卡
+data.dc = new Array;
+$('input[name=dc]:checked').each(function(){
+	data.dc.push($(this).val());
+});
+data.dc=data.dc.join(',');
+//温馨提示
+data.notice = $.trim($('textarea[name=notice]').val());
+//图集
+data.uploads = new Array;
+$('input[name=uploads]').each(function(){
+	data.uploads.push($(this).val());
+});
+data.uploads=data.uploads.join(',');
+if(data.uploads==''){
+show_msg.open('请上传新的图片',3,2);
+return;
+}
+data.img = $('#img').val();
+//房间
+var len = $('p.rooms').length;
+if(len<1){
+show_msg.open('请添加酒店房间',3,2);
+return;
+}
+var i,room = $('p.rooms');
+data.roomname = new Array;
+data.roomprice = new Array;
+data.roombed = new Array;
+data.roombroadband = new Array;
+data.roombreakfast = new Array;
+data.roompayment = new Array;
+data.roomsize = new Array;
+for(i=0;i<len;i++){
+	//名称
+	var name = $.trim(room.eq(i).find('input[name=roomname]').val());
+	if(name.length<1){
+		show_msg.open('房间名称不能为空',3,2);
+		room.eq(i).find('input[name=roomname]').focus();
+		return;
+	}
+	data.roomname.push(name);
+	//价格
+	var reg = /^[1-9][0-9]{0,4}\.?[0-9]{0,2}$/;
+	var price = $.trim(room.eq(i).find('input[name=roomprice]').val());
+	if(!reg.test(price)){
+		show_msg.open('请填写合法的房间价格',3,2);
+		room.eq(i).find('input[name=roomprice]').focus();
+		return;
+	}
+	data.roomprice.push(price);
+	//床型
+	var bed = $.trim(room.eq(i).find('select[name=roombed]').val());
+	if(bed==0){
+		show_msg.open('请选择床型',3,2);
+		room.eq(i).find('select[name=roombed]').focus();
+		return;
+	}
+	data.roombed.push(bed);
+	//宽带
+	var broadband = $.trim(room.eq(i).find('select[name=roombroadband]').val());
+	if(broadband==0){
+		show_msg.open('请选择宽带',3,2);
+		room.eq(i).find('select[name=roombroadband]').focus();
+		return;
+	}
+	data.roombroadband.push(broadband);
+	//早餐
+	data.roombreakfast.push(room.eq(i).find('select[name=roombroadband]').val());
+	//支付方式
+	var payment = $.trim(room.eq(i).find('select[name=roompayment]').val());
+	if(payment==0){
+		show_msg.open('请支付方式',3,2);
+		room.eq(i).find('select[name=roompayment]').focus();
+		return;
+	}
+	data.roompayment.push(payment);
+	//大小
+	var size = $.trim(room.eq(i).find('input[name=roomsize]').val());
+	reg = /^[1-9]\d*$/;
+	if(!reg.test(size)){
+		show_msg.open('请填写具体的大小',3,2);
+		room.eq(i).find('input[name=roomsize]').focus();
+		return;
+	}
+	data.roomsize.push(size);
+}
+$.post('home_dohotel.html?do=add',data,function(d){
+if(d=='0'){
+	show_msg.open('添加酒店成功！请耐心等待审核！',3,1);
+	window.setTimeout(changebox('#box_title a.sel',2),3000);
+	return false;
+}else{
+	show_msg.open('添加酒店失败！',3,2);
+}
+});
+};
+</script>

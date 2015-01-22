@@ -1,0 +1,68 @@
+<dl class="set_area_list re_widx">
+<dd class="c666 nomar tip-flag">在这里设置系统通知、邮件提醒与私信</dd><dd id="response" class="mgt10 bgclr" style="display: none;"></dd>
+<dd class="d_line">
+<h3 class="msg_title">系统通知</h3>
+<div class="msg_set_box">
+<p class="msg_set_pre">
+<label><input class="checkbox_select" name="comments" type="checkbox" value="1" <?php if($info['comments']){ echo 'checked'; } ?>>作品被评论</label></p>
+<p class="msg_set_pre">
+<label><input class="checkbox_select" name="replay" type="checkbox" value="1" <?php if($info['replay']){ echo 'checked'; } ?>>评论被回应</label></p>
+<p class="msg_set_pre">
+<label><input class="checkbox_select" name="attention" type="checkbox" value="1" <?php if($info['attention']){ echo 'checked'; } ?>>被他人关注</label></p>
+</div>
+</dd>
+<dd class="d_line padtop10" >
+<h3 class="msg_title">邮件提醒</h3>
+<div class="msg_set_box">
+<p class="msg_set_pre">
+<label><input class="checkbox_select" name="mail" type="checkbox" value="1" <?php if($info['mail']){ echo 'checked'; } ?>>旅游周刊</label></p>
+</div>
+</dd>
+<dd class="d_line padtop10">
+<h3 class="msg_title">谁可以发私信给我</h3>
+<div class="msg_set_box">
+<p class="msg_set_pre">
+<label><input class="radio_select" type="radio" name="mess" value="0" <?php if($info['mess']==0){ echo 'checked'; } ?>>仅限我关注的人</label></p>
+<p class="msg_set_pre">
+<label><input class="radio_select" type="radio" name="mess" value="1" <?php if($info['mess']==1){ echo 'checked'; } ?>>我关注的人/我的粉丝</label></p>
+<p class="msg_set_pre">
+<label><input class="radio_select" type="radio" name="mess" value="2" <?php if($info['mess']==2){ echo 'checked'; } ?>>所有人</label></p>
+</div>
+</dd>
+<dd class="padtop10">
+<input class="btn_a f14" type="button" onclick="savemessset()" name="save" value="保存设置"></dd>
+</dl>
+<script type="text/javascript">
+function savemessset(){
+	var data = new Object;
+	if($('input[name=comments]:checked')){
+		data.comments = 1;
+	}else{
+		data.comments = 0;
+	}
+	if($('input[name=replay]:checked')){
+		data.replay = 1;
+	}else{
+		data.replay = 0;
+	}
+	if($('input[name=mail]:checked')){
+		data.mail = 1;
+	}else{
+		data.mail = 0;
+	}
+	if($('input[name=attention]:checked')){
+		data.attention = 1;
+	}else{
+		data.attention = 0;
+	}
+	data.mess = $('input[name=mess]:checked').val();
+	$.post('home_donotice.html?do=upconfig',data,function(d){
+		if(d=='1'){
+			show_msg.open('修改通知配置成功！',3,1);
+		}else{
+			show_msg.open('修改通知配置失败！',3,2);
+		}
+	});
+	return false;
+}
+</script>

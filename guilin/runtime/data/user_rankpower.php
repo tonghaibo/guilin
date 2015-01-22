@@ -1,0 +1,1 @@
+<?php {"pri":"id","0":"type","1":"name","2":"rank","3":"dayrank"}yes

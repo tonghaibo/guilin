@@ -1,0 +1,20 @@
+<?php 
+if($info){
+echo '<ul class="photo_list">';
+foreach($info as $v){
+	echo '<li>';
+	echo '<div class="inner">';
+	echo '<p class="img">';
+	echo '<a href="javascript:void(0)"><img src="'.Y_Pr::image($v['path'],200,133).'" /></a>';
+	echo '</p>';
+	echo '<p class="imgname">'.$v['des'].'</p>';
+	echo '</div>';
+	echo '</li>';
+}
+echo '</ul>';
+echo '<div class="Page1" style="clear:both">'.$pages.'</div>';
+}else{
+	echo '<p class="f14 mgb10 margtop20"  style="display: block;text-align:center">';
+	echo '<img src="public/images/content_blank.png" class="v_m">暂且没有任何数据<a href="share_pub.html" >建议先分享您的照片</a>！</p>';
+}
+ ?>

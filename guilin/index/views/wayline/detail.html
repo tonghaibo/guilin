@@ -1,0 +1,190 @@
+<?php Y_Widget::display('header',$web); ?>
+<!-- top开始 -->
+<?php Y_Widget::display('top'); ?>
+<!-- top结束 -->
+<!-- nav开始 -->
+<?php Y_Widget::display('nav'); ?>
+<!-- nav结束 -->
+<!-- content开始 -->
+<div id="content" class="clearfix MiddleBox ">
+<div id="main" class="clearfix">
+<?php
+if($wayline){?>
+<!-- 导行-->
+<div class="top_nav">
+<a href="wayline.html">跟团游</a>>
+<?php echo $wayline['name']; ?>
+</div>
+<!-- 导行结束-->
+<!-- 顶部-->
+<div class="info-block">
+<div class="notes-infos">
+<h1 class="notes-title">
+<?php echo $wayline['name']; ?>
+</h1>
+<div>
+
+<ul class="basic-info">
+<!--<li><span  title="发布公司">发布公司：</span><a target="_blank" href="#"><?php echo Ly_User_Apply::getName($wayline['uid'],3,'cpname'); ?></a></li> -->
+<li><span  title="出发时间">交通方式：</span><span class="cf60"><?php echo $wayline['traffic']; ?></span></li> 
+<li><span  title="行程时间">行程安排：</span><span class="cf60 f14"><?php echo $wayline['days']; ?>天</span></li>
+<li><span  title="费用">成人：</span><span class="cf60 f14"><?php echo $wayline['price']; ?>元</span></li>
+<li><span  title="费用">儿童：</span><span class="cf60 f14"><?php echo $wayline['pricehalf']; ?>元</span></li>
+<li class="clearfix notes-info-foot">
+<!-- 分享-->
+<div class="share-btn-area right">
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<span class="bds_more">更多</span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=0" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->
+</div>
+<!-- 分享结束-->
+<div class="left">
+评论 <a href="#"><?php echo $wayline['comment']; ?></a>
+ | 收藏 <a href="javascript:void(0)" onclick="addfavor('<?php echo $wayline['wid']; ?>','w')"><?php echo $wayline['shares']; ?></a>
+ | 好评率 <?php echo $wayline['comment']==0?100:(round($wayline['mark']/(5*$wayline['comment']),3))*100; ?>%<a class="button" style="margin-left:20px;display:block;float:right;color:#fff;" href="wayline_order.html?id=<?php echo $wayline['wid']; ?>" target="_blank">预订</a></div>
+</li>
+</ul></div>
+</div>
+<div class="notes-stamp-inner">
+<?php
+if($wayline['ishot']){
+echo '<div class="notes-stamp">';
+echo '<img title="精华" alt="精华" src="public/images/praise_8c1a94cf.png">';
+echo '</div>';
+}
+?>
+
+</div>
+</div>
+<!-- 顶部结束-->
+<!--内容介绍-->
+<div class="notes-main" >
+<div class="hd-nav">
+<a href="javascript:void(0)" class="rel">行程安排</a>
+<a href="javascript:void(0)" >消费说明</a>
+<a href="javascript:void(0)" >温馨提示</a>
+<a href="javascript:void(0)" >相关评论</a>
+</div>
+<div class="bd-main">
+<div class="lis clearfix">
+<ul>
+<?php 
+for($i=1;$i<=$wayline['days'];$i++){
+	$day = Ly_Wayline_Days::getInfo($wayline['wid'],$i);
+	echo '<li>';
+	echo '<h3><span class="day">第'.$i.'天</span><span class="title">'.$day['name'].'</span></h3>';
+	echo '<div class="des">'.$day['contents'].'</div>';
+	echo '<p class="live">餐：<span class="cf60">'.($day['eat1']?'早&nbsp;':'').($day['eat2']?'中&nbsp;':'').($day['eat3']?'晚':'').'</span>&nbsp;&nbsp;&nbsp;住宿：<span class="cf60">'.$day['live'].'</span></p>';
+	echo '</li>';
+}
+?>
+</ul>
+</div>
+<div class="lis clearfix" style="display:none">
+<h3><span class="day">费用包含：</span></h3>
+<p class="des"><?php echo $wayline['pricein']?$wayline['pricein']:'<span class="red">无任何说明</span>'; ?></p>
+<h3><span class="day">费用不包含：</span></h4>
+<p class="des"><?php echo $wayline['priceout']?$wayline['priceout']:'<span class="red">无任何说明</span>'; ?></p>
+</div>
+<div class="lis clearfix" style="display:none">
+<p class="des"><?php echo $wayline['notice']?$wayline['notice']:'<span class="red">无任何说明</span>'; ?></p>
+</div>
+<div class="lis clearfix" style="display:none">
+<ul>
+<?php 
+//评论全部列出 到时候取适当的
+$comment = Y_Db::init('wayline_comments');
+$comment->where(array('wid'=>$wayline['wid'],'status'=>0));
+$comment->order('id DESC');
+$comment->field(array('id','uid','comments','pubtime','happy','plan','cost'));
+$comment->limit(20);
+if($com=$comment->select()){
+	foreach($com as $v){
+		echo '<li>';
+		echo '<p class="c666">好玩：<span class="c369">'.$v['happy'].'分</span> 安排：<span class="c369">'.$v['plan'].'分</span>  花费：<span class="c369">'.$v['cost'].'分</span>&nbsp;&nbsp;'.date('Y-m-d',$v['pubtime']).'</p>';
+		echo '<div class="des">'.$v['comments'].'</div></li>';
+	}
+}else{
+	echo '<li class="red">暂且没有任何评论</li>';
+}
+?>
+
+</ul>
+</div>
+</div>
+</div>
+<!-- 内容介绍结束-->
+<!-- 右侧-->
+<div class="notes-sidebar">
+<div class="img">
+<img src="<?php echo Y_Pr::image(Ly_Uploads::getUrl($wayline['img']),200,150); ?>" width="200px" />
+</div>
+<h3>途经景点</h3>
+<div class="jdian">
+<?php
+$tags = Ly_Tags_Bind::getTags(array('wid'=>$wayline['wid']));
+if($tags){
+	foreach($tags as $g){
+		echo '<a href="wayline.html?tagid='.$g['id'].'" target="_blank">'.$g['name'].'</a>';
+	}
+}
+?>
+</div>
+<h3>相关分享</h3>
+<ul>
+<?php
+if($t= Ly_Tags_Bind::getTags(array('wid'=>$wayline['wid']),true)){
+	foreach(Ly_Content::getBinds($t,null,10) as $v){
+		echo '<li><a target="_blank" href="share_detail.html?id='.$v['cid'].'">'.$v['l1_title'].'</a>';
+		echo '<div class="relative-note-main">';
+		echo '<span>';
+		echo '<a class="cf60" target="_blank" href="user.html?uid='.$v['l1_uid'].'">'.Ly_User::getName($v['l1_uid']).'</a>';
+		echo '</span>';
+		echo ' <span class="message" title="评论" >'.$v['l1_comments'].'</span>&nbsp;&nbsp;';
+		echo '</div></li>';
+	}
+	echo '<li><a href="share.html" class="right" target="_blank">更多>></a></li>';
+}
+?>
+</ul>
+</div>
+<!-- 右侧结束-->
+<?php
+}else{
+	echo '<span class="red">您访问的线路不存在，或者已经被删除</span>  <a href="wayline.html">点击返回</a>';
+}
+?>
+</div>
+<!--mian结束 -->
+</div>
+<!-- content结束 -->
+<!-- footer开始 -->
+<?php Y_Widget::display('footer'); ?>
+<!-- footer结束 -->
+<script type="text/javascript">
+$(function(){
+$('.items').hover(function(){
+	$(this).addClass('hover');
+},function(){
+	$(this).removeClass('hover');
+});
+$('.notes-main .hd-nav a').click(function(){
+	$(this).addClass('rel').siblings().removeClass('rel');
+	$('.notes-main .bd-main .lis').eq($(this).index()).show().siblings().hide();
+});
+});
+</script>
+</body>
+</html>

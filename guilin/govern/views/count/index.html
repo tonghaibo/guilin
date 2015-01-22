@@ -1,0 +1,101 @@
+<?php Y_Widget::display('header',array('b_info'=>$this->id)); ?>
+<?php Y_Widget::display('top'); ?>
+<!--content -->
+<div id="content">
+	<?php Y_Widget::display('tips',array('b_info'=>$this->id)); ?>
+	<!--main -->
+	<div class="main clearfix">
+	<?php Y_Widget::display('left'); ?>
+	<!--box开始 -->
+	<div id="box" class="clearfix">
+<!-- 这里写内容-->
+<div class="box">系统信息</div>
+<table class="st full">
+<tr>
+<td class="ctitle w250">程序版本号</td>
+<td><?php echo Y::Config('sys',version); ?></td>
+</tr>
+<tr>
+<tr>
+<td class="ctitle w250">服务器名/IP</td>
+<td><?php echo $_SERVER['SERVER_NAME'].'/'.$_SERVER['SERVER_ADDR']; ?></td>
+</tr>
+<tr>
+<td class="ctitle w250">服务器系统及PHP</td>
+<td><?php echo PHP_OS.' / PHP v'.PHP_VERSION; ?></td>
+</tr>
+<tr>
+<td class="ctitle w250">PHP引擎信息</td>
+<td><?php echo 'Zend Engine:'.zend_version(); ?></td>
+</tr>
+<tr>
+<td class="ctitle w250">服务器软件信息</td>
+<td><?php echo $_SERVER['SERVER_SOFTWARE']; ?></td>
+</tr>
+<tr>
+<td class="ctitle w250">服务器MYSQL版本</td>
+<td><?php echo Y_Db::init('user')->dbVersion(); ?></td>
+</tr>
+<tr>
+<td class="ctitle w250">当前数据库大小</td>
+<td><?php echo Y_Db::init('user')->dbSize(); ?></td>
+</tr>
+<tr>
+<td class="ctitle w250">服务器POST上传许可</td>
+<td>
+<?php echo ini_get('post_max_size'); ?>
+</td>
+</tr>
+<tr>
+<td class="ctitle w250">服务器附件上传许可</td>
+<td>
+<?php echo ini_get('upload_max_filesize'); ?>
+</td>
+</tr>
+<tr>
+<td class="ctitle w250">GD扩展支持</td>
+<td>
+<?php 
+if(extension_loaded('gd')){
+	echo '<span class="icon icon-ok"></span>';
+	$gd = gd_info();
+	echo $gd['GD Version'];
+}else{
+	echo '<span class="icon icon-error"></span>';
+}
+?>
+</td>
+</tr>
+<tr>
+<td class="ctitle w250">PDO扩展支持</td>
+<td>
+<?php 
+if(extension_loaded('PDO')){
+	echo '<span class="icon icon-ok"></span>';
+	if(extension_loaded('PDO_Mysql')){
+		echo 'pdo_mysql';
+	}else{
+		echo '不支持pdo_mysql';
+	}
+}else{
+	echo '<span class="icon icon-error"></span>';
+}
+?>
+</td>
+</tr>
+</table>
+<div class="box">开发团队</div>
+<table class="st full">
+<tr>
+<td>肖志勇(技术支持)</td>
+<td>任博(总裁)</td>
+<td>刘召屯(产品设计)</td>
+</tr>
+</table>
+<!-- 这里写内容结束-->
+	<!--box结束 -->
+	</div>
+	</div>
+	<!-- mainend-->
+</div>
+<?php Y_Widget::display('footer');?>

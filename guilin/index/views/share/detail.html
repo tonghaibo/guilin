@@ -1,0 +1,305 @@
+<?php Y_Widget::display('header',$web); ?>
+<!-- top开始 -->
+<?php Y_Widget::display('top'); ?>
+<!-- top结束 -->
+<!-- nav开始 -->
+<?php Y_Widget::display('nav'); ?>
+<!-- nav结束 -->
+<!-- content开始 -->
+<div id="content" class="clearfix MiddleBox ">
+<div id="main" class="clearfix">
+<?php
+if($s_info){
+?>
+<!--左侧 -->
+<div class="area_main">
+<div class="margbottom10">
+<a href="share.html" title="游玩分享" class="c666">游玩分享</a> 
+&gt; <span class="c666"><?php echo $s_info['title']; ?></span>
+</div>
+
+<div class="content_t clearfix">
+	<h1 class="title" id="stitle"><?php echo $s_info['title']; ?></h1>
+	<?php
+	if($s_info['uid']==Y_Session::get('uid')){
+		echo '<a href="share_edit.html?id='.$s_info['id'].'" target="_blank">【编辑】</a>';
+	}
+	?>
+	<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_b" style="line-height: 12px;float:right">
+<img src="http://bdimg.share.baidu.com/static/images/type-button-3.jpg?cdnversion=20120831" />
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=button&amp;uid=0" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000);
+</script>
+<!-- Baidu Button END -->
+</div>
+
+<div class="rcp_c_img tc">
+
+<?php
+if($img=$s_info['uploads']){
+echo '<div class="tc margbottom20">';
+$img = explode(',',$img);
+foreach($img as $v){
+	$imgli = Ly_Uploads::getPath($v);
+	if($imgli){
+		echo '<span><strong>'.$imgli['des'].'</strong><br/><img title="'.$imgli['des'].'" src="'.Y_Pr::image($imgli['path'],600,600).'" /></span><br>';
+	}
+}
+echo '</div>';
+}
+?>
+</div>			
+<div class="rcp_tags margtop20 margbottom10">
+<span class="t">景点标签：</span>
+<?php
+if($tags=Ly_Tags_Bind::getTags(array('cid'=>$s_info['id']))){
+foreach($tags as $v){
+	echo '<a href="share.html?tagid='.$v['id'].'" target="_blank" title="'.$v['name'].'">'.$v['name'].'</a>';
+}
+}else{
+	echo '该文章暂且未绑定任何标签';
+}
+?>
+</div>
+
+<div class="clearfix margbottom20">
+    <h2 class="item_title">内容描叙</h2>
+    <p class="idt c666" style="">
+	<?php echo $s_info['content']; ?>
+	</p>
+</div>
+<!--评论内容 -->
+<h2 id="commentAnchor" class="DayTrip_title">
+        评论 &nbsp;&nbsp;<a target="_blank" href="javascript:void(0)" onclick="return show_feedback();"><font size="2px">举报不良内容</font></a>
+</h2>
+<div id="Pagination_comment">
+</div>
+<script type="text/javascript">
+loadCommentList('<?php echo Y::Config('sys','domain'); ?>share_commentList.html?id=<?php echo $s_info['id']; ?>',false);
+</script>
+<!--评论内容结束 -->
+<!--评论框 -->
+<div class="Evaluate" id="AddComment">
+    <h2 class="Comment">发表评论:</h2>
+    <div class="Input_box" style="position: relative;">
+	<?php
+	if(Y_Session::get('uid')){
+	?>
+	<textarea class="Input_box_main" rows="" onfocus="getValidateCode('verify','validatecode')" cols="" name="text" id="text_comment"></textarea>
+	<?php }else{ ?>
+	<div id="IsLogin" style="position:absolute;margin-bottom:-20px;padding: 10px 15px; z-index: 2;">只有登录用户才可以评论<a href="index_login.html">登录</a> <a href="index_reg.html">注册</a></div>
+		<textarea class="Input_box_main" rows="" onfocus="getValidateCode('verify','validatecode')" cols="" name="text" id="text"></textarea>
+		<div style="width:650px; height: 148px; display: block; z-index: 0; position: absolute; top: 2px; background: none repeat scroll 0pt 0pt rgb(255, 255, 255); left: 1px;"></div>
+	<?php } ?>
+    </div>
+	<?php
+	//验证码
+	if($uid=Y_Session::get('uid')){ ?>
+	<div class="Verification_code">
+            <div class="code_main">
+                <div class="SearchInputName" style="display:block; margin-top:5px;">请输入验证码:</div>
+                <div class="InputLeftBg" style="display:block; margin-top:5px;">
+                    <div class="InputRightBg">
+                        <input class="InputText" type="text" name="verify" id="verify">
+                    </div>
+                </div>
+                <div style="float: left;display:none" id="validateBox">
+					<div class="ym">
+                    <img id="validatecode" onclick="changeVCode(1)" style="display:none" width="100" height="30" class="yz-img left" src="">
+					</div>
+					<div class="Change_list" id="showCode" style="">
+					<a href="javascript:void(0);" onclick="changeVCode(1);return false;">换一组</a><br>请输入图片中的字母。
+					</div>
+                </div>
+            </div>
+            <div class="code_main code_two">
+                <input type="hidden" id="c_id" value="<?php echo $s_info['id']; ?>">
+				<input type="hidden" id="r_id" value="0" />
+                <input type="hidden" id="r_uid" value="<?php echo $s_info['uid']; ?>">
+				<input type="hidden" id="o_uid" value="<?php echo $s_info['uid']; ?>">
+				<input type="hidden" id="c_uid" value="<?php echo $uid; ?>" />
+                <button class="button" onclick="submitComment();return false;">提交评论</button>
+            </div>
+        </div>
+	<?php } ?>
+</div>
+<!--评论框结束 -->
+</div>
+<!--左侧结束 -->
+<!--右侧 -->
+<div class="area_side">
+	<div class="quik_pub">
+	<a href="share_pub.html" target="_blank">发布我的分享</a>
+	</div>
+    <div class="rcp_author">
+    <ul class="img_text">
+    <li class="clearfix">
+	<?php
+	$user = Ly_User::getBaseinfo($s_info['uid']);
+	?>
+    <a href="user.html?uid=<?php echo $s_info['uid']; ?>" title="<?php echo $user['name']; ?>" target="_blank" class="img"><img src="<?php echo Ly_User::getUserimg($user['userimg'],48); ?>"></a>
+    <div class="text">
+    <p>
+	<a href="user.html?uid=<?php echo $s_info['uid']; ?>" title="<?php echo $user['name']; ?>" target="_blank"><?php echo $user['name']; ?></a>
+    </p>
+    <p class="c666">独家发布于<?php echo date('Y-m-d',$s_info['pubtime']); ?></p>
+    </div>
+    </li>
+	<li>
+	<div style="margin-top:10px;padding-bottom:5px;">
+	<span title="评论" class="message left mr5"><a href="javascript:void(0)" onClick="goCommentArea()">评论 <?php echo $s_info['comments']; ?></a></span>
+	<span title="点击收藏" class="favor left"><a href="javascript:void(0)" onclick="addfavor('<?php echo $s_info['id']; ?>','c')">收藏 <?php echo $s_info['shares']; ?></a></span>
+	<span title="浏览" class="browse c666 right">浏览 <?php echo $s_info['views']; ?></span>
+	</div>
+	</li>
+    </ul>
+    </div>                      
+	<div class="clearfix mod_bx">
+    <a href="share.html" target="_blank" class="moreIcon right">更多</a>
+    <h2 class="item_title">你可能感兴趣</h2>
+    <ul class="img_text_v rcp_list_70 clearfix">
+	<?php
+	$li = Ly_Content::getSiblings($s_info['id'],9);
+	if($li){
+	$num = 9-count($li);
+	}else{
+		$num=9;
+	}
+	if($num!=9){
+		foreach($li as $v){
+			echo '<li>';
+			echo '<div class="img">';
+			echo '<a href="share_detail.html?id='.$v['l1_id'].'" title="'.$v['l1_title'].'" target="_blank">';
+			$img = Ly_Uploads::getPath($v['l1_img']);
+			echo '<img src="'.Y_Pr::image($img['path'],70,70).'" alt="'.$img['des'].'">';
+			echo '</a>';
+			echo '<span class="bg"></span>';
+			echo '<a href="share_detail.html?id='.$v['l1_id'].'" title="'.$v['l1_title'].'" target="_blank" class="name_up">'.Y_Pr::substr($v['l1_title'],0,5,false).'</a>';
+			echo '</div>';
+			echo '</li>';
+		}
+	}
+	if($num!=0){
+		$li = Ly_Content::getHots($num);
+		if($li){
+			foreach($li as $v){
+				echo '<li>';
+				echo '<div class="img">';
+				echo '<a href="share_detail.html?id='.$v['id'].'" title="'.$v['title'].'" target="_blank">';
+				$img = Ly_Uploads::getPath($v['img']);
+				echo '<img src="'.Y_Pr::image($img['path'],70,70).'" alt="'.$img['des'].'">';
+				echo '</a>';
+				echo '<span class="bg"></span>';
+				echo '<a href="share_detail.html?id='.$v['id'].'" title="'.$v['title'].'" target="_blank" class="name_up">'.Y_Pr::substr($v['title'],0,5,false).'</a>';
+				echo '</div>';
+				echo '</li>';
+			}
+		}
+	}
+	?>
+	</ul>
+    </div>
+	<div class="clearfix mod_bx">
+	<h2 class="item_title">最新浏览过文章</h2>
+	<ul class="img_text">
+	<?php
+	$co = Y_Cookie::get('c_id');
+	if($co){
+		$co = array_reverse($co);
+		array_shift($co);
+		$i = 0;
+		foreach($co as $v){
+			if($i<6){
+				echo '<li class="bro_old">';
+				$img = Ly_Uploads::getPath($v['img']);
+				echo '<div class="img">';
+				echo '<img alt="'.$img['des'].'" src="'.Y_Pr::image($img['path'],75,75).'" />';
+				echo '</div>';
+				echo '<div class="text left">';
+				echo '<a href="share_detail.html?id='.$v['id'].'" target="_blank" title="'.$v['title'].'">'.Y_Pr::substr($v['title'],0,10,false).'</a>';
+				echo '<br>'.Y_Date::timeDiff($v['time']).'</div>';
+				echo '</li>';
+			}else{
+				break;
+			}
+			$i++;
+		}
+		
+	}else{
+		echo '你还没浏览任何文章 <a href="share.html" target="_blank">浏览</a><a href="share_pub.html" target="_blank">自己创建</a>';
+	}
+	?>
+	</ul></div>
+    </div>
+<!--右侧结束 -->
+<?php
+}else{
+	echo '^o^您访问的文章不存在或者已被删除，或者还审核中！<a href="'.Y_Client::referer().'">点击返回</a>';
+}
+?>
+</div>
+<!--mian结束 -->
+</div>
+<!-- content结束 -->
+<!-- footer开始 -->
+<?php Y_Widget::display('footer'); ?>
+<!-- footer结束 -->
+<script type="text/javascript">
+//分页
+function _Page(num){
+	loadCommentList('share_commentList.html?id='+trim($('#c_id').val())+'&page='+num,true);
+}
+function submitComment(){
+	var cid = trim($('#c_id').val());
+	var ruid = trim($('#r_uid').val());
+	var rid = trim($('#r_id').val());
+	var type = 0;
+	var uid = trim($('#c_uid').val());
+	if(ruid!=trim($('#o_uid').val())){
+		type = 1;
+	}
+	if(uid=='' || uid==0){
+		show_msg.open('你还没有登录，不可以评论！',3,2);
+		return false;
+	}
+	var text = trim($('#text_comment').val());
+	if(text==''){
+		show_msg.open('评论或回复不可以为空！',3,2);
+		return false;
+	}
+	if(text.length<3){
+		show_msg.open('^o^亲！您就多给点评论或回复吧！',3,2);
+		return false;
+	}
+	var verify = trim($('#verify').val());
+	if(verify==''){
+		show_msg.open('请输入验证码！',3,2);
+		return false;
+	}
+	$.ajax({
+	type:'post',
+	url:'share_comment.html',
+	data:{'id':cid,'code':verify,'uid':uid,'text':text,'tuid':ruid,'rid':rid},
+	dataType:'json',
+	success:function(res){
+		if(res.error==0){
+			initData();
+            resetValidateCode();
+            loadCommentList('share_commentList.html?id='+cid,true);
+		}else{
+			show_msg.open(res.msg,3,2);
+		}
+	}
+	});
+}
+$(function(){
+$('.img_text_v li:nth-child(3n)').addClass('last');
+});
+</script>
+</body>
+</html>

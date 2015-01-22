@@ -1,0 +1,86 @@
+<table class="tb">
+<thead>
+<tr>
+<th style="width:15%">订单号</th>
+<th style="width:35%">线路名称</th>
+<th style="width:20%">下单时间</th>
+<th style="width:15%">支付情况</th>
+<th style="width:15%">状态</th>
+</tr>
+</thead>
+<tbody>
+<?php
+if($info){
+	$status = Ly_Items::getList('order','status');
+	foreach($info as $v){
+		echo '<tr oid="'.$v['id'].'" load="0" act="add">';
+		echo '<td><a title="详情" onclick="showdetail(this)" href="javascript:void(0)"><b class="orange f14">+</b></a> '.$v['id'].'</td>';
+		echo '<td><a href="wayline_detail.html?id='.$v['wid'].'" target="_blank">'.Ly_Wayline::getName($v['wid']).'</a></td>';
+		echo '<td>'.date('Y-m-d H:i',$v['ordertime']).'</td>';
+		echo '<td>'.($v['isorder']?'已支付':'定金:<span class="orange">'.$v['handsel'].'</span>元').'</td>';
+		foreach($status as $s){
+			if($s['id']==$v['status']){
+				echo '<td>'.$s['name'];
+				if($v['status']==0){
+					echo ' <a href="javascript:void(0)" onclick="cancelorder(this)" oid="'.$v['id'].'" type="w">取消</a>';
+				}else if($v['status']==6){
+					echo ' <a href="javascript:void(0)" onclick="comment(this)" hid="'.$v['wid'].'" oid="'.$v['id'].'" type="h">评论</a>';
+				}
+				echo '</td>';
+			}
+		}
+		echo '</tr>';
+	}
+}else{
+	echo '<tr><td colspan="5">您暂且还没预定任何酒店,<a target="_blank" href="hotel.html">赶紧去预定吧</a></td></tr>';
+}
+?>
+</tbody>
+<?php
+if($pages){
+	echo '<tfoot>';
+	echo '<tr><td style="padding-top:8px;" colspan="5"><div class="Page1">'.$pages.'</div></td></tr>';
+	echo '</tfoot>';
+}
+?>
+</table>
+<script type="text/javascript">
+function showdetail(obj){
+	var tr = $(obj).parents('tr');
+	var oid = tr.attr('oid');
+	if(tr.attr('act')=='add'){
+		if(tr.attr('load')=='0'){
+			tr.after('<tr id="oid_'+oid+'"><td colspan="5" style="text-align:center"><img src="public/images/wait3.gif"></td></tr>');
+			$('#oid_'+oid).load('home_doorder.html?do=wdetail',{oid:oid});
+			tr.attr('load','1');
+		}else{
+			$("#oid_"+oid).show();
+		}
+		$(obj).html('<b class="orange f14">-</b>');
+		tr.attr('act','del');
+	}else{
+		$("#oid_"+oid).hide();
+		$(obj).html('<b class="orange f14">+</b>');
+		tr.attr({'act':'add'});
+	}
+}
+function cancelorder(obj){
+	var oid = $(obj).attr('oid');
+	var t = $(obj).attr('type');
+	if(oid){
+		$.post('home_doorder.html?do=cancel',{'oid':oid,'t':t},function(d){
+			if(d=='0'){
+				$(obj).html('已取消');
+				$(obj).attr('onclick','');
+			}else{
+				show_msg.open('取消失败！',3,2);
+			}
+		});
+	}
+}
+function comment(obj){
+var oid = $(obj).attr('oid');
+var hid = $(obj).attr('hid');
+alert('该功能暂且未实现！');
+}
+</script>

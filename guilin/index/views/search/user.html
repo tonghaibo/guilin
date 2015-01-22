@@ -1,0 +1,129 @@
+<?php Y_Widget::display('header',$web); ?>
+<!-- top开始 -->
+<?php Y_Widget::display('top'); ?>
+<!-- top结束 -->
+<!-- nav开始 -->
+<?php Y_Widget::display('nav'); ?>
+<!-- nav结束 -->
+<!-- content开始 -->
+<div id="content" class="clearfix MiddleBox ">
+<div id="main" class="clearfix">
+<!-- 左侧-->
+<div class="side_left clearfix">
+<div class="Travel_TitleH"><h2 class="c666">旅游达人推荐</h2></div>
+<?php 
+$model = Y_Db::init('user');
+$model->where(array('shares>'=>0,'follow>'=>0));
+$model->order("views desc,ranklevel desc,uid desc");
+$model->field(array('uid','name','userimg','userimgflag','shares','views','follow'));
+$model->limit(6);
+$model = $model->select();
+foreach($model as $v){
+echo '<div class="ShowBox">';
+echo '<div class="Rback_tone">';
+echo '<div class="Rback_toneimg">';
+echo '<a href="user.html?uid='.$v['uid'].'" target="_blank"><img width="48" height="48" src="'.Ly_User::getUserimg($v['userimg'],48).'"></a>';
+echo '</div>';
+echo '<div style="width:145px;" class="Active_titleMa">';
+echo '<div class="Active_Tmtop">';
+echo '<span><a href="user.html?uid='.$v['uid'].'" target="_blank">'.$v['name'].'</a></span>';
+echo '</div>';
+echo '<div class="Active_Plan c666 Active_itwo">';
+echo '<span class="c999">分享：</span>'.$v['shares'].' ';
+echo '<span class="c888">访问量：</span>'.$v['views'];
+echo '<br>';
+echo '<span class="c888">粉丝数：</span><a href="user.html?uid='.$v['uid'].'&do=follow" target="_blank">'.$v['follow'].'</a>个';
+echo '</div></div></div></div>';
+}
+?>		
+</div>
+<!-- 左侧结束-->
+<!--右侧 -->
+<div class="side_main">
+<!--搜索框 -->
+<div class="serachform">
+<form>
+<input type="text" name="sText" value="<?php echo $this->get('sText'); ?>" class="txt"/>
+<input type="hidden" name="sex" value="<?php echo $this->get('sex'); ?>"/>
+<input type="hidden" name="cityid" value="<?php echo $this->get('cityid'); ?>"/>
+<input type="submit" value="搜索" class="sub" />
+</form>
+<p class="c666 margtop5">共匹配到<span class="cf60"><?php echo $snum; ?></span>位旅游达人</p>
+</div>
+<!--搜索框结束 -->
+<!-- 关键词-->
+<div class="slide_key">
+性别：<a <?php if(!$this->get('sex')){ echo 'class="sel"'; } ?> href="search_user.html?sText=<?php echo $this->get('sText'); ?>&sex=0&cityid=<?php echo $this->get('cityid');?>">不限</a> <a <?php if($this->get('sex')==1){ echo 'class="sel"'; } ?> href="search_user.html?sText=<?php echo $this->get('sText'); ?>&sex=1&cityid=<?php echo $this->get('cityid');?>">男</a> <a <?php if($this->get('sex')==2){ echo 'class="sel"'; } ?> href="search_user.html?sText=<?php echo $this->get('sText'); ?>&sex=2&cityid=<?php echo $this->get('cityid');?>">女</a>
+城市：<select onchange="window.location.href='search_user.html?sText=<?php echo $this->get('sText'); ?>&sex=<?php echo $this->get('sex') ?>&cityid='+$(this).val()">
+<option value="0">省份</option>
+<?php 
+foreach(Ly_Area::getList(0) as $v){
+	echo '<option value="'.$v['id'].'"';
+	if($this->get('cityid')==$v['id']){
+		echo ' selected ';
+	}
+	echo '>'.$v['name'].'</option>';
+}
+ ?>
+</select>
+</div>
+<!-- 关键词结束-->
+<!--结果 -->
+<div class="Use_recommend">
+<?php 
+if($info){ 
+foreach($info as $v){
+	echo '<div class="Use_recomone">';
+	echo '<div class="Use_hdelfttwo"><div>';
+	echo '<a href="user.html?uid='.$v['uid'].'" target="_blank">';
+	echo '<img width="78" height="78" alt="" src="'.Ly_User::getUserimg($v['userimg'],185).'"></a>';
+	echo '</div>';
+	echo '<p class="margtop5">';
+	if(Ly_Friend::isFriend($v['uid'])){
+		echo '<span class="c666">已关注</span>';
+	}else{
+		echo '<a class="care_of" uid="'.$v['uid'].'" onclick="add_attention(this)" href="javascript:void(0)" title="加关注"><b class="orange">+</b>关注</a>';
+	}
+	echo '</p></div>';
+	echo '<div class="Use_hdright">';
+	echo '<span class="Use_hdTitle">';
+	echo '<a class="f14" href="user.html?uid='.$v['uid'].'" target="_blank">'.$v['name'].'</a>';
+	echo '<font class="cf60"> ('.Ly_User_Rank::getName($v['ranklevel']).')</font></span>';
+	echo '<span class="Use_dizhi c666 '.($v['sex']?($v['sex']==1?'sex sexman':'sex'):'').'">';
+	echo '<label class="c999">所在省：</label>'.Ly_Area::getName($v['provinceid']).'</span>';
+	echo '<div class="Use_hdBox">';
+	echo '<span><font class="c999">粉丝：</font>'.$v['follow'].'人</span>';
+	echo '<span><font class="c999">关注：</font>'.$v['attention'].'人</span>';
+	echo '<span><font class="c999">分享：</font>'.$v['shares'].'篇</span>';
+	echo '<span><font class="c999">人气：</font>'.$v['views'].'</span>';
+	echo '</div>';
+	echo '<span class="c666" style="clear:left"><font class="c999">签名：</font>'.$v['sign'].'</span>';
+	$tags = Ly_Tags_Bind::getTags(array('uid'=>$v['uid'],'wid'=>0,'hid'=>0,'cid'=>0));
+	if($tags){
+	echo '<span class="Use_manifbotm c666"><font class="c999">旅行标签：</font>';
+	foreach($tags as $j){
+		echo '<a href="share.html?tagid='.$j['id'].'">'.$j['name'].'</a> ';
+	}
+	echo '</span>';
+	}
+	echo '</div></div>';
+}
+echo '<div class="Page1">'.$pages.'</div>';
+}else{
+	echo '暂且没有匹配的任何旅游达人';
+}					
+?>
+</div>
+<!--结果结束 -->
+</div>
+<!--右侧结束 -->
+</div>
+<!--mian结束 -->
+</div>
+<!-- content结束 -->
+<!-- footer开始 -->
+<?php Y_Widget::display('footer'); ?>
+<!-- footer结束 -->
+<script type="text/javascript"></script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+<?php {"pri":"id","0":"fid","1":"name","2":"control","3":"action","4":"method","5":"sort","6":"des","7":"ispublic","8":"path","9":"level","10":"isview"}yes

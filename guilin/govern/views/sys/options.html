@@ -1,0 +1,66 @@
+<?php Y_Widget::display('header',array('b_info'=>$this->id)); ?>
+<?php Y_Widget::display('top'); ?>
+<!--content -->
+<div id="content">
+	<?php Y_Widget::display('tips',array('b_info'=>$this->id)); ?>
+	<!--main -->
+	<div class="main clearfix">
+	<?php Y_Widget::display('left'); ?>
+	<!--box开始 -->
+	<div id="box" class="clearfix">
+<!-- 这里写内容-->
+<table class="st full">
+<thead>
+<tr>
+<th>选项ID</th>
+<th>选项名称</th>
+<th>表名称</th>
+<th>字段名称</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody>
+<?php 
+if($llist){
+	foreach($llist as $val){
+	echo '<tr>';
+	echo '<td>'.$val['itemsid'].'</td>';
+	echo '<td>'.$val['itemsname'].'</td>';
+	echo '<td>'.$val['tabname'].'</td>';
+	echo '<td>'.$val['colname'].'</td>';
+	echo '<td><a  class="no" href="'.$this->getUrl().'&method=edit&id='.$val['itemsid'].'"><span class="icon icon-edit"></span>编辑</a>  <a onClick="showC('.$val['itemsid'].',\''.$val['itemsname'].'\')"  href="javascript:void(0)" class="no"><span class="icon icon-more"></span>查看</a></td>';
+	echo '</tr>';
+	}
+	
+}else{
+	echo '<tr><td>暂且任何数据</td></tr>';
+}
+?>
+</tbody>
+<tfoot>
+<tr>
+<td colspan="5" style="text-align:right"><div id="ui-page"><?php echo $pages; ?></div></td>
+</tr>
+</tfoot>
+</table>
+<!-- 这里写内容结束-->
+	<!--box结束 -->
+	</div>
+	</div>
+	<!-- mainend-->
+</div>
+<link href="public/css/show/show.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="public/js/show.js"></script>
+<script type="text/javascript">
+function showC(num,name){
+	if(num!=''){
+		$.get('<?php echo $this->getUrl(); ?>&method=view',{'id':num},function(data){
+			if(data!=''){
+				data = '<div style="color:#329ECC;line-height:20px;padding:5px 10px;">'+data+'</div>';
+				show_dialog.openHtml(data,name,400,250);
+			}
+		});
+	}
+}
+</script>
+<?php Y_Widget::display('footer');?>

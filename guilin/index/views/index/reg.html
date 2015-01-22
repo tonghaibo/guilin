@@ -1,0 +1,92 @@
+<?php Y_Widget::display('header',$web); ?>
+<!-- top开始 -->
+<?php Y_Widget::display('top'); ?>
+<!-- top结束 -->
+<!-- nav开始 -->
+<?php Y_Widget::display('nav'); ?>
+<!-- nav结束 -->
+<!-- content开始 -->
+<div id="content" class="MiddleBox ">
+
+<div id="Main">
+<div id="M-left">
+<?php 
+if($uid=$this->get('uid')){
+if($u=Ly_User::getBaseinfo($uid)){
+	echo '<h2 class="M-bd" style="line-height:40px;"><img src="'.$u['userimg'].'"  class="left mr5" width="40px" height="40px;" /><span>Hi!我是<a target="_blank" href="user.html?uid='.$uid.'">'.$u['name'].'</a>,我在这等你！</h2>';
+}else{
+	echo '<h2 class="M-bd">10秒钟快速注册游桂林网</h2>';
+}
+}else{
+	echo '<h2 class="M-bd">10秒钟快速注册游桂林网</h2>';
+}
+?>
+
+<form action="index_regixuser.html" method="post" name="regform" id="regform">
+<input type="hidden" value="<?php echo $uid; ?>" name="reguid" />
+<ul class="ul-hd">
+	<li>
+	<div class="rtable-t left"><span class="rt-b">*</span> 邮箱/手机：</div>
+    <input name="loginName" maxlength="50" onblur="checkIsReg(this.value);rinputBlur(this);" title="邮箱地址/手机号码将成为您登录“游桂林网”的唯一账号，还将用于找回您的密码。" onfocus="rinputLoginName(this)" class="li-input" id="loginName" value="" tabindex="1" type="text">
+    <div class="li-Prompt left" id="loginNameTip" style="width: 251px; "><span class="li-one-span">邮箱地址/手机号码将成为您登录“游桂林网”的唯一账号，还将用于找回您的密码。</span></div>
+    </li>
+    <li>
+    <div class="rtable-t left"><span class="rt-b">*</span> 密码：</div>
+    <input name="password" class="li-input" maxlength="50" title="密码长度6～20位，字母区分大小写。" onblur="rcPass(this.value);rinputBlur(this);" onfocus="rinputFocus(this)" id="password" tabindex="2" type="password">
+    <div class="li-Prompt left" id="passwordTip" style=""><span class="li-one-span">密码长度6～20位，字母区分大小写。</span></div>
+    </li>
+    <li>
+    <div class="rtable-t left"><span class="rt-b">*</span> 确认密码：</div>
+    <input name="repassword" class="li-input" title="请再输入一次密码。" maxlength="50" onblur="rcRepass(this.value);rinputBlur(this);" onfocus="rinputFocus(this)" id="repassword" tabindex="2" type="password">
+    <div class="li-Prompt left" id="repasswordTip" style=""><span class="li-one-span">请再输入一次密码。</span></div>
+    </li>
+    <li>
+    <div class="rtable-t left"><span class="rt-b">*</span> 验证码：</div> 
+    <input name="code" type="text" class="li-input li-iptwo" id="code" tabindex="4" value="" onfocus="changeVCode(0);rinputFocus(this)" onblur="rcVcode(this.value);rinputBlur(this);">
+    <img id="validatecode" onclick="changeVCode(1)" style="display:none" width="100" height="30" class="yz-img left" src="index_vcode.html?r=<?php mt_rand(1000,9999);  ?>">
+    <div class="other-li" id="showCode" style="">
+    <a href="javascript:void(0);" onclick="changeVCode(1);return false;">换一组</a><br>请输入图片中的字母。
+    </div>
+    <div class="li-Prompt left" style="" id="codeTip"></div>
+    </li>
+    <li>
+    <div class="rtable-t rtable-lnow"></div>
+    <div class="bc-dx">
+    <input id="iagree" class="bc_check" onclick="rcAgree(this)" checked="checked" type="checkbox" value="1" name="agree">
+    <label class="bc_lab2" for="s_hc">我同意 <a href="center_privacy.html" target="_blank">《游桂林服务条款》</a></label>
+     </div>
+     </li>
+    <li class="mnone">
+     <div class="rtable-t rtable-lnow"></div>
+     <div class="bc-dlu">
+     <div class="bc_butn_c" id="notRegSubmit" style="display: none; "><span class="butn_c">立即注册</span></div>
+     <a href="javascript:void(0);" id="canRegSubmit" onclick="javascript:submitRegForm();return false;" class="bc_butn_b" style="display: block; "><span class="butn_b">立即点击注册</span></a>
+     </div>
+     <div class="li-Prompt left" style="display: none; " id="mustAgreetk">
+     <span class="li-fail-span">您需要先同意《游桂林服务条款》然后才能完成注册。</span>
+     </div>
+	 </li>
+</ul>
+</form>
+</div>
+<!--右边开始 -->
+<div id="M-right">
+<p class="M-r-title R-two">已经是注册用户了?请直接登录</p>
+<a href="index_login.html" class="bc_butn_a"><span class="butn_a">登 录</span></a>
+<div class="other-numb">
+<p class="o-nb-title">你也可以用站外账号登录：</p>
+<a href="#" class="nb-sina"></a>
+<a href="#" class="nb-qq"></a>
+<a href="#" class="nb-renren"></a>
+<a href="#" class="nb-kaixin"></a>
+<!--<a href="#" class="nb-more">更多>></a>-->
+</div>
+</div>
+<!-- 右边结束-->
+</div>
+</div>
+<!-- content结束 -->
+<script type="text/javascript" src="<?php echo Y::Config('sys','domain'); ?>public/js/regLogin.js"></script>
+<!-- footer开始 -->
+<?php Y_Widget::display('footer'); ?>
+<!-- footer结束 -->

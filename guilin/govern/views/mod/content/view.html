@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="./public/css/admin/admin.css" type="text/css">
+<!-- 这里写内容-->
+<table class="st nob" width="100%" >
+<tr>
+    <td rowspan="2"><img src="<?php echo Y_Pr::image(Ly_Uploads::getUrl($info['img']),120,120); ?>" /></td>
+    <td colspan="3">标&nbsp;&nbsp;题：<a target="_blank" href="share_detail.html?id=<?php echo $info['id']; ?>"><?php echo $info['title'].($info['ishot']?'<span class="icon icon-hot"></span>':''); ?></a>
+   &nbsp;&nbsp;发布人：<a target="_blank" href="?ro=member&ac=member&s_uid=<?php echo $info['uid']; ?>"><?php echo Ly_User::getName($info['uid']); ?></a></td>
+   </tr>
+<tr>
+	<td>统&nbsp;&nbsp;计：评论：<a target="_blank" href="?ro=mod&ac=comment&t=content&tid=<?php echo $info['id'];  ?>"><?php echo $info['comments']; ?></a>&nbsp;&nbsp;浏览：<span class="ctitle"><?php echo $info['views']; ?></span>&nbsp;&nbsp;分享：<span class="ctitle"><?php echo $info['shares']; ?></span></td>
+	<td>发布时间：<span class="ctitle"><?php echo date('Y-m-d H:i',$info['pubtime']); ?></span></td>
+  <td>发布IP：<span class="ctitle"><?php echo $info['pubip']; ?></span></td>
+    </tr>
+  <tr>
+  <td valign="top">文章内容：</td>
+  <td colspan="5" class="ctitle">
+  <?php
+ echo $info['content'];
+  ?>
+  </td>
+  </tr>
+  <tr>
+  <td valign="top">文章图集：</td>
+  <td colspan="5">
+  <?php
+ if($info['uploads']){
+	$s = explode(',',$info['uploads']);
+		foreach($s as $i){
+			$img = Ly_Uploads::getPath($i);
+			echo '<img src="'.Y_Pr::image($img['path'],50,50).'"  title="'.$img['des'].'"/>&nbsp;&nbsp;';
+		}
+ }
+  ?>
+  </td>
+  </tr>
+</table>
+<!-- 这里写内容结束-->

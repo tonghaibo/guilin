@@ -1,0 +1,447 @@
+<?php Y_Widget::display('header',array('b_info'=>$this->id)); ?>
+<?php Y_Widget::display('top'); ?>
+<!--content -->
+<div id="content">
+	<?php Y_Widget::display('tips',array('b_info'=>$this->id)); ?>
+	<!--main -->
+	<div class="main clearfix">
+	<?php Y_Widget::display('left'); ?>
+	<!--box开始 -->
+	<div id="box" class="clearfix">
+<!-- 这里写内容-->
+<form action="#" method="post" id="addHotel">
+<table class="st nob">
+<tr>
+<td class="title"><span class="cred">*</span>酒店类型：</td>
+<td>
+<select name="classes" id="classes" title="酒店类型" onblur="isSelect(this,'#classes-tips')"><option value="0">--请选择--</option>
+<?php foreach($clist as $val){
+	echo '<option value="'.$val['id'].'"';
+	if($hinfo['classes']==$val['id']){
+		echo 'selected';
+	}
+	echo '>'.$val['name'].'</option>';
+} ?>
+</select>
+</td>
+<td class="info" id="classes-tips">请选择对应的酒店类型</td>
+</tr>
+<tr>
+<td class="title">星级数：</td>
+<td>
+<select name="star" ><option value="0">--无星级--</option>
+<?php for($i=1;$i<=5;$i++){
+	echo '<option value="'.$i.'"';
+	if($hinfo['star']==$i){ 
+		echo ' selected ';
+	}
+	echo '>'.$i.'级</option>';
+} ?>
+</select>
+</td>
+<td class="info">请选择酒店的星级数</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">*</span>酒店名称：</td>
+<td>
+<input type="text" id="name" name="name" class="w250" title="酒店名称" value="<?php echo $hinfo['name']; ?>" onblur="checkLen(this,'#name-tips',2,100)" />
+</td>
+<td class="info" id="name-tips">请填写酒店名称</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">*</span>酒店地图：</td>
+<td>
+<span class="icon icon-map" title="添加地图" onclick="showMap()" ></span>
+<input type="hidden" id="lng" name="lng" value="<?php echo $hinfo['lng']; ?>"/>
+<input type="hidden" id="lat" name="lat" value="<?php echo $hinfo['lat']; ?>"/>
+</td>
+<td class="info" id="map-tips">点击图标添加酒店位置</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">*</span>封面图片：</td>
+<td>
+<div id="upimg" class="bimg">
+<?php if($hinfo['img']){
+	echo '<img src="'.Y_Pr::image($hinfo['img'],85,85).'" />';
+}else{
+	echo '点击上传';
+} ?>
+</div>
+<input type="hidden" id="img" name="img" value="<?php echo $hinfo['img']; ?>"/>
+</td>
+<td class="info" id="img-tips">请上传封面图片</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">*</span>酒店地址：</td>
+<td>
+<select name="area">
+<option value="0">请选择区域</option>
+<?php $area=Ly_Items::getList('public','area');
+if($area){
+	foreach($area as $v){
+		echo '<option value="'.$v['id'].'"';
+		if($v['id']==$hinfo['area']){
+			echo ' selected ';
+		}
+		echo '>'.$v['name'].'</option>';
+	}
+}
+ ?>
+ </select>
+<input type="text" id="address" name="address" value="<?php echo $hinfo['address']; ?>" class="w250" title="酒店地址" onblur="checkLen(this,'#address-tips',2,50)" />
+</td>
+<td class="info" id="address-tips">请填写酒店地址</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">*</span>显示价格：</td>
+<td><input type="text" class="w100" name="price" id="price" value="<?php echo $hinfo['price']; ?>" title="显示价格"  onblur="checkFloat(this,'#price-tips')" />￥</td>
+<td class="info" id="price-tips">填写显示价格</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">*</span>交通指南：</td>
+<td><textarea id="traffic" name="traffic" class="w250 h100" title="交通指南" onblur="checkLen(this,'#traffic-tips',2,200)"><?php echo $hinfo['traffic']; ?></textarea></td>
+<td class="info" id="traffic-tips">填写交通指南方式</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">&nbsp;&nbsp;</span>成立时间：</td>
+<td><input type="text" class="w100" name="ctime" id="ctime" title="成立时间"   onfocus="SelectDate(this)" value="<?php echo $hinfo['ctime']; ?>" /></td>
+<td class="info" id="ctime-tips">选择酒店的成立时间</td>
+</tr>
+
+<tr>
+<td class="title"><span class="cred">*</span>预定电话：</td>
+<td>
+<input type="text" id="contact" name="contact" value="<?php echo $hinfo['contact']; ?>" class="w250" title="预定电话" onblur="checkLen(this,'#contact-tips',7,12)" />
+</td>
+<td class="info" id="contact-tips">请填写预定电话</td>
+</tr>
+
+<tr>
+<td class="title"><span class="cred">&nbsp;&nbsp;</span>传真号码：</td>
+<td>
+<input type="text" id="portraiture" name="portraiture" value="<?php echo $hinfo['portraiture']; ?>" class="w250" title="传真号码" onblur="checkLen(this,'#portraiture-tips',7,20)" />
+</td>
+<td class="info" id="portraiture-tips">请填写传真号码</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">*</span>酒店描叙：</td>
+<td><textarea id="des" name="des" class="w250 h200" title="酒店描叙" onblur="checkLen(this,'#des-tips',10,800)"><?php  echo $hinfo['des']; ?></textarea></td>
+<td class="info" id="des-tips">填写酒店详细描叙</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">*</span>上传图集：</td>
+<td class="w300">
+<ul>
+<li class="left" style="padding:5px" id="dialogupimg" onClick="upimg(1)"><div class="bimg" >点击上传</div></li>
+<?php 
+$dimg = explode(',',$hinfo['uploads']);
+if($dimg){
+foreach($dimg as $val){
+	$img = Ly_Uploads::getPath($val);
+	if($img ){
+	echo '<li class="left" style="padding:5px"><div class="bimg">';
+	echo '<img src="'.Y_Pr::image($img['path'],85,85).'" title="'.$img['des'].'"/>';
+	echo '</div><span class="icon icon-del right" title="删除" onclick="del(this,'.$val.')"></span>';
+	echo '<input type="hidden" name="uploads[]" value="'.$val.'" /></li>';
+	}
+}
+}
+ ?>
+</ul>
+</td>
+<td class="info" id="uploads-tips" >单击框框，上传图片</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">&nbsp;&nbsp;</span>服务项目：</td>
+<td>
+<?php 
+$sarray = explode(',',$hinfo['servers']);
+if($data=Ly_Items::getList('hotel','servers')){
+	foreach($data as $val){
+		echo '<input type="checkbox" name="servers[]" value="'.$val['id'].'" ';
+		if(in_array($val['id'],$sarray)){
+			echo ' checked';
+		}
+		echo '/>'.$val['name'].'&nbsp;&nbsp;';
+	}
+} ?>
+</td>
+<td class="info">请选择相应的服务项目</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">&nbsp;&nbsp;</span>娱乐设施：</td>
+<td>
+<?php 
+$rarray = explode(',',$hinfo['relaxation']);
+if($data=Ly_Items::getList('hotel','relaxation')){
+	foreach($data as $val){
+		echo '<input type="checkbox" name="relaxation[]" value="'.$val['id'].'" ';
+		if(in_array($val['id'],$rarray)){
+			echo ' checked ';
+		}
+		echo '/>'.$val['name'].'&nbsp;&nbsp;';
+	}
+} ?>
+</td>
+<td class="info">请选择相应的娱乐设施</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">&nbsp;&nbsp;</span>支持信用卡：</td>
+<td>
+<?php 
+$darray = explode(',',$hinfo['dc']);
+if($data=Ly_Items::getList('hotel','dc')){
+	foreach($data as $val){
+		echo '<input type="checkbox" name="dc[]" value="'.$val['id'].'" ';
+		if(in_array($val['id'],$darray)){
+			echo ' checked ';
+		}
+		echo '/>'.$val['name'].'&nbsp;&nbsp;';
+	}
+} ?>
+</td>
+<td class="info">请选择相应的信用卡支持</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">&nbsp;&nbsp;</span>温馨提示：</td>
+<td>
+<input type="text" id="notice" name="notice" value="<?php echo $hinfo['notice']; ?>" class="w250" title="温馨提示" onblur="checkLen(this,'#notice-tips',2,100)" />
+</td>
+<td class="info" id="notice-tips">请填写温馨提示</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">&nbsp;&nbsp;</span>是否推荐：</td>
+<td>
+<input type="radio" name="ishot" value="0" <?php if(!$hinfo['ishot']){ echo 'checked'; } ?> />否 <input type="radio" name="ishot" value="1"  <?php if($hinfo['ishot']){ echo 'checked'; } ?>  />是
+</td>
+<td class="info" id="ishot-tips">请选择是否推荐该酒店</td>
+</tr>
+<tr>
+<td></td>
+<td><input type="button" value="添加" name="bt" class="btn btn-green" onclick="subadd()" /></td>
+<td></td>
+</tr>
+</table>
+</form>
+<!-- 这里写内容结束-->
+	<!--box结束 -->
+	</div>
+	</div>
+	<!-- mainend-->
+</div>
+<script type="text/javascript" src="public/js/calendar.js"></script>
+<script type="text/javascript" src="public/js/show.js"></script>
+<link rel="stylesheet" href="public/css/show/show.css" />
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.3"></script>
+<script type="text/javascript" src="public/js/ajaxupload.3.5.js"></script>
+<script type="text/javascript">
+function subadd(){
+	if(isSelect('#classes','#classes-tips') && checkLen('#name','#name-tips',2,100) && checkFloat('#price','#price-tips') && checkLen('#address','#address-tips',2,50) && checkLen('#contact','#contact-tips',7,12) && checkLen('#traffic','#traffic-tips',2,200) && checkLen('#des','#des-tips',10,800)){
+		document.getElementById('addHotel').submit();
+	}else{
+		return false;
+	}
+}
+function del(obj,num){
+	$(obj).parent('li').remove();
+	$.post('?ro=mod&ac=upimg&method=del',{'id':num},function(data){
+		
+	});
+}
+$(function(){
+//封面图片上传
+var upimg = $('#upimg');
+new AjaxUpload(upimg,{
+		name:'img',
+		action:'govern.php?ro=mod&ac=upimg',
+		onSubmit:function(file,ext){
+			if(!(ext && /^(jpg|png|jpeg|gif)$/.test(ext))){
+				show_msg.open('上传的文件的格式'+ext+'不被支持！',3,2);
+				return false;
+			}
+		},
+		onComplete:function(file,data){
+			//后台不限制上传数量
+			//num++;
+			if(data!=''){
+				data = eval('('+data+')');
+				$('#upimg').html('<img src="'+data.ismall+'" bsrc="'+data.path+'"/>');
+				$('#img').val(data.path);
+			}
+		}
+	});
+})
+function upimg(num){
+	//暂且15张
+	if(num>=15){
+		show_msg.open('上传图片超过指定的15张',5,2);
+		return;
+	}
+	var img = $('#dialogupimg');
+	new AjaxUpload(img,{
+		name:'img',
+		action:'govern.php?ro=mod&ac=upimg',
+		onSubmit:function(file,ext){
+			if(!(ext && /^(jpg|png|jpeg|gif)$/.test(ext))){
+				show_msg.open('上传的文件的格式'+ext+'不被支持！',3,2);
+				return false;
+			}
+		},
+		onComplete:function(file,data){
+			if(data!=''){
+				data = eval('('+data+')');
+				var str = '<div style="padding:8px 10px;">';
+				str += '<div class="bimg" ><img id="dialogimg" src="'+data.ismall+'" /></div>';
+				str += '<input type="hidden" id="dialogid" value="'+data.id+'" />';
+				str += '<p>简单的描叙：<input type="text" id="dialogdes" class="w250" /></p>';
+				str += '<div style="text-align:right;margin-top:10px;"><button class="button8" onClick="insertImg('+num+')" >确定</button> <button class="button9" onClick="show_dialog.close()">取消</button></div>';
+				str += '</div>';
+				show_dialog.openHtml(str,'请填写对应图片的描叙！',300,200);
+				
+				
+			}
+		}
+	});
+	
+}
+function insertImg(num){
+	var img = $('#dialogimg').attr('src');
+	var id = $('#dialogid').val();
+	var des = $('#dialogdes').val();
+	//跟新
+	$.post('govern.php?ro=mod&ac=upimg&method=edit',{'id':id,'des':des});
+	$('#dialogupimg').after('<li class="left" style="padding:5px"><div class="bimg"><img src="'+img+'" title="'+des+'"/></div><span class="icon icon-del right" title="删除" onclick="del(this,'+id+')"></span><input type="hidden" name="uploads[]" value="'+id+'" /></li>');
+	$('#dialogupimg').attr('onclick','upimg(this,'+(num+1)+')');
+	show_dialog.close();
+}
+function showMap(){
+	var names = $('#name').val();
+	var str = '<div style="width:650px;position:relative">';
+	str += '<p style="clear:both;margin:5px;height:30px;">';
+	str += '<input type="text" id="sname" /><button class="button8">搜索</button> 如：酒店,风景</p>';
+	str += "<div id='bmap' style='width:100%;height:500px;'></div>";
+	str +='<div style="right:0;top:35px;width:16px;height:16px;overflow:hidden;position:absolute;">';
+	str += '<span class="icon icon-zan" id="bmappanel" style="float:right"></span>';
+	str +='<div id="sleft" style="background:#fcfcfc"></div></div>';
+	show_dialog.openHtml(str,'点击选择经纬度','660','500');
+	showBmap.obj= 'bmap';
+	showBmap.show();
+	$('button.button8').click(function(){
+		var name = $('#sname').val();
+		if(name!=''){
+			showBmap.search('sleft',name);
+		}
+	});
+	if(names!=''){
+		$('#sname').val(names);
+		//showBmap.search('sleft',names);
+	}
+};
+var showBmap = {
+	obj:'',
+	map:'',
+	point:new BMap.Point(110.296457,25.279863),
+	show:function(){
+		this.map = new BMap.Map(this.obj);
+		this.map.setMinZoom(12);
+		//this.map.centerAndZoom(this.point,12);
+		this.map.centerAndZoom("桂林",12);   
+		this.map.enableScrollWheelZoom();
+		//this.add(this.point.lng,this.point.lat);
+		//增加卫星
+		this.map.addControl(new BMap.MapTypeControl({mapTypes: [BMAP_NORMAL_MAP,BMAP_HYBRID_MAP],anchor: BMAP_ANCHOR_TOP_LEFT}));
+		//缩放
+		//this.map.addControl(new BMap.NavigationControl({anchor: BMAP_ANCHOR_TOP_LEFT}));
+		this.map.addEventListener('click',this.click);
+		$('#bmappanel').toggle(function(){
+			$(this).removeClass('icon-zan').addClass('icon-sou');
+			$(this).parent().height(500).width('35%');
+		},function(){
+			$(this).removeClass('icon-sou').addClass('icon-zan');
+			$(this).parent().height(16).width(16);
+		});
+	},
+	add:function(lng,lat){
+		//加点
+		var myIcon = new BMap.Icon('public/images/admin/marker.png',new BMap.Size(18,28));
+		var marker = new BMap.Marker(new BMap.Point(lng,lat),{icon:myIcon});
+		marker.setIcon('public/images/admin/marker.gif');
+		this.map.addOverlay(marker);
+	},
+	search:function(obj,name,num){
+		//this.map.setZoom(20);
+		var options = {
+			 onSearchComplete:function(re){
+				if(local.getStatus()==BMAP_STATUS_SUCCESS){
+					var s = [];
+					var count = re.getCurrentNumPois();
+					var str = '';
+					for(var i=0;i<count;i++){
+						str += '<div class="result"><b class="corange">'+(i+1)+'</b>,<a href="javascript:void(0)" onclick="showBmap.move(\''+re.getPoi(i).point.lng+'\',\''+re.getPoi(i).point.lat+'\');'
+						str += 'showBmap.label(\''+re.getPoi(i).title+'\',\''+re.getPoi(i).point.lng+'\',\''+re.getPoi(i).point.lat+'\')">';
+						str += re.getPoi(i).title+'</a>';
+						str += '<span>('+re.getPoi(i).address+')</span>';
+						str += '</div>';
+					}
+					str += '<p>'+(re.getPageIndex()+1)+'/'+re.getNumPages()+'页&nbsp;&nbsp;'+'<a href="javascript:void(0)" onclick="BMap.I(\'TANGRAM__5n\').toPage(8);">上一页</a>&nbsp;&nbsp;<a href="javascript:void(0)" onclick="showBmap.search(\''+obj+'\',\'风景\','+(re.getPageIndex()+1)+')" >下一页</a></p>'
+					document.getElementById(obj).innerHTML = str;
+				}else{
+					document.getElementById(obj).innerHTML = '没有搜索到任何数据！';
+				}
+				$('#bmappanel').removeClass('icon-zan').addClass('icon-sou');
+				$('#bmappanel').parent().height(500).width('35%');
+			 }
+		};
+		var local =  new BMap.LocalSearch(this.map,{renderOptions: {map: this.map, panel: "sleft"}});
+		//var local =  new BMap.LocalSearch(this.map,options);
+		local.search(name);
+		$('#bmappanel').removeClass('icon-zan').addClass('icon-sou');
+		$('#bmappanel').parent().height(500).width('35%');
+	},
+	move:function(lng,lat){
+		var points = new BMap.Point(lng,lat);
+		this.map.panTo(points);
+	},
+	clear:function(){
+		this.map.clearOverlays();
+	},
+	info:function(lng,lat,content){
+		var info = new BMap.InfoWindow(content);
+		this.map.openInfoWindow(info,new BMap.Point(lng,lat));
+	},
+	click:function(e){
+		//备用
+		$('#lng').val(e.point.lng);
+		$('#lat').val(e.point.lat);
+		showBmap.getAddress(e.point.lng,e.point.lat);
+	},
+	label:function(content,lng,lat){
+		var content1 = '<div class="marker" onmouseover="showBmap.cBack(this);" onmouseout="showBmap.cBacks(this)"><span class="l"></span><span class="w">'+content+'</span><span class="r"></span></div>';
+		var content2 = '<div class="marker"><span class="l1"></span><span class="w1">'+content+'</span><span class="r1"></span></div>';
+		var label = new BMap.Label(content1);
+		label.setStyle({border:'none',padding:'0px',background:'none'});
+		label.setPosition(new BMap.Point(lng,lat));
+		label.setOffset(new BMap.Size(0,-40));
+		this.map.addOverlay(label);
+		label.addEventListener('click', function(){
+			showBmap.info(lng,lat,showBmap.getAddress(lng,lat));
+		});
+	},
+	cBack:function(obj){
+		$(obj).children().addClass('ckb');
+	},
+	cBacks:function(obj){
+		$(obj).children().removeClass('ckb');
+	},
+	getAddress:function(lng,lat){
+		var gc = new BMap.Geocoder();
+		var str = '';
+		gc.getLocation(new BMap.Point(lng,lat),function(rs){
+			//alert(rs.address);
+			rs = rs.addressComponents;
+			$('#address').val(rs.city+rs.district+rs.street+rs.streetNumber);			
+		});
+	}
+};
+</script>
+<?php Y_Widget::display('footer');?>

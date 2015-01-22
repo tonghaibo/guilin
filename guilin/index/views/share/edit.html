@@ -1,0 +1,397 @@
+<?php Y_Widget::display('header',$web); ?>
+<!-- top开始 -->
+<?php Y_Widget::display('top'); ?>
+<!-- top结束 -->
+<!-- nav开始 -->
+<?php Y_Widget::display('nav'); ?>
+<!-- nav结束 -->
+<!-- content开始 -->
+<div id="content" class="clearfix MiddleBox ">
+<div id="main" class="clearfix">
+<!--左侧 -->
+<div class="area_main">
+<div class="margbottom10">
+<a href="share.html" title="菜谱大全" class="c666">游玩分享</a> 
+&gt; <span class="c666">编辑分享</span>&gt; <a href="share_detail.html?id=<?php echo $share['id']; ?>" target="_blank">浏览</a>
+</div>
+<form action="share_edit.html?id=<?php echo $share['id']; ?>" method="post" id="send_contents">
+<input type="hidden" name="btn" value="edit" />
+<div class="pub_items">
+<b class="title">类型：</b>
+<input type="radio" <?php if($share['tid']==2){ echo 'checked'; } ?> value="2" name="type"/>美食
+<input type="radio" <?php if($share['tid']==1){ echo 'checked'; } ?> checked name="type"/>风景
+</div>
+<div class="pub_items">
+<b class="title">标题：</b>
+<input type="text" class="txt t" value="<?php echo $share['title']; ?>"  name="title"/>
+<span>(<span id="title_num">0</span>/<span class="red">30</span>)</span>
+</div>
+<div class="pub_items">
+<b class="title">发生在哪：</b>
+<input type="text" class="t"  value="<?php echo $share['address']; ?>" id="address"  name="address"/>
+<!--<input type="hidden" id="lng" name="lng"/>
+<input type="hidden" id="lat" name="lat"/>
+<span class="map"><a href="javascript:void(0)" onclick="showMap('#address')"><img src="public/images/marker.gif" /></a><u>或者点击地图标注</u></span>
+-->
+</div>
+<div class="pub_items">
+<b class="title">详细描叙：</b><u>如您的心情感受，和游玩心得，遇见什么看到什么...</u><br>
+<link href="./public/js/editor/editor.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="./public/js/editor/editor.js"></script>
+<script type="text/javascript" src='./public/js/ajaxfileupload.js'></script>
+<!--<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.3"></script>-->
+<!--<script type="text/javascript" src='./public/js/map.js'></script>-->
+<div class="editor">
+<div class="editor_hd">
+<span class="icon icon_face" title="表情"></span>
+<span class="icon icon_b" title="加粗"></span>
+<span class="icon icon_i" title="斜体"></span>
+<span class="icon icon_u" title="下划线"></span>
+<span class="icon icon_q" title="引用"></span>
+<span class="icon icon_br" title="换行"></span>
+<span class="icon icon_a" title="插入链接"></span>
+<span class="icon icon_img" title="上传图片"></span>
+</div>
+<div class="editor_menu">
+<span class="arrow"><span class="arrow_out"></span><span class="arrow_in"></span></span>
+<div class="editor_menu_shadow"></div>
+<div class="editor_menu_content">
+<div class="close"><a href="javascript:;">x</a></div>
+<div class="editor_smiley_icons">
+<img src="public/js/editor/face/smile.gif" alt="smile" title="smile">
+<img src="public/js/editor/face/confused.gif" alt="confused" title="confused">
+<img src="public/js/editor/face/cool.gif" alt="cool" title="cool">
+<img src="public/js/editor/face/cry.gif" alt="cry" title="cry">
+<img src="public/js/editor/face/eek.gif" alt="eek" title="eek">
+<br>
+<img src="public/js/editor/face/angry.gif" alt="angry" title="angry">
+<img src="public/js/editor/face/wink.gif" alt="wink" title="wink">
+<img src="public/js/editor/face/sweat.gif" alt="sweat" title="sweat">
+<img src="public/js/editor/face/lol.gif" alt="lol" title="lol">
+<img src="public/js/editor/face/stun.gif" alt="stun" title="stun"><br>
+<img src="public/js/editor/face/razz.gif" alt="razz" title="razz">
+<img src="public/js/editor/face/shy.gif" alt="shy" title="shy">
+<img src="public/js/editor/face/rolleyes.gif" alt="rolleyes" title="rolleyes">
+<img src="public/js/editor/face/sad.gif" alt="sad" title="sad">
+<img src="public/js/editor/face/happy.gif" alt="happy" title="happy">
+<br><img src="public/js/editor/face/yes.gif" alt="yes" title="yes">
+<img src="public/js/editor/face/no.gif" alt="no" title="no">
+<img src="public/js/editor/face/heart.gif" alt="heart" title="heart">
+<img src="public/js/editor/face/idea.gif" alt="idea" title="idea">
+<img src="public/js/editor/face/rose.gif" alt="rose" title="rose">
+<br></div>
+</div></div>
+
+<div class="editor_menu">
+<span class="arrow"><span class="arrow_out"></span><span class="arrow_in"></span></span>
+<div class="editor_menu_shadow"></div>
+<div class="editor_menu_content">
+<div class="close"><a href="javascript:;">x</a></div>
+<div class="editor_b_icons">
+<table>
+<tr>
+<td>内容：</td>
+<td><input type="text" class="text" /></td>
+</tr>
+<tr>
+<td></td>
+<td><button>确定</button></td>
+</tr>
+</table>
+</div>
+</div></div>
+
+<div class="editor_menu">
+<span class="arrow"><span class="arrow_out"></span><span class="arrow_in"></span></span>
+<div class="editor_menu_shadow"></div>
+<div class="editor_menu_content">
+<div class="close"><a href="javascript:;">x</a></div>
+<div class="editor_i_icons">
+<table>
+<tr>
+<td>内容：</td>
+<td><input type="text" class="text" /></td>
+</tr>
+<tr>
+<td></td>
+<td><button>确定</button></td>
+</tr>
+</table>
+</div>
+</div></div>
+
+<div class="editor_menu">
+<span class="arrow"><span class="arrow_out"></span><span class="arrow_in"></span></span>
+<div class="editor_menu_shadow"></div>
+<div class="editor_menu_content">
+<div class="close"><a href="javascript:;">x</a></div>
+<div class="editor_u_icons">
+<table>
+<tr>
+<td>内容：</td>
+<td><input type="text" class="text" /></td>
+</tr>
+<tr>
+<td></td>
+<td><button>确定</button></td>
+</tr>
+</table>
+</div>
+</div></div>
+
+<div class="editor_menu">
+<span class="arrow"><span class="arrow_out"></span><span class="arrow_in"></span></span>
+<div class="editor_menu_shadow"></div>
+<div class="editor_menu_content">
+<div class="close"><a href="javascript:;">x</a></div>
+<div class="editor_q_icons">
+<table>
+<tr>
+<td>内容：</td>
+<td><input type="text" class="text" /></td>
+</tr>
+<tr>
+<td></td>
+<td><button>确定</button></td>
+</tr>
+</table>
+</div>
+</div></div>
+
+<div class="editor_menu">
+<span class="arrow"><span class="arrow_out"></span><span class="arrow_in"></span></span>
+<div class="editor_menu_shadow"></div>
+<div class="editor_menu_content">
+<div class="close"><a href="javascript:;">x</a></div>
+<div class="editor_a_icons">
+<table>
+<tr>
+<td>内容：</td>
+<td><input type="text" class="text urltitle"  /></td>
+</tr>
+<tr>
+<td>地址：</td>
+<td><input type="text" class="text url" value="http://" /></td>
+</tr>
+<tr>
+<td></td>
+<td><button>确定</button></td>
+</tr>
+</table>
+</div>
+</div></div>
+
+<div class="editor_menu">
+<span class="arrow"><span class="arrow_out"></span><span class="arrow_in"></span></span>
+<div class="editor_menu_shadow"></div>
+<div class="editor_menu_content">
+<div class="close"><a href="javascript:;">x</a></div>
+<div class="editor_img_icons">
+<table>
+<tr>
+<td>图片：</td>
+<td>
+<input type="file" name="fileToUpload" id="fileToUpload" class="text" />
+<img src="public/images/wait3.gif"  id="loadimg" style="display:none"/>
+</td>
+</tr>
+<tr>
+<td>描叙：</td>
+<td>
+<input type="text" class="text" />
+</td>
+</tr>
+<tr>
+<td></td>
+<td><button id="buttonUpload">上传</button>
+<span style="padding-left:5px;color:red;" id="img_msg"><u style="color:#666">点击图片选择封面照</u></span>
+</td>
+</tr>
+</table>
+</div>
+</div></div>
+<textarea name="content" style="height:250px;"><?php echo Y_Ubb::toUbb($share['content']); ?></textarea>
+<div class="img_list">
+<ul>
+<input type="hidden" name="img" id="img" value="<?php echo $share['img']; ?>" />
+<?php
+if($share['uploads']){
+	$img = explode(',',$share['uploads']);
+	foreach($img as $v){
+		$i = Ly_Uploads::getPath($v);
+		if($i){
+		echo '<li';
+		if($v==$share['img']){
+			echo ' class="sel" ';
+		}
+		echo '><div><span>';
+		echo '<input type="hidden" name="uploads[]" value="'.$v.'" />';
+		echo '<img src="'.Y_Pr::image($i['path'],80,80).'" title="'.$i['des'].'" ids="'.$v.'" onclick="insertimg(this)" />';
+		echo '</span></div><a href="javascript::void(0)" onclick="delimg(this)" class="close">关闭</a></li>';
+		}
+	}
+}
+?>
+</ul>
+</div>
+</div>
+</div>
+<div class="pub_items">
+<b class="title">标签：</b>
+<span id="tagList">
+<?php
+$tg = Ly_Tags_Bind::getTags(array('cid'=>$share['id']));
+if($tg){
+	foreach($tg as $v){
+		$t[] = $v;
+		echo '<a href="javascript:void(0)" onclick="delTag(this)" ids="'.$v['id'].'">'.$v['name'].'<span>x</span></a>';
+	}
+	echo '<input type="hidden" name="tags" value="'.join(',',$t).'"/>';
+}else{
+	echo '<input type="hidden" name="tags" />';
+}
+?>
+</span>
+<u>最多接受5个标签,点击热门标签添加</u>
+</div>
+<div class="pub_items">
+<span>热门标签：</span>
+<?php
+$tags = Ly_Tags::getHot(20);
+if($tags){
+foreach($tags as $v){
+	echo '<a href="javascript:void(0)" class="tags" onclick="insertTag(this)" ids="'.$v['id'].'">'.$v['name'].'</a>';
+}
+}
+?>
+</div>
+<div class="pub_items">
+<input type="button" class="button" value="提交" onclick="send_contents();return false;"/>
+<a href="share_detail.html?id=<?php echo $share['id']; ?>">取消</a>
+<span style="color:red;padding-left:10px;display:none" id="send_msg">储物撒鞍山</span>
+</div>
+</form>
+<script type="text/javascript">
+function insertTag(obj){
+	var a = $('#tagList a');
+	var num = a.size();
+	if(num>=5){
+		return false;
+	}
+	var id = $(obj).attr('ids');
+	var str = new Array();
+	var flag = true;
+	a.each(function(){
+		var i = $(this).attr('ids')
+		if(i==id){
+			flag = false;
+		}else{
+			str.push(i);
+		}
+	});
+	if(flag==true){
+		//插入
+		str.push(id);
+		$('#tagList input[name=tags]').val(str.valueOf());
+		$('#tagList').append('<a href="javascript:void(0)" onclick="delTag(this)" ids="'+id+'">'+$(obj).html()+'<span>x</span></a>');
+	}
+}
+function delTag(obj){
+	var id = $(obj).attr('ids');
+	$(obj).remove();
+	var str = new Array();
+	$('#tagList a').each(function(){
+		str.push($(this).attr('ids'));
+	});
+	$('#tagList input[name=tags]').val(str.valueOf());
+}
+function send_contents(){
+window.setTimeout(function(){
+$('#send_msg').hide();
+},4000);
+//标题
+var title = $('input[name=title]').val();
+title = $.trim(title);
+if(title=='' || title=='填入一条牛逼的标题'){
+	$('#send_msg').html('请填写标题').show();
+	return;
+}else if(title.length>30 || title.length<5){
+	$('#send_msg').html('请控制标题在5~30字以内').show();
+	return;
+}
+//发生地
+var address = $('#address').val();
+if(address.length<3 || address.length>30){
+	$('#send_msg').html('请控制发生地在3~30字以内').show();
+	return;
+}else if(address=='如：龙胜梯田'){
+	$('#send_msg').html('请填入发生地').show();
+	return;
+}
+//内容
+var c = $.trim($('textarea[name=content]').val());
+c = c.length;
+if(c<20 || c>800){
+	$('#send_msg').html('请控制详细描叙字数在20~800个字符内').show();
+	return;
+}
+ document.getElementById('send_contents').submit();
+}
+$(function(){
+
+//标题
+$('input[name=title]').focus(function(){
+if($(this).val() == '填入一条牛逼的标题'){
+	$(this).val('');
+}
+var now = $(this).val().length;
+if(now<30){
+	$('#title_num').html(now+1);
+}else{
+	$('#title_num').html(30);
+}
+}).blur(function(){
+if($(this).val()==''){
+	$(this).val('填入一条牛逼的标题');
+}
+});
+//发生在哪
+$('input[name=address]').blur(function(){
+if($(this).val()==''){
+	$(this).val('如：龙胜梯田');
+}
+}).focus(function(){
+if($(this).val()=='如：龙胜梯田'){
+	$(this).val('');
+}
+});
+});
+</script>
+</div>
+<!--左侧结束 -->
+<!--右侧 -->
+<div class="area_side">
+<dl class="pub_tips">
+          <dt>发表文章小贴士：</dt>
+          <dd>
+              <strong>添加图片</strong>
+              <p>图片将会保存在你的相册中。</p>
+              <strong>添加视频</strong>
+              <p>可以用来添加一段视频。</p>
+              <strong>添加背景音乐</strong>
+              <p>可以用来添加情景音乐和歌曲，音乐将保存在你的音乐盒中。</p>
+              <strong>快速撰写文章内容</strong>
+              <p>1. 博客搬家：直接复制自己发表的博客内容，然后粘贴到文字内容填写区即可；<br>目前支持的博客网站：新浪、腾讯、网易、搜狐；<br> 2. Word复制：从word文档中复制文字，然后粘贴到内容填写区，但是不能复制图片。</p>
+          </dd>
+      </dl>
+</div>
+<!--右侧结束 -->
+</div>
+<!--mian结束 -->
+</div>
+<!-- content结束 -->
+<!-- footer开始 -->
+<?php Y_Widget::display('footer'); ?>
+<!-- footer结束 -->
+</body>
+</html>

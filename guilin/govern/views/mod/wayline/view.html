@@ -1,0 +1,53 @@
+<link rel="stylesheet" href="./public/css/admin/admin.css" type="text/css">
+<!-- 这里写内容-->
+<table class="st nob" width="100%" >
+<tr>
+    <td width="15%" rowspan="6" valign="top"><a href="wayline_detail.html?id=<?php echo $info['wid']; ?>" target="_blank"><img src="<?php echo Y_Pr::image(Ly_Uploads::getUrl($info['img']),120,120); ?>" /></a></td>
+    <td colspan="3">线&nbsp;&nbsp;路：<a href="wayline_detail.html?id=<?php echo $info['wid']; ?>" target="_blank"><?php echo $info['name'].($info['ishot']?'<span class="icon icon-hot"></span>':''); ?></span></a></td>
+   </tr>
+<tr>
+	<td width="25%">统&nbsp;&nbsp;计：评论：<a target="_blank" href="?ro=mod&ac=comment&t=wayline&tid=<?php echo $info['wid'];  ?>"><?php echo $info['comment']; ?></a>&nbsp;&nbsp;订单：<a target="_blank" href="?ro=order&ac=wayline&s_wid=<?php echo $info['wid']; ?>"><?php echo Ly_Wayline_Order::getCount($info['wid']); ?></a></td>
+	<td width="20%">行程天数：<span class="ctitle"><?php echo $info['days']; ?></span></td>
+    <td>酒店代表：<a href="?ro=member&ac=member&s_uid=<?php echo $info['uid']; ?>" target="_blank"><?php echo Ly_User::getEmail($info['uid']); ?></a></td>
+  </tr>
+  <tr>
+    <td>联系电话：<span class="ctitle"><?php echo $info['contact']; ?></span></td>
+    <td>成人价：<span class="ctitle"><?php echo $info['price'].'元'; ?></span></td>
+    <td>儿童价：<span class="ctitle"><?php echo $info['pricehalf'].'元';  ?></span></td>
+  </tr>
+  <tr>
+    <td>交通方式：<span class="ctitle"><?php echo $info['traffic']; ?></span></td>
+    <td colspan="2">温馨提示：<span class="ctitle"><?php echo $info['notice']; ?></span></td>
+</tr>
+  <tr>
+    <td>发布时间：<span class="ctitle"><?php echo date('Y-m-d H:i',$info['pubtime']); ?></span></td>
+    <td colspan="2">费用包含：<span class="ctitle"><?php echo $info['pricein']; ?></span></td>
+</tr>
+  <tr>
+    <td>状&nbsp;&nbsp;态：<span class="ctitle"><?php echo Ly_Items::getName('public','status',$info['status']); ?></span></td>
+    <td colspan="2">不包含费用：<span class="ctitle"><?php echo $info['priceout']; ?></span></td>
+</tr>
+  <tr>
+  <td valign="top">详情描叙：</td>
+  <td colspan="5">
+  <?php
+ echo $info['des'];
+  ?>
+  </td>
+  </tr>
+  <?php
+  $days = Y_Db::init('wayline_days');
+  $days = $days->where(array('wid'=>$info['wid']))->order('daynum asc')->select();
+  if($days){
+	foreach($days as $v){
+		echo '<tr>';
+		echo '<td valign="top" class="w80">第<span class="ctitle">'.$v['daynum'].'</span>天</td>';
+		echo '<td class="w250 ctitle">'.$v['contents'].'</td>';
+		echo '<td valign="top">住:<span class="ctitle">'.$v['live'].'</span></td>';
+		echo '<td valign="top">餐:早('.($v['eat1']?'有':'无').'),中('.($v['eat2']?'有':'无').'),晚('.($v['eat3']?'有':'无').')</td>';
+		echo '</tr>';
+	}
+  }
+  ?>
+</table>
+<!-- 这里写内容结束-->

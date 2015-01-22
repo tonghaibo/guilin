@@ -1,0 +1,1 @@
+<?php {"pri":"sid","0":"uptime","1":"data","2":"client_ip","3":"gid","4":"gurl","5":"uid","6":"uurl"}yno

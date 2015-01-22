@@ -1,0 +1,1 @@
+getLoginInfoCallback({state:100,name:"13418495407",username:"134qbkym407","telephone":"4007-777-777",bulletin:""})

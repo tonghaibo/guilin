@@ -1,0 +1,57 @@
+<?php Y_Widget::display('header',array('b_info'=>$this->id)); ?>
+<?php Y_Widget::display('top'); ?>
+<!--content -->
+<div id="content">
+	<?php Y_Widget::display('tips',array('b_info'=>$this->id)); ?>
+	<!--main -->
+	<div class="main clearfix">
+	<?php Y_Widget::display('left'); ?>
+	<!--box开始 -->
+	<div id="box" class="clearfix">
+<!-- 这里写内容-->
+<div class="box box-info">权限标识：<a  style="padding:5px 8px;background:#D3D6FF;margin-left:5px;" class="no">一级</a><a style="padding:5px 8px;background:#EAEBFF;margin-left:5px;" class="no">二级</a><a style="padding:5px 8px;background: #F2F9FD;margin-left:5px;" class="no">三级</a></div>
+<table class="st full">
+<tr>
+<th>(权限)名称</th>
+<th>(权限)名称</th>
+<th>(权限)名称</th>
+<th>(权限)名称</th>
+</tr>
+<tr>
+<?php 
+foreach($list as $key=>$val){
+	$num = count(explode('-',$val['bpath']));
+	echo '<td class="ctitle" ';
+	if($num==2){
+		echo ' style="background:#D3D6FF;border:1px solid #fff;';
+	}else if($num==3){
+		echo ' style="background:#EAEBFF;border:1px solid #fff;"';
+	}else{
+		echo ' style="background:#F2F9FD;border:1px solid #fff;"';
+	}
+	echo '>';
+	if($this->admin['G_Power']['issuper']){
+		echo '<span class="icon icon-ok"></span>';
+	}else{
+		if(in_array($val['id'],$this->admin['G_Power']['power'])){
+			echo '<span class="icon icon-ok"></span>';
+		}else{
+			echo '<span class="icon icon-error"></span>';
+		}
+	}
+	echo $val['name'].'</td>';
+	if(($key+1)%4==0){
+		echo '</tr><tr>';
+	}
+	
+}
+ ?>
+ </tr>
+</table>
+<!-- 这里写内容结束-->
+	<!--box结束 -->
+	</div>
+	</div>
+	<!-- mainend-->
+</div>
+<?php Y_Widget::display('footer');?>

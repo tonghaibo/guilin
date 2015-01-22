@@ -1,0 +1,45 @@
+<?php
+if($info){
+	foreach($info as $v){
+		echo '<div class="c_list">';
+		echo '<div class="c_content">';
+		echo '<p class="mgb10">';
+		echo '<em><a href="share_detail.html?id='.$v['id'].'">'.$v['title'].'</a></em><a href="javascript:void(0)" onclick="delContent(this,'.$v['id'].')" class="right f10">&nbsp;&nbsp;[ 删除 ]</a><a class="right f10" target="_blank" href="share_edit.html?id='.$v['id'].'">[ 编辑 ]</a>';
+		echo '</p>';
+		echo '<div class="c_window">';
+		echo '<div class="arrow"><em>◆</em><span>◆</span></div>';
+		echo '<div class="padtop10">'.Y_Pr::substr(Y_Pr::html($v['content']),0,200,false).' <a target="_blank" href="share_detail.html?id='.$v['id'].'">更多...</a></div>';
+		echo '<div class="c_bottom">';
+		echo '<span class="right">';
+		echo '<a target="_blank" href="javascript:void(0)"  >收藏('.$v['shares'].')</a>';
+		echo '<i class="W_vline"> | </i>';
+		echo '<a target="_blank" href="share_detail.html?id='.$v['id'].'#commentAnchor">评论('.$v['comments'].')</a>';
+		echo '</span>';
+		echo '<span>'.date('m月d日 H:i',$v['pubtime']).'</span>';
+		echo '</div>';
+		echo '</div>';
+		echo '</div>';
+		echo '</div>';
+	}
+	echo '<div class="Page1 margtop20">'.$pages.'</div>';
+}else{
+	echo '<p class="f14 mgb10 margtop20"  style="display: block;text-align:center">';
+	echo '<img src="public/images/content_blank.png" class="v_m">暂且没有任何数据<a href="share_pub.html" >建议先去发布自己的文章</a>！</p>';
+}
+?>
+<script type="text/javascript">
+function delContent(obj,id){
+show_comfirm.open(0,'您确定要删除该文章吗？',function(){
+	$.get('home_doshare.html?do=del',{'id':id},function(d){
+		d = parseInt(d);
+		if(d==1){
+			show_msg.open('删除成功！',3,1);
+			$(obj).parents('div.c_list').remove();
+		}else{
+			show_msg.open('删除失败！',3,2);
+		}
+	});
+});
+	
+}
+</script>

@@ -1,0 +1,78 @@
+<?php Y_Widget::display('header',array('b_info'=>$this->id)); ?>
+<?php Y_Widget::display('top'); ?>
+<!--content -->
+<div id="content">
+	<?php Y_Widget::display('tips',array('b_info'=>$this->id)); ?>
+	<!--main -->
+	<div class="main clearfix">
+	<?php Y_Widget::display('left'); ?>
+	<!--box开始 -->
+	<div id="box" class="clearfix">
+<!-- 这里写内容-->
+<form action="#" method="post" id="addNotice">
+<table class="st nob">
+<tr>
+<td class="title"><span class="cred">*</span>标题：</td>
+<td><input type="text" id="title" name="title" class="w250" title="标题" onblur="checkLen(this,'#title-tips',3,20)"/>
+ <span id="title-tips" class="info">填写简单的概括性标题</span></td>
+<td  ></td>
+</tr>
+<tr>
+<td class="title">链接地址：</td>
+<td>
+<input type="text" name="url" id="url" class="w250" title="链接地址"  />
+ <span id="url-tips">如果有链接地址就填写</span>
+</td>
+<td class="info" ></td>
+</tr>
+<tr>
+<td class="title">发送给谁：</td>
+<td>
+<input type="text" name="uid" title="发送给谁" value="<?php if($uid=$this->get('uid')){echo $uid; }else{ echo 0; } ?>" id="uid" class="w250" title="作者" onblur="checkUser(this)" />
+<span id="uid-tips"><?php if($uid){ echo '<a href="govern.php?ro=member&ac=member&s_uid='.$uid.'">'.Ly_User::getName($uid).'</a>'; }else{echo '0表示群发';} ?></span>
+</td>
+<td class="info" ></td>
+</tr>
+<tr>
+<td class="title">通知描叙：</td>
+<td><textarea id="notice" name="notice" title="通知描叙" class="w500 h200" onblur="checkLen(this,'#notice-tips',5,600)"></textarea></td>
+<td class="info" id="notice-tips">填写通知详情</td>
+</tr>
+<tr>
+<td class="title">是否立即启用：</td>
+<td><input type="radio" name="status" value="1" />是
+<input type="radio" name="status" checked value="0" />否
+</td>
+<td class="info"></td>
+</tr>
+<tr>
+<td></td>
+<td><input type="button" value="添加" name="bt" class="btn btn-green" onclick="subadd()" /></td>
+<td></td>
+</tr>
+</table>
+</form>
+<!-- 这里写内容结束-->
+	<!--box结束 -->
+	</div>
+	</div>
+	<!-- mainend-->
+</div>
+<script type="text/javascript">
+function checkUser(obj){
+var uid = $(obj).val();
+if(uid!=0){
+	$.get('<?php echo $this->getUrl(); ?>',{'uid':uid},function(d){
+			$('#uid-tips').html(d);
+	});
+}
+}
+function subadd(){
+	if(checkLen('#title','#title-tips',2,30)){
+		document.getElementById('addNotice').submit();
+	}else{
+		return false;
+	}
+}
+</script>
+<?php Y_Widget::display('footer');?>

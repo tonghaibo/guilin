@@ -1,0 +1,142 @@
+<?php Y_Widget::display('header',array('b_info'=>$this->id)); ?>
+<?php Y_Widget::display('top'); ?>
+<!--content -->
+<div id="content">
+	<?php Y_Widget::display('tips',array('b_info'=>$this->id)); ?>
+	<!--main -->
+	<div class="main clearfix">
+	<?php Y_Widget::display('left'); ?>
+	<!--box开始 -->
+	<div id="box" class="clearfix">
+<!-- 这里写内容-->
+<div class="box">
+<select id="pid">
+<option value="0">--请选择--</option>
+<?php  
+if($tlist){
+	foreach($tlist as $val){
+		echo '<option value="'.$val['id'].'">'.$val['name'].'</option>';
+	}
+}
+?>
+</select>
+<input type="text" id="sname" x-webkit-speech />
+<button class="btn btn-green" onclick="change(0)">查找</button>
+</div>
+<div id="smap" style='width:87%;height:510px;border:1px solid #ccc;float:left'></div>
+<div id="spanel" style="width:11%;float:right;height:500px;overflow:hidden;background:whiteSmoke;padding:5px;">
+</div>
+<!-- 这里写内容结束-->
+	<!--box结束 -->
+	</div>
+	</div>
+	<!-- mainend-->
+</div>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.3"></script>
+<script type="text/javascript">
+$(function(){
+$('#pid').change(function(){
+	change(0);
+});
+showBmap.obj = 'smap';
+showBmap.show();
+});
+var showBmap = {
+	obj:'',
+	map:'',
+	point:new BMap.Point(110.296457,25.279863),
+	show:function(){
+		this.map = new BMap.Map(this.obj);
+		this.map.setMinZoom(12);
+		this.map.centerAndZoom(this.point,15);   
+		this.map.enableScrollWheelZoom();
+		//增加卫星
+		this.map.addControl(new BMap.MapTypeControl({mapTypes: [BMAP_NORMAL_MAP,BMAP_HYBRID_MAP],anchor: BMAP_ANCHOR_TOP_RIGHT}));
+		//缩放
+		this.map.addControl(new BMap.NavigationControl({anchor: BMAP_ANCHOR_TOP_LEFT}));
+	},
+	move:function(lng,lat){
+		var points = new BMap.Point(lng,lat);
+		this.map.panTo(points);
+		this.map.setZoom(20);
+	},
+	clear:function(){
+		this.map.clearOverlays();
+	},
+	info:function(lng,lat,content){
+			var gc = new BMap.Geocoder();
+			var i = content.indexOf(',');
+			gc.getLocation(new BMap.Point(lng,lat),function(rs){
+				content = '<b class="corange">'+content.substr(i+1)+'</b><br>';
+				content += rs.address;
+				var info = new BMap.InfoWindow(content);
+				showBmap.map.openInfoWindow(info,new BMap.Point(lng,lat));
+			});
+			
+	},
+	label:function(content,lng,lat){
+		var content1 = '<div class="marker" onmouseover="showBmap.cBack(this);" onmouseout="showBmap.cBacks(this)"><span class="l"></span><span class="w">'+content+'</span><span class="r"></span></div>';
+		var content2 = '<div class="marker"><span class="l1"></span><span class="w1">'+content+'</span><span class="r1"></span></div>';
+		var label = new BMap.Label(content1);
+		label.setStyle({border:'none',padding:'0px',background:'none'});
+		label.setPosition(new BMap.Point(lng,lat));
+		label.setOffset(new BMap.Size(0,-40));
+		this.map.addOverlay(label);
+		label.addEventListener('click', function(){
+			showBmap.info(lng,lat,content);
+		});
+	},
+	cBack:function(obj){
+		$(obj).children().addClass('ckb');
+	},
+	cBacks:function(obj){
+		$(obj).children().removeClass('ckb');
+	}
+}
+function change(page){
+	var pid = $('#pid').val();
+	var name = $('#sname').val();
+	$.post('<?php echo $this->getUrl(); ?>',{'pid':pid,'page':page,'name':name},function(d){
+		d = eval('('+d+')');
+		if(d.data!=''){
+			var data = d.data;
+			var str = '';
+			showBmap.clear();
+			for(var a in data){
+				str += '<p><b class="corange">'+(parseInt(a)+1)+'</b>,&nbsp;&nbsp;';
+				str += '<a href="javascript:void(0)" onclick="showBmap.move('+data[a].lng+','+data[a].lat+');showBmap.info('+data[a].lng+','+data[a].lat+',\''+data[a].name+'\')">'+data[a].name+'</a><span class="icon icon-del" onclick="del(this,'+data[a].id+')"></span><span class="icon icon-edit" onclick="edit('+data[a].id+')"></span></p>';
+				showBmap.label((parseInt(a)+1)+','+data[a].name,data[a].lng,data[a].lat);
+			}
+			str += '<p>'+(d.page+1)+'/'+d.total+'页&nbsp;&nbsp;';
+			if(page>=1){
+				str += '<a href="javascript:void(0)" onClick="change('+(page-1)+')" >上一页</a>';
+			}
+			if(page<(parseInt(d.total)-1)){
+				str += '<a href="javascript:void(0)" onClick="change('+(page+1)+')" >下一页</a>';
+			}
+			str +='</p>';
+			$('#spanel').html(str);
+		}else{
+			$('#spanel').html('<span class="cred">无匹配数据</span>');
+		}
+	});
+}
+function del(obj,num){
+	var url = '<?php echo $this->getUrl(); ?>';
+	url +='&method=del&id='+num;
+	$.get(url,{},function(data){
+		if(data==1){
+			uptips('删除成功！','ok');
+			$(obj).parent('p').html('');
+		}else{
+			uptips('删除失败！');
+		}
+	});
+}
+function edit(num){
+	var url = '<?php echo $this->getUrl(); ?>';
+	url +='&method=edit&id='+num;
+	window.location.href = url;
+}
+</script>
+<?php Y_Widget::display('footer');?>

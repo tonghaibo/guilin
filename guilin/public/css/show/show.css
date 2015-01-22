@@ -1,0 +1,57 @@
+.button1 {border:0;background:url('button1.gif') no-repeat;width:80px;height:28px;text-align:center;font-size:14px;cursor:pointer;color:#ffffff;}
+.button2 {border:0;background:url('button2.gif') no-repeat;width:83px;height:28px;text-align:center;font-size:14px;cursor:pointer;color:#ffffff;}
+.button3 {border:0;background:url('button3.gif') no-repeat;width:83px;height:28px;text-align:center;font-size:14px;cursor:pointer;color:#ffffff;}
+.button4 {border:0;background:url('sendbtn.gif') no-repeat;width:60px;height:19px;text-align:center;font-size:12px;cursor:pointer;color:#ffffff;line-height:19px;padding:0;font-weight:bold;}
+.button5 {border:0;background:url('sendmsg.gif') no-repeat;width:57px;height:21px;text-align:center;font-size:12px;cursor:pointer;color:#ffffff;line-height:21px;padding:0;font-weight:bold}
+.button6 {border:0;background:url('button-send.gif') no-repeat;width:115px;height:32px;line-height:32px;text-align:center;font-size:14px;cursor:pointer;color:#000;}
+.button7{border:0px;background:url('button7.gif') no-repeat;text-align:center;font-size:12px;cursor:pointer;color:#000000;width:44px;height:24px}
+.button8{border:0px;background:url('smallbtn.gif') no-repeat;text-align:center;font-size:12px;cursor:pointer;color:#ffffff;width:57px;height:24px;line-height:24px;padding:0px}
+.button9{border:0px;background:url('smallbtn.gif') no-repeat 0 -24px;text-align:center;font-size:12px;cursor:pointer;color:#666666;width:57px;height:24px;line-height:24px;padding:0px}
+.button10 {background:url('send.gif') no-repeat;width:112px;height:30px;line-height:30px;border-width:0;font-size:14px;cursor:pointer;color:#ffffff;font-weight:bold;text-align:center;}
+.button10:hover {background-position:0 -30px;}
+/*wblayer*/
+.wblayerbox{position:absolute;clear:both;z-index:9999;}
+.wblayerbox .wbLayer {width:100%;height:100%;padding:0px;border-collapse:collapse;border-spacing:0;}
+.wblayerbox .wbLayer .topl{background:url('wraplayer_2.png') 0 0 no-repeat;width:5px;height:5px}
+.wblayerbox .wbLayer .topm,.wbLayer .bottomm{background:url('wraplayer_1.png') repeat-x;height:5px}
+.wblayerbox .wbLayer .topr{background:url('wraplayer_2.png') -5px 0 no-repeat;width:5px;height:5px}
+.wblayerbox .wbLayer .ml,.wblayerbox  .wbLayer .mr{height:100%;background:url('wraplayer_1.png') repeat-y;width:5px;}
+.wblayerbox .wbLayer .ml{float:left}
+.wblayerbox .wbLayer .mr{float:right}
+.wblayerbox .wbLayer .mm{background:#ffffff;height:100%;float:left;width:100%;position:relative}
+.wblayerbox .wbLayer .bottoml{background:url('wraplayer_2.png') 0 -5px no-repeat;width:5px;height:5px}
+.wblayerbox .wbLayer .bottomr{background:url('wraplayer_2.png') -5px -5px no-repeat;width:5px;height:5px}
+.wblayerbox .wbLayer .body1{height:90px;background:#ffffff;padding:15px 5px 15px 15px}
+.wblayerbox .wbLayer .body2{background:#f5f5f5;border-top:1px solid #e7e7e7;height:15px;padding:10px 15px 15px 15px;_height:24px;_padding:8px 15px 8px 15px;}
+.wblayerbox .wbLayer .limg{float:left;width:60px;margin-top:3px;}
+.wblayerbox .wbLayer .linfo{float:left;line-height:150%;width:215px}
+.wblayerbox .wbLayer .linfo2{margin-top:5px;color:#666666}
+.wblayerbox .wbLayer .ntop{background:url('wraplayer_3.gif') 0 0 no-repeat;width:18px;height:12px;position:absolute;margin-top:-11px;margin-left:15px}
+.wblayerbox .wbLayer .nbottom{background:url('wraplayer_3.gif') -33px 0 no-repeat;width:18px;height:12px;position:absolute;margin-top:157px;margin-left:15px}
+.wblayerbox .wbLayer .nright{background:url('wraplayer_3.gif') -73px 0 no-repeat;width:8px;height:17px;position:absolute;margin-top:15px;margin-left:300px}
+.wblayerbox .wbLayer .nleft{background:url('wraplayer_3.gif') -103px 0 no-repeat;width:8px;height:17px;position:absolute;margin-top:15px;margin-left:-8px}
+
+/* 弹窗样式 */
+#ye_dialog_overlay {position:fixed;top:0;left:0;height:100%;width:100%;background-color:#000;filter:alpha(opacity=15);-moz-opacity:0.15;opacity:0.15;z-index:1000;display:none;}
+* html #ye_dialog_overlay {position:absolute;margin:0 auto;height:expression(offsetParent.scrollTop+document.documentElement.clientHeight)}
+#ye_dialog_window{z-index:1002;position:fixed;top:50%;left:50%;width:300px;height:150px;display:none;padding-bottom:8px;}
+* html #ye_dialog_window{position:absolute;top:expression(offsetParent.scrollTop+document.documentElement.clientHeight-this.offsetHeight-200);}
+#ye_dialog_window_w {position:relative;left:-3px;top:-3px;}
+#ye_dialog_title {background:url('titlebg.gif') repeat-x center;height:26px;line-height:25px;padding:5px 10px;font-size:14px;color:#666666;text-align:left;cursor:move}
+#ye_dialog_body {width:100%;}
+#ye_dialog_iframe {width:100%;height:100%;border:0 none;}
+#ye_dialog_close {position:absolute;width:10px;height:10px;display:block;color:#000;right:10px;z-index:9999;top:13px;text-decoration:none;background:url('cancel.gif') no-repeat;cursor:pointer;overflow:hidden}
+#ye_dialog_close:hover{background-position:0 -10px;}
+.ye_msg_window {padding:0;position:fixed;top:50%;left:50%;z-index:1100;width:230px;height:80px}
+* html .ye_msg_window {position:absolute;top:expression((offsetParent.scrollTop+document.documentElement.clientHeight-this.offsetHeight)/2);left:expression(document.documentElement.clientWidth/2);}
+.ye_msg_wrap {padding:10px 20px;height:auto;background-color:#fff;font-size:14px;text-align:left;box-shadow: 0pt 0pt 10px rgb(119, 119, 119);vertical-align:middle;}
+.ye_msg_comfirm{position:absolute;z-index:1003}
+.ye_msg_comfirm_body {text-align:center;font-size:12px}
+.ye_msg_comfirm_body p{margin-bottom:5px}
+.ye_msg_autoclose {height:20px;line-height:20px;color:#666;font-size:12px;text-align:left;}
+.ye_msg_ico_1,.ye_msg_ico_2,.ye_msg_ico_3,.ye_msg_ico_4,.ye_msg_ico_5 {background:#fff no-repeat 10px center;padding: 16px 10px 16px 50px;}
+.ye_msg_ico_1 {background-image:url('right.gif');}
+.ye_msg_ico_2 {background-image:url('error.gif');}
+.ye_msg_ico_3 {background-image:url('info.gif');}
+.ye_msg_ico_4 {background-image:url('warm.gif');}
+.ye_msg_ico_5 {background-image:url('yiwen.gif');}

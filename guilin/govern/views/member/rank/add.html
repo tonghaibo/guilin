@@ -1,0 +1,61 @@
+<?php Y_Widget::display('header',array('b_info'=>$this->id)); ?>
+<?php Y_Widget::display('top'); ?>
+<!--content -->
+<div id="content">
+	<?php Y_Widget::display('tips',array('b_info'=>$this->id)); ?>
+	<!--main -->
+	<div class="main clearfix">
+	<?php Y_Widget::display('left'); ?>
+	<!--box开始 -->
+	<div id="box" class="clearfix">
+<!-- 这里写内容-->
+<form action="#" method="post" id="addRank">
+<table class="st nob">
+<tr>
+<td class="title"><span class="cred">*</span>选择类型：</td>
+<td>
+<input type="radio" name="type" value="0" checked />奖励
+<input type="radio" name="type" value="1" />处罚
+</td>
+<td class="info">请选择类型</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">*</span>积分名称：</td>
+<td>
+<input type="text" id="name" name="name"  class="w250" title="积分名称" onblur="checkLen(this,'#name-tips',2,15)" />
+</td>
+<td class="info" id="name-tips">积分名称</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">*</span>积分数：</td>
+<td><input type="text" class="w250" value="0" name="rank" id="rank" title="积分数" onblur="checkNum(this,'#rank-tips')" /></td>
+<td class="info" id="rank-tips">填写具体的积分数</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">*</span>单日最大上限：</td>
+<td><input type="text" class="w250" value="0" name="dayrank" id="dayrank" title="积分数" onblur="checkNum(this,'#dayrank-tips')" /></td>
+<td class="info" id="dayrank-tips">填写具体的积分数,如果是处罚则无限制0无限制</td>
+</tr>
+<tr>
+<td></td>
+<td><input type="button" value="添加" name="bt" class="btn btn-green" onclick="subadd()" /></td>
+<td></td>
+</tr>
+</table>
+</form>
+<!-- 这里写内容结束-->
+	<!--box结束 -->
+	</div>
+	</div>
+	<!-- mainend-->
+</div>
+<script type="text/javascript">
+function subadd(){
+	if(checkLen('#name','#name-tips',2,15) && checkNum('#rank','#rank-tips') && checkNum('#dayrank','#dayrank-tips')){
+		document.getElementById('addRank').submit();
+	}else{
+		return false;
+	}
+}
+</script>
+<?php Y_Widget::display('footer');?>

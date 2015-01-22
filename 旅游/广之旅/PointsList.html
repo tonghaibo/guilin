@@ -1,0 +1,366 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head id="ctl00_Head1"><meta http-equiv="Content-Type" content="text/html; charset=gb2312" /><title>
+	会员中心
+</title><meta http-equiv="X-UA-Compatible" content="IE=7" /><link href="./css/gzl02_css.css" rel="stylesheet" type="text/css" /><link href="./css/main.css" rel="stylesheet" type="text/css" /><link href="./css/basic.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="./js/jquery-min.js"></script>
+    <link href="./css/default.css" rel="stylesheet" type="text/css" />   
+    <script src="./js/jquery.idTabs.min.js" type="text/javascript"></script>   
+    <script type="text/javascript" src="./js/jquery.autocomplete.js"></script>
+    <link href="./css/jquery.autocomplete.css" rel="stylesheet" type="text/css" /><link rel="shortcut icon" href="./images/Favicon.ico" /><meta name="Keywords" content="广之旅国际旅行社,旅游,酒店,出境游预订,国内游预订,省内游预订,酒店预订,机票预订,门票预订,自由行预订,自游通,包团旅游" /><meta name="Description" content="广之旅在线（ www.gzl.com.cn），是广之旅国际旅行社股份有限公司旗下的专业在线旅游交易平台。网站整合了广之旅丰富的旅游资源，连接130多间营业点网络，提供旅游团队预订（出境游、国内游、省内游），酒店预订，自由行预订，门票预订，机票预订，包团旅游预订等业务。咨询热线：020-86338888" />
+
+    <!--[if IE 6]>
+<script type="text/javascript" src="/Static/JsGzl/ie6png.js"></script>
+<script>
+DD_belatedPNG.fix('.gzl02_navigationbar li a.hover,.gzl02_navigationbar li a:hover');
+</script>
+<![endif]-->
+</head>
+<body>
+<script type="text/javascript">
+<!--
+    var ptype = 5;
+    function addFavorite() {
+        switch (getOs()) {
+            case 1:
+                window.external.addFavorite('http://www.gzl.com.cn', '广之旅在线');
+                break;
+            case 2:
+                window.sidebar.addPanel('广之旅在线', 'http://www.gzl.com.cn', "");
+                break;
+            case 0:
+                alert("加入收藏失败，您使用的浏览器不支持这个功能");
+                break;
+        }
+    }
+
+    function getOs() {
+        if (navigator.userAgent.indexOf("MSIE") > 0) return 1;
+        if (navigator.userAgent.indexOf("Firefox") > 0) return 2;
+        return 0;
+    }  
+//-->
+</script>
+
+<div class="S_index_toolbar01">
+  <a href="http://weibo.com/guangzhilv" target="_blank" class="button01"></a>
+  <a href="http://cgzl.taobao.com/" target="_blank"  class="button02"></a>
+  <a href="http://www.myorientours.com/"  target="_blank" class="button03"></a> 
+  <a href="/Help/Default.html" target="_blank" class="button04" title="网站使用帮助">网站使用帮助</a>
+</div>
+<div class="S_index_toolbar02">
+  <div class="main">
+    <div class="sign">
+   
+  <span>您好！欢迎来到广之旅在线</span> | <a href="/Users/Login.html">登录</a> | <a href="/Users/Registration.html">注册</a>
+
+    
+    </div>
+    <div class="contact"></div>
+    <div class="button"><a href="javascript:addFavorite();" title="收藏本站">收藏本站</a>|<a href="/Page/Detail_95.html" title="收藏本站">网站导航</a></div>
+  </div>
+</div>
+
+<div class="S_index_head">
+  <div class="S_index_logo"></div>
+   <div class="S_index_PhoneNumber"></div>
+  <!--<div class="S_index_logo_animation"></div>-->
+  <!-- Lets start with a basic html structure -->
+<div class="S_index_search">
+
+<span id="ctl00_lblTab"><ul class="search_tab"><li><a href="#item5" id="travel" >旅游团<b class="rc_l"></b><b class="rc_r"></b></a></li><li><a href="#item2"  >自由行<b class="rc_l"></b><b class="rc_r"></b></a></li><li><a href="#item1"  >酒店<b class="rc_l"></b><b class="rc_r"></b></a></li><li><a href="#item3"  >门票<b class="rc_l"></b><b class="rc_r"></b></a></li><li><a href="#item4"   >邮轮<b class="rc_l"></b><b class="rc_r"></b></a></li></ul></span>  
+  <form action="/hotel/list.aspx" id="form_search" method="get">
+  <div class="search_panel">
+     <span class="ico"></span>
+      <input name="search_keyword" id="search_keyword" type="text" ptype="5"/>      
+      <button type="submit" class="submit"></button>
+      <b class="rc_l"></b>
+      <p class="keyword">
+    <span id="item1">
+       
+      </span>
+    <span id="item2" >       
+      
+      </span>
+    <span id="item3">       
+      
+      </span>
+    <span id="item4">      
+       
+      </span>
+      <span id="item5">  
+      
+      </span>
+      </p>
+  </div>
+  </form>
+</div>
+</div>
+<div class="S_index_navigation">
+<span id="ctl00_lblHeadNavigation"><ul class="list"><li >  <a href="/" class="button" title="首页"><span>首页</span></a>  <b class="rc_l"></b> <b class="rc_r"></b> </li><li class="MouseOverMenu  " > <a href="javascript:void(0);" class="button"><span>我要预订</span></a><ol class="menu"><div class="title">我要预订</div><a href="/Outbound/Default.html" title="出境旅游">出境旅游</a><a href="/Inbound/Default.html" title="国内旅游">国内旅游</a><a href="/Province/Default.html" title="省内旅游">省内旅游</a><a href="/Cruise/Default.html" title="邮轮旅游">邮轮旅游</a><a href="/Freetrip/Default.html" title="自由行度假">自由行度假</a><a href="/Hotel/Default.html" title="酒店预订">酒店预订</a><a href="/Ticket/Default.html" title="门票预订">门票预订</a></ol><b class="rc_l"></b><b class="rc_r"></b></li><li ><a href="/subject/groupbuy/default.aspx" class="button"  title="超值"><span>超值</span></a> <span class="tag tag_rebate"></span><b class="rc_l"></b><b class="rc_r"></b></li><li ><a href="/Users/Orders/OrganizationTeam.aspx" class="button"  title="我要包团"><span>我要包团</span></a><b class="rc_l"></b><b class="rc_r"></b></li><li ><a href="/car/default.html" class="button"  title="我要租车"><span>我要租车</span></a><b class="rc_l"></b><b class="rc_r"></b></li><li ><a href="/Payment/OrderPayment.html" class="button"  title="我要支付"><span>我要支付</span></a><b class="rc_l"></b><b class="rc_r"></b></li><li >    <a href="/Cooperative/Default.html" class="button"  title="自游通卡商户"><span>自游通卡商户</span></a>    <b class="rc_l"></b>  <b class="rc_r"></b>  </li><li > <a href="http://gzl.hirede.com/CareerSite/EmployerBasic" class="button"  target="_blank" title="在线招聘"><span>在线招聘</span></a>   <b class="rc_l"></b>   <b class="rc_r"></b>  </li><li class='current'>   <a href="/Users/Default.html" class="button"><span>会员中心</span></a>   <b class="rc_l"></b>   <b class="rc_r"></b>  </li>  </ul></span>
+  
+  <div class="line"></div>
+</div>
+  
+  
+  <div style="width:980px;">
+        
+<!--nav-->
+  <div id="nav_crumbs"><span class="bigtext"></span> <b class="greentext">当前位置</b> <a href="/">首页</a> &raquo; <a href="/Users/EditInfo.html">资料修改</a></div>
+  <!--#nav_crumbs-->
+  </div>
+<link href="./css/basic.css" rel="stylesheet" type="text/css"  />
+<link href="./css/Member.css" rel="stylesheet" type="text/css"  />
+<link href="./css/datepicker.css" rel="stylesheet" type="text/css" />
+  <div id="main">
+  <div class="m_box1">
+  <div class="m_box3">
+  <div class="m_box2">
+    <div class="linkLeft">
+  <ul>
+    <li class="mainMenu"><a href="/Users/Message.html" class="bmenu">站内消息</a></li>
+    <li class="mainMenu"><a href="/Users/PassengerList.html" class="bmenu">常用旅客</a></li>
+	<li class="subMenu1">个人资料管理</li>
+	<li class="thrMenu"><a href="/Users/EditInfo.html" class="smenu">修改资料</a></li>
+	<!--<li class="subMenu1">VIP卡申请</li>
+	<li class="thrMenu"><a href="/Users/VipApplication.html" class="smenu">VIP卡申请</a></li>-->
+	<li class="subMenu2">积分管理</li>
+	<li class="thrMenu"><a href="/Users/PointsList.html" class="smenu">积分查询</a></li>
+	<li class="thrMenu"><a href="/Users/Gift.html" class="smenu">礼品列表</a></li>
+	<li class="subMenu3">订单管理</li>
+	<li class="thrMenu"><a href="/Users/Orders/ToursOrderList.html" class="smenu">旅游线路订单</a></li>
+	<li class="thrMenu"><a href="/Users/Orders/TicketOrderList.html" class="smenu">景点门票订单</a></li>
+	<li class="thrMenu"><a href="/Users/Orders/freetripOrderList.html" class="smenu">自由行订单</a></li>
+	<li class="thrMenu"><a href="/Users/Orders/HotelOrderList.html" class="smenu">酒店订单</a></li>	
+	<!--<li class="thrMenu"><a href="/Users/Orders/FlightOrderList.html" class="smenu">机票订单</a></li>-->
+	<!-- <li class="thrMenu"><a href="/Users/Orders/ConsultingOrderList.html" class="smenu">咨询订单</a></li>-->
+  </ul>
+	</div><!--#linkLdft-->
+	<div class="linkRight">
+	  <div class="m_nav_box">
+	    <ul>
+		  <li class="left">会员中心</li>
+		  <li class="right"><b class="greentext">当前位置</b>　首页 - 会员中心 - 积分查询</li>
+		</ul>
+	  </div><!--导航-->
+	  <div class="content_box">
+	  <div class="conten_box1">
+	  <div class="conten_box2">
+	    <p style="width:705px; font:13px Arial,'宋体'; color:red; padding:0px 0px 5px 0px; margin:0px auto;">*请注意：<br>1、网站注册会员不等于广之旅VIP卡会员，如需申请广之旅VIP卡，请到广之旅营业部索取申请表格；<br />
+2、只有广之旅VIP卡的持卡会员，在本网站预订旅游线路产品（散客拼团）才能获得广之旅积分，预订酒店、自由行、门票等产品暂时无法获得广之旅积分，不便之处，敬请谅解；<br />
+3、积分是积到参与出团的广之旅VIP卡持有人的卡上，而非积到预订人的卡上，并且积分是在成功出团归来后才可获得。
+</p>
+	    <h2>积分查询</h2>
+	    <form method="get" name="form1" action="PointsList.aspx">
+		<p style="padding:10px 30px; margin-bottom:10px;">类型：
+		  <select name="selectType" id="selectType">
+		    <option value="0">选择类型</option>
+		    <option value="1">兑换</option>
+		    <option value="2">充值</option>
+		    </select>
+		  查询日期：
+		   <input name="search_checkindate" type="text" id="search_checkindate" value='2012-10-01' style="width:80px;"  />
+		- <input name="search_checkoutdate" type="text" id="search_checkoutdate"  value='2012-10-12' style="width:80px;" />&nbsp;
+		<input type="submit" name="submit1" value="搜索" class="s_btn" /></p>
+		   </form>
+		<ul class="bline">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <th class="td1_C">原因</th>
+              <th class="td1_C">积分</th>
+              <th class="td1_C">类型</th>
+              <th class="td1_C">时间</th>
+              </tr>
+          </table> 
+		</ul>
+		<p style="margin-top:10px; padding:10px; text-align:center; line-height:2em;"><span class="greentext" style="font-size:14px; font-weight:bold;">总积分：</span><span class="redtext" style="font-size:14px; font-weight:bold;">0分</span></p>
+		</div>
+	  </div>
+	  </div>
+	</div><!--#linkRight-->
+  </div>
+  </div>
+  </div>
+  </div><!--#main-->
+<script type="text/javascript" src="./js/datepicker.js"></script>
+<script type="text/javascript" src="./js/eye.js"></script>
+<script type="text/javascript" src="./js/utils.js"></script>
+<script type="text/javascript" src="./js/jquery.autocomplete.js"></script>
+<script type="text/javascript" src="./js/Hotel_Index.js"></script>
+<script type="text/javascript" src="./js/Hotel_Global.js"></script>
+<script type="text/javascript">
+    //绑定类型选择框的值
+    $("#selectType").val(0); 
+</script>
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++	Published at 2012-10-12 13:48:20
++	Pages Execution Time    : 0.0030000 seconds
++	System Caching Count    : 588
++	Current Page Size       : 4988 bytes
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+    </div>
+
+<!--foot begin-->
+<div class="none_02"></div>
+
+<div class="S_index_course"></div>
+<div class="S_index_contact">
+  <span class="logo"></span>
+  <span class="end"></span>
+  <span class="text text01">值班时间：<b>08:30-20:30</b></span>
+  <span class="text text02">旅游团订单咨询：<font>400-863-8888 按3</font>  <font>020-86338888按3</font><br />
+  酒店、自由行、门票订单咨询：<font>400-863-8888按2</font>  <font>020-86338888按2</font></span>
+</div>
+  <div class="S_index_bottom">
+  <div class="line"></div>
+  <ul class="MenuList">
+  <span id="ctl00_lblPageFoot"><li><a href='/Page/Detail_37.html' target="_blank" title="公司简介">公司简介</a></li> <li><a href='/Page/Detail_132.html' target="_blank" title="门市网点">门市网点</a></li> <li><a href='/Page/Detail_86.html' target="_blank" title="合作同业">合作同业</a></li> <li><a href='/Page/Detail_93.html' target="_blank" title="广告业务">广告业务</a></li> <li><a href='/Page/Detail_94.html' target="_blank" title="联系我们">联系我们</a></li> <li><a href='/Page/Detail_95.html' target="_blank" title="网站地图">网站地图</a></li> <li><a href='/Link/FriendLink.html' target="_blank" title="友情链接">友情链接</a></li> </span>
+  </ul>
+  <div class="logo">
+    <a href="https://www.alipay.com/aip/aip_validate_list.htm?trust_id=AIP07024258" target="_blank" class="zfb"></a>
+    <a href="http://www.miibeian.gov.cn/" class="gs" target="_blank"></a>
+    <a href="http://www.gzjd.gov.cn/newgzjd/baojing/110.jsp?catid=318" class="wl110" target="_blank"></a>
+  </div>
+  <p>本网站产品和服务由广州广之旅国际旅行社股份有限公司提供<br />ICP经营许可号：粤ICP备06044810号<br />信息服务提供方：广州广之旅国际旅行社股份有限公司<br />如您有任何疑问和建议，请与我们联系：member#gzl.com.cn（请把#替换成@） <br />版权所有：广州广之旅国际旅行社股份有限公司</p>
+</div>
+
+
+<script type="text/javascript">
+    
+    var fade = function(id, s) {
+        s.tabs.removeClass(s.selected);
+        s.tab(id).addClass(s.selected);
+        if (s.tab(id).html().substr(0,2) == "酒店") {
+            $("#form_search").attr("action", "/Hotel/List.aspx");
+            $("#search_keyword").attr("ptype", "1");
+        }
+        if (s.tab(id).html().substr(0,3) == "自由行") {
+            $("#form_search").attr("action", "/Freetrip/List.aspx");
+            $("#search_keyword").attr("ptype", "2");           
+            
+        }
+        if (s.tab(id).html().substr(0,2) == "门票") {
+            $("#form_search").attr("action", "/Ticket/List.aspx");
+            $("#search_keyword").attr("ptype", "3");
+        }
+        if (s.tab(id).html().substr(0,2) == "邮轮") {
+            $("#form_search").attr("action", "/Search/TravelList.aspx");
+            $("#search_keyword").attr("ptype", "4");
+        }
+        if (s.tab(id).html().substr(0,3) == "旅游团") {
+            $("#form_search").attr("action", "/Search/TravelList.aspx");
+            $("#search_keyword").attr("ptype", "5");
+        }
+        s.items.fadeOut();
+        s.item(id).fadeIn();     
+        return false;
+    };
+    $.fn.fadeTabs = $.idTabs.extend(fade);
+    $(".S_index_search").fadeTabs();
+    
+ 
+try{
+     $.ajax({
+               type:"Post",
+				dataType: "json",
+				url: "/ajax.aspx?action=login",
+				success: function(data) {	
+                    $(".S_index_toolbar02 .main .sign").empty();
+                    if(data.success)
+                    {
+                      $(".S_index_toolbar02 .main .sign").html("<span>您好，"+data.username +"，欢迎您的到来! </span> <a href=\"/Users/LoginOut.html\">退出</a>");
+                      DefaultLogin(1,data.username,data.num);
+                      }
+                    else
+                    { 
+                      $(".S_index_toolbar02 .main .sign").html(" <span>您好！欢迎来到广之旅在线</span> | <a href=\"/Users/Login.html\">登录</a> | <a href=\"/Users/Registration.html\">注册</a>");
+                   DefaultLogin(0,"",0);
+                    }
+                    
+                },
+                complete:function(XMLHttpRequest,textStatus){
+                    
+                },
+                error:function(){ 
+                  $(".S_index_toolbar02 .main .sign").empty();
+                  $(".S_index_toolbar02 .main .sign").html(" <span>您好！欢迎来到广之旅在线</span> | <a href=\"/Users/Login.html\">登录</a> | <a href=\"/Users/Registration.html\">注册</a>");
+                    DefaultLogin(0,"",0);
+                }
+            }); 
+            }catch(e){}
+  
+     function DefaultLogin(i,name,num)
+     {
+     try{
+        if(i==1)
+        {$("#logininfo").empty();
+        $("#logininfo").html("<div class=\"SignBox\"><span class=\"membername\"></span><span class=\"message\">"+name+"</span><a href=\"/Users/Default.html\" class=\"order\">查看订单</a><a href=\"/Users/LoginOut.html\" class=\"exit\">[退出]</a><b class=\"rc_tl\"></b><b class=\"rc_tr\"></b><b class=\"rc_bl\"></b><b class=\"rc_br\"></b></div>");
+        }else{$("#logininfo").empty();
+         $("#logininfo").html("<div class=\"SignIn\"> <a href=\"/Users/Login.html\" class=\"register\"></a><a href=\"/Users/Registration.html\" class=\"login\"></a></div>");
+        }
+     }catch(e){
+     $("#logininfo").empty();
+      $("#logininfo").html("<div class=\"SignIn\"> <a href=\"/Users/Login.html\" class=\"register\"></a><a href=\"/Users/Registration.html\" class=\"login\"></a></div>");
+     
+     }
+     }
+     
+     
+                     
+</script>
+
+ <script src="./js/MouseOverMenu.js" type="text/javascript"></script>
+<script type="text/javascript" src="./js/global.js"></script>
+<script type="text/javascript">
+
+ var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-9644479-6']);
+_gaq.push(['_trackPageview']); (function() {
+    var ga = document.createElement('script');
+    ga.type = 'text/javascript';
+    ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl': 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(ga, s)
+})();
+$("#search_namecity").blur(function() {
+    if ($(this).val() == "") {
+        $(this).val("支持中文/拼音")
+    }
+});
+$("#search_namecity").focus(function() {
+    if ($(this).val() == "支持中文/拼音") {
+        $(this).val("")
+    }
+});
+$("#search_keyword").autocomplete('/Ajax.aspx?action=getproductsearch', {
+    dataType: "json",
+    selectFirst: false,
+    scroll: false,
+    matchContains: false,
+    mouseOutSelect: false,
+    autoFill: false,
+    mustMatch: false,
+    parse: function(data) {
+        return $.map(data,
+        function(row) {
+            return {
+                data: row,
+                value: row.Name,
+                result: row.Name
+            }
+        })
+    },
+    formatItem: function(item) {
+        return item.Name
+    }
+}).result(function(e, item) {
+    $("#search_keywords").val(item.Name)
+});</script>
+<script src="./js/CustomerService.js" type="text/javascript"></script>
+<script src="./js/stats.js" type="text/javascript"></script>
+</body>
+</html>

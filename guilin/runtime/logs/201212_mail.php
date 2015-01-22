@@ -1,0 +1,14 @@
+<?php exit();?>	Notice	1356312669	成功	请激活您的游桂林帐号！	546814755@qq.com	127.0.0.1
+<?php exit();?>	Notice	1356315796	成功	游桂林邮件验证	yuexinok@126.com	127.0.0.1
+<?php exit();?>	Notice	1356316314	成功	游桂林邮件验证	yuexinok@126.com	127.0.0.1
+<?php exit();?>	Notice	1356316398	成功	游桂林邮件验证	yuexinok@126.com	127.0.0.1
+<?php exit();?>	Notice	1356316575	成功	游桂林邮件验证	yuexinok@126.com	127.0.0.1
+<?php exit();?>	Notice	1356316804	成功	游桂林邮件验证	yuexinok@126.com	127.0.0.1
+<?php exit();?>	Notice	1356317031	成功	游桂林邮件验证	yuexinok@126.com	127.0.0.1
+<?php exit();?>	Notice	1356317191	成功	游桂林邮件验证	yuexinok@126.com	127.0.0.1
+<?php exit();?>	Notice	1356317444	成功	游桂林邮件验证	yuexinok@126.com	127.0.0.1
+<?php exit();?>	Notice	1356317535	成功	游桂林邮件验证	yuexinok@126.com	127.0.0.1
+<?php exit();?>	Notice	1356319067	成功	游桂林邮件验证	yuexinok@126.com	127.0.0.1
+<?php exit();?>	Notice	1356319270	成功	游桂林邮件验证	yuexinok@126.com	127.0.0.1
+<?php exit();?>	Notice	1356319393	成功	游桂林邮件验证	yuexinok@126.com	127.0.0.1
+<?php exit();?>	Notice	1356319788	成功	游桂林邮件验证	yuexinok@126.com	127.0.0.1

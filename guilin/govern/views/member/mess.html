@@ -1,0 +1,199 @@
+<?php Y_Widget::display('header',array('b_info'=>$this->id)); ?>
+<?php Y_Widget::display('top'); ?>
+<!--content -->
+<div id="content">
+	<?php Y_Widget::display('tips',array('b_info'=>$this->id)); ?>
+	<!--main -->
+	<div class="main clearfix">
+	<?php Y_Widget::display('left'); ?>
+	<!--box开始 -->
+	<div id="box" class="clearfix">
+<!-- 这里写内容-->
+<?php 
+$slist = Ly_Items::getList('message','status');
+ ?>
+<div class="box box-info">发件人(0为系统)：
+<input type="text" class="w80" id="fromuid_ss" value="<?php echo $this->get('fromuid'); ?>" />
+收件人:
+<input type="text" class="w80" id="touid_ss" value="<?php echo $this->get('touid'); ?>" />
+信件ID:
+<input type="text" class="w80" id="id_ss" value="<?php echo $this->get('id'); ?>" />
+状态：
+<select id="v_ss">
+<option value="all">--请选择--</option>
+<?php 
+foreach($slist as $v){
+	echo '<option ';
+	if(isset($_GET['v']) && $v['id']==$this->get('v')){
+		echo ' selected ';
+	}
+	echo ' value="'.$v['id'].'">'.$v['name'].'</option>';
+}
+ ?>
+</select>
+<button class="btn" onclick="change()">查看</button>
+</div>
+<table class="st full">
+<tr>
+<th width="8%">ID号</th>
+<th width="18%">发件人</th>
+<th width="18%">收件人</th>
+<th width="12%">发件时间</th>
+<th width="6%">删除(发)</th>
+<th width="12%">是否已读</th>
+<th width="6%">删除(收)</th>
+<th width="8%">状态</th>
+<th>操作</th>
+</tr>
+<?php
+
+if($llist){
+	foreach($llist as $val){
+		echo '<tr>';
+		echo '<td><input type="checkbox" name="ids" value="'.$val['id'].'" />'.$val['id'].'</td>';
+		echo '<td>';
+		if($val['fromuid']){
+			$from = Ly_User::getEmail($val['fromuid']);
+			echo '<span class="icon icon-mail" title="给TA写信" onclick="show_mess('.$val['fromuid'].',\''.$name.'\')"></span>';
+			echo '<a href="govern.php?ro=member&ac=member&s_uid='.$val['fromuid'].'" target="_blank">'.$from.'</a>';
+		}else{
+			echo '系统';
+		}
+		echo '</td>';
+		echo '<td>';
+		$name = Ly_User::getEmail($val['touid']);
+		echo '<span class="icon icon-mail" title="给TA写信" onclick="show_mess('.$val['touid'].',\''.$name.'\')"></span>';
+		echo '<a href="govern.php?ro=member&ac=member&s_uid='.$val['touid'].'" target="_blank">'.$name.'</a>';
+		echo '</td>';
+		echo '<td>'.date('Y-m-d H:i:s',$val['messtime']).'</td>';
+		echo '<td>'.($val['fromdel']?'删除':'正常').'</td>';
+		echo '<td>'.($val['isread']?date('Y-m-d H:i',$val['gettime']):'未读').'</td>';
+		echo '<td>'.($val['todel']?'删除':'正常').'</td>';
+		echo '<td class="showstatus" style="position:relative">';
+		echo '<div >'.$slist[$val['status']]['name'].'<span class="icon icon-desc"></span></div>';
+		echo '<ul class="dropmenu">';
+		foreach($slist as $s){
+			if($s['id']!=$val['status']){
+				echo '<li><a href="'.$this->getUrl().'&method=do&id='.$val['id'].'&v='.$s['id'].'">'.$s['name'].'</a></li>';
+			}
+		}
+	echo '</ul>';
+	echo '</td>';
+		echo '<td><a class="no" href="'.$this->getUrl().'&method=del&id='.$val['id'].'"><span class="icon icon-del"></span>删除</a> <a class="no" href="javascript:void(0)" onclick="show_dialog.openUrl(\''.$this->getUrl().'&method=more&id='.$val['id'].'\',550,350,\'阅读信件\')"><span class="icon icon-more"></span>阅读</a></td>';
+		echo '</tr>';
+	}
+}else{
+	echo '<tr><td class="cred" colspan="9">没有匹配数据</td></tr>';
+}
+
+?>
+<tfoot>
+<tr>
+<td colspan="3"><input type="checkbox" id="checkAll" onclick="checkall('ids')">全/反
+<?php foreach($slist as $s){
+	echo '<a href="javascript:void(0)" onclick="checkUp('.$s['id'].')" class="no">'.$s['name'].'</a>&nbsp;&nbsp;&nbsp;';
+} ?>
+<a href="javascript:void(0)" onclick="del()" class="no">删除</a></td>
+<td colspan="9" style="text-align:right">
+<div id="ui-page"><?php echo $pages; ?></div>
+</td>
+</tr>
+</tfoot>
+</table>
+<div class="box">给当前在线用户发送私信：<br>
+<?php 
+$session = Y_Db::init('session');
+$uids = $session->where("uid!=0 group by uid")->field('uid')->order('uptime desc')->select();
+if($uids){
+foreach($uids as $u){
+echo '<input type="checkbox" name="onlineuids" value="'.$u['uid'].'" >'.Ly_User::getEmail($u['uid']).'&nbsp;&nbsp;&nbsp;';
+}
+echo '<br>';
+echo '<input type="checkbox" onclick="checkall(\'onlineuids\')" />全/反';
+echo '<br><select id="mess_mess" class="w80"><option value="0">常用语</option>';
+$list = Ly_Items::getList('messages','mess');
+if($list){
+	foreach($list as $v){
+		echo '<option>'.$v['name'].'</option>';
+	}
+}
+echo '</select>';
+echo '<br>信件：<br><textarea id="mess_text" class="w300 h100"></textarea>';
+echo '<br><button class="btn btn-green" onclick="send()">发送</button>';
+}
+ ?>
+</div>
+<!-- 这里写内容结束-->
+	<!--box结束 -->
+	</div>
+	</div>
+	<!-- mainend-->
+</div>
+<script type="text/javascript" src="public/js/show.js"></script>
+<link rel="stylesheet" href="public/css/show/show.css" />
+<script type="text/javascript">
+function del(){
+	var id = getIds('ids');
+	if(id==''){
+		uptips('请选择值！');
+		return;
+	}else{
+		var url='<?php echo $this->getUrl() ?>&method=del&id='+id;
+		window.location.href=url;
+	}
+}
+function checkUp(num){
+	var id = getIds('ids');
+	if(id==''){
+		show_msg.open('请先选择值！',4,2);
+		return;
+	}else{
+		show_comfirm.open(0,'确定要改变'+id+'这些项吗？',function(){
+			var url = '<?php echo $this->getUrl() ?>&method=do&id='+id+'&v='+num;
+			window.location.href = url;
+		});
+	}
+}
+function send(){
+	var uids = getIds('onlineuids');
+	if(uids==''){
+		show_msg.open('请选择发送给谁！',3,2);
+		return;
+	}
+	var mess = $('#mess_text').val();
+	if(mess!=''){
+		$.post('?ro=member&ac=mess&method=add',{'uid':uids,'mess':mess},function(){});
+		show_msg.open('信件发送成功！请刷新内容查看结果',2,1);
+		$('#mess_text').val('');
+	}else{
+		show_msg.open('请填写信件内容！',2,2);
+	}
+}
+function change(){
+	var fromuid = $('#fromuid_ss').val();
+	var touid = $('#touid_ss').val();
+	var v = $('#v_ss').val();
+	var id = $('#id_ss').val();
+	if(id!=''){
+		v= 'all';
+		touid = '';
+		fromid ='';
+	}
+	window.location.href="?ro=member&ac=mess&fromuid="+fromuid+'&v='+v+'&touid='+touid+'&id='+id;
+}
+$(document).ready(function(){
+$('td.showstatus').hover(function(){
+	$(this).children('ul').show();
+	//$(this).parent('div').addClass('checkB');
+},function(){
+	$(this).children('ul').hide();
+	//$(this).parent('div').removeClass('checkB');
+});
+$('#mess_mess').change(function(){
+if($(this).val()!=0){
+	$('#mess_text').val($(this).val());
+	}
+});
+});
+</script>
+<?php Y_Widget::display('footer');?>

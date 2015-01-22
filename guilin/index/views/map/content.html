@@ -1,0 +1,27 @@
+<?php
+if(!$info){
+echo '<div style="text-align:center"><img src="public/images/content_blank.png" /><a onclick="show_dialog.close()" href="javascript:void(0)">暂且没有匹配到任何数据！</a></div>';
+die;
+}
+?>
+<div>
+<?php
+foreach($info as $v){
+echo '<div class="list clearfix">';
+echo '<div class="left img">';
+echo '<a href="share_detail.html?id='.$v['id'].'" target="_blank">';
+echo '<img src="'.Y_Pr::image(Ly_Uploads::getUrl($v['img']),85,85).'">';
+echo '</a>';
+echo '</div>';
+echo '<div class="left ml10 des">';
+echo '<a href="share_detail.html?id='.$v['id'].'" target="_blank">'.$v['title'].'</a>';
+echo '<p class="c666">作者 <a class="c333" href="user.html?uid='.$v['uid'].'" target="_blank">'.Ly_User::getName($v['uid']).'</a></p>';
+echo '<p class="c666"><span class="message">评论 <a class="c333" href="share_detail.html?id='.$v['id'].'#commentAnchor" target="_blank">'.$v['comments'].'</a></span>  |  <span title="浏览" class="browse c666">浏览 '.$v['views'].'</span></p>';
+echo '<p class="c666">发布于 '.date('y年m月d日 H:i',$v['pubtime']).'</p>';
+echo '</div></div>';
+}
+?>
+</div>
+<div style="clear:both;padding-top:10px;">
+<div class="Page1" style="text-align:left"><?php echo $pages; ?></div>
+</div>

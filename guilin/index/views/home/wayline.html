@@ -1,0 +1,63 @@
+<?php Y_Widget::display('header',$web); ?>
+<!-- top开始 -->
+<?php Y_Widget::display('top'); ?>
+<!-- top结束 -->
+<!-- nav开始 -->
+<?php Y_Widget::display('nav'); ?>
+<!-- nav结束 -->
+<!-- content开始 -->
+<div id="content" class="clearfix MiddleBox ">
+<div id="main" class="clearfix">
+<?php Y_Widget::display('home_right',$user); ?>
+<!--you侧 -->
+<div class="area_main">
+<h2 id="box_title" class="dhead mgb10">
+   <a title="线路" <?php if(!in_array($this->get('do'),array('order','add'))){ echo 'class="sel"'; } ?> href="javascript:void(0)"  onclick="changebox(this)" rel="wayline" p=1 load=0>路线</a>
+   <a title="订单" <?php if($this->get('do')=='order'){ echo 'class="sel"'; } ?> href="javascript:void(0)"  onclick="changebox(this)" rel="order" p=1 load=0>订单</a>
+<a title="添加线路" <?php if($this->get('do')=='add'){ echo 'class="sel"'; } ?> href="javascript:void(0)"  onclick="changebox(this)" rel="add" p=1 load=0>添加路线</a>
+<a title="编辑线路" id="edit_wayline"<?php if($this->get('do')=='edit'){ echo 'class="sel"'; } ?> href="javascript:void(0)"  onclick="changebox(this)" rel="edit" p=1 load=0>编辑路线</a>
+</h2>
+<div class="c_box"></div>
+<div class="c_box"></div>
+<div class="c_box"></div>
+<div class="c_box"></div>
+</div>
+<!--you侧结束 -->
+</div>
+<!--mian结束 -->
+</div>
+<!-- content结束 -->
+<!-- footer开始 -->
+<?php Y_Widget::display('footer'); ?>
+<!-- footer结束 -->
+<script type="text/javascript">
+function changebox(obj,page){
+	if(typeof(page)=='undefined'){
+		var page = $(obj).attr('p');
+	}
+	$(obj).addClass('sel').siblings().removeClass('sel');
+	var i = $(obj).index();
+	$('.c_box').eq(i).show().siblings('.c_box').hide();
+	if($(obj).attr('p')!=page || $(obj).attr('load')==0){
+		$('.c_box').eq(i).html('<div style="text-align:center;padding-top:20px;"><img src="public/images/wait3.gif" /></div>');
+		$('.c_box').eq(i).load('home_dowayline.html?do='+$(obj).attr('rel')+'&page='+page,{});
+		$(obj).attr('p',page);
+		$(obj).attr('load',1);
+	}
+	
+}
+function _Page(page){
+	if($('#box_title a.sel').index()==1){
+		loadlist('.main_t a.tab[act=1]',page);
+	}else{
+		changebox('#box_title a.sel',page);
+	}
+	var mtrTop=$('#box_title').offset().top-65;
+    $("html,body").scrollTop(mtrTop);
+ };
+$(function(){
+	changebox('#box_title a.sel',1);
+});
+</script>
+</body>
+</html>

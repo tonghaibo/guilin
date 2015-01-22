@@ -1,0 +1,49 @@
+<?php Y_Widget::display('header',array('b_info'=>$this->id)); ?>
+<?php Y_Widget::display('top'); ?>
+<!--content -->
+<div id="content">
+	<?php Y_Widget::display('tips',array('b_info'=>$this->id)); ?>
+	<!--main -->
+	<div class="main clearfix">
+	<?php Y_Widget::display('left'); ?>
+	<!--box开始 -->
+	<div id="box" class="clearfix">
+<!-- 这里写内容-->
+<table class="st full" id="arealist">
+<tr>
+<th>ID号</th>
+<th>类型</th>
+<th>主题</th>
+<th>启用</th>
+<th>操作</th>
+</tr>
+<?php 
+if($slist){
+foreach($slist as $val){
+	echo '<tr>';
+	echo '<td>'.$val['tplid'].'</td>';
+	echo '<td class="cblue">'.Ly_Items::getName('mailtpl','tpltype',$val['tpltype']).'</td>';
+	echo '<td>'.$val['subject'].'</td>';
+	echo '<td>'.($val['flag']?'<span class="icon icon-ok"></span>':'<span class="icon icon-error"></span>').'</td>';
+	echo '<td><a href="'.$this->getUrl().'&method=edit&id='.$val['tplid'].'" class="no"><span class="icon icon-edit"></span>编辑</a></td>';
+	echo '</tr>';
+	
+}
+}
+?>
+<tfoot>
+<tr>
+<td colspan="5" style="text-align:right">
+<div id="ui-page"><?php echo $pages; ?></div>
+</td>
+</tr>
+</tfoot>
+</table>
+
+<!-- 这里写内容结束-->
+	<!--box结束 -->
+	</div>
+	</div>
+	<!-- mainend-->
+</div>
+<?php Y_Widget::display('footer');?>

@@ -1,0 +1,43 @@
+<?php
+if($info){
+	$model = Y_Db::init('content');
+	$model->field(array('id','uid','title','content','comments','shares'));
+	foreach($info as $v){
+		$model->where(array('id'=>$v['id'],'status'=>1));
+		if($i=$model->find()){
+		echo '<div class="c_list c_collect">';
+		echo '<div class="face">';
+		$u = Ly_User::getBaseinfo($i['uid'],50);
+		echo '<a target="_blank" href="user.html?uid='.$i['uid'].'" title="'.$u['name'].'">';
+		echo '<img  title="'.$u['name'].'"  width="50" height="50" src="'.$u['userimg'].'">';
+		echo '</a>';
+		echo '</div>';
+		echo '<div class="c_content">';
+		echo '<p class="mgb10">';
+		echo '<a target="_blank" href="user.html?uid='.$i['uid'].'" title="'.$u['name'].'">'.$u['name'].'</a>：';
+		echo '<em><a href="share_detail.html?id='.$i['id'].'">'.$i['title'].'</a></em>';
+		echo '</p>';
+		echo '<div class="c_window">';
+		echo '<div class="arrow"><em>◆</em><span>◆</span></div>';
+		echo '<div class="padtop10">'.Y_Pr::substr(Y_Pr::html($i['content']),0,200,false).' <a href="share_detail.html?id='.$i['id'].'" target="_blank">更多...</a></div>';
+		echo '<div class="c_bottom">';
+		echo '<span class="right">';
+		echo '<a target="_blank" href="javascript:void(0)" >收藏('.$i['shares'].')</a>';
+		echo '<i class="W_vline"> | </i>';
+		echo '<a target="_blank" href="share_detail.html?id='.$i['id'].'#commentAnchor">评论('.$i['comments'].')</a>';
+		echo '<i class="W_vline"> | </i>';
+		echo '<a target="_blank" href="javascript:void(0)" type="c" onclick="delCollect(this,'.$i['id'].')" title="取消收藏">取消</a>';
+		echo '</span>';
+		echo '<span>收集于'.date('m月d日 H:i',$v['collecttime']).'</span>';
+		echo '</div>';
+		echo '</div>';
+		echo '</div>';
+		echo '</div>';
+		}
+	}
+	echo '<div class="Page1 margtop20">'.$pages.'</div>';
+}else{
+	echo '<p class="f14 mgb10 margtop20"  style="display: block;text-align:center">';
+	echo '<img src="public/images/content_blank.png" class="v_m">暂且没有任何数据<a href="share.html" >建议先去阅读别人的好文章！</a></p>';
+}
+?>

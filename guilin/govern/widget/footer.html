@@ -1,0 +1,36 @@
+<!--bottom -->
+<div id="footer">
+<p>Powered by Y-Framework &copy;<script type="text/javascript">var date = new Date();document.write(date.getFullYear());</script>,&nbsp;<a href="mailto:yuexinok@126.com">yuexinok@126.com</a></p>
+<p>Runtime:<b><?php echo round((microtime(true) - Y::$startTime),5); ?>S</b>,RAM:<b><?php echo Y_Pr::size(memory_get_usage());  ?></b></p>
+</div>
+<!-- 返回顶部-->
+<a id="totop">返回顶部</a>
+<!-- content end-->
+<script type="text/javascript">
+if (!Administry) var Administry = {}
+// scrollToTop() - scroll window to the top
+Administry.scrollToTop = function (e) {
+    $(e).hide().removeAttr("href");
+    if ($(window).scrollTop() != "0") {
+        $(e).fadeIn("slow")
+    }
+    var scrollDiv = $(e);
+    $(window).scroll(function () {
+        if ($(window).scrollTop() == "0") {
+            $(scrollDiv).fadeOut("slow")
+        } else {
+            $(scrollDiv).fadeIn("slow")
+        }
+    });
+    $(e).click(function () {
+        $("html, body").animate({
+            scrollTop: 0
+        }, "slow")
+    })
+}
+// scroll to top on request
+if ($("a#totop").length) Administry.scrollToTop("a#totop");
+</script>
+<script type="text/javascript" src="./public/js/admin/admin.js"></script>
+</body>
+</html>

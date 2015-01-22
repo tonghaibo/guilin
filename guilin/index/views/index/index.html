@@ -1,0 +1,198 @@
+<?php Y_Widget::display('header',$web); ?>
+<!-- top开始 -->
+<?php Y_Widget::display('top'); ?>
+<!-- top结束 -->
+<!-- nav开始 -->
+<?php Y_Widget::display('nav'); ?>
+<!-- nav结束 -->
+<!-- content开始 -->
+<div id="content" class="clearfix MiddleBox ">
+<div id="main" class="clearfix">
+<!--左侧 -->
+<div class="left ml">
+<!-- tunbao开始-->
+<div class="tunbao">
+<div class="img_show">
+<?php 
+$ads = Y::Lang('ad','index');
+foreach($ads as $k=>$v){
+echo '<div class="item" '.($k!=0?' style="display:none':'').'><a href="'.$v['url'].'" title="'.$v['title'].'" target="_blank"><img src="public/uploads/ads/'.$v['img'].'" alt="'.$v['title'].'"></a></div>';
+}
+ ?>
+</div>
+<div class="img_info">
+<span class="bg"></span>
+<div class="img_num">
+<?php 
+foreach($ads as $k=>$v){
+if($k==0){
+	echo '<a href="'.$v['url'].'" class="sel"></a>';
+}else{
+	echo '<a href="'.$v['url'].'" class=""></a>';
+}
+}
+ ?>
+</div>
+<?php
+foreach($ads as $k=>$v){
+	echo '<div class="item" '.($k==0?'':' style="display:none" ').'>';
+	echo '<h3 class="title"><a href="'.$v['url'].'" title="'.$v['title'].'" target="_blank">'.$v['title'].'</a></h3>';
+	echo '<p class="info">'.$v['des'].'</p>';
+	echo '</div>';
+}
+ ?>
+</div>
+</div>
+<!-- tunbao结束-->
+<!-- 旅游达人-->
+<div class="hot">
+<h2>旅游达人们</h2>
+<?php 
+$hotu = Y_DB::init('user');
+$hotu->where(array('userimg!'=>'','sign!'=>''));
+$hotu->order('ranklevel desc,uid desc');
+$hotu->field(array('uid','name','userimg','userimgflag','sign','ranklevel'));
+$hotu = $hotu->limit(14)->select();
+ ?>
+<div class="hot-top">
+<a href="user.html?uid=<?php echo $hotu[0]['uid']; ?>"><img src="<?php echo Ly_User::getUserimg($hotu[0]['userimg'],200); ?>" /></a>
+<span class="bg"></span>
+<a href="user.html?uid=<?php echo $hotu[0]['uid'];?>" class="name_up"><?php echo Ly_User_Rank::getName($hotu[0]['ranklevel']).'：'.$hotu[0]['name']; ?></a>
+<p class="info"><?php echo $hotu[0]['sign'];  ?></p>
+</div>
+<div class="list">
+<ul>
+<?php
+$uid = Y_Session::get('uid');
+for($i=1;$i<=4;$i++){
+	if($hotu[$i]){
+		echo '<li>';
+		echo '<a href="user.html?uid='.$hotu[$i]['uid'].'" class="img" title="'.$hotu[$i]['name'].'"><img width="70" height="70" src="'.Ly_User::getUserimg($hotu[$i]['userimg'],185).'" /></a>';
+		echo '<div class="text">';
+		echo '<p class="clearfix">';
+		if(Ly_Friend::isFriend($hotu[$i]['uid'],$uid)){
+			echo '<span class="c666 right">已关注</span>';
+		}else{
+			echo '<span class="right"><a class="care_of" href="javascript:void(0)"  uid="'.$hotu[$i]['uid'].'" onclick="add_attention(this)" title="加关注"><b class="orange">+</b>关注</a></span>';
+		}
+		echo '<a href="user.html?uid='.$hotu[$i]['uid'].'" title="'.$hotu[$i]['name'].'">'.$hotu[$i]['name'].'</a>';
+		echo '</p>';
+		echo '<p>'.$hotu[$i]['sign'].'</p>';
+		echo '</div>';
+		echo '</li>';
+	}
+}
+
+?>
+</ul>
+</div>
+</div>
+	<!-- 达人结束-->
+	<!-- 任务列表-->
+<div class="list_user">
+<?php
+for($i=5;$i<=13;$i++){
+if(isset($hotu[$i])){
+echo '<a style="margin:2px" href="user.html?uid='.$hotu[$i]['uid'].'" title="'.$hotu[$i]['name'].'"><img width="68px" height="68px" src="'.Ly_User::getUserimg($hotu[$i]['userimg'],185).'" /></a>';
+}
+}
+unset($hotu);
+?>
+</div>
+</div>
+<!-- 任务列表结束-->
+<!--左侧结束 -->
+<!--右侧 -->
+<div class="right mr">
+<div class="rec_nav">
+<h2 class="orange">热门景点标签<a href="share.html" class="right more_icon">更多</a></h2>
+<p><b>美食</b>
+<?php  
+$eat = Ly_Tags::getList(2,0,10);
+foreach($eat as $v){
+	echo '<a target="_blank" href="share.html?tagid='.$v['id'].'">'.$v['name'].'</a>';
+}
+?>
+</p>
+<p>
+<b>风景</b>
+<?php  
+$fen = Ly_Tags::getList(1,0,15);
+foreach($fen as $v){
+	echo '<a target="_blank" href="share.html?tagid='.$v['id'].'">'.$v['name'].'</a>';
+}
+?>
+</p>
+</div>
+<!-- 标签结束-->
+<!-- 正在发生-->
+<div class="happen">
+<h2>大家正在分享</h2>
+<ul>
+<?php
+$model = Y_Db::init('content');
+$model->field(array('id','title','uid','pubtime'));
+$model->where(array('status'=>1));
+$model->limit(5);
+$model->order('id DESC');
+foreach($model->select() as $v){
+	echo '<li>';
+	echo '<p><a href="share_detail.html?id='.$v['id'].'">'.$v['title'].'</a></p>';
+	echo '<p><a href="#" class="name">'.Ly_User::getName($v['uid']).'</a><span>'.Y_Date::timeDiff($v['pubtime']).'</span></p>';
+	echo '</li>';
+}
+?>
+</ul>
+</div>
+<!-- 正在发生结束-->
+</div>
+<!--右侧结束 -->
+<div class="clear"></div>
+<div class="clearfix listtag">
+<h2>精彩图集<a href="share.html" class="more_icon right">更多</a></h2>
+<div class="clearfix">
+<?php 
+$imgs = Y::Lang('ad','imgs');
+foreach($imgs as $v){
+	echo '<div class="listimg"><a href="'.$v['url'].'"><img  src="public/uploads/imgs/'.$v['img'].'" /></a><span>'.$v['title'].'</span></div>';
+}
+ ?>
+</div>
+</div>
+<!--mian结束 -->
+</div>
+<!-- content结束 -->
+</div>
+<!-- footer开始 -->
+<?php Y_Widget::display('footer'); ?>
+<!-- footer结束 -->
+<script type="text/javascript">
+$(function(){
+var slide={
+	imgs:$('.img_show .item'),
+	overlays:$('.img_info .item'),
+	btns:$('.img_num a'),
+	count:$('.img_num a').length,
+	cur:1,
+	time:null,
+	running:true,
+	show_pic:function(){
+		slide.imgs.each(function(i){if(i==slide.cur){$(this).fadeIn()}else{$(this).fadeOut()}});
+		slide.overlays.each(function(i){if(i==slide.cur){$(this).fadeIn()}else{$(this).fadeOut()}});
+		slide.btns.each(function(i){if(i==slide.cur){$(this).addClass('sel')}else{$(this).removeClass('sel')}});slide.cur++
+	},
+	go:function(){slide.time=window.setInterval(function(){if(!slide.running)return true;if(slide.cur>=slide.count){slide.cur=0}slide.show_pic()},8000)},
+	pointer:function(x){slide.cur=x;slide.running=false;slide.show_pic()},
+	run:function(x){slide.cur=x;slide.running=true}
+};
+slide.go();
+$('.tunbao').hover(function(){slide.running=false},function(){slide.running=true});
+slide.btns.hover(function(){slide.pointer($(this).index())},function(){slide.run($(this).index())});
+//关闭广告
+$('.logo .btn').click(function(){
+	$(this).parent().remove();
+});
+});
+</script>
+</body>
+</html>

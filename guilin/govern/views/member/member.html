@@ -1,0 +1,259 @@
+<?php Y_Widget::display('header',array('b_info'=>$this->id)); ?>
+<?php Y_Widget::display('top'); ?>
+<!--content -->
+<div id="content">
+	<?php Y_Widget::display('tips',array('b_info'=>$this->id)); ?>
+	<!--main -->
+	<div class="main clearfix">
+	<?php Y_Widget::display('left'); ?>
+	<!--box开始 -->
+	<div id="box" class="clearfix">
+<!-- 这里写内容-->
+<?php
+$slist = Ly_Items::getList('user','status');
+$ssex = Ly_Items::getList('user','sex');
+$scityid = Ly_Area::getList();
+$srank = Ly_User_Rank::getList();
+$sgrade = Ly_Items::getList('user','grade');
+?>
+<div class="box">
+<form>
+<input type="hidden" name="ro" value="member" />
+<input type="hidden" name="ac" value="member" />
+<span class="ctitle">用户&nbsp;UID：</span><input type="text" name="s_uid" class="w80" x-webkit-speech value="<?php echo $this->get('s_uid'); ?>"/>
+&nbsp;&nbsp;<span class="ctitle">性别：</span><?php 
+$sex = $_GET['s_sex'];
+foreach($ssex as $v){
+	echo '<input type="checkbox" name="s_sex[]" value="'.$v['id'].'" ';
+	if($sex && in_array($v['id'],$sex)){
+		echo '  checked ';
+	}
+	echo '/>';
+	echo $v['name'];
+}
+?>
+&nbsp;&nbsp;<span class="ctitle">头像：</span><input type="radio" name="s_userimg" value="1" <?php echo $this->get('s_userimg')==1?'checked':''; ?> />有
+<input type="radio" name="s_userimg" value="0" <?php echo $this->get('s_userimg')==0?'checked':''; ?> />无
+<input type="radio" name="s_userimg" value="2" <?php echo $this->get('s_userimg')>1?'checked':''; ?> />不限
+<br />
+<span class="ctitle">注册邮箱：</span><input type="text" name="s_email" class="w100" value="<?php echo $this->get('s_email'); ?>" x-webkit-speech />
+&nbsp;&nbsp;
+<span class="ctitle">用户名：</span><input type="text" name="s_name" class="w100" value="<?php echo $this->get('s_name'); ?>" x-webkit-speech />
+<span class="ctitle">状态：</span><?php 
+$s_gstatus = $_GET['s_status'];
+foreach($slist as $v){
+	echo '<input type="checkbox" name="s_status[]" value="'.$v['id'].'" ';
+	if($s_gstatus && in_array($v['id'],$s_gstatus)){
+		echo ' checked ';
+	}
+	echo '/>';
+	echo $v['name'];
+}
+?>
+<br>
+<span class="ctitle">注册时间：</span><input type="text" name="s_mindate" class="w80" value="<?php echo $this->get('s_mindate'); ?>"  onfocus="SelectDate(this)" />-
+<input type="text" name="s_maxdate" class="w80" value="<?php echo $this->get('s_maxdate'); ?>" onfocus="SelectDate(this)" />
+&nbsp;&nbsp;
+<span class="ctitle">城市：</span><select id="s_province" class="w80" name="s_province">
+<option value="0">--省份--</option>
+<?php
+foreach($scityid as $v){
+	echo '<option value="'.$v['id'].'"';
+	if($v['id']==$this->get('s_province')){
+		echo ' selected ';
+	}
+	echo '>';
+	echo $v['name'];
+	echo '</option>';
+}
+?>
+</select>
+<select class="w80" name="s_cityid" id="s_cityid" <?php if(!$this->get('s_province')){ echo 'disabled'; } ?>>
+<?php  
+if($cityid=$this->get('s_cityid')){
+	$c = Ly_Area::getList($this->get('s_province'));
+	foreach($c as $v){
+		echo '<option value="'.$v['id'].'"';
+		if($v['id']==$cityid){
+			echo ' selected ';
+		}
+		echo '>';
+		echo $v['name'];
+		echo '</option>';
+	}
+}else{
+	echo '<option value="0">--市级--</option>';
+}
+?>
+</select>
+<br />
+<span class="ctitle">登录时间：</span><input type="text" name="s_minldate" class="w80" value="<?php echo $this->get('s_minldate'); ?>" onfocus="SelectDate(this)" />-
+<input type="text" name="s_maxldate" class="w80" value="<?php echo $this->get('s_maxldate'); ?>" onfocus="SelectDate(this)" />
+&nbsp;&nbsp;<span class="ctitle">等级：</span><select name="s_ranklevel" class="w100">
+<option value="">--请选择--</option>
+<?php
+foreach($srank as $v){
+	echo '<option value="'.$v['rid'].'" ';
+	if($v['rid']==$this->get('s_ranklevel')){
+		echo ' selected ';
+	}
+	echo '>'.$v['name'].'</option>';
+}
+?>
+</select>
+&nbsp;&nbsp;<span class="ctitle">管理：</span><select name="s_grade" class="w100">
+<option value="">--请选择--</option>
+<?php
+foreach($sgrade as $v){
+	echo '<option value="'.$v['id'].'" ';
+	if($v['id']==$this->get('s_grade')){
+		echo ' selected ';
+	}
+	echo '>'.$v['name'].'</option>';
+}
+?>
+</select>
+<input type="submit" class="btn btn-green" value="搜索" />
+<input type="reset" class="btn" value="重置" />
+</form>
+</div>
+<table class="st full" id="arealist">
+<thead>
+<tr >
+<th width="8%">UID</th>
+<th width="8%">头像</th>
+<th width="14%">会员名</th>
+<th width="12%">注册邮箱</th>
+<th width="3%">性别</th>
+<th width="9%">等级</th>
+<th width="12%">管理</th>
+<th width="12%">注册时间</th>
+<th width="10">状态</th>
+<th width="12">操作</th>
+</tr>
+</thead>
+<tbody>
+<?php 
+if($ulist){
+foreach($ulist as $val){
+	echo '<tr>';
+	echo '<td><input type="checkbox" name="checkid" value="'.$val['uid'].'" />'.$val['uid'].'</td>';
+	echo '<td><img src="'.Ly_User::getUserimg($val['userimg'],40).'" big="'.$val['userimg'].'" onclick="show(this)"/></td>';
+	echo '<td><span class="icon icon-mail" title="站内信" onclick="show_mess('.$val['uid'].',\''.$val['name'].'\')"></span><a title="查看该用户" href="user.html?uid='.$val['uid'].'" target="_blank">'.$val['name'].'</a></td>';
+	echo '<td>';
+	if($val['rzemail']){
+		echo '<span class="icon icon-ok"></span>';
+	}else{
+		echo '<span class="icon icon-error"></span>';
+	}
+	echo $val['email'];
+	echo '</td>';
+	echo '<td>';
+	foreach($ssex as $v){
+		if($v['id']==$val['sex']){
+			echo $v['name'];
+		}
+	}
+	echo '</td>';
+	echo '<td>';
+	foreach($srank as $v){
+		if($v['rid']==$val['ranklevel']){
+			echo $v['name'];
+		}
+	}
+	echo '</td>';
+	echo '<td class="showstatus" style="position:relative">';
+	echo '<div >'.$sgrade[$val['grade']]['name'].'<span class="icon icon-desc"></span></div>';
+	echo '<ul class="dropmenu">';
+	foreach($sgrade as $s){
+		if($s['id']!=$val['grade']){
+			echo '<li><a href="?ro=member&ac=member&method=grade&uid='.$val['uid'].'&v='.$s['id'].'">'.$s['name'].'</a></li>';
+		}
+	}
+	echo '</ul>';
+	echo '</td>';
+	echo '<td>'.date('Y-m-d H:i',$val['regtime']).'</td>';
+	echo '<td class="showstatus" style="position:relative">';
+	echo '<div >'.$slist[$val['status']]['name'].'<span class="icon icon-desc"></span></div>';
+	echo '<ul class="dropmenu">';
+	foreach($slist as $s){
+		if($s['id']!=$val['status']){
+			echo '<li><a href="?ro=member&ac=member&method=pass&uid='.$val['uid'].'&v='.$s['id'].'">'.$s['name'].'</a></li>';
+		}
+	}
+	echo '</ul>';
+	echo '</td>';
+	echo '<td><a href="javascript:void(0)" class="no" onclick="linkuser('.$val['uid'].')" title="查看"><span class="icon icon-user"></span></a>';
+	echo '<a href="?ro=member&ac=member&method=login&uid='.$val['uid'].'&grade='.$val['grade'].'&name='.$val['name'].'" target="_blank" class="no"><span title="登录" class="icon icon-password"></span></a>';
+	echo '</td>';
+	echo '</tr>';
+}
+}
+?>
+</tbody>
+<tfoot>
+<tr><td colspan="5"><input type="checkbox" id="checkAll" onclick="checkall('checkid')"/>全/反 
+<?php foreach($slist as $s){
+	echo '<a href="javascript:void(0)" onclick="checkUp('.$s['id'].')" class="no">'.$s['name'].'</a>&nbsp;&nbsp;&nbsp;';
+} ?>
+</td>
+<td colspan="6" style="text-align:right">
+<div id="ui-page"><?php echo $pages; ?></div>
+</td>
+</tr>
+</tfoot>
+</table>
+<!-- 这里写内容结束-->
+	<!--box结束 -->
+	</div>
+	</div>
+	<!-- mainend-->
+</div>
+<script type="text/javascript" src="public/js/calendar.js"></script>
+<script type="text/javascript" src="public/js/show.js"></script>
+<link rel="stylesheet" href="public/css/show/show.css" />
+<script type="text/javascript" src="public/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+function checkUp(num){
+	var id = getIds('checkid');
+	if(id==''){
+		show_msg.open('请先选择值！',4,2);
+		return;
+	}else{
+		show_comfirm.open(0,'确定要改变'+id+'这些项吗？',function(){
+			var url = '?ro=member&ac=member&method=pass&uid='+id+'&v='+num;
+			window.location.href = url;
+		});
+	}
+}
+$(document).ready(function(){
+$('td.showstatus').hover(function(){
+	$(this).children('ul').show();
+	//$(this).parent('div').addClass('checkB');
+},function(){
+	$(this).children('ul').hide();
+	//$(this).parent('div').removeClass('checkB');
+});
+$('#arealist').dataTable();
+$('#s_province').change(function(){
+	var obj = $(this);
+	if(obj.val()==0 || obj.val()==''){
+		$('#s_cityid').attr({'disabled':true});
+		$('#s_cityid').html('<option value="0">--市级--</option>');
+	}else{
+		$.post('?ro=member&ac=member',{'upid':obj.val()},function(d){
+			d = eval('('+d+')');
+			if(d!=''){
+				var str = '';
+				for(var a in d){
+					str += '<option value="'+d[a].id+'">'+d[a].name+'</option>';
+				}
+				$('#s_cityid').html(str);
+				$('#s_cityid').attr({'disabled':false});
+			}
+		});
+	}
+});
+});
+</script>
+<?php Y_Widget::display('footer');?>

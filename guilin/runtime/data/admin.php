@@ -1,0 +1,1 @@
+<?php {"pri":"id","0":"name","1":"realname","2":"password","3":"groupid","4":"flag"}yes

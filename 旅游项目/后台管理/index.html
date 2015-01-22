@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="关键字" />
+<meta name="description" content="页面描叙" />
+<title>后台登录</title>
+<!-- Main Stylesheet --> 
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<!-- jQuery with plugins -->
+<script type="text/javascript" SRC="js/jquery-1.4.2.min.js"></script>
+<!-- jQuery tooltips -->
+<script type="text/javascript" SRC="js/jquery.tipTip.min.js"></script>
+<!-- jQuery form validation -->
+<script type="text/javascript" SRC="js/jquery.validate_pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	/* setup navigation, content boxes, etc... */
+	Administry.setup();
+	
+	// validate signup form on keyup and submit
+	var validator = $("#loginform").validate({
+		rules: {
+			username: "required",
+			password: "required"
+		},
+		messages: {
+			username: "请输入用户名！",
+			password: "请输入密码！"
+		},
+		// the errorPlacement has to take the layout into account
+		errorPlacement: function(error, element) {
+			error.insertAfter(element.parent().find('label:first'));
+		},
+		// set new class to error-labels to indicate valid fields
+		success: function(label) {
+			// set &nbsp; as text for IE
+			label.html("&nbsp;").addClass("ok");
+		}
+	});
+
+});
+</script>
+</head>
+<body>
+	<!-- Header -->
+	<header id="top">
+		<div class="wrapper-login">
+			<!-- Title/Logo - can use text instead of image -->
+			<div id="title"><span>Welcome to yuexinok</span></div>
+			<!-- Main navigation -->
+			<nav id="menu">
+				<ul class="sf-menu">
+					<li class="current"><a href="#">登录系统</a></li>
+					<li><a href="#">返回首页</a></li>
+				</ul>
+			</nav>
+			<!-- End of Main navigation -->
+			<!-- Aside links -->
+			<aside><b>10</b> &nbsp; <a href="#">自动返回</a></aside>
+			<!-- End of Aside links -->
+		</div>
+	</header>
+	<!-- End of Header -->
+	<!-- Page title -->
+	<div id="pagetitle">
+		<div class="wrapper-login"></div>
+	</div>
+	<!-- End of Page title -->
+	
+	<!-- Page content -->
+	<div id="page">
+		<!-- Wrapper -->
+		<div class="wrapper-login">
+				<!-- Login form -->
+				<section class="full">
+					<h3>登录youguilin.com</h3>
+					<div class="box box-info">欢迎登录管理系统</div>
+					<form id="loginform" method="post" action="dashboard.html">
+						<p>
+							<label class="required" for="username">用户名:</label><br/>
+							<input type="text" id="username" class="full" value="" name="username"/>
+						</p>
+						
+						<p>
+							<label class="required" for="password">密&nbsp;&nbsp;&nbsp;码:</label><br/>
+							<input type="password" id="password" class="full" value="" name="password"/>
+						</p>
+						<p>
+							<label class="required" for="y">验证码: </label><br/>
+							<img src="./img/vcode.gif" />看不清?<a href="javascript: //;">换一张</a><br/>
+							<input type="text" id="password" value="" name="password"/>
+						</p>
+						<p>
+							<input type="checkbox" id="remember" class="" value="1" name="remember"/>
+							<label class="choice" for="remember">记住我?</label>
+						</p>
+						
+						<p>
+							<input type="submit" class="btn btn-green big" value="登录"/> &nbsp; <a href="javascript: //;" onClick="$('#emailform').slideDown(); return false;">忘记密码?</a> 或 <a href="#">帮助?</a>
+						</p>
+						<div class="clear">&nbsp;</div>
+					</form>	
+				</section>
+				<!-- End of login form -->
+				
+		</div>
+		<!-- End of Wrapper -->
+	</div>
+	<!-- End of Page content -->
+	
+	<!-- Page footer -->
+	<footer id="bottom">
+		<div>
+			<p>Copyright &copy; 2012<b><a href="http://www.youguilin.cn" title="www.youguilin.cn">www.youguilin.cn</a></b> | power by <a href="#">yuexinok@126.com</a></p>
+		</div>
+	</footer>
+	<!-- End of Page footer -->
+</body>
+</html>

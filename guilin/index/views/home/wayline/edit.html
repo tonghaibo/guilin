@@ -1,0 +1,328 @@
+<?php 
+if(!$info){
+echo '<p class="red">请先选择线路！</p>';
+return;
+}
+?>
+<dl class="set_area_list">
+<dd class="c666">认真填写，让客户全面了解您的路线
+<br>
+<span class="red">重新编辑线路，我们将进一步审核！</span>
+</dd>
+<dd>
+<div class="channel"><span style="font-size:10px;font-weight:normal;color:#f60">*</span>路线标题：</div>
+<div class="attr">
+<input class="txt"  name="name" value="<?php echo $info['name']; ?>" type="text" style="width:275px;"/>
+</div>
+</dd>
+<dd>
+<div class="channel"><span style="font-size:10px;font-weight:normal;color:#f60">*</span>封面图片：</div>
+<div class="attr">
+<img width="80px" imgid="<?php echo $info['img']; ?>" id="img" style="margin-right:10px;border:1px solid #ccc;padding:2px;" src="<?php  if($info['img']){ echo Y_Pr::image(Ly_Uploads::getUrl($info['img']),85,85);}else{ echo 'public/images/content_blank.png';} ?>" class="left"/>
+<input class="txt"  id="fileToUpload" name="fileToUpload" type="file" style="width:150px;"/>
+<button class="button" onclick="up_img()">上传</button>
+</div>
+</dd>
+<dd>
+<div class="channel"><span style="font-size:10px;font-weight:normal;color:#f60">*</span>显示价格：</div>
+<div class="attr">
+<input type="text" value="<?php echo $info['price']; ?>" class="txt" name="price" style="width:80px;"/>
+<input type="text" value="<?php echo $info['pricehalf']; ?>" class="txt" name="pricehalf" style="width:80px;"/>
+<span class="c666">成人/儿童价格，请分两种价格</span>
+</div>
+</dd>
+<dd>
+<div class="channel"><span style="font-size:10px;font-weight:normal;color:#f60">*</span>行程天数：</div>
+<div class="attr">
+<input type="text" value="<?php echo $info['days']; ?>" class="txt" onblur="add_days()" name="days"  style="width:80px;"/>
+<span class="c666">*行程天数，用于控制行程，填写具体数字</span>
+</div>
+</dd>
+<dd>
+<div class="channel">包含消费：</div>
+<div class="attr">
+<p class="prom">*填写行程中包含的消费开销(300字以内)</p>
+<textarea class="txt"  name="pricein" style="width:360px;height:80px;"><?php echo $info['pricein'];  ?></textarea>
+</div>
+</dd>
+<dd>
+<div class="channel">不包含消费：</div>
+<div class="attr">
+<p class="prom">*填写行程中不包含的消费开销(300字以内)</p>
+<textarea class="txt"  name="priceout" style="width:360px;height:80px;"><?php echo $info['priceout'];  ?></textarea>
+</div>
+</dd>
+<dd>
+<div class="channel"><span style="font-size:10px;font-weight:normal;color:#f60">*</span>预定电话：</div>
+<div class="attr">
+<input type="text" value="<?php echo $info['contact']; ?>" class="txt" name="contact"/>
+</div>
+</dd>
+<dd>
+<div class="channel">交通方式：</div>
+<div class="attr">
+<?php
+$traffic = Ly_Items::getList('public','traffic');
+?>
+<select id="traffic1" onchange="change_traffic()" class="txt" style="width:70px;">
+<option value="">请选择</option>
+<?php
+foreach($traffic as $v){
+	echo '<option>'.$v['name'].'</option>';
+}
+?>
+</select>
+去
+<select id="traffic2" onchange="change_traffic()" class="txt" style="width:70px;">
+<option value="">请选择</option>
+<?php
+foreach($traffic as $v){
+	echo '<option>'.$v['name'].'</option>';
+}
+?>
+</select>
+回
+&nbsp;&nbsp;<input type="text" value="<?php echo $info['traffic']; ?>" name="traffic" class="txt" style="width:100px;" />
+</div>
+</dd>
+</dd>
+<dd>
+<div class="channel">温馨提示：</div>
+<div class="attr">
+<p class="prom">*请控制在300字内</p>
+<textarea name="notice" class="txt" style="width:360px;height:80px;"><?php echo $info['notice'];  ?></textarea>
+</div>
+</dd>
+<dd>
+<div class="channel"><span style="font-size:10px;font-weight:normal;color:#f60">*</span>行程安排：</div>
+<div class="attr" id="days">
+<?php 
+for($i=0;$i<$info['days'];$i++){
+$day = Ly_Wayline_Days::getInfo($info['wid'],$i+1);
+echo '<div class="daylist">';
+echo '<p style="margin-bottom:5px;">';
+echo '<b>第'.($i+1).'天</b>';
+echo '</p>';
+echo '<p style="margin-bottom:5px;">';
+echo '<input type="text" value="'.$day['name'].'" name="daytitle" class="txt" style="width:300px;"/> <span>行程标题</span>';
+echo '</p>';
+echo '<p>行程描叙</p>';
+echo '<p style="margin-bottom:5px;">';
+echo '<textarea name="daydes" class="txt" style="width:360px;height:80px;">'.$day['contents'].'</textarea>';
+echo '</P>';
+echo '<p style="margin-bottom:5px;">';
+echo '用餐：<input type="checkbox" '.($day['eat1']?'checked':'').' name="dayeat1" value="1"/>早餐 ';
+echo '<input type="checkbox" '.($day['eat2']?'checked':'').' name="dayeat2" value="1"/>中餐 ';
+echo '<input type="checkbox" '.($day['eat3']?'checked':'').' name="dayeat3" value="1"/>晚餐 ';
+echo '住宿：<input type="text" value="'.$day['live'].'" name="daylive" class="txt" style="width:168px;" />';
+echo '</p></div>';
+}
+ ?>
+</div>
+</dd>
+<dd>
+<input class="btn_basic btn_a ft14" type="submit"  onclick="send_add()" value="保存线路"></div>
+</dd>
+</dl>
+<script type="text/javascript" src="public/js/ajaxfileupload.js"></script>
+<script type="text/javascript">
+function change_traffic(){
+	var s1 = $('#traffic1').val();
+	if(s1!=''){
+		s1 += '去';
+	}
+	var s2 = $('#traffic2').val();
+	if(s2!=''){
+		s2 += '回';
+	}
+	$('input[name=traffic]').val(s1+s2);
+}
+function add_days(){
+var obj = $('#days div.daylist');
+var len = obj.length;
+var i = $.trim($('input[name=days]').val());
+i = parseInt(i);
+if(i<1 || i>10){
+	show_msg.open('请控制行程天数在1-10之间',3,2);
+	return false;
+}
+if(len<i){
+	var j = len+1;
+	var str='';
+	for(j;j<=i;j++){
+		str +='<div class="daylist">';
+		str += '<p style="margin-bottom:5px;">';
+		str += '<b>第'+j+'天</b>';
+		str += '</p>';
+		str += '<p style="margin-bottom:5px;">';
+		str += '<input type="text" class="txt" name="daytitle" style="width:300px;"/> <span>行程标题</span>';
+		str += '</p>';
+		str += '<p>行程描叙</p>';
+		str += '<p style="margin-bottom:5px;">';
+		str += '<textarea name="daydes" class="txt" style="width:360px;height:80px;"></textarea>';
+		str += '</P>';
+		str += '<p style="margin-bottom:5px;">';
+		str += '用餐：<input name="dayeat1" type="checkbox" value="1"/>早餐 ';
+		str += '<input name="dayeat2"  type="checkbox" value="1"/>中餐';
+		str += '<input name="dayeat3"  type="checkbox" value="1"/>晚餐 ';
+		str += '住宿：<input type="text" name="daylive" class="txt" style="width:168px;" />';
+		str += '</p></div>';
+	}
+	obj.append(str);	
+	}else if(len>i){
+		var j = i+1;
+		for(j;j<=len;j++){
+			obj.eq(j-1).remove();
+		}
+	}
+}
+function up_img(){
+var txt = $.trim($('#fileToUpload').val());
+var regx = /^.+.(gif|jpeg|bmp|jpg|png)/i;
+var des = '路线封面图片';
+if(regx.test(txt)){
+	jQuery.ajaxFileUpload({
+		url:'index.php?ro=share&ac=upimg',
+		secureuri:false,
+		fileElementId:'fileToUpload',
+		dataType:'json',
+		data:{des:des},
+		success: function (data, status){
+			if(typeof(data.error) != 'undefined'){
+				if(data.error != ''){
+					show_msg.open(data.msg,3,2);
+					return;
+				}else{
+					$('#img').attr({'src':data.msg.small,'imgid':data.msg.id});
+					$('#fileToUpload').val('');
+				}
+			}
+		},
+		error: function (data, status, e){
+			alert(e);
+		}
+	});
+	return false;
+}else{
+show_msg.open('请上传图片格式的文件！',3,2);
+}
+return false;
+}
+function send_add(){
+var data = new Object;
+data.send = 'edit';
+data.wid = '<?php echo $info['wid']; ?>';
+//名称
+data.name = $.trim($('input[name=name]').val());
+if(data.name.length<5 || data.name.length>35){
+$('input[name=name]').focus();
+show_msg.open('线路标题长度在5-35个字之间',3,2);
+return;
+}
+//封面照
+data.img = $('#img').attr('imgid');
+//价格1
+data.price = $.trim($('input[name=price]').val());
+var regx = /^[1-9][0-9]{0,4}\.?[0-9]{0,2}$/;
+if(!regx.test(data.price)){
+show_msg.open('请填写合法的价格',3,2);
+$('input[name=price]').focus();
+return;
+}
+data.pricehalf = $.trim($('input[name=pricehalf]').val());
+var regx = /^[1-9][0-9]{0,4}\.?[0-9]{0,2}$/;
+if(!regx.test(data.pricehalf)){
+show_msg.open('请填写合法的价格',3,2);
+$('input[name=pricehalf]').focus();
+return;
+}
+//行程天数
+data.days = $.trim($('input[name=days]').val());
+data.days = parseInt(data.days);
+if(data.days<1 || data.days>10){
+	show_msg.open('请控制行程天数在1-10之间',3,2);
+	return;
+}
+//包含消费
+data.pricein = $.trim($('textarea[name=pricein]').val());
+//不包含消费
+data.priceout = $.trim($('textarea[name=priceout]').val());
+//预定电话
+data.contact = $.trim($('input[name=contact]').val());
+if(data.contact.length<7 || data.contact.length>15){
+show_msg.open('请填写合法预定电话！',3,2);
+$('input[name=contact]').focus();
+return;
+}
+//交通方式
+data.traffic = $.trim($('input[name=traffic]').val());
+if(data.traffic.length<1){
+	show_msg.open('交通方式必填！',3,2);
+	return;
+}
+//温馨提示
+data.notice = $.trim($('textarea[name=notice]').val());
+//行程
+var len = $('div.daylist').length;
+if(len!=data.days){
+add_days();
+return;
+}
+var i,day = $('div.daylist');
+data.daytitle = new Array;
+data.daydes = new Array;
+data.dayeat1 = new Array;
+data.dayeat2 = new Array;
+data.dayeat3 = new Array;
+data.daylive = new Array;
+for(i=0;i<len;i++){
+	//名称
+	var title = $.trim(day.eq(i).find('input[name=daytitle]').val());
+	if(title.length<1){
+		show_msg.open('行程标题不能为空',3,2);
+		day.eq(i).find('input[name=daytitle]').focus();
+		return;
+	}
+	data.daytitle.push(title);
+	//描叙
+	var des = $.trim(day.eq(i).find('textarea[name=daydes]').val());
+	if(des.length<1){
+		show_msg.open('描叙不能为空',3,2);
+		des.eq(i).find('textarea[name=daydes]').focus();
+		return;
+	}
+	data.daydes.push(des);
+	//用餐
+	if(day.eq(i).find('input[name=dayeat1]:checked').val()){
+		data.dayeat1.push(1);
+	}else{
+		data.dayeat1.push(0);
+	}
+	if(day.eq(i).find('input[name=dayeat2]:checked').val()){
+		data.dayeat2.push(1);
+	}else{
+		data.dayeat2.push(0);
+	}
+	if(day.eq(i).find('input[name=dayeat3]:checked').val()){
+		data.dayeat3.push(1);
+	}else{
+		data.dayeat3.push(0);
+	}
+	//住宿
+	data.daylive.push($.trim(day.eq(i).find('input[name=daylive]').val()));
+}
+$.post('home_dowayline.html?do=edit',data,function(d){
+if(d=='0'){
+	show_msg.open('编辑线路成功！请耐心等待审核！',3,1);
+	return false;
+}else{
+	show_msg.open('编辑线路失败！',3,2);
+}
+});
+};
+//BUG去掉添加的
+$(function(){
+$('.c_box').eq(2).html('');
+$('#box_title a').eq(2).attr('load','0');
+});
+</script>

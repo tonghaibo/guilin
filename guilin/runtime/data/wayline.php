@@ -1,0 +1,1 @@
+<?php {"pri":"wid","0":"uid","1":"name","2":"days","3":"price","4":"pricehalf","5":"priceout","6":"pricein","7":"contact","8":"img","9":"traffic","10":"comment","11":"shares","12":"mark","13":"status","14":"pubtime","15":"ishot","16":"notice","17":"des"}yes

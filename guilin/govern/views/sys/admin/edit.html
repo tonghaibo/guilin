@@ -1,0 +1,73 @@
+<?php Y_Widget::display('header',array('b_info'=>$this->id)); ?>
+<?php Y_Widget::display('top'); ?>
+<!--content -->
+<div id="content">
+	<?php Y_Widget::display('tips',array('b_info'=>$this->id)); ?>
+	<!--main -->
+	<div class="main clearfix">
+	<?php Y_Widget::display('left'); ?>
+	<!--box开始 -->
+	<div id="box" class="clearfix">
+<!-- 这里写内容-->
+<form action="#" method="post" id="editAdmin">
+<table class="st nob">
+<tr>
+<td class="title"><span class="cred">*</span>登录帐号：</td>
+<td><input type="text" value="<?php echo $ainfo['name']; ?>" id="name" name="name" class="w250" title="登录帐号" onblur="checkW(this,'#name-tips')"/></td>
+<td class="info" id="name-tips">用于登录后台的登录帐号</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">*</span>真实姓名：</td>
+<td>
+<input type="text" name="realname" value="<?php echo $ainfo['realname']; ?>" id="realname" class="w250" title="真实姓名" onblur="checkZh(this,'#realname-tips')" />
+</td>
+<td class="info" id="realname-tips">用于表示该帐号的管理员是谁</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">*</span>请选择用户所属组：</td>
+<td>
+<select name="groupid" id="groupid" title="用户所属组" onblur="isSelect(this,'#groupid-tips')">
+<option value="0">--请选择--</option>
+<?php if($glist){
+	foreach($glist as $val){
+		echo '<option value="'.$val['gid'].'"';
+		if($ainfo['groupid']==$val['gid']){
+			echo ' selected ';
+		}
+		echo '>';
+		echo $val['gname'];
+		echo '</option>';
+	}
+} ?>
+</select>
+</td>
+<td class="info" id="groupid-tips">请选择所属组</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">*</span>是否禁止登录：</td>
+<td><input type="radio"  name="flag" value="1" <?php if($ainfo['flag']==1){ echo 'checked'; } ?> />否  <input type="radio"  name="flag" <?php if($ainfo['flag']==0){ echo 'checked'; } ?> value="0"/>是</td>
+<td class="info">用于暂时停用一些不用的帐号</td>
+</tr>
+<tr>
+<td></td>
+<td><input type="button" value="修改" name="bt" class="btn btn-green" onclick="subedit()" /></td>
+<td></td>
+</tr>
+</table>
+</form>
+<!-- 这里写内容结束-->
+	<!--box结束 -->
+	</div>
+	</div>
+	<!-- mainend-->
+</div>
+<script type="text/javascript">
+function subedit(){
+	if(checkW('#name','#name-tips') && checkZh('#realname','#realname-tips') && isSelect('#groupid','#groupid-tips')){
+		document.getElementById('editAdmin').submit();
+	}else{
+		return false;
+	}
+}
+</script>
+<?php Y_Widget::display('footer');?>

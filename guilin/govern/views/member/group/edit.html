@@ -1,0 +1,97 @@
+<?php Y_Widget::display('header',array('b_info'=>$this->id)); ?>
+<?php Y_Widget::display('top'); ?>
+<!--content -->
+<div id="content">
+	<?php Y_Widget::display('tips',array('b_info'=>$this->id)); ?>
+	<!--main -->
+	<div class="main clearfix">
+	<?php Y_Widget::display('left'); ?>
+	<!--box开始 -->
+	<div id="box" class="clearfix">
+<!-- 这里写内容-->
+<form action="#" method="post" id="editGroup">
+<table class="st nob">
+<tr>
+<td class="title"><span class="cred">*</span>组名称：</td>
+<td><input type="text" id="gname" name="gname" class="w250" title="组名称" value="<?php echo $ginfo['gname']; ?>" onblur="checkZh(this,'#gname-tips')"/></td>
+<td class="info" id="gname-tips">定义组的名称</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">*</span>权限：</td>
+<td>
+<select name="power[]" multiple="multiple" class="h300">
+<?php 
+$arr = explode(',',$ginfo['power']);
+foreach($plist as $val){
+	echo '<option value="'.$val['id'].'"';
+	if(in_array($val['id'],$arr)){
+		echo ' selected ';
+	}
+	echo ' >';
+	echo str_repeat('&nbsp;&nbsp;&nbsp;',count(explode('-',$val['bpath']))-2).'| '.$val['name'];
+	echo '</option>';
+}
+?>
+</select>
+</td>
+<td class="info" id="des-tips">用于提示该节点是干吗用的,可以按住Ctrl多选</td>
+</tr>
+<tr>
+<td class="title">是否超级：</td>
+<td><input type="radio"  name="isSuper" value="1" <?php if($ginfo['issuper']==1){ echo 'checked'; } ?>/>是  <input type="radio"  name="isSuper" <?php if($ginfo['issuper']!=1){ echo 'checked'; } ?> value="0"/>否</td>
+<td class="info">选择该项，则该组成员用于所有权限</td>
+</tr>
+<tr>
+<td class="title">组长：</td>
+<td><select name="leaderid">
+<option value="0">--请选择--</option>
+<?php 
+if($members){
+	foreach($members as $val){
+		echo '<option value="'.$val['id'].'"';
+		if($ginfo['leaderid']==$val['id']){
+			echo ' selected ';
+		}
+		echo '>';
+		echo $val['realname'].'('.$val['name'].')';
+		echo '</option>';
+	}
+} ?>
+</select></td>
+<td class="info">选择该项，则该组成员用于所有权限</td>
+</tr>
+<tr>
+<td class="title">所有组员：</td>
+<td>
+<?php 
+if($members){
+	foreach($members as $val){
+		echo $val['realname'].'('.$val['name'].')&nbsp;&nbsp;';
+		echo '<input type="hidden" name="members[]" value="'.$val['id'].'" />';
+	}
+} ?></td>
+<td class="info">添加组员，前修改组员的所属组</td>
+</tr>
+<tr>
+<td></td>
+<td><input type="button" value="修改" name="bt" class="btn btn-green" onclick="subedit()" /></td>
+<td></td>
+</tr>
+</table>
+</form>
+<!-- 这里写内容结束-->
+	<!--box结束 -->
+	</div>
+	</div>
+	<!-- mainend-->
+</div>
+<script type="text/javascript">
+function subedit(){
+	if(checkZh('#gname','#gname-tips')){
+		document.getElementById('editGroup').submit();
+	}else{
+		return false;
+	}
+}
+</script>
+<?php Y_Widget::display('footer');?>

@@ -1,0 +1,145 @@
+<?php Y_Widget::display('header',$web); ?>
+<!-- top开始 -->
+<?php Y_Widget::display('top'); ?>
+<!-- top结束 -->
+<!-- nav开始 -->
+<?php Y_Widget::display('nav'); ?>
+<!-- nav结束 -->
+<!-- content开始 -->
+<div id="content" class="clearfix MiddleBox ">
+<div id="main" class="clearfix">
+<!-- 左侧-->
+<div class="side_left clearfix">
+<div class="serachform" style="border:1px solid #ccc;padding:5px;background:#f4f4f4">
+<form>
+<input type="hidden" name="star" value="<?php echo $this->get('star'); ?>" />
+<input type="hidden" name="area" value="<?php echo $this->get('area'); ?>" />
+<input type="hidden" name="classes" value="<?php echo $this->get('classes'); ?>" />
+<input type="text" name="sText" class="txt" value="<?php echo $this->get('sText'); ?>" style="width:213px;"/>
+<p style="line-height:45px;">
+价格：<input type="text" name="minPrice" style="width:80px;" value="<?php echo $this->get('minPrice'); ?>" class="txt" />
+-
+<input type="text" name="maxPrice" style="width:80px;" value="<?php echo $this->get('maxPrice'); ?>" class="txt" />
+</p>
+<p class="margtop5" style="text-align:right;">
+<input type="submit" value="搜索" class="Btn" onmouseover="this.className='BtnHover'" onmouseout="this.className='Btn'">
+</p>
+</form>
+</div>
+<div class="Travel_TitleH"><h2 class="c666">热门酒店</h2></div>
+<?php 
+$harea = Ly_Items::getList('public','area');
+$model = Y_Db::init('hotel');
+$model->where(array('status'=>1));
+$model->order("ishot desc,mark desc,hid desc");
+$model->field(array('hid','name','img','price','area'));
+$model->limit(6);
+$model = $model->select();
+foreach($model as $v){
+echo '<div class="ShowBox">';
+echo '<div class="Rback_tone">';
+echo '<div class="Rback_toneimg" style="width:90px">';
+echo '<a href="hotel_detail.html?id='.$v['hid'].'" target="_blank"><img width="85" height="85" src="'.Y_Pr::image($v['img'],85,85).'"></a>';
+echo '</div>';
+echo '<div style="width:130px;" class="Active_titleMa">';
+echo '<div class="Active_Tmtop">';
+echo '<span><a href="hotel_detail.html?id='.$v['hid'].'" target="_blank">'.$v['name'].'</a></span>';
+echo '</div>';
+echo '<div class="Active_Plan c666 Active_itwo">';
+echo '<span class="c999">地区：</span><a href="hotel.html?area='.$v['area'].'">'.$harea[$v['area']-1]['name'].'</a>';
+echo '<br>';
+echo '<span class="c888">价格：</span><span class="cf60">'.$v['price'].'</span>元';
+echo '</div></div></div></div>';
+}
+?>		
+</div>
+<!-- 左侧结束-->
+<!--右侧 -->
+<div class="side_main" style="width:670px;">
+<!-- 关键词-->
+<div class="hotel_key">
+<h3>当前有<span class="cf60"><?php echo $sNum; ?></span>条信息满足您的条件</h3>
+<p>
+地区：
+<a href="search_hotel.html?<?php echo 'sText='.$this->get('sText').'&star='.$this->get('star').'&area=0&classes='.$this->get('classes').'&minPrice='.$this->get('minPrice').'&maxPrice='.$this->get('maxPrice'); ?>" <?php if(!$this->get('area')){ echo 'class="sel"'; } ?> >不限</a>
+<?php
+foreach($harea as $v){
+	echo '<a ';
+	if($v['id']==$this->get('area')){
+		echo ' class="sel" ';
+	}
+	echo ' href="search_hotel.html?sText='.$this->get('sText').'&star='.$this->get('star').'&area='.$v['id'].'&classes='.$this->get('classes').'&minPrice='.$this->get('minPrice').'&maxPrice='.$this->get('maxPrice').'">'.$v['name'].'</a>  ';
+}
+?>
+</p>
+<p>
+星级：
+<a href="search_hotel.html?<?php echo 'sText='.$this->get('sText').'&star=0&area='.$this->get('area').'&classes='.$this->get('classes').'&minPrice='.$this->get('minPrice').'&maxPrice='.$this->get('maxPrice'); ?>" <?php if(!$this->get('star')){ echo 'class="sel"'; } ?>>不限</a>
+<?php
+for($i=1;$i<=5;$i++){
+	echo '<a ';
+	if($this->get('star')==$i){
+		echo ' class="sel" ';
+	}
+	echo 'href="search_hotel.html?sText='.$this->get('sText').'&star='.$i.'&area='.$this->get('area').'&classes='.$this->get('classes').'&minPrice='.$this->get('minPrice').'&maxPrice='.$this->get('maxPrice').'">'.$i.'星</a> ';
+}
+?>
+</p>
+
+<p>
+类型：
+<a href="search_hotel.html?<?php echo 'sText='.$this->get('sText').'&star='.$this->get('star').'&area='.$this->get('area').'&classes=0'.'&minPrice='.$this->get('minPrice').'&maxPrice='.$this->get('maxPrice'); ?>" <?php if(!$this->get('classes')){ echo 'class="sel"'; } ?>>不限</a>
+<?php
+$htype = Ly_Items::getList('hotel','classes');
+foreach($htype as $v){
+	echo '<a href="search_hotel.html?sText='.$this->get('sText').'&star='.$this->get('star').'&area='.$this->get('area').'&classes='.$v['id'].'&minPrice='.$this->get('minPrice').'&maxPrice='.$this->get('maxPrice').'" ';
+	if($this->get('classes')==$v['id']){ echo 'class="sel"'; }
+	echo '>'.$v['name'].'</a> ';
+}
+?>
+</p>
+</div>
+<!-- 关键词结束-->
+<!--结果 -->
+<div class="Use_recommend">
+<?php
+if($info){
+echo '<ul class="hotel_list">';
+foreach($info as $v){
+	echo '<li>';
+	echo '<div class="img">';
+	echo '<a target="_blank" href="hotel_detail.html?id='.$v['hid'].'"><img width="120px"  src="'.Y_Pr::image($v['img'],230,154).'"></a>';
+	echo '</div>';
+	echo '<div class="txt">';
+	echo '<p><a arget="_blank" href="hotel_detail.html?id='.$v['hid'].'">'.$v['name'].'</a></p>';
+	echo '<p>';
+	if($v['star']){
+		echo '<span class="c999">星级：</span><span class="star_bg_s" title="星级'.$v['star'].'"><span style="width:'.(12*$v['star']).'px;" class="star_top_s"></span></span>';
+	}else{
+		echo '<span class="c999">类型：'.$htype[$v['classes']-1]['name'].'</span>';
+	}
+	echo '&nbsp;&nbsp;<span class="c999">价格：</span><span class="cf60">'.$v['price'].'</span>元</p>';
+	echo '<p><span class="c999">地址：</span><a target="_blank" href="hotel.html?area='.$v['area'].'">'.$harea[$v['area']-1]['name'].'</a>'.$v['address'].'</p>';
+	echo '</div>';
+	echo '</li>';
+}
+echo '</ul>';
+echo '<div style="clear:both" class="Page1">'.$pages.'</div>';
+}else{
+	echo '暂且没有匹配到任何数据';
+}
+?>
+</div>
+<!--结果结束 -->
+</div>
+<!--右侧结束 -->
+</div>
+<!--mian结束 -->
+</div>
+<!-- content结束 -->
+<!-- footer开始 -->
+<?php Y_Widget::display('footer'); ?>
+<!-- footer结束 -->
+<script type="text/javascript"></script>
+</body>
+</html>

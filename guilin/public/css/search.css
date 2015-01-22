@@ -1,0 +1,180 @@
+.side_left{
+width: 232px;
+float: left;
+}
+.Travel_TitleH h2 {
+font-size: 14px;
+font-weight: bold;
+height: 20px;
+}
+.ShowBox{
+margin-bottom:5px;
+}
+.Rback_tone {
+clear: both;
+overflow: hidden;
+padding: 12px 0 10px 5px;
+zoom: 1;
+}
+.Rback_toneimg {
+float: left;
+height:48px;
+width: 53px;
+}
+.Active_titleMa {
+cursor: pointer;
+float: left;
+padding-left: 5px;
+width: 142px;
+}
+.side_main{
+width: 691px;
+float: right;
+background: #fff;
+}
+.serachform{
+margin-bottom:10px;
+}
+.serachform input.txt{
+color: #b1b1b1;
+border: 1px solid #ccc;
+border-top:1px solid #aaa;
+line-height: 31px;
+height: 31px;
+padding-left: 5px;
+width: 530px;
+}
+.serachform input.sub{
+background:url(../images/seli.gif) no-repeat;
+height:29px;
+width:86px;
+padding-left:20px;
+border:0;
+cursor:pointer;
+color:#fff;
+font-size:14px;
+font-weight:bold;
+}
+.slide_key{
+height: 35px;
+line-height:35px;
+background: #f3f3f3;
+font-size:13px;
+padding-left:10px;
+border-top:1px solid #ddd;
+}
+.slide_key a{
+padding:2px;
+margin-right:3px;
+}
+.slide_key a.sel{
+background:#f60;
+color:#fff;
+}
+.slide_key select{
+border:none;
+width:80px;
+color:#2595B7;
+border: 1px solid #ccc;
+border-top:1px solid #aaa;
+height:22px;
+}
+.Use_recommend {
+padding: 7px 0;
+}
+.Use_recomone {
+background: #fff;
+border-bottom: 1px solid #ebf4f4;
+padding: 5px 0 10px 5px;
+overflow: hidden;
+zoom: 1;
+margin-bottom: 20px;
+}
+.Use_hdelfttwo {
+width: 78px;
+float:left;
+text-align:center;
+}
+.Use_hdright {
+width: 80%;
+float: left;
+padding-left: 3%;
+}
+.Use_hdright span {
+display: block;
+line-height: 20px;
+}
+.Use_hdBox span {
+float: left;
+width: 20%;
+line-height: 20px;
+color: #666;
+}
+.Use_manifbotm {
+clear:left;
+padding-bottom: 10px;
+}
+.hotel_key{
+border-bottom:1px solid #eee;
+padding-bottom:15px;
+}
+.hotel_key h3{
+font-size:16px;
+font-weight:normal;
+height:22px;
+}
+.hotel_key  p{
+line-height:25px;
+}
+.hotel_key  p a{
+color:#666;
+padding:3px 5px;
+text-decoration:none;
+}
+.hotel_key  p a.sel{
+background: #8ace13;
+color: #fff;
+}
+.hotel_key  p a:hover{
+color:#f60;
+}
+.Btn {
+font: 15px "Microsoft Yahei";
+margin-top: 8px;
+height: 34px;
+background: #8ace13;
+color: #fff;
+border: 0;
+cursor: pointer;
+width: 88px;
+}
+.BtnHover {
+font: 15px "Microsoft Yahei";
+margin-top: 8px;
+height: 34px;
+background: #7cb911;
+color: #fff;
+border: 0;
+cursor: pointer;
+width: 88px;
+}
+.hotel_list{
+margin-top:10px;
+}
+.hotel_list li{
+display:block;
+width:320px;
+float:left;
+margin-right:10px;
+margin-bottom:20px;
+}
+.hotel_list li .img{
+float:left;
+width:130px;
+height:100px;
+}
+.hotel_list li .txt{
+line-height:20px;
+float:left;
+width:190px;
+}

@@ -1,0 +1,19 @@
+<td colspan="5" style="background-color:#F0F7FC;">
+<div style="position: relative;padding: 5px;">
+<div>
+<?php 
+$way=Ly_Wayline::getBase($info['wid']);
+ ?>
+<ul class="order_ul">
+<li title="预定电话">预定电话：<b class="c369"><?php echo $way['contact']; ?></b></li>
+<li title="行程天数">行程天数：<?php echo $way['days']; ?></li>
+<li title="交通方式">交通方式：<?php echo $way['traffic']; ?></li>
+<li title="出发时间">出发时间：<?php  echo $info['starttime']; ?></li>
+<li title="总价格">总价格：<span class="orange"><?php  echo $info['price']; ?></span>元</li>
+<li title="入住人">入住人：<?php  echo Y_Pr::strCover($info['name'],1,'*'); ?></li>
+<li title="联系方式">联系方式：<?php  echo Y_Pr::strCover($info['mobile'],7); ?></li>
+<li title="证件号">证件号：<?php  echo Y_Pr::strCover($info['card'],6,'*'); ?></li>
+<li title="备注" style="clear:both;width:100%">备注：<?php  echo $info['mark']; ?></li>
+</div>
+</div>
+</td>

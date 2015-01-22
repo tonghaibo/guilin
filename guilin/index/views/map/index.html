@@ -1,0 +1,93 @@
+<?php Y_Widget::display('header',$web); ?>
+<!-- top开始 -->
+<?php Y_Widget::display('top'); ?>
+<!-- top结束 -->
+<!-- nav开始 -->
+<?php Y_Widget::display('nav'); ?>
+<!-- nav结束 -->
+<!-- content开始 -->
+<div id="content" class="clearfix">
+<div id="main">
+<div id="map" class="clearfix">
+<div class="hd clearfix">
+<div class="right pr10tr">
+共找到<span class="cf30" id="map_num">0</span>个结果
+</div>
+<div class="left tr">
+<a class="cf30" href="javascript:void(0)" title="点击地图上的景点，就有惊喜哦！">[?]</a>
+点击选择您想去的景点，就有惊喜哦！
+<input type="text" value="景点/美食" id="map_tags" value="<?php echo $this->get('sText');  ?>" />
+<input type="checkbox" checked class="map_pid" value="1" />景点
+<input type="checkbox" checked class="map_pid" value="2" />美食
+<button class="button"  onclick="serachtags()">立即搜索</button>
+</div>
+</div>
+<!--地图 -->
+<div class="bd" id="b_map">
+</div>
+<!--地图结束 -->
+</div>
+</div>
+</div>
+<!-- content结束 -->
+<!-- footer开始 -->
+<?php Y_Widget::display('footer'); ?>
+<!-- footer结束 -->
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.3"></script>
+<script type="text/javascript" src='./public/js/map.js'></script>
+<script type="text/javascript">
+function _Page(page){
+showBmap.load('.loadmap .hd a.sel',page);
+}
+$(function(){
+showBmap.obj= 'b_map';
+showBmap.show();
+serachtags();
+});
+function serachtags(){
+var name = $.trim($('#map_tags').val());
+if(name=='景点/美食'){
+name='';
+}
+var tag = new Array();
+var pid = $('.map_pid').each(function(){
+if($(this).attr('checked')){
+	tag.push($(this).val());
+}
+});
+tag = tag.join();
+$.ajax({
+type:'GET',
+url:'map_tags.html',
+dataType:'JSON',
+data:'name='+name+'&pid='+tag,
+success:function(data){
+showBmap.clear();
+if(data!=''){
+var len = data.length;
+var i = Math.floor(Math.random()*len);
+for(var a in data){
+		showBmap.label(data[a].name,data[a].lng,data[a].lat,data[a].id);
+	if(i==a){
+		showBmap.info(data[a].lng,data[a].lat,data[a].id);
+	}
+}
+$('#map_num').html(len);
+}
+}
+});
+}
+$(function(){
+$('#map_tags').focus(function(){
+	if($(this).val()=='景点/美食'){
+		$(this).val('');
+	}
+}).blur(function(){
+	if($.trim($(this).val())==''){
+		$(this).val('景点/美食');
+	}
+});
+});
+</script>
+</body>
+</html>

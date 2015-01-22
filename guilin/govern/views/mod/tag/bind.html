@@ -1,0 +1,69 @@
+<?php Y_Widget::display('header',array('b_info'=>$this->id)); ?>
+<?php Y_Widget::display('top'); ?>
+<!--content -->
+<div id="content">
+	<?php Y_Widget::display('tips',array('b_info'=>$this->id)); ?>
+	<!--main -->
+	<div class="main clearfix">
+	<?php Y_Widget::display('left'); ?>
+	<!--box开始 -->
+	<div id="box" class="clearfix">
+<!-- 这里写内容-->
+<form action="#" method="post" id="addMod">
+<table class="st nob">
+<tr>
+<td class="title">名称：</td>
+<td>
+【<?php echo $info['type']; ?>】<span class="cblue"><?php echo $info['name']; ?></span>
+<input type="hidden" value="<?php echo $info['id']; ?>" name="id" />
+</td>
+</tr>
+<tr>
+<td class="title">标签：</td>
+<td id="tags">
+<?php if($tags){
+	foreach($tags as $val){
+		echo '<a href="javascript:void(0)" class="no"><input type="hidden" value="'.$val['id'].'" name="tids[]">'.$val['name'].'<span class="icon icon-del" onclick="del(this)"></span></a>&nbsp;&nbsp;&nbsp;';
+	}
+} ?>
+</td>
+</tr>
+<tr>
+<td></td>
+<td><input type="submit" value="添加" name="bt" class="btn btn-green" /></td>
+</tr>
+</table>
+</form>
+<div id="gg">
+<div><q>标签库：点击选择，不超过10个</q></div>
+<div>
+<?php 
+foreach(Ly_Tags::getAll(0) as $val){
+	echo '<p>'.$val['name'].'</p>';
+	if($list = Ly_Tags::getAll($val['id'])){
+		foreach($list as $v){
+			echo '<a href="javascript:void(0)" class="no" style="padding:2px 5px;" onclick="add(this,'.$v['id'].')" >'.$v['name'].'</a>';
+		}	
+	}else{
+		echo '暂且无任何数据！';
+	}
+}
+ ?>
+</div>
+</div>
+<!-- 这里写内容结束-->
+	<!--box结束 -->
+	</div>
+	</div>
+	<!-- mainend-->
+</div>
+<script type="text/javascript">
+function add(obj,num){
+	var str = $(obj).html();
+	$('#tags').append('<a href="javascript:void(0)" class="no">'+str+'<span class="icon icon-del" onclick="del(this)"></span><input type="hidden" name="tids[]" value="'+num+'" /></a>&nbsp;&nbsp;&nbsp;');
+};
+function del(obj){
+	$(obj).parent('a').remove();
+};
+</script>
+<?php Y_Widget::display('footer');?>

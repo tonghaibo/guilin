@@ -1,0 +1,65 @@
+<div class="set_area_list">
+<p class="main_t">
+<a href="javascript:void(0)" onclick="loadlist(this,1)" tar="t0"  <?php if(!in_array($this->get('act'),array('t1','t2','t3','t4'))){ echo 'class="tab orange" act=1';}else{ echo 'class="tab l_pink" act=0'; } ?>>全部</a>
+<a href="javascript:void(0)" onclick="loadlist(this,1)" tar="t1"  <?php if($this->get('act')=='t1'){ echo 'class="tab orange act=1"';}else{echo 'class="tab l_pink" act=0';} ?>>未处理</a>
+<a href="javascript:void(0)" onclick="loadlist(this,1)" tar="t2"  <?php if($this->get('act')=='t2'){ echo 'class="tab orange act=1"';}else{echo 'class="tab l_pink" act=0';} ?>>已联系</a>
+<a href="javascript:void(0)" onclick="loadlist(this,1)" tar="t3"  <?php if($this->get('act')=='t3'){ echo 'class="tab orange act=1"';}else{echo 'class="tab l_pink" act=0';} ?>>成功</a>
+<a href="javascript:void(0)" onclick="loadlist(this,1)" tar="t4"  <?php if($this->get('act')=='t4'){ echo 'class="tab orange act=1"';}else{echo 'class="tab l_pink" act=0';} ?>>无效</a>
+<select class="txt" id="o_sel">
+<option value="1">订单号</option>
+<option value="2">线路ID</option>
+<option value="3">下单时间</option>
+<option value="4">证件号</option>
+<option value="5">联系方式</option>
+<option value="6">预定者</option>
+</select>
+<input type="text" style="width:120px" id="o_txt" class="txt" />
+<input type="submit" class="btn_a" onclick="loadlist('.main_t a.tab[act=1]',1)" style="padding:5px 8px;font-size:12px;" value="搜索"/>
+</p>
+<br>
+</div>
+<div id="loadlist"></div>
+<script type="text/javascript">
+function loadlist(obj,page){
+	var obj = $(obj);
+	$('.main_t a.tab').removeClass('orange').addClass('l_pink');
+	obj.addClass('orange').removeClass('l_pink').attr('act',1).siblings().attr('act',0);
+	var s = 's='+$('#o_sel').val();
+	s +='&txt='+$('#o_txt').val();
+	s +='&page='+page;
+	$('#loadlist').load('home_dowayline.html?do=list&t='+obj.attr('tar')+'&'+s);
+	return false;
+}
+$(function(){
+loadlist('.main_t a.tab[act=1]',1);
+});
+function showdetail(obj){
+	var tr = $(obj).parents('tr');
+	var oid = tr.attr('oid');
+	if(tr.attr('act')=='add'){
+		if(tr.attr('load')=='0'){
+			tr.after('<tr id="oid_'+oid+'"><td colspan="5" style="text-align:center"><img src="public/images/wait3.gif"></td></tr>');
+			$('#oid_'+oid).load('home_dowayline.html?do=detail',{oid:oid});
+			tr.attr('load','1');
+		}else{
+			$("#oid_"+oid).show();
+		}
+		$(obj).html('<b class="orange f14">-</b>');
+		tr.attr('act','del');
+	}else{
+		$("#oid_"+oid).hide();
+		$(obj).html('<b class="orange f14">+</b>');
+		tr.attr({'act':'add'});
+	}
+}
+function doorder(obj){
+	var oid = $(obj).attr('oid');
+	var t = $(obj).attr('type');
+	var str = $(obj).html();
+	show_comfirm.open(0,'您确定要对订单"'+oid+'"进行"'+str+'"操作吗？',function(){
+		$.post('home_dowayline.html?do=act',{'oid':oid,'t':t});
+		$(obj).html('操作成功');
+		$(obj).attr('onclick','');
+	});
+}
+</script>

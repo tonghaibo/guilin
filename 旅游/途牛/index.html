@@ -1,0 +1,975 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>途牛旅游网会员中心_会员中心_途牛旅游网</title>
+
+<meta name="keywords" content="会员中心" />
+
+<meta name="description" content="途牛旅游网：中国最大的旅游行业在线电子商务网站，为您提供最为周到的旅游服务。途牛旅游网" />
+
+<link rel="stylesheet" type="text/css" href="./css/head.css" />
+
+<link rel="stylesheet" href="./css/user-center-new.css" type="./css/text/css" />
+
+<link href="./css/autocomplete.mini.css?v=20120109_1" type="text/css" rel="stylesheet"/>
+
+<link type="text/css" href="./css/footer-1000v2-min.css?v=20120731" rel="stylesheet" />
+
+<link type="text/css" rel="stylesheet" href="./css/menpiao_online.css" />
+
+<script type="text/javascript" src="http://img1.tuniucdn.com/u/js/jquery-1.4.2.min.js"></script>
+
+<style>
+
+#user-wrapper .nav_left{
+
+      margin-right:10px;
+
+}
+
+</style>
+
+<script type="text/javascript">
+
+var analyTuniuBeginTime=(new Date()).getTime();
+
+</script>
+
+</head>
+
+<body>
+
+<!--start site_nav-->
+
+<div class="site_nav">
+
+    <div class="site_nav_inner">
+
+        <p class="login_info"><a class="sitenav_mobile" href="http://www.tuniu.com/static/mobile/" target="_blank" rel="nofollow">下载手机客户端</a>|<span class="user_name">您好, <a href="http://www.tuniu.com/u" target="_blank" rel="nofollow">liuzhaotun</a></span><a class="infor_color" href="http://www.tuniu.com/u/logout" target="_blank">退出</a>|<a rel="nofollow" href="http://www.tuniu.com/u/order" target="_blank">我的订单</a></p>
+
+        <p class="addtion_menu"><a onClick="myAddPanel('途牛旅游网','http://www.tuniu.com','途牛旅游网');" href="javascript:void(0)" rel="nofollow">+ 收藏</a>|<a target="_blank" href="http://www.tuniu.com/static/mobile/" rel="nofollow">手机版</a>|<a href="http://www.tuniu.com/myhistory" rel="nofollow">最近浏览线路</a><a class="tuniu_wb" href="http://www.weibo.com/tuniulvyou" target="_blank" rel="nofollow">关注途牛旅游网</a></p>
+
+    </div>
+
+</div>
+
+<!--end site_nav-->
+
+<!--start head-->
+
+<div class="header clearfix">
+
+    <div class="logo clearfix">
+
+        <div class="logocon"><a href="http://www.tuniu.com/"><img src="http://img1.tuniucdn.com/niuren_zx/images/logo.gif" width="163" height="55" title="途牛旅游网" alt="途牛旅游网" /></a></div>
+
+        <div class="city_tab">
+
+            <p class="depart_city">深圳出发</p>
+
+            <div class="city_layout">
+
+                <a class="change_city" href="javascript:void(0)" rel="nofollow">[切换城市]</a>
+
+                <!--start city-->
+
+                <div class="show_city"><dl><dt>华北</dt><dd>                    <a href="javascript:change_city('bj','');">北京</a>                    <a href="javascript:change_city('tj','');">天津</a>                    <a href="javascript:change_city('qd','');">青岛</a>                    <a href="javascript:change_city('sy','');">沈阳</a></dd></dl><dl><dt>华东</dt><dd>                    <a href="javascript:change_city('sh','');">上海</a>                    <a href="javascript:change_city('nj','');">南京</a>                    <a href="javascript:change_city('hz','');">杭州</a>                    <a href="javascript:change_city('sz','');">苏州</a>                    <a href="javascript:change_city('nb','');">宁波</a>                    <a href="javascript:change_city('wz','');">温州</a>                    <a href="javascript:change_city('wx','');">无锡</a></dd></dl><dl><dt>华南</dt><dd>                    <a href="javascript:change_city('shz','');">深圳</a>                    <a href="javascript:change_city('wh','');">武汉</a>                    <a href="javascript:change_city('cs','');">长沙</a></dd></dl><dl><dt>西部</dt><dd>                    <a href="javascript:change_city('cd','');">成都</a>                    <a href="javascript:change_city('cq','');">重庆</a>                    <a href="javascript:change_city('xa','');">西安</a></dd></dl></div>
+
+                <!--end city-->
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="search">
+
+        <div class="search_panel clearfix">
+
+            <form id="route_search" onsubmit="do_route_search();" method="get" action="http://s.tuniu.com/search_complex">
+
+                <input type="hidden" value="云南" name="q" id="q">
+
+                <input type="hidden" value="4" name="st" id="st">
+
+                <input type="hidden" value="search_complex" id="from_action"  />
+
+                <div class="search_panel_fields">
+
+                    <input type="text" id="keyword-input" autocomplete="off" value="云南" />
+
+                </div>
+
+                <button id="route_search_btn" type="submit">搜索</button>
+
+                <div id="check_route_hi"></div>
+
+            </form>
+
+        </div>
+
+        <div class="search_hots">
+
+            <p class="hot_keyword">近期热门搜索：<span id="recent_route_hot_search_top"><a target="_blank" rel="nofollow" href="http://s.tuniu.com/complex?q=%E5%8E%A6%E9%97%A8&amp;st=3">厦门</a><a target="_blank" rel="nofollow" href="http://s.tuniu.com/complex?q=%E9%A9%AC%E5%B0%94%E4%BB%A3%E5%A4%AB&amp;st=3">马尔代夫</a><a target="_blank" rel="nofollow" href="http://s.tuniu.com/complex?q=%E6%B5%B7%E5%8D%97&amp;st=3">海南</a><a target="_blank" rel="nofollow" href="http://s.tuniu.com/complex?q=%E8%BF%AA%E6%8B%9C&amp;st=3">迪拜</a><a target="_blank" rel="nofollow" href="http://s.tuniu.com/complex?q=%E6%AC%A7%E6%B4%B2&amp;st=3">欧洲</a><a target="_blank" rel="nofollow" href="http://s.tuniu.com/complex?q=%E6%99%AE%E5%90%89%E5%B2%9B&amp;st=3">普吉岛</a><a target="_blank" rel="nofollow" href="http://s.tuniu.com/complex?q=%E9%A6%99%E6%B8%AF&amp;st=3">香港</a></span></p>
+
+        </div>
+
+    </div>
+
+    <div class="tuniu_phone">
+
+                <div class="left_part">
+
+            <p class="tuniu_24"><a target="_blank" href="http://www.tuniu.com/corp/aboutus.shtml#24hour"><img width="124" height="23" src="http://img3.tuniucdn.com/search/images/24hours.jpg"></a></p>
+
+            <p class="tuniu_400">4007-999-999 </p>
+
+        </div>
+
+        <div class="right_part">
+
+            <p><a target="_blank" href="http://www.tuniu.com/static/lowest/"><img width="100" height="52" src="http://img1.tuniucdn.com/site/images/ad/busy_yh.gif"></a></p>
+
+        </div>
+
+            </div>
+
+</div>
+
+<!--end head-->
+
+<!--start nav-->
+
+<div class="nav">
+
+    <div class="nav_main">
+
+        <ul class="nav_list">
+
+            <li><a href="http://www.tuniu.com/" title="首页" rel="nofollow">首页</a></li>
+
+            <li><a href="http://www.tuniu.com/niuren/" title="牛人专线" rel="nofollow">牛人专线</a><span class="remai">热卖</span></li>
+
+            <li><a href="/around/" title="周边旅游" rel="nofollow">周边旅游</a><span class="tejia">特价</span></li>
+
+            <li><a href="http://menpiao.tuniu.com/" title="景点门票" rel="nofollow">景点门票</a><span class="fanxian">返现</span></li>
+
+            <li><a href="/domestic/" title="国内旅游" rel="nofollow">国内旅游</a> </li>
+
+            <li><a href="/abroad/" title="出境旅游" rel="nofollow">出境旅游</a> </li>
+
+            <li><a href="/package/" title="自助游" rel="nofollow">自助游</a></li>
+
+            <li><a href="/gongsi/" title="公司旅游" rel="nofollow">公司旅游</a> </li>
+
+            <li><a href="http://youlun.tuniu.com/" title="邮轮" rel="nofollow">邮轮</a></li>
+
+            <li><a href="http://www.tuniu.com/visa/" title="签证" rel="nofollow">签证</a></li>
+
+            <li><a href="http://shz.tuniu.com/nanya/medf/" title="马尔代夫" rel="nofollow">马尔代夫</a></li>
+
+        </ul>
+
+    </div>
+
+    <ul class="nav_c">
+
+        <li class="nav_word"><span>社区</span></li>
+
+        <li><a href="http://www.tuniu.com/guide/">旅游攻略</a></li>
+
+        <li><a href="http://bbs.tuniu.com/">论坛</a></li>
+
+    </ul>
+
+</div>
+
+<div id="user-wrapper">
+
+
+
+<div class="nav_left">
+<div class="m" id="myjd">
+    <div class="mt">
+        <h2><a href="/u">会员中心</a></h2>
+    </div>
+    <div class="mc">
+        <dl>
+            <dt>订单中心<b></b></dt>
+            <dd>
+                <div class="item" id="myOrder1"><a href="/u/order">我的订单</a></div>
+                <div class="item" id=""><a href="/u/comments_list">我的点评</a></div>
+            </dd>
+            <dt>我的优惠卡券<b></b></dt>
+            <dd>
+                <div class="item" id=""><a href="/main.php?do=cash">现金账户</a></div>
+                <div class="item" id=""><a href="/u/coupon_new">抵用券</a></div>
+                <div class="item" id=""><a href="/u/travel_coupon">旅游券</a></div>
+            </dd>
+            <dt>账户管理<b></b></dt>
+            <dd>
+                <div class="item" id=""><a href="/main.php?do=user_info_confirm">个人资料</a></div>
+                <div class="item" id=""><a href="/u/level">会员等级</a><span class="tips_hee"></span></div>
+                                <div class="item" id=""><a href="/main.php?do=member_security_setting">账户安全</a></div>
+                <div class="item" id=""><a href="/u/point">我的积分</a><span class="tips_hee"></span></div>
+                <div class="item" id=""><a href="/u/change_password">修改密码</a></div>
+                <div class="item" id=""><a href="/main.php?do=user_member_ship">我的合作卡</a></div>
+                <div class="item" id=""><a href="/main.php?do=tourist_template">常用游客信息</a></div>
+                <div class="item" id=""><a href="/main.php?do=pay_user_template">常用配送地址</a></div>
+                <div class="item" id=""><a href="/main.php?do=user_email_activate">邮件订阅</a></div>
+            </dd>
+            <dt>社区中心<b></b></dt>
+            <dd>
+                <div class="item" id=""><a href="http://bbs.tuniu.com/forum.php?mod=post&action=newthread&fid=64">写游记</a></div>
+                <div class="item" id=""><a href="http://bbs.tuniu.com/home.php?mod=spacecp&ac=promotion">推广邀请</a></div>
+                <div class="item" id=""><a href="http://bbs.tuniu.com/home.php?mod=spacecp">社区资料</a></div>
+                <div id="" class="item"><a href="/u/liuzhaotun/photos">我的相册</a></div>
+            </dd>
+        </dl>
+    </div>
+</div>
+</div>
+<div class="nav_right">
+	<div id="userinfo" class="m m3">
+		<div class="user">
+			<div class="u-icon picture">
+				<div class="hide" id="modifyheader" style="display: none;">
+					<div class="upper fore" id="modUserImgbox"></div>
+					<a class="fore" href="http://www.tuniu.com/main.php?do=user_change_picture">修改头像</a>
+				</div>
+				<img alt="用户头像" src="				http://img.tuniucdn.com/site/images/prod/huiyuan/default.jpg
+				"
+				 id="userImg" height="75" width="75"/>
+			</div>
+
+		</div>
+		<!--user-->
+		<div id="i-userinfo">
+			<div class="username">
+				<div id="userinfodisp" class="fl ftx-03"><strong>liuzhaotun</strong>，欢迎您！</div>
+				<div id="jdTask" class="extra"></div>
+			</div>
+		
+			<div class="account">
+				<div class="member" id="memberInfo">
+					<p><span class="col_s">会员等级：</span>
+					<a href="/u/level" class="cgreen">普通会员</a>&nbsp;&nbsp;&nbsp;&nbsp;
+					<lable id="level_tips">                        (最近一年已消费¥0,还需消费¥6000升级到银牛会员)
+                                            </lable>
+                    <a href="/help/member_levels.shtml" target="_blank" class="cgreen">会员等级说明</a>
+					</p>
+				</div>
+			</div>
+						<!--end-->
+			<div id="remind">
+				<div class="oinfo">
+					<dl class="fore">
+						<dt>现金账户：</dt>
+						<dd><span class="cdyellow fb">¥</span></dd>
+						<dt class="lft_part">旅游券：</dt>
+						<dd><span class="cdyellow fb">¥0</span><!-- <a href="" target="" class="cgreen spacing_left">去兑换>></a> --></dd>
+					</dl>
+					<dl>
+						<dt>抵用券：</dt>
+						<dd><span class="cdyellow fb">¥200</span></dd>
+						<dt class="lft_part">会员积分：</dt>
+						<dd><span class="cdyellow fb">100</span><a href="/u/point/" class="cgreen spacing_left">去兑换>></a></dd>
+					</dl>
+				</div>
+				<div class="ask_link">
+						记录出游计划，赢取免单机会！现在填写再送200元抵用券。<a target="_blank" href="http://survey.tuniu.com/jq/1840977.aspx?sojumpparm=1809300" class="cgreen">去填写>></a>	
+				</div>
+				<div class="ainfo">
+								
+								</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+	</div>
+		<table border="0" cellspacing="0" cellpadding="0" id="indexOrder" class="common-table mbt10" style="position:relative;">
+		<thead>
+			<tr>
+				<th width="160">订单编号</th>
+				<th>产品信息</th>
+				<th width="80">订单金额</th>
+				<th width="100">订单状态
+				<a href="http://www.tuniu.com/static/orderstate/orderstate_longline.html" target="_blank" style="position:absolute; top:-14px; right:120px;"><img src="http://img.tuniucdn.com/site/images/prod/huiyuan/prompt.png" width="44" height="54"></a>
+				</th>
+				<th width="80" class="last">操作</th>
+			</tr>
+		</thead>
+		<tbody>
+					<tr>
+				<td class="ordernum" colspan="5">
+					您最近没有订单在处理，快去<a class="cgreen" target="_blank" href="/">预订</a>吧！
+				</td>
+			</tr>
+		</tbody>
+	</table>
+			<div id="reco-area" class="m m5">
+		<div class="mt">
+			<ul class="tab">
+				<li  class="curr"><s></s><b></b>当季热卖</li>
+				<li><s></s><b></b>推荐游记</li>
+			</ul>
+		</div>
+		<div class="clear"></div>
+		<div class="mc">
+			<div class="main-wrap">
+				<div id="slide-box">
+					<b class="corner"></b>
+					<div class="slide-content" id="J_slide">
+						<div class="wrap">
+							<ul class="ks-switchable-content">
+								<li style="display: block; float: left; ">
+                    <a href="/tours/72644" target="_blank"><img alt="" src="http://img.tuniucdn.com/images/2006-08-13/y/yFt5z1R0iLAo0uYMm.jpg"/></a>
+                    <p><a href="/tours/72644" target="_blank" class="cgreen" title="<span class='f_0053aa'>&lt;桂林-阳朔-漓江汽车3日游&gt;</span>含七大景点，无自费，优质线"><span class='f_0053aa'>&lt;桂林-阳朔-漓江汽车3日游&gt;</span>含七大景点，无自费，优质线</a></p>
+                    <p>途牛价：<span class="cdyellow fb">¥438</span>起</p>
+                    </li><li style="display: block; float: left; ">
+                    <a href="/tours/72710" target="_blank"><img alt="" src="http://img.tuniucdn.com/images/2006-06-01/U/Uxl98fJ20Esg53bm.jpg"/></a>
+                    <p><a href="/tours/72710" target="_blank" class="cgreen" title="<span class='f_0053aa'>&lt;厦门-鼓浪屿双汽3日游&gt;</span>畅想浪漫假期，途牛特惠"><span class='f_0053aa'>&lt;厦门-鼓浪屿双汽3日游&gt;</span>畅想浪漫假期，途牛特惠</a></p>
+                    <p>途牛价：<span class="cdyellow fb">¥298</span>起</p>
+                    </li><li style="display: block; float: left; ">
+                    <a href="/tours/418859" target="_blank"><img alt="" src="http://img.tuniucdn.com/images/2012-05-31/2/2012-03-311338448751_m.jpg"/></a>
+                    <p><a href="/tours/418859" target="_blank" class="cgreen" title="<span class='f_0053aa'>&lt;成都-九寨沟-黄龙双汽4日游&gt;</span>升级住宿，赠送特色烤羊"><span class='f_0053aa'>&lt;成都-九寨沟-黄龙双汽4日游&gt;</span>升级住宿，赠送特色烤羊</a></p>
+                    <p>途牛价：<span class="cdyellow fb">¥1036</span>起</p>
+                    </li><li style="display: block; float: left; ">
+                    <a href="/tours/210318" target="_blank"><img alt="" src="http://img.tuniucdn.com/images/2010-12-31/2/2010-11-311293765350_m.jpg"/></a>
+                    <p><a href="/tours/210318" target="_blank" class="cgreen" title="<span class='f_0053aa'>&lt;香格里拉-昆大丽双飞一卧6日游&gt;</span>沉醉碧塔海"><span class='f_0053aa'>&lt;香格里拉-昆大丽双飞一卧6日游&gt;</span>沉醉碧塔海</a></p>
+                    <p>途牛价：<span class="cdyellow fb">¥2609</span>起</p>
+                    </li><li style="display: block; float: left; ">
+                    <a href="/tours/396271" target="_blank"><img alt="" src="http://img.tuniucdn.com/images/2007-04-04/9/9evN42kCf4lP8V40m.jpg"/></a>
+                    <p><a href="/tours/396271" target="_blank" class="cgreen" title="<span class='f_0053aa'>&lt;塞班岛6日游&gt;</span>A线，上海直飞，最高每人可立减1000元"><span class='f_0053aa'>&lt;塞班岛6日游&gt;</span>A线，上海直飞，最高每人可立减1000元</a></p>
+                    <p>途牛价：<span class="cdyellow fb">¥4880</span>起</p>
+                    </li><li style="display: block; float: left; ">
+                    <a href="/tours/204073" target="_blank"><img alt="" src="http://img.tuniucdn.com/images/2010-05-25/9/9L4c08hMA3S1uZM5m.jpg"/></a>
+                    <p><a href="/tours/204073" target="_blank" class="cgreen" title="<span class='f_0053aa'>&lt;尼泊尔9日半自助游&gt;</span>4人成行，纯净天堂全景游"><span class='f_0053aa'>&lt;尼泊尔9日半自助游&gt;</span>4人成行，纯净天堂全景游</a></p>
+                    <p>途牛价：<span class="cdyellow fb">¥8499</span>起</p>
+                    </li><li style="display: block; float: left; ">
+                    <a href="/tours/396150" target="_blank"><img alt="" src="http://img.tuniucdn.com/images/2011-07-22/2/2011-04-221311323134_m.jpg"/></a>
+                    <p><a href="/tours/396150" target="_blank" class="cgreen" title="<span class='f_0053aa'>&lt;塞班岛5日游&gt;</span>A线，上海包机直飞，海景酒店，享受惬意海风"><span class='f_0053aa'>&lt;塞班岛5日游&gt;</span>A线，上海包机直飞，海景酒店，享受惬意海风</a></p>
+                    <p>途牛价：<span class="cdyellow fb">¥4680</span>起</p>
+                    </li><li style="display: block; float: left; ">
+                    <a href="/tours/60440" target="_blank"><img alt="" src="http://img.tuniucdn.com/images/2006-07-03/X/X209YM3d1976pTHwm.jpg"/></a>
+                    <p><a href="/tours/60440" target="_blank" class="cgreen" title="<span class='f_0053aa'>&lt;澳门1日游&gt;</span>澳门观光，舒适之旅"><span class='f_0053aa'>&lt;澳门1日游&gt;</span>澳门观光，舒适之旅</a></p>
+                    <p>途牛价：<span class="cdyellow fb">¥108</span>起</p>
+                    </li><li style="display: block; float: left; ">
+                    <a href="/tours/425678" target="_blank"><img alt="" src="http://img.tuniucdn.com/images/2006-10-24/7/7IwPD6V4xPEW4mbEm.jpg"/></a>
+                    <p><a href="/tours/425678" target="_blank" class="cgreen" title="<span class='f_0053aa'>&lt;普陀山2日游&gt;</span>四大寺，含快艇岛交，指定住南普香缘"><span class='f_0053aa'>&lt;普陀山2日游&gt;</span>四大寺，含快艇岛交，指定住南普香缘</a></p>
+                    <p>途牛价：<span class="cdyellow fb">¥468</span>起</p>
+                    </li><li style="display: block; float: left; ">
+                    <a href="/tours/428043" target="_blank"><img alt="" src="http://img.tuniucdn.com/images/2012-03-13/2/2012-06-131331633487_m.jpg"/></a>
+                    <p><a href="/tours/428043" target="_blank" class="cgreen" title="<span class='f_0053aa'>&lt;西塘-乌镇2日游&gt;</span>首道门票全含，可升级挂三酒店"><span class='f_0053aa'>&lt;西塘-乌镇2日游&gt;</span>首道门票全含，可升级挂三酒店</a></p>
+                    <p>途牛价：<span class="cdyellow fb">¥198</span>起</p>
+                    </li><li style="display: block; float: left; ">
+                    <a href="/tours/429975" target="_blank"><img alt="" src="http://img.tuniucdn.com/images/2011-05-24/2/2011-10-241306202972_m.jpg"/></a>
+                    <p><a href="/tours/429975" target="_blank" class="cgreen" title="<span class='f_0053aa'>&lt;西塘1日游&gt;</span>初秋古镇之旅，无购物，感受慢生活"><span class='f_0053aa'>&lt;西塘1日游&gt;</span>初秋古镇之旅，无购物，感受慢生活</a></p>
+                    <p>途牛价：<span class="cdyellow fb">¥80</span>起</p>
+                    </li><li style="display: block; float: left; ">
+                    <a href="/tours/434290" target="_blank"><img alt="" src="http://img.tuniucdn.com/images/2010-05-11/0/0DWKy1QF7hLznb00m.jpg"/></a>
+                    <p><a href="/tours/434290" target="_blank" class="cgreen" title="<span class='f_0053aa'>&lt;千岛湖中心湖区1日游&gt;</span>含千岛湖门票和船票"><span class='f_0053aa'>&lt;千岛湖中心湖区1日游&gt;</span>含千岛湖门票和船票</a></p>
+                    <p>途牛价：<span class="cdyellow fb">¥238</span>起</p>
+                    </li>							</ul>
+						</div>
+						<div class="ks-switchable-triggers">
+							<a class="prev" id="J_prev" href="javascript:void(0);">
+							<b class="corner"></b><span>&#8249;</span><b class="corner"></b></a>
+							<a class="next" id="J_next" href="javascript:void(0);">
+							<b class="corner"></b><span>&#8250;</span><b class="corner"></b></a>
+						</div>
+					</div>
+					<b class="corner"></b>
+				</div>
+			</div>
+		</div>
+		<div id="include1" style="display:none">
+			<ul class="ks-switchable-content">
+				<li style="display: block; float: left; ">
+                    <a href="/tours/72644" target="_blank"><img alt="" src="http://img.tuniucdn.com/images/2006-08-13/y/yFt5z1R0iLAo0uYMm.jpg"/></a>
+                    <p><a href="/tours/72644" target="_blank" class="cgreen" title="<span class='f_0053aa'>&lt;桂林-阳朔-漓江汽车3日游&gt;</span>含七大景点，无自费，优质线"><span class='f_0053aa'>&lt;桂林-阳朔-漓江汽车3日游&gt;</span>含七大景点，无自费，优质线</a></p>
+                    <p>途牛价：<span class="cdyellow fb">¥438</span>起</p>
+                    </li><li style="display: block; float: left; ">
+                    <a href="/tours/72710" target="_blank"><img alt="" src="http://img.tuniucdn.com/images/2006-06-01/U/Uxl98fJ20Esg53bm.jpg"/></a>
+                    <p><a href="/tours/72710" target="_blank" class="cgreen" title="<span class='f_0053aa'>&lt;厦门-鼓浪屿双汽3日游&gt;</span>畅想浪漫假期，途牛特惠"><span class='f_0053aa'>&lt;厦门-鼓浪屿双汽3日游&gt;</span>畅想浪漫假期，途牛特惠</a></p>
+                    <p>途牛价：<span class="cdyellow fb">¥298</span>起</p>
+                    </li><li style="display: block; float: left; ">
+                    <a href="/tours/418859" target="_blank"><img alt="" src="http://img.tuniucdn.com/images/2012-05-31/2/2012-03-311338448751_m.jpg"/></a>
+                    <p><a href="/tours/418859" target="_blank" class="cgreen" title="<span class='f_0053aa'>&lt;成都-九寨沟-黄龙双汽4日游&gt;</span>升级住宿，赠送特色烤羊"><span class='f_0053aa'>&lt;成都-九寨沟-黄龙双汽4日游&gt;</span>升级住宿，赠送特色烤羊</a></p>
+                    <p>途牛价：<span class="cdyellow fb">¥1036</span>起</p>
+                    </li><li style="display: block; float: left; ">
+                    <a href="/tours/210318" target="_blank"><img alt="" src="http://img.tuniucdn.com/images/2010-12-31/2/2010-11-311293765350_m.jpg"/></a>
+                    <p><a href="/tours/210318" target="_blank" class="cgreen" title="<span class='f_0053aa'>&lt;香格里拉-昆大丽双飞一卧6日游&gt;</span>沉醉碧塔海"><span class='f_0053aa'>&lt;香格里拉-昆大丽双飞一卧6日游&gt;</span>沉醉碧塔海</a></p>
+                    <p>途牛价：<span class="cdyellow fb">¥2609</span>起</p>
+                    </li><li style="display: block; float: left; ">
+                    <a href="/tours/396271" target="_blank"><img alt="" src="http://img.tuniucdn.com/images/2007-04-04/9/9evN42kCf4lP8V40m.jpg"/></a>
+                    <p><a href="/tours/396271" target="_blank" class="cgreen" title="<span class='f_0053aa'>&lt;塞班岛6日游&gt;</span>A线，上海直飞，最高每人可立减1000元"><span class='f_0053aa'>&lt;塞班岛6日游&gt;</span>A线，上海直飞，最高每人可立减1000元</a></p>
+                    <p>途牛价：<span class="cdyellow fb">¥4880</span>起</p>
+                    </li><li style="display: block; float: left; ">
+                    <a href="/tours/204073" target="_blank"><img alt="" src="http://img.tuniucdn.com/images/2010-05-25/9/9L4c08hMA3S1uZM5m.jpg"/></a>
+                    <p><a href="/tours/204073" target="_blank" class="cgreen" title="<span class='f_0053aa'>&lt;尼泊尔9日半自助游&gt;</span>4人成行，纯净天堂全景游"><span class='f_0053aa'>&lt;尼泊尔9日半自助游&gt;</span>4人成行，纯净天堂全景游</a></p>
+                    <p>途牛价：<span class="cdyellow fb">¥8499</span>起</p>
+                    </li><li style="display: block; float: left; ">
+                    <a href="/tours/396150" target="_blank"><img alt="" src="http://img.tuniucdn.com/images/2011-07-22/2/2011-04-221311323134_m.jpg"/></a>
+                    <p><a href="/tours/396150" target="_blank" class="cgreen" title="<span class='f_0053aa'>&lt;塞班岛5日游&gt;</span>A线，上海包机直飞，海景酒店，享受惬意海风"><span class='f_0053aa'>&lt;塞班岛5日游&gt;</span>A线，上海包机直飞，海景酒店，享受惬意海风</a></p>
+                    <p>途牛价：<span class="cdyellow fb">¥4680</span>起</p>
+                    </li><li style="display: block; float: left; ">
+                    <a href="/tours/60440" target="_blank"><img alt="" src="http://img.tuniucdn.com/images/2006-07-03/X/X209YM3d1976pTHwm.jpg"/></a>
+                    <p><a href="/tours/60440" target="_blank" class="cgreen" title="<span class='f_0053aa'>&lt;澳门1日游&gt;</span>澳门观光，舒适之旅"><span class='f_0053aa'>&lt;澳门1日游&gt;</span>澳门观光，舒适之旅</a></p>
+                    <p>途牛价：<span class="cdyellow fb">¥108</span>起</p>
+                    </li><li style="display: block; float: left; ">
+                    <a href="/tours/425678" target="_blank"><img alt="" src="http://img.tuniucdn.com/images/2006-10-24/7/7IwPD6V4xPEW4mbEm.jpg"/></a>
+                    <p><a href="/tours/425678" target="_blank" class="cgreen" title="<span class='f_0053aa'>&lt;普陀山2日游&gt;</span>四大寺，含快艇岛交，指定住南普香缘"><span class='f_0053aa'>&lt;普陀山2日游&gt;</span>四大寺，含快艇岛交，指定住南普香缘</a></p>
+                    <p>途牛价：<span class="cdyellow fb">¥468</span>起</p>
+                    </li><li style="display: block; float: left; ">
+                    <a href="/tours/428043" target="_blank"><img alt="" src="http://img.tuniucdn.com/images/2012-03-13/2/2012-06-131331633487_m.jpg"/></a>
+                    <p><a href="/tours/428043" target="_blank" class="cgreen" title="<span class='f_0053aa'>&lt;西塘-乌镇2日游&gt;</span>首道门票全含，可升级挂三酒店"><span class='f_0053aa'>&lt;西塘-乌镇2日游&gt;</span>首道门票全含，可升级挂三酒店</a></p>
+                    <p>途牛价：<span class="cdyellow fb">¥198</span>起</p>
+                    </li><li style="display: block; float: left; ">
+                    <a href="/tours/429975" target="_blank"><img alt="" src="http://img.tuniucdn.com/images/2011-05-24/2/2011-10-241306202972_m.jpg"/></a>
+                    <p><a href="/tours/429975" target="_blank" class="cgreen" title="<span class='f_0053aa'>&lt;西塘1日游&gt;</span>初秋古镇之旅，无购物，感受慢生活"><span class='f_0053aa'>&lt;西塘1日游&gt;</span>初秋古镇之旅，无购物，感受慢生活</a></p>
+                    <p>途牛价：<span class="cdyellow fb">¥80</span>起</p>
+                    </li><li style="display: block; float: left; ">
+                    <a href="/tours/434290" target="_blank"><img alt="" src="http://img.tuniucdn.com/images/2010-05-11/0/0DWKy1QF7hLznb00m.jpg"/></a>
+                    <p><a href="/tours/434290" target="_blank" class="cgreen" title="<span class='f_0053aa'>&lt;千岛湖中心湖区1日游&gt;</span>含千岛湖门票和船票"><span class='f_0053aa'>&lt;千岛湖中心湖区1日游&gt;</span>含千岛湖门票和船票</a></p>
+                    <p>途牛价：<span class="cdyellow fb">¥238</span>起</p>
+                    </li>			</ul>
+		</div>
+		<div id="include2" style="display:none">
+			<ul class="ks-switchable-content">
+				<li style="display: block; float: left; ">
+                    <a href="http://bbs.tuniu.com/thread-213830-0.html" target="_blank"><img alt="" src="http://images4.tuniucdn.com/bbscdn/data/attachment/forum/201209/01/1713021azddyv10aay2d2e.jpg.105_79.jpg"/></a>
+                    <p><a href="http://bbs.tuniu.com/thread-213830-0.html" target="_blank" class="cgreen">【更新派奖】小5欧洲暴走记-第①弹</a></p>
+                    </li><li style="display: block; float: left; ">
+                    <a href="http://bbs.tuniu.com/thread-228989-0.html" target="_blank"><img alt="" src="http://images4.tuniucdn.com/bbscdn/data/attachment/forum/201209/05/205522mn7coxjnp9jomjoo.jpg.105_79.jpg"/></a>
+                    <p><a href="http://bbs.tuniu.com/thread-228989-0.html" target="_blank" class="cgreen">【斐济旅游攻略】FIJI 八天六晚蜜月行 超实用攻略！</a></p>
+                    </li><li style="display: block; float: left; ">
+                    <a href="http://bbs.tuniu.com/thread-222329-0.html" target="_blank"><img alt="" src="http://images4.tuniucdn.com/bbscdn/data/attachment/forum/201209/04/103324cnozxfn1bmtc5odl.jpg.105_79.jpg"/></a>
+                    <p><a href="http://bbs.tuniu.com/thread-222329-0.html" target="_blank" class="cgreen">【泰国曼谷-芭提雅-普吉岛旅游攻略】出国游性价比之王</a></p>
+                    </li><li style="display: block; float: left; ">
+                    <a href="http://bbs.tuniu.com/thread-218081-0.html" target="_blank"><img alt="" src="http://images4.tuniucdn.com/bbscdn/data/attachment/forum/201209/03/123655jn88tynjpxrqjmzz.png.105_79.png"/></a>
+                    <p><a href="http://bbs.tuniu.com/thread-218081-0.html" target="_blank" class="cgreen">华东五市，漫步江南</a></p>
+                    </li><li style="display: block; float: left; ">
+                    <a href="http://bbs.tuniu.com/thread-236782-0.html" target="_blank"><img alt="" src="http://images4.tuniucdn.com/bbscdn/data/attachment/forum/201209/27/203159080bo6bsqi060000.jpg.105_79.jpg"/></a>
+                    <p><a href="http://bbs.tuniu.com/thread-236782-0.html" target="_blank" class="cgreen">【普吉岛攻略】迷醉普吉Phuket~老夫少妻de浪漫之约（超美）</a></p>
+                    </li><li style="display: block; float: left; ">
+                    <a href="http://bbs.tuniu.com/thread-234143-0.html" target="_blank"><img alt="" src="http://images4.tuniucdn.com/bbscdn/data/attachment/forum/201209/14/215551wcdd23za8ss32ya2.jpg.105_79.jpg"/></a>
+                    <p><a href="http://bbs.tuniu.com/thread-234143-0.html" target="_blank" class="cgreen">一个处女座女孩的柬埔寨超完美攻略+无敌海量图片分享</a></p>
+                    </li><li style="display: block; float: left; ">
+                    <a href="http://bbs.tuniu.com/thread-228338-0.html" target="_blank"><img alt="" src="http://images4.tuniucdn.com/bbscdn/data/attachment/forum/201209/11/10413062og6zkoiioh13vo.jpg.105_79.JPG"/></a>
+                    <p><a href="http://bbs.tuniu.com/thread-228338-0.html" target="_blank" class="cgreen">【新加坡旅游攻略】新加坡游记第一季</a></p>
+                    </li><li style="display: block; float: left; ">
+                    <a href="http://bbs.tuniu.com/thread-231053-0.html" target="_blank"><img alt="" src="http://images4.tuniucdn.com/bbscdn/data/attachment/forum/201209/10/112218z3s1p1svpahkgwer.jpg.105_79.jpg"/></a>
+                    <p><a href="http://bbs.tuniu.com/thread-231053-0.html" target="_blank" class="cgreen">【九寨沟旅游攻略】一周年记----我们美好的蜜月前传</a></p>
+                    </li>			</ul>
+		</div>
+	</div>
+</div>
+
+<div class="clr"></div>
+
+</div>
+
+<div id="ft">
+
+    <link type="text/css" href="http://img1.tuniucdn.com/u/v1/common/footer/footer-1000v2-min.css?v=20120731" rel="stylesheet" />
+
+    <script type="text/javascript" src="http://img.tuniucdn.com/js/ScrollText_lyj.js"></script>
+
+
+
+    <script language="javascript" type="text/javascript">
+
+        window.onload = function()
+
+        {
+
+            var scrolldown = new ScrollText("corp_con");
+
+            scrolldown.LineHeight = 60;
+
+            scrolldown.Amount = 2;
+
+            scrolldown.Direction = "up";
+
+            scrolldown.Start();
+
+        }
+
+    </script>
+
+
+
+<div class="TN_corp">
+
+    <div class="corp_bor clearfix">
+
+        <div class="corp_title"><a target="_blank" href="http://www.tuniu.com/static/enterzt/" rel="nofollow"><img src="http://img1.tuniucdn.com/u/v1/common/footer/img/lead.jpg" width="196" height="59"></a></div>
+
+        <ul id="corp_con" class="corp_con">
+
+            <li>
+
+                <div class="pic"><a target="_blank" href="http://www.tuniu.com/static/aust/" rel="nofollow"><img src="http://img2.tuniucdn.com/u/v1/common/footer/img/austr.jpg"></a></div>
+
+                <p><a class="inner_a" target="_blank" href="http://www.tuniu.com/static/aust/" rel="nofollow">澳大利亚旅游局</a></p>
+
+            </li>
+
+            <li>
+
+                <div class="pic"><a target="_blank" href="http://www.tuniu.com/static/bolin/" rel="nofollow"><img src="http://img2.tuniucdn.com/u/v1/common/footer/img/Berlin.jpg" width="100" height="40"></a></div>
+
+                <p><a class="inner_a" target="_blank" href="http://www.tuniu.com/static/bolin/" rel="nofollow">柏林旅游局</a></p>
+
+            </li>
+
+            <li>
+
+                <div class="pic"><a target="_blank" href="http://www.tuniu.com/static/canada/" rel="nofollow"><img src="http://img3.tuniucdn.com/u/v1/common/footer/img/canada_lyj.jpg" width="100" height="40"></a></div>
+
+                <p><a class="inner_a" target="_blank" href="http://www.tuniu.com/static/canada/" rel="nofollow">加拿大旅游局</a></p>
+
+            </li>
+
+            <li>
+
+                <div class="pic"><a target="_blank" href="http://www.tuniu.com/static/niuzai1/" rel="nofollow"><img src="http://img4.tuniucdn.com/u/v1/common/footer/img/canada.jpg" width="100" height="40"></a></div>
+
+                <p><a class="inner_a" target="_blank" href="http://www.tuniu.com/static/niuzai1/" rel="nofollow">加拿大艾伯塔省旅游局</a></p>
+
+            </li>
+
+            <li>
+
+                <div class="pic"><a target="_blank" href="http://www.tuniu.com/static/canada/" rel="nofollow"><img src="http://img4.tuniucdn.com/u/v1/common/footer/img/canada_bld.jpg" width="100" height="40"></a></div>
+
+                <p><a class="inner_a" target="_blank" href="http://www.tuniu.com/static/canada/" rel="nofollow">加拿大不列颠哥伦比亚省旅游局</a></p>
+
+            </li>
+
+            <li>
+
+                <div class="pic"><a target="_blank" href="http://www.tuniu.com/static/canada/" rel="nofollow"><img src="http://img.tuniucdn.com/u/v1/common/footer/img/canada_adl.jpg" width="100" height="40"></a></div>
+
+                <p><a class="inner_a" target="_blank" href="http://www.tuniu.com/static/canada/" rel="nofollow">加拿大安大略省旅游局</a></p>
+
+            </li>
+
+            <li>
+
+                <div class="pic"><a target="_blank" href="http://www.tuniu.com/static/canada/" rel="nofollow"><img src="http://img1.tuniucdn.com/u/v1/common/footer/img/canada_kbk.jpg"></a></div>
+
+                <p><a class="inner_a" target="_blank" href="http://www.tuniu.com/static/canada/" rel="nofollow">加拿大魁北克省旅游局</a></p>
+
+            </li>
+
+            <li>
+
+                <div class="pic"><a target="_blank" href="http://www.tuniu.com/static/hk_summer/" rel="nofollow"><img src="http://img3.tuniucdn.com/u/v1/common/footer/img/HongKong.jpg" width="100" height="40"></a></div>
+
+                <p><a class="inner_a" target="_blank" href="http://www.tuniu.com/static/hk_summer/" rel="nofollow">香港旅游发展局</a></p>
+
+            </li>
+
+            <li>
+
+                <div class="pic"><a target="_blank" href="http://www.tuniu.com/static/aierlan/" rel="nofollow"><img src="http://img.tuniucdn.com/u/v1/common/footer/img/Ireland.jpg" width="100" height="40"></a></div>
+
+                <p><a class="inner_a" target="_blank" href="http://www.tuniu.com/static/aierlan/" rel="nofollow">爱尔兰旅游局</a></p>
+
+            </li>
+
+            <li>
+
+                <div class="pic"><a target="_blank" href="http://www.tuniu.com/static/koreayear/" rel="nofollow"><img src="http://img3.tuniucdn.com/u/v1/common/footer/img/Korea.jpg" width="100" height="40"></a></div>
+
+                <p><a class="inner_a" target="_blank" href="http://www.tuniu.com/static/koreayear/" rel="nofollow">韩国旅游发展局</a></p>
+
+            </li>
+
+            <li>
+
+            </li>
+
+            <li>
+
+            </li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+<div id="TN-footer"><ul id="TN-logo"><li><a class="yinlian" href="https://online.unionpay.com" rel="nofollow" target="_blank">银联</a></li><li><a href="https://www.tenpay.com/v2/" rel="nofollow" target="_blank" class="tenpay">财付通</a></li><li><a href="https://www.99bill.com/" rel="nofollow" target="_blank" class="bill99">快钱</a></li><li><a href="https://www.alipay.com/aip/aip_validate_list.htm?trust_id=AIP07039534" rel="nofollow" target="_blank" class="alipay">支付宝特约商家</a></li><li><a href="http://www.cata.org.cn/" target="_blank" rel="nofollow" class="x"><p class="verisign">Verisign</p></a></li><li><a href="http://www.isc.org.cn/" rel="nofollow" target="_blank" class="isc">中国互联网协会</a></li><li><a target="_blank" rel="nofollow" href="http://www.itrust.org.cn/yz/pjwx.asp?wm=1797102919" class="itrust">中国互联网协会信用评价中心</a></li><li><a target="_blank" rel="nofollow" href="http://www.tuniu.com/corp/knet.shtml" class="knet">可信网站</a></li></ul>
+
+    <p id="TN-24">24小时旅游预订电话(免长途费)：4007-999-999   途牛呼叫中心位于南京来电将统一显示为 025-86859999</p>
+
+    <p id="TN-links"><a rel="nofollow" target="_blank" href="http://www.tuniu.com/corp/aboutus.shtml">关于我们</a><a rel="nofollow" target="_blank" href="http://www.tuniu.com/corp/contactus.shtml">联系我们</a><a rel="nofollow" target="_blank" href="http://www.tuniu.com/corp/advise.shtml">投诉建议</a><a target="_blank" href="http://www.tuniu.com/corp/advertising.shtml" rel="nofollow">广告服务</a><a target="_blank" href="http://www.tuniu.com/giftcard/" rel="nofollow">旅游券</a><a target="_blank" href="http://job.tuniu.com/" rel="nofollow">诚聘英才</a><a rel="nofollow" target="_blank" href="http://www.tuniu.com/corp/privacy.shtml">隐私保护</a><a rel="nofollow" target="_blank" href="http://www.tuniu.com/corp/duty.shtml">免责声明</a><a target="_blank" href="http://www.tuniu.com/corp/zizhi.shtml" rel="nofollow">旅游度假资质</a><a rel="nofollow" target="_blank" href="http://www.tuniu.com/corp/agreement.shtml">用户协议</a><a rel="nofollow" target="_blank" href="http://www.tuniu.com/help/law.shtml">法律顾问</a><a target="_blank" href="http://www.tuniu.com/corp/sitemap.shtml">网站地图</a><a target="_blank" href="http://team.tuniu.com/" rel="nofollow">团队博客</a><a target="_blank" href="http://union.tuniu.com/" rel="nofollow">网站联盟</a><a href="http://www.tuniu.com/ueip/index.html" target="_blank" rel="nofollow">UEIP</a><a target="_blank" href="http://www.tuniu.com/help/" rel="nofollow">帮助中心</a></p><!-- #TN-links -->
+
+    <p id="copyright">Copyright &copy; 2006-2012 <a href="http://www.tuniu.com/" rel="nofollow">途牛旅游网</a> <a href="http://www.tuniu.com/" rel="nofollow">Tuniu.com</a> | <a rel="nofollow" href="http://www.tuniu.com/corp/company.shtml" target="_blank">营业执照</a> | <a rel="nofollow" href="http://www.miibeian.gov.cn/" target="_blank">苏ICP证B2-20070191</a></p></div>
+
+<script type="text/javascript" src="http://img1.tuniucdn.com/j/20120802/user_center/main_topsearch.js"></script>
+
+<script type="text/javascript" src="http://img1.tuniucdn.com/j/20120802/user_center/jquery.autocomplete.mini.js"></script>
+
+<script type="text/javascript" src="http://img1.tuniucdn.com/j/20120802/user_center/ScrollText_lyj.js"></script>
+
+<script type="text/javascript" src="http://img1.tuniucdn.com/j/20120802/user_center/tbhb.js"></script>
+
+<script src="http://img.tuniucdn.com/j/20120914/user_center/user_center.js" type="text/javascript"></script>
+
+<script type="text/javascript" src="http://img1.tuniucdn.com/j/20120802/user_center/user_center_index.js"></script>
+
+<script type="text/javascript">
+
+    function  myAddPanel(title,url,desc) {
+
+        if((typeof   window.sidebar   ==   'object')   &&   (typeof   window.sidebar.addPanel   ==   'function')) {
+
+            window.sidebar.addPanel(title,url,desc);
+
+        }else  {
+
+            window.external.AddFavorite(url,title);
+
+        }
+
+    }
+
+</script>
+
+<script type="text/javascript">
+
+    var u = (("https:" == document.location.protocol) ? "https://analy.tuniu.cn/analysisCollect/": "http://analy.tuniu.cn/analysisCollect/");
+
+    document.write(unescape("%3Cscript src='"+ u+ "tac.mini.js' type='text/javascript'%3E%3C/script%3E"));
+
+</script>
+
+<script type="text/javascript">
+
+    var analyTuniuSpend = 0.019;
+
+    var tuniuTracker = _tat.getTracker();
+
+    tuniuTracker.setPageName("会员中心:会员中心页面:1536420");//do not delete
+
+    tuniuTracker.addOrganic("360","q");
+
+	tuniuTracker.addOrganic("baidu","w");
+
+	tuniuTracker.addOrganic("baidu","q1");
+
+	tuniuTracker.addOrganic("baidu","q2");
+
+	tuniuTracker.addOrganic("baidu","q3");
+
+	tuniuTracker.addOrganic("baidu","q4");
+
+	tuniuTracker.addOrganic("baidu","q5");
+
+	tuniuTracker.addOrganic("baidu","q6");
+
+    tuniuTracker.trackPageView();
+
+    tuniuTracker.enableLinkTracking();
+
+</script>
+
+
+
+</div>
+
+
+
+<input id="user_id" value="" type="hidden" />
+
+<script type="text/javascript" src="/js/user/user_membcard.js"></script>
+
+<script type="text/javascript">
+
+    //发送手机验证码
+
+    function tel_send(){
+
+        var tel = $("#hid_tel").val();
+
+        tel = tel.replace(/(^\s*)|(\s*$)/g,'');
+
+        window.location.href="http://"+window.location.host+"/main.php?do=user_reg_phone&sub_flag=4&tel="+tel;
+
+    }
+
+</script>
+
+<script type="text/javascript">
+
+    function SetCwinHeight(obj){
+
+        var cwin=obj;
+
+        if(document.getElementById)
+
+        {
+
+            if (cwin&&!window.opera)
+
+            {
+
+                if(cwin.contentDocument && cwin.contentDocument.body.offsetHeight)
+
+                {
+
+                    cwin.height  =   cwin.contentDocument.body.offsetHeight;
+
+                }
+
+                else if(cwin.Document && cwin.Document.body.scrollHeight)
+
+                {
+
+                    cwin.height  =   cwin.Document.body.scrollHeight;
+
+                }
+
+            }
+
+        }
+
+    }
+
+</script>
+
+<script type="text/javascript">
+
+    var _gaq = _gaq || [];_gaq.push(["_setAllowHash", false]);_gaq.push(["_setAllowAnchor", true]);_gaq.push(["_addOrganic", "baidu", "wd"]);_gaq.push(["_addOrganic", "baidu", "word"]);_gaq.push(["_addOrganic", "google", "q"]);_gaq.push(["_addOrganic", "118114", "kw"]);_gaq.push(["_addOrganic", "bing", "q"]);_gaq.push(["_addOrganic", "soso", "w"]);_gaq.push(["_addOrganic", "youdao", "q"]);_gaq.push(["_addOrganic", "sogou", "query"]);_gaq.push(["_addOrganic", "360", "q"]);_gaq.push(["_addOrganic", "baidu", "w"]);_gaq.push(["_addOrganic", "baidu", "q1"]);_gaq.push(["_addOrganic", "baidu", "q2"]);_gaq.push(["_addOrganic", "baidu", "q3"]);_gaq.push(["_addOrganic", "baidu", "q4"]);_gaq.push(["_addOrganic", "baidu", "q5"]);_gaq.push(["_addOrganic", "baidu", "q6"]);_gaq.push(["_addOrganic", "baidu", "q6"]);_gaq.push(["_setDomainName", "tuniu.com"]);_gaq.push(["_setAccount", "UA-4782081-5"]);
+
+</script>
+
+<script type="text/javascript">
+
+    (function() {
+
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+
+    })();   
+
+    _gaq.push(["_trackPageview", "/会员/会员中心/会员中心页面/liuzhaotun"]);
+
+</script>
+
+<script src="http://img.tuniucdn.com/j/20120719/huiyuancenter/tbhb.js" type="text/javascript"></script>
+
+				<script type="text/javascript">
+
+		function op(){
+
+		   
+
+			var D=YAHOO.util.Dom, E=YAHOO.util.Event;
+
+			KISSY().use("*", function(S) {
+
+				var el = D.get('J_slide'),
+
+					activeIndex = parseInt(el.getAttribute('data-active-index')) || 0;
+
+
+
+				var carousel = new S.Carousel(el, {
+
+					hasTriggers: false,
+
+					navCls: 'ks-switchable-nav',
+
+					contentCls: 'ks-switchable-content',
+
+					activeTriggerCls: 'current',
+
+					effect: "scrollx",
+
+					steps: 4,
+
+					viewSize: [752],
+
+					activeIndex: activeIndex
+
+				});
+
+				
+
+				E.on('J_prev', 'click', carousel.prev, carousel, true);
+
+				E.on('J_next', 'click', carousel.next, carousel, true);
+
+			});
+
+
+
+			KISSY().use("*", function(S) {
+
+				var el = D.get('J_shoppingGuide');
+
+				if(!el){
+
+					return;
+
+				}
+
+				var	activeIndex = parseInt(el.getAttribute('data-active-index')) || 0;
+
+
+
+				var carousel = new S.Carousel(el, {
+
+					navCls: 'ks-switchable-nav',
+
+					contentCls: 'ks-switchable-content',
+
+					activeTriggerCls: 'current',
+
+					effect: "scrollx",
+
+					steps: 4,
+
+					viewSize: [752],
+
+					activeIndex: activeIndex
+
+				});
+
+				
+
+				E.on('J_shoppingGuidePrev', 'click', carousel.prev, carousel, true);
+
+				E.on('J_shoppingGuideNext', 'click', carousel.next, carousel, true);
+
+			});
+
+			}
+
+		
+
+		</script>
+
+        <script type="text/javascript">
+
+		$(function(){
+
+			op();
+
+			changeTab();
+
+			modifyImg();
+
+			showOrder();
+
+		});
+
+		function changeTab(){
+
+			$("#reco-area").find(".mt").find("li").bind("click",function(){
+
+				$(this).siblings().removeClass("curr");
+
+				$(this).addClass("curr");
+
+				var num = $(this).index();
+
+				//alert(num);
+
+				if(num == 0){
+
+					$("#reco-area").find(".wrap").empty();
+
+					$("#reco-area").find(".wrap").html($("#include1").html());
+
+					op();
+
+				}
+
+				else if(num == 1){
+
+					$("#reco-area").find(".wrap").empty();
+
+					$("#reco-area").find(".wrap").html($("#include2").html());
+
+					op();
+
+				}
+
+			});
+
+		}
+
+		function modifyImg(){
+
+			$("#userinfo").find(".u-icon").bind("mouseover",function(){
+
+				$("#modifyheader").show();
+
+			});
+
+			$("#userinfo").find(".u-icon").bind("mouseout",function(){
+
+				$("#modifyheader").hide();
+
+			});
+
+		}
+
+		function showOrder(){
+
+			$("#myOrder1").bind("mouseover",function(){
+
+				$(this).addClass("hover");
+
+				//$(this).css("height","100");
+
+				$(".sub_item").show();
+
+				
+
+			});
+
+			$("#myOrder1").bind("mouseout",function(){
+
+				$(this).removeClass("hover");
+
+				$(".sub_item").hide();
+
+				//$(this).css("height","20");
+
+			});
+
+		}
+
+
+
+		//发送手机验证码
+
+        function tel_send(tel){
+
+            tel = tel.replace(/(^\s*)|(\s*$)/g,'');
+
+            window.location.href="http://"+window.location.host+"/main.php?do=user_reg_phone&sub_flag=4&tel="+tel;
+
+        }
+
+		</script>
+
+		</body>
+
+</html>

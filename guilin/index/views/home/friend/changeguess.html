@@ -1,0 +1,28 @@
+<?php
+if($info){
+	echo '<ul class="img_text user_list_d clearfix" style="display: block;">';
+	foreach($info as $v){
+	if($v){
+		echo '<li>';
+		echo '<div class="img tc">';
+		echo '<p class="mgb5">';
+		echo '<a href="user.html?uid='.$v['uid'].'" title="'.$v['name'].'" target="_blank">';
+		echo '<img src="'.Ly_User::getUserimg($v['userimg'],85).'" alt="" width="70" height="70"></a>';
+		echo '</p>';
+		echo '<p>';
+		echo '<a title="添加关注" href="javascript:void(0)" uid="'.$v['uid'].'" onclick="add_attention(this)" class="care_of rel-follow"><b class="orange">+</b>关注</a>';
+		echo '</p></div>';
+		echo '<div class="text"><p><a href="user.html?uid='.$v['uid'].'" title="'.$v['name'].'" target="_blank" class="mgr5">'.$v['name'].'</a><i class="mod_v"></i></p>';
+		echo '<p>'.Ly_Area::getName($v['provinceid']).' '.Ly_Area::getName($v['cityid']).'</p>';
+		echo '<p><span class="mgr5">粉丝：'.$v['follow'].'</span> 分享：'.$v['shares'].'</p>';
+		echo '<p class="c999">自我描述：'.($v['signview']?'<span class="red">系统自动屏蔽</span>':$v['sign']).'</p>';
+		echo '</div>';
+		echo '</li>';
+	}
+	}
+	echo '</ul>';
+}else{
+	echo '<p class="f14 mgb10 margtop20"  style="display: block;text-align:center">';
+	echo '<img src="public/images/content_blank.png" class="v_m">暂且没有跟多匹配用户<a href="home_base.html" >建议先完善自己的资料，好匹配更多用户</a>！</p>';
+}
+?>

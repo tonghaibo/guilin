@@ -1,0 +1,37 @@
+<table class="tb">
+<thead>
+<tr>
+<th>等级名称</th>
+<th>积分要求</th>
+<th>每日可发文章</th>
+<th>粉丝数</th>
+<th>可关注</th>
+<th>收藏数</th>
+<th>发送私信说(日)</th>
+<th>访问者记录数</th>
+</tr>
+</thead>
+<tbody>
+<?php
+foreach($info as $v){
+	echo '<tr '.($v['rid']==$user['ranklevel']?'style="background:#F88700;color:#fff;"':'').'>';
+	echo '<td>'.$v['name'].'</td>';
+	echo '<td>'.$v['rank'].'</td>';
+	echo '<td>'.($v['share']?$v['share']:'不限制').'</td>';
+	echo '<td>'.($v['follow']?$v['follow']:'不限制').'</td>';
+	echo '<td>'.($v['attention']?$v['attention']:'不限制').'</td>';
+	echo '<td>'.($v['collect']?$v['collect']:'不限制').'</td>';
+	echo '<td>'.($v['message']?$v['message']:'不限制').'</td>';
+	echo '<td>'.($v['visits']?$v['visits']:'不限制').'</td>';
+	echo '</tr>';
+}
+?>
+</tbody>
+<tfoot>
+<tr>
+<th colspan="8" style="text-align:left">
+我的总积分：<?php echo $user['rank']; ?>
+</th>
+</tr>
+</tfoot>
+</table>

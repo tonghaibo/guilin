@@ -1,0 +1,180 @@
+<?php Y_Widget::display('header',array('b_info'=>$this->id)); ?>
+<?php Y_Widget::display('top'); ?>
+<!--content -->
+<div id="content">
+	<?php Y_Widget::display('tips',array('b_info'=>$this->id)); ?>
+	<!--main -->
+	<div class="main clearfix">
+	<?php Y_Widget::display('left'); ?>
+	<!--box开始 -->
+	<div id="box" class="clearfix">
+<!-- 这里写内容-->
+<?php
+$year = $this->get('year');
+$year = $year?$year:date('Y');
+$user = Y_Db::init('user');
+for($i=1;$i<=12;$i++){
+	$d1 = strtotime($year.'-'.$i.'-1');
+	$d2 = (date('t',$d1))*86400+$d1;
+	$u[] = ($user->where(array('regtime>'=>$d1,'regtime<'=>$d2))->count())+0;
+}
+unset($user);
+$hotel = Y_Db::init('hotel');
+for($i=1;$i<=12;$i++){
+	$d1 = strtotime($year.'-'.$i.'-1');
+	$d2 = (date('t',$d1))*86400+$d1;
+	$h[] = ($hotel->where(array('pubtime>'=>$d1,'pubtime<'=>$d2))->count())+0;
+}
+unset($hotel);
+$content = Y_Db::init('content');
+for($i=1;$i<=12;$i++){
+	$d1 = strtotime($year.'-'.$i.'-1');
+	$d2 = (date('t',$d1))*86400+$d1;
+	$c[] = ($content->where(array('pubtime>'=>$d1,'pubtime<'=>$d2))->count())+0;
+}
+unset($content);
+$wayline = Y_Db::init('wayline');
+for($i=1;$i<=12;$i++){
+	$d1 = strtotime($year.'-'.$i.'-1');
+	$d2 = (date('t',$d1))*86400+$d1;
+	$w[] = ($wayline->where(array('pubtime>'=>$d1,'pubtime<'=>$d2))->count())+0;
+}
+unset($wayline);
+$uploads = Y_Db::init('uploads');
+for($i=1;$i<=12;$i++){
+	$d1 = strtotime($year.'-'.$i.'-1');
+	$d2 = (date('t',$d1))*86400+$d1;
+	$p[] = ($uploads->where(array('uptime>'=>$d1,'uptime<'=>$d2))->count())+0;
+}
+unset($uploads);
+$oh = Y_Db::init('hotel_order');
+for($i=1;$i<=12;$i++){
+	$d1 = strtotime($year.'-'.$i.'-1');
+	$d2 = (date('t',$d1))*86400+$d1;
+	$o1[] = ($oh->where(array('ordertime>'=>$d1,'ordertime<'=>$d2))->count())+0;
+}
+unset($oh);
+$ow = Y_Db::init('wayline_order');
+for($i=1;$i<=12;$i++){
+	$d1 = strtotime($year.'-'.$i.'-1');
+	$d2 = (date('t',$d1))*86400+$d1;
+	$o2[] = ($ow->where(array('ordertime>'=>$d1,'ordertime<'=>$d2))->count())+0;
+}
+unset($ow);
+?>
+<div class="box">
+<select onChange="changeUrl(this)">
+<?php 
+$y = date('Y');
+$y1 = $y-5;
+for($i=$y;$i>=$y1;$i--){
+echo '<option value="'.$i.'"';
+if($year==$i){
+	echo ' selected ';
+}
+echo '>'.$i.'</option>';
+}
+ ?>
+</select>
+年度发布统计
+</div>
+<div id="show_box" style="width:100%;height:550px;">
+</div>
+<div class="box">
+<select onChange="changeUrl(this)">
+<?php 
+$y = date('Y');
+$y1 = $y-5;
+for($i=$y;$i>=$y1;$i--){
+echo '<option value="'.$i.'"';
+if($year==$i){
+	echo ' selected ';
+}
+echo '>'.$i.'</option>';
+}
+ ?>
+</select>
+年度订单统计</div>
+<div id="dingdan_box" style="width:100%;height:550px;">
+</div>
+<!-- 这里写内容结束-->
+	<!--box结束 -->
+	</div>
+	</div>
+	<!-- mainend-->
+</div>
+<script type="text/javascript" src="public/js/flot/jquery.flot.min.js"></script>
+<script type="text/javascript" src="public/js/flot/excanvas.min.js"></script>
+<script type="text/javascript">
+function changeUrl(obj){
+var year = $(obj).val();
+window.location.href="?ro=count&ac=img&year="+year;
+}
+function showTooltip(x, y, contents) {
+		$('<div id="hovertip">' + contents + '</div>').css( {
+			position: 'absolute',
+			display: 'none',
+			top: y + 5,
+			left: x + 15,
+			border: '1px solid #FFE4E4',
+			padding: '2px',
+			'background-color': '#FFF1F1',
+			opacity: 0.9,
+			color: '#333',
+			fontSize: '12px'
+		}).appendTo("body").fadeIn('fast');
+	};
+$(function(){
+var options = {
+lines: { show: true, lineWidth:1},
+points: { show: true,radius:4},
+xaxis:{show:true,min:1,max:12,mode:null,ticks:[[1,'一月'],[2,'二月'],[3,'三月'],[4,'四月'],[5,'五月'],[6,'六月'],[7,'七月'],[8,'八月'],[9,'九月'],[10,'十月'],[11,'十一月'],[12,'十二月']],color:'#f00'},
+yaxis:{show:true,min:0,max:200,ticks:[0,5,10,15,20,25,30,35,40,45,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200]},
+grid:{show:true,borderWidth:1,hoverable:true},
+}
+var m1 = {label:'会员',data:[[1,<?php echo $u[0]; ?>],[2,<?php echo $u[1]; ?>],[3,<?php echo $u[2]; ?>],[4,<?php echo $u[3]; ?>],[5,<?php echo $u[4]; ?>],[6,<?php echo $u[5]; ?>],[7,<?php echo $u[6]; ?>],[8,<?php echo $u[7]; ?>],[9,<?php echo $u[8]; ?>],[10,<?php echo $u[9]; ?>],[11,<?php echo $u[10]; ?>],[12,<?php echo $u[11]; ?>]]};
+var m2 = {label:'文章',data:[[1,<?php echo $c[0]; ?>],[2,<?php echo $c[1]; ?>],[3,<?php echo $c[2]; ?>],[4,<?php echo $c[3]; ?>],[5,<?php echo $c[4]; ?>],[6,<?php echo $c[5]; ?>],[7,<?php echo $c[6]; ?>],[8,<?php echo $c[7]; ?>],[9,<?php echo $c[8]; ?>],[10,<?php echo $c[9]; ?>],[11,<?php echo $c[10]; ?>],[12,<?php echo $c[11]; ?>]]};
+var m3 = {label:'线路',data:[[1,<?php echo $w[0]; ?>],[2,<?php echo $w[1]; ?>],[3,<?php echo $w[2]; ?>],[4,<?php echo $w[3]; ?>],[5,<?php echo $w[4]; ?>],[6,<?php echo $w[5]; ?>],[7,<?php echo $w[6]; ?>],[8,<?php echo $w[7]; ?>],[9,<?php echo $w[8]; ?>],[10,<?php echo $w[9]; ?>],[11,<?php echo $w[10]; ?>],[12,<?php echo $w[11]; ?>]]};
+var m4 = {label:'酒店',data:[[1,<?php echo $h[0]; ?>],[2,<?php echo $h[1]; ?>],[3,<?php echo $h[2]; ?>],[4,<?php echo $h[3]; ?>],[5,<?php echo $h[4]; ?>],[6,<?php echo $h[5]; ?>],[7,<?php echo $h[6]; ?>],[8,<?php echo $h[7]; ?>],[9,<?php echo $h[8]; ?>],[10,<?php echo $h[9]; ?>],[11,<?php echo $h[10]; ?>],[12,<?php echo $h[11]; ?>]]};
+var m5 = {label:'附件',data:[[1,<?php echo $p[0]; ?>],[2,<?php echo $p[1]; ?>],[3,<?php echo $p[2]; ?>],[4,<?php echo $p[3]; ?>],[5,<?php echo $p[4]; ?>],[6,<?php echo $p[5]; ?>],[7,<?php echo $p[6]; ?>],[8,<?php echo $p[7]; ?>],[9,<?php echo $p[8]; ?>],[10,<?php echo $p[9]; ?>],[11,<?php echo $p[10]; ?>],[12,<?php echo $p[11]; ?>]]};
+var m6 = {label:'酒店',data:[[1,<?php echo $o1[0]; ?>],[2,<?php echo $o1[1]; ?>],[3,<?php echo $o1[2]; ?>],[4,<?php echo $o1[3]; ?>],[5,<?php echo $o1[4]; ?>],[6,<?php echo $o1[5]; ?>],[7,<?php echo $o1[6]; ?>],[8,<?php echo $o1[7]; ?>],[9,<?php echo $o1[8]; ?>],[10,<?php echo $o1[9]; ?>],[11,<?php echo $o1[10]; ?>],[12,<?php echo $o1[11]; ?>]]};
+var m7 = {label:'线路',data:[[1,<?php echo $o2[0]; ?>],[2,<?php echo $o2[1]; ?>],[3,<?php echo $o2[2]; ?>],[4,<?php echo $o2[3]; ?>],[5,<?php echo $o2[4]; ?>],[6,<?php echo $o2[5]; ?>],[7,<?php echo $o2[6]; ?>],[8,<?php echo $o2[7]; ?>],[9,<?php echo $o2[8]; ?>],[10,<?php echo $o2[9]; ?>],[11,<?php echo $o2[10]; ?>],[12,<?php echo $o2[11]; ?>]]};
+
+$.plot($('#show_box'),[m1,m2,m3,m4,m5],options);
+$.plot($('#dingdan_box'),[m6,m7],options);
+var previousPoint = null;
+$("#show_box").bind("plothover", function (event, pos, item) {
+		if (item) {
+			if (previousPoint != item.datapoint) {
+				previousPoint = item.datapoint;
+				
+				$("#hovertip").remove();
+				var y = item.datapoint[1];
+				var x = item.datapoint[0];
+				showTooltip(item.pageX, item.pageY,x+'月,发布量：'+y);
+			}
+		}
+		else {
+			$("#hovertip").remove();
+			previousPoint = null;            
+		}
+	});
+	$("#dingdan_box").bind("plothover", function (event, pos, item) {
+		if (item) {
+			if (previousPoint != item.datapoint) {
+				previousPoint = item.datapoint;
+				
+				$("#hovertip").remove();
+				var y = item.datapoint[1];
+				var x = item.datapoint[0];
+				showTooltip(item.pageX, item.pageY,x+'月,成交量：'+y);
+			}
+		}
+		else {
+			$("#hovertip").remove();
+			previousPoint = null;            
+		}
+	});
+});
+</script>
+<?php Y_Widget::display('footer');?>

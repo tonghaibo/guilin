@@ -1,0 +1,1541 @@
+@charset "gb2312";
+/*最后修改日期120924* */
+body {margin:0px; background:#fff;}
+div,ul,ol,li,img,p,b,input,button,dl,dd,dt,h1,h2,h3,h4 {margin:0px auto; padding:0px; border:0px;}
+ul,ol {list-style-type:none;}
+
+.S_index_toolbar01 a, .S_index_bottom div.logo a, .S_index_CustomerService a {background:url(../images/S_index_puzzle_01.png) no-repeat;}
+.S_index_search div.search_panel span.ico, .S_index_logo, .S_index_search div.search_panel button.submit, .S_index_navigation li a.button:hover, .S_index_navigation li a:hover span {background:url(../images/S_index_puzzle_02.png) no-repeat;}
+.S_index_content div.product_navigation div.title, .S_index_content div.product_navigation ul.content li span, .S_index_content div.content_center div.SlidePhoto span#prev, .S_index_content div.content_center div.SlidePhoto span#next, .S_index_content div.content_right div.SignIn a, .S_index_content div.content_right div.news div.head span.ico, .S_index_content div.content_right div.news ul.list li span.ico, .S_index_content div.content_right div.ranking div.head, .S_index_content div.content_right div.ranking ul.list span.ico, .S_index_content div.content_right div.ranking ul.list span.price_ico, .S_index_content div.content_right div.product div.head, .S_index_content div.content_right div.product ul.list span.price_ico, .S_index_content div.content_left div.product div.head span.ico, .S_index_content div.content_left div.product div.head a.more span, .S_index_content div.content_left div.product ul.list span.price_ico, .S_index_content div.content_left div.product ul.list span.ico, .S_index_contact span.logo, .S_index_contact span.end, .S_index_content div.content_left div.keyword div.list a span.point, .S_index_content div.content_right div.news div.head a.more span, .S_subpage div.S_subpage_right div.product div.head a.more span, .S_index_content div.content_right div.ranking div.head a.more, .S_index_content div.content_right div.product div.head a.more, .S_index_content div.content_left div.keyword span.title, .S_index_content div.content_left div.zyt_SlidePhoto span {background:url(../images/S_index_puzzle_03.png) no-repeat;}
+
+.S_index_CustomerService {width:30px; height:92px;}
+.S_index_CustomerService a {width:30px; height:92px; display:block; background-position:0px 0px;}
+.S_index_CustomerService a:hover {background-position:-31px 0px;}
+.S_index_toolbar01 {width:980px; height:30px; position:relative;}
+.S_index_toolbar01 a {position:absolute; display:block;}
+.S_index_toolbar01 a.button01 {top:5px; left:5px; width:135px; height:20px; background-position:-62px 0px;}
+.S_index_toolbar01 a.button01:hover {background-position:-62px -21px;}
+.S_index_toolbar01 a.button02 {top:5px; left:145px; width:170px; height:20px; background-position:-198px 0px;}
+.S_index_toolbar01 a.button02:hover {background-position:-198px -21px;}
+.S_index_toolbar01 a.button03 {top:5px; left:320px; width:110px; height:20px; background-position:-369px 0px;}
+.S_index_toolbar01 a.button03:hover {background-position:-369px -21px;}
+.S_index_toolbar01 a.button04 {top:8px; right:10px; width:110px; height:20px; background-position:-459px -72px; font:13px/22px "Arial", "宋体"; color:#666; text-indent:30px;}
+.S_index_toolbar01 a.button05:hover {color:#83b61a;}
+.S_index_toolbar02 {width:100%; height:28px; border-bottom:1px #d8d8d8 solid; background:#f0f0f0;}
+.S_index_toolbar02 div.main {width:980px; height:28px; position:relative;}
+.S_index_toolbar02 div.main div.sign {position:absolute; bottom:5px; left:5px; font:13px "Arial", "宋体"; color:#ccc;}
+.S_index_toolbar02 div.main div.sign span {color:#333; padding-right:20px;}
+.S_index_toolbar02 div.main div.sign a {color:#75b101; padding:0px 5px;}
+.S_index_toolbar02 div.main div.sign a:hover {color:#9dd430;}
+.S_index_toolbar02 div.main div.contact {position:absolute; bottom:4px; left:340px; font:13px "Arial", "宋体"; color:#666;}
+.S_index_toolbar02 div.main div.contact span.text_24 {font-size:16px; color:#ff9000;}
+.S_index_toolbar02 div.main div.contact span.text_phone {font-weight:800; color:#333;}
+.S_index_toolbar02 div.main div.button {position:absolute; bottom:5px; right:10px; font:13px "Arial", "宋体"; color:#ccc;}
+.S_index_toolbar02 div.main div.button a {color:#666; padding:0px 5px;}
+.S_index_toolbar02 div.main div.button a:hover {color:#999;}
+.S_index_head {width:980px; height:85px; position:relative;}
+.S_index_logo {position:absolute; top:15px; left:5px; width:170px; height:70px; background-position:0px 0px;}
+.S_index_logo_animation {position:absolute; top:15px; left:170px; width:150px; height:70px; background:url(../images/top_animation.gif);}
+.S_index_PhoneNumber {position:absolute; top:15px; left:170px; width:205px; height:70px; background:url(../images/top_PhoneNumberh.jpg);}
+.S_index_search {position:absolute; top:15px; left:390px;}
+.S_index_search #ctl00_lblTab {display:block; float:left; width:100%;}
+.S_index_search ul.search_tab {display:inline-block; float:left;}
+.S_index_search ul.search_tab li {float:left; position:relative;}
+.S_index_search ul.search_tab li b {display:none;}
+.S_index_search ul.search_tab li a {display:block; padding:0px 12px; font:13px/23px "Arial", "宋体"; color:#333; text-decoration:none;}
+.S_index_search ul.search_tab li a:hover {text-decoration:underline; color:#619d00;}
+.S_index_search ul.search_tab li a.selected {background:#619d00; color:#fff; font-weight:800;}
+.S_index_search ul.search_tab li a.selected b {position:absolute; top:0px; display:block; width:1px; height:1px; background:#fff; overflow:hidden;}
+.S_index_search ul.search_tab li a.selected b.rc_l {left:0px;}
+.S_index_search ul.search_tab li a.selected b.rc_r {right:0px;}
+.S_index_search div.search_panel {width:580px; height:35px; background:#619d00; position:relative; float:left;}
+.S_index_search div.search_panel span.ico {position:absolute; top:3px; left:3px; width:30px; height:29px; background-position:-214px 0px;}
+.S_index_search div.search_panel input {position:absolute; top:3px; left:33px; width:500px; height:29px; background:#fff; font:14px/29px "Arial", "宋体"; color:#666; text-indent:5px; margin:0px auto; padding:0px; border:none;}
+.S_index_search div.search_panel button.submit {position:absolute; top:0px; right:0px; width:133px; height:35px; background-position:-214px -30px; cursor:pointer;}
+.S_index_search div.search_panel button.submit:hover {background-position:-214px -65px;}
+.S_index_search div.search_panel b.rc_l {position:absolute; left:0px; bottom:0px; display:block; width:1px; height:1px; background:#fff; overflow:hidden;}
+.S_index_search div.search_panel p.keyword {position:absolute; top:40px; left:5px; font:13px "Arial", "宋体";}
+.S_index_search div.search_panel p.keyword a {padding-right:10px; color:#999; text-decoration:none;}
+.S_index_search div.search_panel p.keyword a:hover {color:#333; text-decoration:underline;}
+.S_index_navigation {width:980px; padding-top:20px;}
+.S_index_navigation ul.list {padding-left:5px; display:inline-block;}
+.S_index_navigation li {float:left; position:relative; margin-right:3px; z-index:1000;}
+.S_index_navigation li a.button {display:block; text-decoration:none;}
+.S_index_navigation li a.button span {display:inline-block; padding:0px 15px; font:800 14px/23px "Arial", "宋体"; color:#83b61a; cursor:pointer;}
+.S_index_navigation li a.button:hover {background-position:right -101px;}
+.S_index_navigation li a.button:hover span {background-position:-305px -131px;}
+.S_index_navigation li span.tag {position:absolute; right:-3px; top:-20px; width:28px; height:24px; display:block;}
+.S_index_navigation li span.tag_rebate {background:url(../images/rebate_tag.gif);}
+.S_index_navigation li a.button:hover b {display:none;}
+.S_index_navigation li.current a.button, .S_index_navigation li.current a.button:hover {background:#629e00; background-images:none;}
+.S_index_navigation li.current a.button span, .S_index_navigation li.current a.button:hover span {background:none; color:#fff;}
+.S_index_navigation li.current b {position:absolute; top:0px; display:block; width:1px; height:1px; background:#fff; overflow:hidden;}
+.S_index_navigation li.current b.rc_l {left:0px;}
+.S_index_navigation li.current b.rc_r {right:0px;}
+.S_index_navigation li ol.menu {position:absolute; top: 28px; left:-1px; width:610px; height:40px; display:none; border:2px #639f00 solid; background:#fff;}
+.S_index_navigation li ol.menu div.title {position:absolute; top:-30px; left:-2px; padding:0px 15px 5px; font:800 14px/23px "Arial", "宋体"; color:#83b61a; background:#fff; border:2px #639f00 solid;}
+.S_index_navigation li ol.menu a {padding:0px 15px; height:40px; display:block; float:left; font:13px/40px "Arial", "宋体"; color:#000; text-decoration:none; position:relative; background:#fff;}
+.S_index_navigation li ol.menu a:hover {color:#639f00; text-decoration:underline;}
+.S_index_navigation div.line {width:980px; height:2px; background:#609c00; overflow:hidden;}
+.S_index_content {width:980px; padding-top:5px;}
+.S_index_content div.content_left {width:670px; float:left;}
+.S_index_content div.product_navigation {width:175px; height:300px; float:left; position:relative;}
+.S_index_content div.product_navigation div.title {position:absolute; top:-3px; left:-5px; width:125px; height:41px; background-position:0px 0px; z-index:2;}
+.S_index_content div.product_navigation ul.content {position:absolute; top:27px; left:0px; width:168px; border:1px #9bbb69 solid; z-index:1;}
+.S_index_content div.product_navigation ul.content li {width:168px; height:45px; border-bottom:1px #ccc dashed; float:left; position:relative;}
+.S_index_content div.product_navigation ul.content li a {width:168px; height:45px; display:block; font:13px/45px "Arial", "宋体"; color:#333; text-indent:65px; text-decoration:none; background:#fff;}
+.S_index_content div.product_navigation ul.content li a:hover {font-weight:800; color:#000; background:#FAFAFA;}
+.S_index_content div.product_navigation ul.content li span { position:absolute; top:5px; left:15px; width:48px; height:39px; display:block; overflow:hidden; cursor:pointer;}
+.S_index_content div.product_navigation ul.content li span.ico01 {background-position:-0px -41px;}
+.S_index_content div.product_navigation ul.content li span.ico02 {background-position:-0px -81px;}
+.S_index_content div.product_navigation ul.content li span.ico03 {background-position:-0px -121px;}
+.S_index_content div.product_navigation ul.content li span.ico04 {background-position:-0px -161px;}
+.S_index_content div.product_navigation ul.content li span.ico05 {background-position:-51px -41px;}
+.S_index_content div.product_navigation ul.content li span.ico06 {background-position:-51px -81px;}
+.S_index_content div.product_navigation ul.content li span.ico07 {background-position:-51px -121px;}
+.S_index_content div.product_navigation ul.content li span.ico08 {background-position:-51px -161px;}
+.S_index_content div.product_navigation ul.content b {position:absolute; display:block; width:1px; height:1px; background:#fff; overflow:hidden;}
+.S_index_content div.product_navigation ul.content b.rc_tl {top:-1px; left:-1px;}
+.S_index_content div.product_navigation ul.content b.rc_tr {top:-1px; right:-1px;}
+.S_index_content div.product_navigation ul.content b.rc_bl {bottom:-1px; left:-1px;}
+.S_index_content div.product_navigation ul.content b.rc_br {bottom:-1px; right:-1px;}
+.S_index_content div.content_center {width:490px; float:left;}
+.S_index_content div.content_center div.SlideShow {width:490px; height:240px;}
+.S_index_content div.content_center div.SlidePhoto {width:490px; height:110px; position:relative;}
+.S_index_content div.content_center div.SlidePhoto span#prev {position:absolute; top:5px; left:0px; width:17px; height:105px; display:block; background-position:-52px -161px; overflow:hidden; cursor:pointer;}
+.S_index_content div.content_center div.SlidePhoto span#prev:hover {background-position:0px -214px;}
+.S_index_content div.content_center div.SlidePhoto span#next {position:absolute; top:5px; right:0px; width:17px; height:105px; display:block; background-position:-70px -161px; overflow:hidden; cursor:pointer;}
+.S_index_content div.content_center div.SlidePhoto span#next:hover {background-position:-18px -214px;}
+.S_index_content div.content_center div.SlidePhoto div#box {position:absolute; top:5px; left:17px; width:456px; height:105px; overflow:hidden;}
+.S_index_content div.content_center div.SlidePhoto div#box li {width:114px; height:106px; float:left; text-align:center;}
+/*.S_index_content div.content_left div.keyword {width:665px; height:100px; float:left; position:relative;}
+.S_index_content div.content_left div.keyword span.title {position:absolute; top:15px; left:0px; width:110px; height:70px; display:block; background-position:-210px -189px; border-right:1px #ccc dashed;}
+.S_index_content div.content_left div.keyword div.list {position:absolute; top:10px; left:130px; width:540px; height:80px; overflow:hidden;}
+.S_index_content div.content_left div.keyword div.list a {padding:0 24px 0 0; display:block; float:left; font:14px/26px "Arial", "宋体"; color:#578900; text-decoration:none; position:relative;}
+.S_index_content div.content_left div.keyword div.list a:hover {text-decoration:underline; color:#ec9227;}
+.S_index_content div.content_left div.keyword div.list a span.point {position:absolute; top:12px; _top:11px; left:-14px; width:4px; height:4px; display:block; overflow:hidden; background-position:-131px -188px;}*/
+.S_index_content div.content_left div.product {width:665px; height:293px; float:left; position:relative;}
+.S_index_content div.content_left div.product div.head {width:665px; height:38px; border-bottom:2px #000 solid; position:relative;}
+.S_index_content div.content_left div.product div.head span {position:absolute; display:block;}
+.S_index_content div.content_left div.product div.head span.ico {bottom:0px; left:0px; width:50px; height:33px;}
+.S_index_content div.content_left div.product div.head span.ico01 {background-position:-101px -199px;}
+.S_index_content div.content_left div.product div.head span.ico02 {background-position:-101px -233px;}
+.S_index_content div.content_left div.product div.head span.ico03 {background-position:-101px -267px;}
+.S_index_content div.content_left div.product div.head span.ico04 {background-position:-153px -199px;}
+.S_index_content div.content_left div.product div.head span.title {bottom:4px; _bottom:1px; left:50px; font:16px/18px "微软雅黑", "黑体"; color:#000;}
+.S_index_content div.content_left div.product div.head a.more {position:absolute; bottom:4px; _bottom:1px; right:10px; display:block; width:40px; height:14px; font:12px/14px "Arial", "宋体"; color:#666; text-decoration:none;}
+.S_index_content div.content_left div.product div.head a.more span {bottom:2px; left:26px; width:12px; height:11px; overflow:hidden; background-position:-113px -187px;}
+.S_index_content div.content_left div.product div.head a.more:hover {color:#999;}
+.S_index_content div.content_left div.product div.image {width:226px; height:252px; background:url(../images/S_index_product_image_bg.jpg); float:left;}
+.S_index_content div.content_left div.product ul.list {position:absolute; top:40px; right:5px; width:420px;}
+.S_index_content div.content_left div.product ul.list li {width:100%; height:29px; float:left; border-bottom:1px #ccc dashed; position:relative;}
+.S_index_content div.content_left div.product ul.list span.ico {position:absolute; top:14px; left:5px; width:5px; height:5px; overflow:hidden; background-position:-104px -188px;}
+.S_index_content div.content_left div.product ul.list a.text {position:absolute; bottom:5px; left:15px; font:14px/16px "微软雅黑","黑体"; color:#333; text-decoration:none;}
+.S_index_content div.content_left div.product ul.list a.text:hover {color:#578900;}
+.S_index_content div.content_left div.product ul.list a.text span.tag {position:absolute; top:-15px; right:-28px; width:28px; height:24px; display:block;}
+.S_index_content div.content_left div.product ul.list a.text span.tag_new {background:url(../images/new_tag.gif);}
+.S_index_content div.content_left div.product ul.list a.text span.tag_hot {background:url(../images/hot_tag.gif);}
+.S_index_content div.content_left div.product ul.list span.price_ico {position:absolute; bottom:6px; left:360px; width:8px; height:10px; display:block; overflow:hidden; background-position:-174px -244px;}
+.S_index_content div.content_left div.product ul.list span.price {position:absolute; bottom:4px; left:370px; font:16px/16px "Arial"; color:#f46200;}
+.S_index_content div.content_left div.zyt_SlidePhoto {width:580px; height:105px; float:left; position:relative; padding-left:85px;}
+.S_index_content div.content_left div.zyt_SlidePhoto span.title {position:absolute; top:0px; left:0px; width:77px; height:76px; display:block; background-position:-256px -212px;}
+.S_index_content div.content_left div.zyt_SlidePhoto span#zyt_prev {position:absolute; top:0px; left:85px; width:17px; height:105px; display:block; background-position:-255px 0px; overflow:hidden; cursor:pointer;}
+.S_index_content div.content_left div.zyt_SlidePhoto span#zyt_prev:hover {background-position:-255px -106px;}
+.S_index_content div.content_left div.zyt_SlidePhoto span#zyt_next {position:absolute; top:0px; right:0px; width:17px; height:105px; display:block; background-position:-273px 0px; overflow:hidden; cursor:pointer;}
+.S_index_content div.content_left div.zyt_SlidePhoto span#zyt_next:hover {background-position:-273px -106px;}
+.S_index_content div.content_left div.zyt_SlidePhoto div#zyt_box {position:absolute; top:0px; width:551px; height:105px; overflow:hidden;}
+.S_index_content div.content_left div.zyt_SlidePhoto div#zyt_box li {width:108px; height:106px; float:left; text-align:center;}
+.S_index_content div.content_left div.zyt_SlidePhoto div#zyt_box li img {border:1px #EFEFEF solid;}
+.S_index_content div.content_right {width:310px; float:left;}
+.S_index_content div.content_right div.SignIn {width:310px; height:55px; position:relative;}
+.S_index_content div.content_right div.SignIn a {position:absolute; top:0px; width:153px; height:35px; display:block;}
+.S_index_content div.content_right div.SignIn a.register {left:0px; background-position:-101px -42px;}
+.S_index_content div.content_right div.SignIn a.register:hover {background-position:-101px -114px;}
+.S_index_content div.content_right div.SignIn a.login {left:157px; background-position:-101px -78px;}
+.S_index_content div.content_right div.SignIn a.login:hover {background-position:-101px -150px;}
+.S_index_content div.content_right div.SignBox {width:308px; height:43px; background:#f4ffda; border:1px #a0d34d solid; position:relative; margin-bottom:10px;}
+.S_index_content div.content_right div.SignBox span.membername {position:absolute; top:5px; left:13px; font:800 13px "Arial", "宋体"; color:#000;}
+.S_index_content div.content_right div.SignBox span.message {position:absolute; top:23px; left:13px; font:13px "Arial", "宋体"; color:#000;}
+.S_index_content div.content_right div.SignBox span.message font {font:13px "Arial", "宋体"; color:#f46200;}
+.S_index_content div.content_right div.SignBox a.order {position:absolute; top:23px; left:120px; font:13px "Arial", "宋体"; color:#83b61a;}
+.S_index_content div.content_right div.SignBox a.exit {position:absolute; top:23px; left:220px; font:13px "Arial", "宋体"; color:#000; text-decoration:none;}
+.S_index_content div.content_right div.SignBox b {position:absolute; width:1px; height:1px; overflow:hidden; background:#f0f8e2;}
+.S_index_content div.content_right div.SignBox b.rc_tl {top:-1px; left:-1px;}
+.S_index_content div.content_right div.SignBox b.rc_tr {top:-1px; right:-1px;}
+.S_index_content div.content_right div.SignBox b.rc_bl {bottom:-1px; left:-1px;}
+.S_index_content div.content_right div.SignBox b.rc_br {bottom:-1px; right:-1px;}
+.S_index_content div.content_right div.news {width:304px; height:292px; border:3px #ccc solid; border-top:0px;}
+.S_index_content div.content_right div.news div.head {width:100%; height:30px; border-bottom:1px #e2e2e2 solid; background:url(../images/S_index_news_head.jpg); position:relative;}
+.S_index_content div.content_right div.news div.head div.TopLine {position:absolute; top:-5px; left:-3px; width:310px; height:5px; background:#a0d34d; overflow:hidden;}
+.S_index_content div.content_right div.news div.head span.ico {position:absolute; top:9px; left:10px; width:17px; height:15px; display:block; background-position:-135px -1px; overflow:hidden;}
+.S_index_content div.content_right div.news div.head span.title {position:absolute; bottom:5px; left:32px; font:800 16px/18px "微软雅黑", "黑体"; color:#00;}
+.S_index_content div.content_right div.news div.head a.more {position:absolute; bottom:5px; right:8px; font:12px "Arial", "宋体"; color:#666; text-decoration:none; padding-right:8px;}
+.S_index_content div.content_right div.news div.head a.more:hover {color:#999;}
+.S_index_content div.content_right div.news div.head a.more span {position:absolute; bottom:3px; _bottom:4px; right:0px; width:4px; height:7px; overflow:hidden; background-position:-145px -189px;}
+.S_index_content div.content_right div.news ul.list {width:94%; display:inline-block; margin-left:8px;}
+.S_index_content div.content_right div.news ul.list li {width:100%; height:31px; float:left; border-bottom:1px #ccc dashed; position:relative;}
+.S_index_content div.content_right div.news ul.list li span.ico {position:absolute; top:15px; left:5px; width:5px; height:5px; overflow:hidden; background-position:-104px -188px;}
+.S_index_content div.content_right div.news ul.list li a.text {position:absolute; bottom:5px; left:16px; font:13px "Arial", "宋体"; color:#333; text-decoration:none;}
+.S_index_content div.content_right div.news ul.list li a.text:hover {color:#83b61a;}
+.S_index_content div.content_right div.advertisement {width:310px; padding:5px 0px; font-size:0px;}
+.S_index_content div.content_right div.ranking {width:304px; height:245px; border:3px #ccc solid; position:relative; padding-top:32px;}
+.S_index_content div.content_right div.ranking div.head, .S_index_content div.content_right div.product div.head {position:absolute; top:-3px; left:-5px; width:314px; height:35px; background-position:0px -321px;}
+.S_index_content div.content_right div.ranking div.head span.title, .S_index_content div.content_right div.product div.head span.title {position:absolute; bottom:8px; left:10px; font:16px "微软雅黑", "黑体"; color:#fff;}
+.S_index_content div.content_right div.ranking div.head a.more, .S_index_content div.content_right div.product div.head a.more {position:absolute; bottom:8px; right:10px; width:51px; height:21px; display:block; font:12px/20px "Arial", "宋体"; color:#5b9c00; text-align:center; text-decoration:none; background-position:-154px 0px;}
+.S_index_content div.content_right div.ranking div.head a.more:hover, .S_index_content div.content_right div.product div.head a.more:hover {color:#3c6600;}
+.S_index_content div.content_right div.ranking ul.list, .S_index_content div.content_right div.product ul.list {width:94%; display:inline-block; margin-left:8px;}
+.S_index_content div.content_right div.ranking ul.list li {width:100%; height:33px; float:left; border-bottom:1px #ccc dashed; position:relative;}
+.S_index_content div.content_right div.ranking ul.list span.ico {position:absolute; top:5px; left:1px; width:17px; height:9px;display:block; overflow:hidden;}
+.S_index_content div.content_right div.ranking ul.list span.ico01 {background-position:-153px -233px;}
+.S_index_content div.content_right div.ranking ul.list span.ico02 {background-position:-153px -243px;}
+.S_index_content div.content_right div.ranking ul.list span.number {position:absolute; top:11px; left:5px; font:800 16px "Arial";}
+.S_index_content div.content_right div.ranking ul.list span.number01 {color:#ea7400;}
+.S_index_content div.content_right div.ranking ul.list span.number02 {color:#76b700;}
+.S_index_content div.content_right div.ranking ul.list a.text {position:absolute; bottom:6px; left:22px; font:13px/15px "Arial", "宋体"; color:#333; text-decoration:none;}
+.S_index_content div.content_right div.ranking ul.list a.text:hover {color:#83b61a;}
+.S_index_content div.content_right div.ranking ul.list span.price_ico {position:absolute; bottom:7px; left:230px; width:8px; height:10px; display:block; overflow:hidden; background-position:-174px -233px;}
+.S_index_content div.content_right div.ranking ul.list span.price {position:absolute; bottom:5px; left:240px; font:16px/16px "Arial"; color:#679f00;}
+.S_index_content div.content_right div.product {width:304px; height:265px; border:3px #ccc solid; position:relative; padding-top:32px;}
+.S_index_content div.content_right div.product ul.list li {width:100%; float:left; border-bottom:1px #ccc dashed;}
+.S_index_content div.content_right div.product ul.list dl {width:100%; height:28px; position:relative; float:left;}
+.S_index_content div.content_right div.product ul.list dl.over {height:85px;}
+.S_index_content div.content_right div.product ul.list dd {width:100%; height:28px; position:relative; float:left;}
+.S_index_content div.content_right div.product ul.list dd.over {height:85px;}
+.S_index_content div.content_right div.product ul.list dt {width:100%; height:28px; position:relative; float:left;}
+.S_index_content div.content_right div.product ul.list dt.over {height:85px;}
+.S_index_content div.content_right div.product ul.list img {display:none;}
+.S_index_content div.content_right div.product ul.list .over img {display:block; position:absolute; top:5px; left:5px; width:90px; height:70px;}
+.S_index_content div.content_right div.product ul.list a.text {position:absolute; bottom:6px; left:0px; font:13px/15px "Arial", "宋体"; color:#666; text-decoration:none;}
+.S_index_content div.content_right div.product ul.list .over a.text {color:#000;}
+.S_index_content div.content_right div.product ul.list .over a.text {bottom:50px; left:100px; font-weight:800;}
+.S_index_content div.content_right div.product ul.list .over a.text:hover {color:#578900;}
+.S_index_content div.content_right div.product ul.list span.price_ico {position:absolute; bottom:7px; left:230px; width:8px; height:10px; display:block; overflow:hidden;}
+.S_index_content div.content_right div.product ul.list span.price_ico01 {background-position:-174px -233px;}
+.S_index_content div.content_right div.product ul.list span.price_ico02 {background-position:-174px -244px;}
+.S_index_content div.content_right div.product ul.list .over span.price_ico {bottom:32px; left:100px;}
+.S_index_content div.content_right div.product ul.list span.price {position:absolute; bottom:5px; left:240px; font:16px/16px "Arial";}
+.S_index_content div.content_right div.product ul.list span.price01 {color:#679f00;}
+.S_index_content div.content_right div.product ul.list span.price02 {color:#f46200;}
+.S_index_content div.content_right div.product ul.list .over span.price {bottom:30px; left:110px;}
+.S_index_course {width:980px; height:85px; background:url(../images/S_index_course.jpg) no-repeat;}
+.S_index_contact {width:980px; height:50px; background:url(../images/S_index_contact_bg.jpg); position:relative;}
+.S_index_contact span {position:absolute; display:block;}
+.S_index_contact span.logo {width:72px; height:50px; top:0px; left:0px; background-position:-174px -259px;}
+.S_index_contact span.end {width:8px; height:50px; top:0px; right:0px; background-position:-246px -259px; overflow:hidden;}
+.S_index_contact span.text {font:13px/18px "Arial", "宋体"; color:#666;}
+.S_index_contact span.text b {font-weight:800px; color:#000;}
+.S_index_contact span.text font {font:13px/18px "Arial", "宋体"; color:#000; padding-right:10px;}
+.S_index_contact span.text01 {top:18px; left:90px;}
+.S_index_contact span.text02 {top:8px; left:270px;}
+.S_index_contact span.text03 {top:8px; left:700px;}
+.S_index_bottom {width:980px; padding-top:5px;}
+.S_index_bottom div.line {width:100%; height:2px; overflow:hidden; background:#629800;}
+.S_index_bottom ul.MenuList {height:30px; padding-left:180px;}
+.S_index_bottom ul.MenuList li {float:left; padding:5px 0;}
+.S_index_bottom ul.MenuList li a {display:block; padding:0px 15px; font:13px/16px "Arial", "宋体"; color:#666; text-decoration:none; border-right:1px #D7D7D7 solid;}
+.S_index_bottom ul.MenuList li a:hover {color:#629800;}
+.S_index_bottom div.logo {width:450px; height:50px;}
+.S_index_bottom div.logo a {display:block; height:50px; float:left; margin-right:5px;}
+.S_index_bottom div.logo a.zfb {width:154px; background-position:-62px -42px;}
+.S_index_bottom div.logo a.gs {width:120px; background-position:-217px -42px;}
+.S_index_bottom div.logo a.wl110 {width:120px; background-position:-338px -42px;}
+.S_index_bottom p {font:13px/18px "Arial", "宋体"; color:#666; text-align:center; padding:10px 0px 30px;}
+
+/*subpage*/
+.S_subpage_top div.left, .S_subpage_top div.right, .S_subpage div.S_subpage_left div.left_list div.head, .S_subpage div.S_subpage_left div.left_list div.bottom, .S_subpage div.S_subpage_left div.left_list ul.list li span.ico, .S_subpage div.S_subpage_left div.left_list h1, .S_subpage div.S_subpage_right div.news div.head span.ico, .S_subpage div.S_subpage_right div.news ul.list span.ico, .S_subpage div.S_subpage_right div.news ul.list span.price_ico, .S_subpage div.S_subpage_right div.keyword div.list a span.point, .S_subpage div.S_subpage_right div.SlidePhoto span#prev, .S_subpage div.S_subpage_right div.SlidePhoto span#next, .S_subpage div.S_subpage_right div.product div.head span.ico, .S_subpage div.S_subpage_right div.product div.head a.more span, .S_subpage div.S_subpage_right div.product ul.list span.price_ico,.S_subpage div.S_subpage_right div.SlidePhoto div#box li div.text_box {background:url(../images/S_subpage_puzzle01.png) no-repeat;}
+
+.S_subpage {width:980px; padding-top:5px;}
+.S_subpage_top {width:980px; height:50px; background:url(../images/S-subpage_top_bg.jpg) repeat-x; position:relative;}
+.S_subpage_top div.left {position:absolute; top:0px; left:0px; width:7px; height:45px; overflow:hidden; background-position:0px 0px;}
+.S_subpage_top div.right {position:absolute; top:0px; right:0px; width:7px; height:45px; overflow:hidden; background-position:-7px 0px;}
+.S_subpage_top span.text {position:absolute; top:5px; left:20px; font:26px "微软雅黑", "黑体"; color:#000;}
+.S_subpage_top span.text b {font:26px "微软雅黑", "黑体"; font-weight:500; color:#609b00;}
+.S_subpage div.S_subpage_left {width:195px; float:left;}
+.S_subpage div.S_subpage_left div.left_list {width:190px; background:url(../images/S_subpage_left_list_bg.jpg) repeat-y;}
+.S_subpage div.S_subpage_left div.left_list div.head {width:190px; height:30px; background-position:-15px 0px; position:relative;}
+.S_subpage div.S_subpage_left div.left_list div.head span.title {position:absolute; bottom:2px; _bottom:0px; left:10px; font:16px "微软雅黑", "黑体"; color:#fff;}
+.S_subpage div.S_subpage_left div.left_list ul.list {width:180px;}
+.S_subpage div.S_subpage_left div.left_list ul.list dl { padding:10px 10px 0 10px; }
+.S_subpage div.S_subpage_left div.left_list ul.list dt { width:65px; text-align:right; padding-top:4px; float:left; }
+.S_subpage div.S_subpage_left div.left_list ul.list dd { float:left; display:inline; margin-bottom:3px; }
+.S_subpage div.S_subpage_left div.left_list ul.list dd input { width:86px; }
+.S_subpage div.S_subpage_left div.left_list ul.list dd .s_btn { background:url(../images/i_btn.gif) no-repeat; width:65px; height:25px; }
+.S_subpage div.S_subpage_right div.SlideShow {width:450px; height:255px; float:left; margin-right:5px;_margin-right:0px; display:inline;}
+/*IE6 Hack*/
+.S_subpage DIV.S_subpage_right DIV.news{display:inline;_width:285px; overflow:hidden;}
+.S_subpage DIV.S_subpage_right DIV.news DIV.head DIV.TopLine{_width:291px;}
+.S_subpage div.S_subpage_right div.news ul.list span.price_ico {_left:231px;}
+.S_subpage div.S_subpage_right div.news ul.list span.price{_left: 241px;}
+/*IE6 Hack*/
+.S_subpage div.S_subpage_left div.left_list ul.list li {width:90px; height:28px; float:left; position:relative;}
+.S_subpage div.S_subpage_left div.left_list ul.list li span.ico {position:absolute; top:16px; left:10px; width:5px; height:5px; overflow:hidden; background-position:0px -46px;}
+.S_subpage div.S_subpage_left div.left_list ul.list li a {position:absolute; bottom:2px; left:20px; font:13px/15px "Arial", "宋体"; color:#333; text-decoration:none;}
+.S_subpage div.S_subpage_left div.left_list ul.list li a:hover {color:#83b61a;}
+.S_subpage div.S_subpage_left div.left_list h1 {width:171px; height:20px; background-position:-19px -45px; font:800 13px/20px "Arial", "宋体"; color:#427500; text-indent:10px; cursor:pointer;}
+.S_subpage div.S_subpage_left div.left_list div.bottom {width:190px; height:10px; background-position:-15px -35px; overflow:hidden;}
+.S_subpage div.S_subpage_right {width:785px; float:left;}
+.S_subpage div.S_subpage_right div.SlideShow {width:450px; height:255px; float:left; margin-right:5px;}
+.S_subpage div.S_subpage_right div.news {width:324px; height:252px; float:left; border:3px #ccc solid; border-top:0px;}
+.S_subpage div.S_subpage_right div.news div.head {width:100%; height:35px; border-bottom:1px #e2e2e2 solid; background:url(../images/S_index_news_head.jpg) repeat-x 0px 5px; position:relative;}
+.S_subpage div.S_subpage_right div.news div.head div.TopLine {position:absolute; top:0px; left:-3px; width:330px; height:5px; background:#a0d34d; overflow:hidden;}
+.S_subpage div.S_subpage_right div.news div.head span.ico {position:absolute; top:14px; left:10px; width:17px; height:15px; display:block; background-position:0px -52px; overflow:hidden;}
+.S_subpage div.S_subpage_right div.news div.head span.title {position:absolute; bottom:5px; left:32px; font:800 16px/18px "微软雅黑", "黑体"; color:#00;}
+.S_subpage div.S_subpage_right div.news ul.list {width:95%; display:inline-block; margin-left:8px;}
+.S_subpage div.S_subpage_right div.news ul.list li {width:100%; height:30px; float:left; border-bottom:1px #ccc dashed; position:relative;}
+.S_subpage div.S_subpage_right div.news ul.list span.ico {position:absolute; top:5px; left:1px; width:17px; height:9px;display:block; overflow:hidden;}
+.S_subpage div.S_subpage_right div.news ul.list span.ico01 {background-position:-207px -5px;}
+.S_subpage div.S_subpage_right div.news ul.list span.ico02 {background-position:-207px -15px;}
+.S_subpage div.S_subpage_right div.news ul.list span.number {position:absolute; top:11px; left:5px; font:800 16px "Arial";}
+.S_subpage div.S_subpage_right div.news ul.list span.number01 {color:#ea7400;}
+.S_subpage div.S_subpage_right div.news ul.list span.number02 {color:#76b700;}
+.S_subpage div.S_subpage_right div.news ul.list a.text {position:absolute; bottom:6px; left:22px; font:13px/15px "Arial", "宋体"; color:#333; text-decoration:none;}
+.S_subpage div.S_subpage_right div.news ul.list a.text:hover {color:#83b61a;}
+.S_subpage div.S_subpage_right div.news ul.list span.price_ico {position:absolute; bottom:7px; left:250px; width:8px; height:10px; display:block; overflow:hidden; background-position:-207px -25px;}
+.S_subpage div.S_subpage_right div.news ul.list span.price {position:absolute; bottom:5px; left:260px; font:16px/16px "Arial"; color:#679f00;}
+.S_subpage div.S_subpage_right div.SlidePhoto {width:785px; height:155px; float:left; position:relative;}
+.S_subpage div.S_subpage_right div.SlidePhoto span#prev {position:absolute; top:5px; left:0px; width:17px; height:150px; display:block; background-position:-252px 0px; overflow:hidden; cursor:pointer;}
+.S_subpage div.S_subpage_right div.SlidePhoto span#prev:hover {background-position:-288px 0px;}
+.S_subpage div.S_subpage_right div.SlidePhoto span#next {position:absolute; top:5px; right:0px; width:17px; height:150px; display:block; background-position:-270px 0px; overflow:hidden; cursor:pointer;}
+.S_subpage div.S_subpage_right div.SlidePhoto span#next:hover {background-position:-306px 0px;}
+.S_subpage div.S_subpage_right div.SlidePhoto div#box {position:absolute; top:5px; left:20px; width:741px; height:150px; overflow:hidden;}
+.S_subpage div.S_subpage_right div.SlidePhoto div#box li {width:148px; height:150px; float:left; position:relative;}
+.S_subpage div.S_subpage_right div.SlidePhoto div#box li a {position:absoliute; left:0px; top:0px; width:145px; height:150px; display:block; z-index:20;}
+.S_subpage div.S_subpage_right div.SlidePhoto div#box li img {position:absolute; left:0px; top:0px; z-index:10;}
+.S_subpage div.S_subpage_right div.SlidePhoto div#box li div.text_box {position:absolute; left:0px; top:111px; width:145px; height:39px; background-position:0px -97px;}
+.S_subpage div.S_subpage_right div.SlidePhoto div#box li div.text_box dd {position:absolute; left:5px; top:5px; width:135px; font:13px Arial, "宋体"; color:#fff; white-space:nowrap; overflow:hidden; text-align:right;}
+.S_subpage div.S_subpage_right div.SlidePhoto div#box li div.text_box dt {position:absolute; left:5px; top:20px; width:135px; font:13px Arial; color:#fff; text-align:right;}
+.S_subpage div.S_subpage_right div.SlidePhoto div#box li div.text_box dt span {color:#ffcd20; text-align:right;}
+.S_subpage div.S_subpage_right div.keyword {width:675px; float:left; position:relative; padding:10px 0px 10px 110px;}
+.S_subpage div.S_subpage_right div.keyword span.title {position:absolute; top:13px; left:0px; width:80px; height:30px; font:600 16px/22px "微软雅黑", "黑体"; color:#000; border-right:1px #ccc dashed; padding-right:10px;}
+.S_subpage div.S_subpage_right div.keyword div.list {width:675px; overflow-x:hidden;}
+.S_subpage div.S_subpage_right div.keyword div.list a {padding:0 24px 0 0; display:block; float:left; font:14px/26px "Arial", "宋体"; color:#578900; text-decoration:none; position:relative;}
+.S_subpage div.S_subpage_right div.keyword div.list a:hover {text-decoration:underline; color:#ec9227;}
+.S_subpage div.S_subpage_right div.keyword div.list a span.point {position:absolute; top:12px; _top:11px; left:-14px; width:4px; height:4px; display:block; overflow:hidden; background-position:-207px -50px;}
+.S_subpage div.S_subpage_right div.product {width:785px; height:265px; float:left; position:relative;}
+.S_subpage div.S_subpage_right div.product div.head {width:785px; height:33px; border-bottom:2px #000 solid; position:relative;}
+.S_subpage div.S_subpage_right div.product div.head span {position:absolute; display:block;}
+.S_subpage div.S_subpage_right div.product div.head span.ico {bottom:0px; left:0px; width:251px; height:28px; background-position:0px -68px;}
+.S_subpage div.S_subpage_right div.product div.head span.title {bottom:4px; _bottom:1px; left:15px; font:16px/18px "微软雅黑", "黑体"; color:#fff;}
+.S_subpage div.S_subpage_right div.product div.head span.title b {padding-right:3px; font-size:18px;}
+.S_subpage div.S_subpage_right div.product div.head a.more {position:absolute; bottom:4px; _bottom:1px; right:10px; display:block; width:40px; height:14px; font:12px/14px "Arial", "宋体"; color:#666; text-decoration:none;}
+.S_subpage div.S_subpage_right div.product div.head a.more span {bottom:0px; _bottom:2px; left:26px; width:12px; height:11px; overflow:hidden; background-position:-207px -38px;}
+.S_subpage div.S_subpage_right div.product div.head a.more:hover {color:#999;}
+.S_subpage div.S_subpage_right div.product div.image {width:270px; height:215px; background:url(../images/S_subpage_product_image_bg.jpg); float:left;}
+.S_subpage div.S_subpage_right div.product ul.list {position:absolute; top:35px; right:5px; width:495px;}
+.S_subpage div.S_subpage_right div.product ul.list li {width:100%; height:29px; float:left; border-bottom:1px #ccc dashed; position:relative;}
+.S_subpage div.S_subpage_right div.product ul.list span.ico {position:absolute; top:14px; left:5px; width:5px; height:5px; overflow:hidden; background-position:-104px -188px;}
+.S_subpage div.S_subpage_right div.product ul.list a.text {position:absolute; bottom:5px; left:15px; font:14px/16px "微软雅黑", "黑体"; color:#333; text-decoration:none;}
+.S_subpage div.S_subpage_right div.product ul.list a.text:hover {color:#578900;}
+.S_subpage div.S_subpage_right div.product ul.list a.text span.tag {position:absolute; top:-15px; right:-28px; width:28px; height:24px; display:block;}
+.S_subpage div.S_subpage_right div.product ul.list a.text span.tag_new {background:url(../images/new_tag.gif);}
+.S_subpage div.S_subpage_right div.product ul.list a.text span.tag_hot {background:url(../images/hot_tag.gif);}
+.S_subpage div.S_subpage_right div.product ul.list span.price_ico {position:absolute; bottom:6px; left:435px; width:9px; height:12px; display:block; overflow:hidden; background-position:-216px -25px;}
+.S_subpage div.S_subpage_right div.product ul.list span.price {position:absolute; bottom:4px; left:445px; font:16px/16px "Arial"; color:#f46200;}
+
+/*login*/
+.S_login_head div.main span.logo, .S_login_head div.main a.return span.ico, .S_login_content div.login_border div.login_box div.button input.SubmitButton, .S_login_bottom div.information div.list p span.ico, .S_login_content div.success_border div.success_box span.ico {background:url(../images/S_login_puzzle01.png) no-repeat;}
+
+.S_login_head {width:100%; height:102px; background:url(../images/S_login_head_bg.jpg) repeat-x;}
+.S_login_head div.main {width:980px; height:102px; position:relative;}
+.S_login_head div.main span.logo {position:absolute; bottom:13px; left:10px; width:204px; height:68px; display:block; background-position:0px 0px;}
+.S_login_head div.main a.return {position:absolute; bottom:13px; right:10px; font:12px Arial, "宋体"; color:#333; text-decoration:none; text-indent:18px;}
+.S_login_head div.main a.return span.ico {position:absolute; bottom:1px; left:0px; width:14px; height:12px; display:block; background-position:-205px 0px;}
+.S_login_content {width:980px; height:400px; position:relative;}
+.S_login_content div.login_background {position:absolute; top:35px; left:50px; z-index:1;}
+.S_login_content div.login_border {position:absolute; top:60px; right:80px; width:320px; background:#f0efef; border:1px #ccc solid; padding:5px; z-index:2;}
+.S_login_content div.login_border ul.login_select {position:absolute; left:5px; top:5px; width:320px; height:30px;}
+.S_login_content div.login_border ul.login_select li {float:left; width:160px; height:25px; font:13px/25px Arial, "宋体"; color:#4E8C00; text-align:center; background:#f0efef; cursor:pointer;}
+.S_login_content div.login_border ul.login_select li.hover {background:#faf9f9; font-weight:800; color:#333;}
+.S_login_content div.login_border div.login_body ul {display:none; width:100%;}
+.S_login_content div.login_border div.login_body ul.block {display:block;}
+.S_login_content div.login_border div.login_box {width:100%; background:#faf9f9; padding-top:40px;}
+.S_login_content div.login_border div.login_box span.title {display:block; font:18px/40px "微软雅黑", "黑体"; color:#609b00; text-indent:15px; padding-top:10px;}
+.S_login_content div.login_border div.login_box div.list {position:relative; width:100%; height:36px;}
+.S_login_content div.login_border div.login_box div.list span.name {position:absolute; bottom:6px; left:26px; width:40px; display:block; text-align:right; font:12px Arial, "宋体"; color:#333;}
+.S_login_content div.login_border div.login_box div.list span.mobile {position:absolute; bottom:6px; left:12px; width:60px; display:block; text-align:right; font:12px Arial, "宋体"; color:#333;}
+.S_login_content div.login_border div.login_box div.list input {position:absolute; bottom:2px; left:80px; height:22px; background:#fff; border:1px #ccc solid; line-height:22px;}
+.S_login_content div.login_border div.login_box div.list input.account {width:155px;}
+.S_login_content div.login_border div.login_box div.list input.password {width:155px;}
+.S_login_content div.login_border div.login_box div.list input.AutoCode {width:75px;}
+.S_login_content div.login_border div.login_box div.list input.MobileNumber {width:155px;}
+.S_login_content div.login_border div.login_box div.list a.forget {position:absolute; bottom:2px; left:250px; font:12px Arial, "宋体"; color:#666; text-decoration:none;}
+.S_login_content div.login_border div.login_box div.list img.AuthCode {position:absolute; bottom:2px; left:162px;}
+.S_login_content div.login_border div.login_box div.list span.text {position:absolute; top:5px; left:80px; width:220px; font:12px Arial, "宋体"; color:#999;}
+.S_login_content div.login_border div.login_box div.list span.text a {color:#609b00;}
+.S_login_content div.login_border div.login_box div.login_box_line {width:86%; height:5px; border-bottom:1px #e6e6e6 solid; overflow:hidden;}
+.S_login_content div.login_border div.login_box div.button {width:100%; height:65px; position:relative;}
+.S_login_content div.login_border div.login_box div.button input.SubmitButton {position:absolute; top:15px; left:80px; width:86px; height:25px; background-position:-220px 0px; cursor:pointer; font:800 13px/25px Arial, "宋体"; color:#fff;}
+.S_login_content div.login_border div.login_box div.button a.SignIn {position:absolute; top:23px; left:185px; font:12px Arial, "宋体"; color:#333;}
+.S_login_line {width:100%; height:1px; overflow:hidden; border-bottom:1px #ccc dashed;}
+.S_login_bottom {width:980px; height:200px; position:relative;}
+.S_login_bottom div.information {position:absolute; top:20px;}
+.S_login_bottom div.time {left:30px;}
+.S_login_bottom div.mail {left:260px;}
+.S_login_bottom div.phone {left:550px;}
+.S_login_bottom div.information span.title {width:130px; display:block; font:700 18px/28px "微软雅黑", "黑体"; color:#777; border-bottom:1px #ccc solid;}
+.S_login_bottom div.information div.list p {font:13px Arial, "宋体"; color:#666; position:relative; text-indent:10px; padding:6px 0px;}
+.S_login_bottom div.information div.list p span.ico {position:absolute; top:13px; left:0px; *left:-10px; width:4px; height:4px; overflow:hidden; background-position:-220px -26px;}
+.S_login_content div.success_border {position:absolute; top:40px; left:70px; width:800px; background:#f0efef; border:1px #ccc solid; padding:5px;}
+.S_login_content div.success_border div.success_box {width:100%; height:300px; background:#fbfbfb; position:relative;}
+.S_login_content div.success_border div.success_box span.ico {position:absolute; top:120px; left:250px; width:63px; height:63px; display:block; background-position:-221px -31px;}
+.S_login_content div.success_border div.fail_box span.ico {position:absolute; top:120px; left:250px; width:63px; height:63px; display:block; background-position:-285px -31px;}
+.S_login_content div.success_border div.success_box p.text {position:absolute; top:115px; left:340px; width:300px; font:14px/29px Arial, "宋体"; color:#3e8408;}
+.S_login_content div.success_border div.fail_box p.text font.content {font:13px/18px Arial, "宋体"; color:#333;}
+.S_login_content div.success_border div.success_box p.text font.number {line-height:18px; color:#333;}
+.S_login_content div.success_border div.success_box p.text span.name {color:#ea582c;}
+.S_login_content div.success_border div.success_box p.text a {font-size:13px; color:#3e8408;}
+.S_login_content div.success_border div.success_box p.text a:hover {color:#333;}
+.S_SignIn_head {width:760px; height:80px; position:relative; border-bottom:1px #ccc dashed;}
+.S_SignIn_head span.title {position:absolute; left:10px; bottom:10px; font:22px "微软雅黑", "黑体"; color:#609B00;}
+.S_SignIn_list {width:760px; padding:20px 0px;}
+.S_SignIn_list li {width:100%; float:left; position:relative;}
+.S_SignIn_list li.list_01 {height:40px;}
+.S_SignIn_list li.list_02 {padding:10px 0px;}
+.S_SignIn_list li span.name {position:absolute; bottom:10px; left:0px; width:200px; display:block; text-align:right; font:13px/15px Arial, "宋体"; color:#666;}
+.S_SignIn_list li input.input_01 {position:absolute; bottom:5px; left:220px; width:250px; height:20px; border:1px #ccc solid; font:13px/20px Arial, "宋体"; color:#333;}
+.S_SignIn_list li input.input_02 {position:absolute; bottom:5px; left:220px; width:100px; height:20px; border:1px #ccc solid; font:13px/20px Arial, "宋体"; color:#333;}
+.S_SignIn_list li span.star {position:absolute; bottom:2px; left:480px; font:20px/22px Arial; color:#B50004;}
+.S_SignIn_list li img.AuthCode {position:absolute; left:330px; bottom:4px;}
+.S_SignIn_list li span.text_01 {position:absolute; left:410px; bottom:10px; font:13px/15px Arial, "宋体"; color:#666;}
+.S_SignIn_list li span.text_01 a {color:#609B00;}
+.S_SignIn_list li input.input_03 {position:absolute; left:130px; bottom:10px;}
+.S_SignIn_list li span.text_02 {position:absolute; left:150px; bottom:10px; font:800 13px/15px Arial, "宋体"; color:#333;}
+.S_SignIn_list li select.select_01 {position:absolute; left:220px; bottom:5px;}
+.S_SignIn_list li div.announcement {width:450px; background:#fcffef; border:1px #dde8c2 solid; padding:10px 20px;}
+.S_SignIn_list li div.announcement p.title {font:800 13px/22px "微软雅黑", "黑体"; color:#000;}
+.S_SignIn_list li div.announcement p {font:13px/22px Arial, "宋体"; color:#666;}
+.S_SignIn_list li div.announcement p span.number {font-weight:800; color:#86a723; padding-right:5px;}
+.S_SignIn_list li input.reg_submit {position:absolute; left:220px; bottom:0px; width:230px; height:26px; display:block; background:url(../images/S_SignIn_reg_submit_button.jpg) no-repeat; font:800 14px Arial, "宋体"; color:#fff; cursor:pointer;}
+.S_SignIn_list li iframe {margin-left:100px; width:600px; height:300px;}
+
+/*BookingProcess*/
+.S_BookingProcess div.book_left div.product_info_box div.head div.title span.ico, .S_BookingProcess div.book_right div.product_info_box div.head div.title span.ico, .S_BookingProcess div.book_right div.booking_submit a, .S_BookingProcess div.complete_left div.box div.head div.title span.ico, .S_BookingProcess div.complete_submit a {background:url(../images/S_BookingProcess_puzzle.png)}
+.S_BookingProcess {width:980px;}
+.S_BookingProcess div.book_head {width:100%; height:50px; position:relative;}
+.S_BookingProcess div.book_head span.title {position:absolute; bottom:10px; left:10px; font:20px/22px "微软雅黑", "黑体"; color:#333;}
+.S_BookingProcess div.book_head ul.FlowStep {position:absolute; bottom:20px; right:10px;}
+.S_BookingProcess div.book_head ul.FlowStep li {width:82px; font:12px Arial, "宋体"; color:#333; float:left; position:relative; text-align:center;}
+.S_BookingProcess div.book_head ul.FlowStep li span.light {position:absolute; bottom:-10px; left:1px; width:80px; height:8px; display:block; overflow:hidden;}
+.S_BookingProcess div.book_head ul.FlowStep li span.off {background:#d2ea91;}
+.S_BookingProcess div.book_head ul.FlowStep li span.on {background:#659f04;}
+/*20120727改动*/
+.S_BookingProcess div.book_left {width:305px;_width:303px;float:left;display:inline}
+/*20120727改动*/
+.S_BookingProcess div.book_left div.product_info_border {width:290px; border:1px #d7d7d7 solid; background:#f5f5f5; padding:4px; float:left;}
+.S_BookingProcess div.book_left div.product_info_box {background:#fff; width:290px;}
+.S_BookingProcess div.book_left div.product_info_box div.head {width:290px; height:43px; position:relative; border-bottom:1px #e5e5e5 dashed;}
+.S_BookingProcess div.book_left div.product_info_box div.head div.title {position:absolute; bottom:12px; left:10px; font:16px/18px "微软雅黑", "黑体"; color:#619d00; text-indent:16px;}
+.S_BookingProcess div.book_left div.product_info_box div.head div.title span.ico {position:absolute; bottom:3px; left:0px; width:12px; height:11px; display:block; background-position:0px 0px; overflow:hidden;}
+.S_BookingProcess div.book_left div.product_info_box ul.list {display:inline-block;}
+.S_BookingProcess div.book_left div.product_info_box ul.list li {width:290px; height:35px; border-bottom:1px #e5e5e5 dashed; float:left; position:relative;}
+.S_BookingProcess div.book_left div.product_info_box ul.list li span.name {position:absolute; bottom:4px; right:190px; font:13px Arial, "宋体"; color:#666; text-align:right;}
+.S_BookingProcess div.book_left div.product_info_box ul.list li span.content {position:absolute; bottom:4px; left:110px; font:13px Arial, "宋体"; color:#333;}
+.S_BookingProcess div.book_left div.product_info_box ul.list li span.content a {color:#629e00;}
+.S_BookingProcess div.book_left div.product_info_box ul.list li span.content b {color:#C20106;}
+.S_BookingProcess div.book_left div.product_info_box ul.list li span.content font {font:13px Arial; color:#FF6A6F;}
+.S_BookingProcess div.book_left div.product_info_box ul.list li span.input {position:absolute; left:110px; bottom:4px;}
+.S_BookingProcess div.book_left div.product_info_box ul.list li span.input input {width:100px; height:20px; border:1px #ccc solid; font:13px Arial, "宋体"; color:#333;}
+.S_BookingProcess div.book_left div.product_info_box ul.list li span.select {position:absolute; bottom:4px;}
+.S_BookingProcess div.book_left div.product_info_box ul.list li span.adult {left:110px;}
+.S_BookingProcess div.book_left div.product_info_box ul.list li span.child {left:190px;}
+.S_BookingProcess div.book_left div.product_info_box ul.list li span.select select {position:absolute; bottom:0px; left:0px; width:45px;}
+.S_BookingProcess div.book_left div.product_info_box ul.list li span.select p {position:absolute; bottom:2px; left:50px; width:30px; font:13px/18px Arial, "宋体"; color:#333;}
+.S_BookingProcess div.book_right {width:675px; float:left;display:inline}
+.S_BookingProcess div.book_right div.product_info_box {width:673px; border:1px #d7d7d7 solid;}
+.S_BookingProcess div.book_right div.product_info_box div.head {width:100%; height:47px; position:relative; border-bottom:1px #e5e5e5 dashed;}
+.S_BookingProcess div.book_right div.product_info_box div.head div.title {position:absolute; bottom:12px; left:14px; font:16px/18px "微软雅黑", "黑体"; color:#619d00; text-indent:16px;}
+.S_BookingProcess div.book_right div.product_info_box div.head div.title span.ico {position:absolute; bottom:3px; left:0px; width:12px; height:11px; display:block; background-position:0px 0px; overflow:hidden;}
+.S_BookingProcess div.book_right div.product_info_box div.head span.explain {position:absolute; bottom:12px; left:120px; font:12px Arial, "宋体"; color:#DD0005;}
+.S_BookingProcess div.book_right div.product_info_box div.content {width:100%; display:inline-block;}
+.S_BookingProcess div.book_right div.product_info_box div.content span.search {width:145px; display:block; font:13px/16px Arial, "宋体"; color:#333; padding:15px 0px 10px 15px; position:relative;}
+.S_BookingProcess div.book_right div.product_info_box div.content span.search input.search {position:absolute; bottom:8px; right:-120px; background:#fff; border:1px #ccc solid; width:120px; height:20px; font:13px/20px Arial, "宋体"; color:#666;}
+.S_BookingProcess div.book_right div.product_info_box div.content span.search span.TenantNumber {position:absolute; bottom:11px; right:-200px;}
+.S_BookingProcess div.book_right div.product_info_box div.content span.search select.TenantNumber {position:absolute; bottom:7px; right:-260px; background:#fff; border:1px #ccc solid; width:60px; font:13px/20px Arial, "宋体"; color:#666;}
+.S_BookingProcess div.book_right div.product_info_box div.friend_list {width:100%; border-bottom:1px #E4E4E4 solid; margin-bottom:5px;}
+.S_BookingProcess div.book_right div.product_info_box div.friend_list ul.list {width:100%; display:inline-block;}
+.S_BookingProcess div.book_right div.product_info_box div.friend_list li.border {width:165px; height:26px; border:1px #fff solid; float:left;}
+.S_BookingProcess div.book_right div.product_info_box div.friend_list span.box{width:158px; height:24px; border:1px #999 solid; display:block; position:relative; font:13px/26px "Arial", "宋体"; color:#333; text-indent:23px;}
+.S_BookingProcess div.book_right div.product_info_box div.friend_list span.box input {position:absolute; bottom:4px; left:5px;}
+.S_BookingProcess div.book_right div.product_info_box div.friend_list ol.HideContent {display:none; width:100%; overflow:hidden;}
+.S_BookingProcess div.book_right div.product_info_box div.friend_list div.HideButton {width:70px; border:1px #DDD solid; border-bottom:none; font:13px/16px Arial, "宋体"; color:#82A200; text-decoration:none; background:#fff; cursor:pointer; text-align:center;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.traveller_list {width:669px; position:relative;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.traveller_list ul.head {width:669px; display:inline-block;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.traveller_list ul.head li {height:24px; background:#f0f0f0; float:left; font:13px/24px Arial, "宋体"; color:#333; border-left:2px #fff solid; position:relative; text-indent:12px;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.traveller_list ul.head li span.star {font:14px Arial; color:#A80004;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.traveller_list ul.head li.li01 {width:169px;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.traveller_list ul.head li.li02 {width:130px;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.traveller_list ul.head li.li03 {width:230px;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.traveller_list ul.head li.li04 {width:130px;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.traveller_list ul.head li.li05 {width:68px;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.traveller_list ul.head li.li06 {width:97px;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.traveller_list ul.head li.li07 {width:57px;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.traveller_list ul.head li b {position:absolute; width:1px; height:1px; display:block; overflow:hidden; background:#fbfbfb;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.traveller_list ul.head li b.lt {top:0px; left:0px;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.traveller_list ul.head li b.rt {top:0px; right:0px;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.traveller_list ul.head li b.lb {bottom:0px; left:0px;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.traveller_list ul.head li b.rb {bottom:0px; right:0px;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.traveller_list ul.content {width:669px; display:inline-block;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.traveller_list li {width:669px; height:30px; float:left; position:relative;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.traveller_list li input {position:absolute; bottom:4px; height:20px; font:13px/20px Arial, "宋体"; color:#666; border:1px #e2e2e2 solid;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.traveller_list li input.name {width:150px; left:15px;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.traveller_list li input.papers {width:188px; left:317px;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.traveller_list li input.phone {width:95px; left:340px;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.traveller_list li input.nationality {width:50px; left:450px;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.traveller_list li input.born {width:80px; left:520px;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.traveller_list li select.sex {position:absolute; bottom:4px; left:550px; width:46px; height:20px; font:13px/20px Arial, "宋体"; color:#666;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.traveller_list li span {position:absolute; bottom:4px; font:13px/20px Arial, "宋体"; color:#666;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.traveller_list li span.name {left:13px; color:#000;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.traveller_list li span.sort {left:187px;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.traveller_list li span.papers {left:320px;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.traveller_list li span.phone {left:345px;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.traveller_list li span.nationality {left:453px;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.traveller_list li span.born {left:523px;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.traveller_list li span.sex {left:550px;}
+.S_BookingProcess div.book_right div.product_info_box ul.contact_list {width:305px; float:left; display:inline-block; padding:10px 0px; margin-left:20px;}
+.S_BookingProcess div.book_right div.product_info_box ul.contact_list li {width:305px; height:30px; float:left; position:relative;}
+.S_BookingProcess div.book_right div.product_info_box ul.contact_list li span.name {position:absolute; bottom:4px; right:220px; font:13px Arial, "宋体"; color:#666; text-align:right; white-space:nowrap;}
+.S_BookingProcess div.book_right div.product_info_box ul.contact_list li span.content {position:absolute; bottom:4px; left:95px; font:13px Arial, "宋体"; color:#333; white-space:nowrap;}
+.S_BookingProcess div.book_right div.product_info_box ul.contact_list li span.star {font:14px Arial; color:#A80004;}
+.S_BookingProcess div.book_right div.product_info_box ul.contact_list li input {position:absolute; bottom:0px; left:95px; height:20px; border:1px #ccc solid; font:13px/20px "Arial", "宋体"; color:#333;}
+.S_BookingProcess div.book_right div.product_info_box ul.contact_list li input.name {width:110px;}
+.S_BookingProcess div.book_right div.product_info_box ul.contact_list li input.phone {width:110px;}
+.S_BookingProcess div.book_right div.product_info_box ul.contact_list li input.address {width:250px;}
+.S_BookingProcess div.book_right div.product_info_box ul.contact_list li input.mobile {width:110px;}
+.S_BookingProcess div.book_right div.product_info_box ul.contact_list li input.mail {width:160px;}
+.S_BookingProcess div.book_right div.product_info_box ul.contact_list li input.fax {width:110px;}
+.S_BookingProcess div.book_right div.product_invoice_box {width:675px;}
+.S_BookingProcess div.book_right div.product_invoice_box div.head {width:100%; height:47px; position:relative; border-bottom:1px #e5e5e5 solid;}
+.S_BookingProcess div.book_right div.product_invoice_box div.head span.title {position:absolute; bottom:12px; left:10px; font:16px/18px "微软雅黑", "黑体"; color:#619d00;}
+/*20120727改动*/
+.S_BookingProcess div.book_right div.product_invoice_box ul.content {width:100%; display:inline-block; position:relative;   overflow:hidden;}
+/*20120727改动*/
+.S_BookingProcess div.book_right div.product_invoice_box ul.content li {width:100%; padding:15px 0px 6px; border-bottom:1px #E4E4E4 dashed; display:inline-block; float:left;}
+.S_BookingProcess div.book_right div.product_invoice_box ul.content li span.text {display:block; float:left; font:13px "Arial", "宋体"; color:#333; position:relative;}
+.S_BookingProcess div.book_right div.product_invoice_box ul.content li span.text span.star {position:absolute; bottom:0px; left:-6px; font:14px Arial; color:#A80004;}
+.S_BookingProcess div.book_right div.product_invoice_box ul.content li span.radio {display:block; float:left; font:13px "Arial", "宋体"; color:#333; position:relative; text-indent:28px;}
+.S_BookingProcess div.book_right div.product_invoice_box ul.content li span.radio input {position:absolute; bottom:2px; left:13px; *bottom:-1px; *left:10px; border:0px;}
+.S_BookingProcess div.book_right div.product_invoice_box ul.content li span.text input {position:absolute; bottom:-2px; left:70px; height:20px; border:1px #ccc solid; font:13px/20px "Arial", "宋体"; color:#333;}
+.S_BookingProcess div.book_right div.product_invoice_box ul.content li span.text input.input01 {width:220px;}
+.S_BookingProcess div.book_right div.product_invoice_box ul.content li span.text input.input02 {width:300px;}
+.S_BookingProcess div.book_right div.product_invoice_box ul.content li span.text input.input03 {width:120px;}
+.S_BookingProcess div.book_right div.product_invoice_box ul.content li span.text select {position:absolute; bottom:-3px; left:70px; font:13px/20px "Arial", "宋体"; color:#333;}
+.S_BookingProcess div.book_right div.product_invoice_box ul.content li span.text01 {width:320px;}
+.S_BookingProcess div.book_right div.product_invoice_box ul.content li span.text02 {width:400px;}
+.S_BookingProcess div.book_right div.product_invoice_box ul.content li p {font:13px/18px "Arial", "宋体"; color:#666;}
+.S_BookingProcess div.book_right div.product_invoice_box ul.content li p.red {color:#BF0005;}
+.S_BookingProcess div.book_right div.booking_submit {width:675px; height:80px; position:relative;}
+.S_BookingProcess div.book_right div.booking_submit span.previous {position:absolute; top:25px; left:0px; width:86px; height:25px; display:block;}
+.S_BookingProcess div.book_right div.booking_submit span.next {position:absolute; top:25px; left:110px; width:86px; height:25px; display:block;}
+.S_BookingProcess div.book_right div.booking_submit a {width:86px; height:25px; display:block; background-position:-13px 0px; font:13px/25px "Arial", "宋体"; color:#fff; text-align:center; text-decoration:none;}
+.S_BookingProcess div.book_right div.booking_submit a:hover {background-position:-13px -25px;}
+.S_BookingProcess div.book_right div.product_info_box div.content textarea.additional {margin:10px 0 10px 20px; padding:0px; width:630px; height:100px; font:13px/16px Arial, "宋体"; color:#333;}
+.S_BookingProcess div.book_right div.product_info_box div.content p.additional {padding:16px 40px; font:13px/16px Arial, "宋体"; color:#333;}
+.S_BookingProcess div.book_right div.product_info_box div.content iframe.contract {margin:10px 0 10px 40px; padding:0px;}
+.S_BookingProcess div.book_right div.product_info_box div.content span.verify {width:560px; padding-left:40px; font:13px Arial, "宋体"; color:#666; position:relative; display:block; text-indent:16px;}
+.S_BookingProcess div.book_right div.product_info_box div.content span.verify input {position:absolute; left:38px; bottom:2px;}
+.S_BookingProcess div.book_right div.product_info_box div.content p.contract_text {width:600px; font:13px/16px Arial, "宋体"; color:#666; padding:7px 0px 2px;}
+.S_BookingProcess div.book_right div.product_info_box div.content p.contract_text a {font:13px Arial, "宋体"; color:#659f04; text-decoration:none; padding-right:15px;}
+.S_BookingProcess div.book_right div.product_info_box div.content p.contract_text a:hover {text-decoration:underline;}
+/*new酒店新增规则*/
+.S_BookingProcess div.book_right div.product_info_box div.content ul.hotel_tenant {width:635px; float:left; display:inline-block; padding:10px 0px; margin-left:20px;}
+.S_BookingProcess div.book_right div.product_info_box div.content ul.hotel_tenant li {width:100%; height:30px; float:left; position:relative;}
+.S_BookingProcess div.book_right div.product_info_box div.content ul.hotel_tenant li span.name {position:absolute; bottom:4px; left:-14px; width:100px; display:block; font:13px Arial, "宋体"; color:#666; text-align:right; white-space:nowrap;}
+.S_BookingProcess div.book_right div.product_info_box div.content ul.hotel_tenant li input {position:absolute; bottom:1px; height:20px; border:1px #ccc solid; font:13px/20px "Arial", "宋体"; color:#999;}
+.S_BookingProcess div.book_right div.product_info_box div.content ul.hotel_tenant li input.input {left:93px; width:250px;}
+.S_BookingProcess div.book_right div.product_info_box div.content ul.hotel_tenant li input.display {left:363px; width:200px;}
+.S_BookingProcess div.book_right div.product_info_box div.content ul.hotel_tenant li select.TenantNumber {position:absolute; bottom:1px; left:93px; border:1px #ccc solid; font:13px/20px "Arial", "宋体"; color:#333;}
+/*new酒店新增规则*/
+.S_BookingProcess div.complete_left {width:590px; border:1px #d7d7d7 solid; padding:4px; background:#f5f5f5; float:left;}
+.S_BookingProcess div.complete_left div.box {width:100%; height:294px; background:#fff;}
+.S_BookingProcess div.complete_left div.box div.head {width:100%; height:43px; position:relative; border-bottom:1px #e5e5e5 dashed;}
+.S_BookingProcess div.complete_left div.box div.head div.title {position:absolute; bottom:12px; left:10px; font:16px/18px "微软雅黑", "黑体"; color:#619d00; text-indent:16px;}
+.S_BookingProcess div.complete_left div.box div.head div.title span.ico {position:absolute; bottom:3px; left:0px; width:12px; height:11px; display:block; background-position:0px 0px; overflow:hidden;}
+.S_BookingProcess div.complete_left div.box div.state {width:100%; height:60px; position:relative;}
+.S_BookingProcess div.complete_left div.box div.state span.number {position:absolute; bottom:15px; left:120px; font:13px Arial, "宋体"; color:#999;}
+.S_BookingProcess div.complete_left div.box div.state span.number font {font:16px Arial; color:#AE0004;}
+.S_BookingProcess div.complete_left div.box div.state span.state {position:absolute; bottom:15px; left:320px; font:13px Arial, "宋体"; color:#999;}
+.S_BookingProcess div.complete_left div.box div.state span.state font {font:16px "微软雅黑", "黑体"; color:#000;}
+.S_BookingProcess div.complete_left div.box p.content {padding:6px 40px; font:14px/26px Arial, "宋体"; color:#333; text-indent:2em;}
+.S_BookingProcess div.complete_left div.box p.red {color:#AE0004;}
+.S_BookingProcess div.complete_right {width:368px; border:1px #d7d7d7 solid; float:left; margin-left:10px; padding:13px 0;}
+.S_BookingProcess div.complete_right p {padding:6px 30px; font:12px/20px Arial, "宋体"; color:#666; text-indent:2em;}
+.S_BookingProcess div.complete_submit {width:980px; height:80px; position:relative;}
+.S_BookingProcess div.complete_submit span.view {position:absolute; top:25px; left:380px; width:86px; height:25px; display:block;}
+.S_BookingProcess div.complete_submit span.pay {position:absolute; top:25px; left:490px; width:86px; height:25px; display:block;}
+.S_BookingProcess div.complete_submit a {width:86px; height:25px; display:block; background-position:-13px 0px; font:13px/25px "Arial", "宋体"; color:#fff; text-align:center; text-decoration:none;}
+.S_BookingProcess div.complete_submit a:hover {background-position:-13px -25px;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.RoomInfo_list {width:669px; display:inline-block;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.RoomInfo_list ul.head li {height:24px; background:#f0f0f0; float:left; font:13px/24px Arial, "宋体"; color:#333; border-left:2px #fff solid; position:relative; text-indent:12px;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.RoomInfo_list ul.head li span.star {font:14px Arial; color:#A80004;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.RoomInfo_list ul.head li.li01 {width:100px;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.RoomInfo_list ul.head li.li02 {width:97px;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.RoomInfo_list ul.head li.li03 {width:70px;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.RoomInfo_list ul.head li.li04 {width:80px;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.RoomInfo_list ul.head li.li05 {width:65px;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.RoomInfo_list ul.head li.li06 {width:245px;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.RoomInfo_list ul.head li b {position:absolute; width:1px; height:1px; display:block; overflow:hidden; background:#fbfbfb;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.RoomInfo_list ul.head li b.lt {top:0px; left:0px;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.RoomInfo_list ul.head li b.rt {top:0px; right:0px;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.RoomInfo_list ul.head li b.lb {bottom:0px; left:0px;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.RoomInfo_list ul.head li b.rb {bottom:0px; right:0px;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.RoomInfo_list ul.content {width:669px; display:inline-block;}
+/*20120727改动表格自适应*/
+.S_BookingProcess div.book_right div.product_info_box div.content div.RoomInfo_list ul.content li {width:669px; height:auto; float:left; position:relative;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.RoomInfo_list ul.content li span { float:left; padding:20px 0; font:13px/20px Arial, "宋体"; color:#666; display:block; margin-left:2px; text-indent:12px;}
+/*20120727改动表格自适应*/
+.S_BookingProcess div.book_right div.product_info_box div.content div.RoomInfo_list ul.content li span font.price_number {color:#9B0004;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.RoomInfo_list ul.content li span font.price_ico {font-family:Arial;}
+/*20120727改动表格自适应*/
+.S_BookingProcess div.book_right div.product_info_box div.content div.RoomInfo_list ul.content li span.date {width:100px;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.RoomInfo_list ul.content li span.price {width:97px;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.RoomInfo_list ul.content li span.breakfast {width:70px;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.RoomInfo_list ul.content li span.BreakfastPrice {width:80px;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.RoomInfo_list ul.content li span.state {width:65px;}
+.S_BookingProcess div.book_right div.product_info_box div.content div.RoomInfo_list ul.content li div.notice { float:left; width:220px; height:auto; display:block; font:13px/16px Arial, "宋体"; color:#666;padding:20px 12px;}
+/*20120727改动表格自适应*/
+
+/*CarRental*/
+.CarRental_left div.notification div.head, .CarRental_left div.intro div.head, .CarRental_right div.CarRental_list ul.head {background:url(../images/S_CarRental_puzzle.png);}
+.S_CarRental_content {width:980px; padding-top:5px;}
+.CarRental_left {width:265px; float:left;}
+.CarRental_left div.notification {width:260px;}
+.CarRental_left div.notification div.head {width:100%; height:30px; background-position:0px 0px; font:18px/30px "微软雅黑", "黑体"; color:#fff; text-indent:15px;}
+.CarRental_left div.notification div.content {width:256px; border:2px #619d00 solid; border-top:0px; position:relative; padding-top:155px;}
+.CarRental_left div.notification div.content img {position:absolute; top:3px; left:3px;}
+.CarRental_left div.notification div.content p {font:13px Arial, "宋体"; color:#333; padding:5px 8px;}
+.CarRental_left div.intro {width:258px; border:1px #ccc solid; padding-bottom:10px;}
+.CarRental_left div.intro div.head {width:100%; height:30px; background-position:0px -32px; font:16px/30px "微软雅黑", "黑体"; color:#000; text-indent:15px;}
+.CarRental_left div.intro p {font:13px Arial, "宋体"; color:#666; padding:6px 15px; text-indent:2em;}
+.CarRental_left ul.contact {width:258px; border:1px #ccc solid;}
+.CarRental_left ul.contact li {font:700 16px "微软雅黑", "黑体"; color:#67a005; padding:10px 10px 10px 100px; position:relative;}
+.CarRental_left ul.contact span {position:absolute; top:10px; left:10px; color:#333;}
+.CarRental_right {width:715px; float:left;}
+.CarRental_right div.SlideShow {width:715px; height:210px; background:#666;}
+.CarRental_right div.SlideShow div.KSS_titleBar {display:none;}
+.CarRental_right div.SlideShow div.KSS_titleBox {display:none;}
+.CarRental_right div.SlideShow div.KSS_btnBox {display:none;}
+.CarRental_right div.CarRental_list {width:713px; border:1px #ccc solid; border-bottom:none;}
+.CarRental_right div.CarRental_list ul.head {width:100%; height:25px; background-position:0px -64px; position:relative;}
+.CarRental_right div.CarRental_list ul.head li {position:absolute; bottom:4px; font:800 13px Arial, "宋体"; color:#000;}
+.CarRental_right div.CarRental_list ul.head li.li01 {left:175px;}
+.CarRental_right div.CarRental_list ul.head li.li02 {left:335px;}
+.CarRental_right div.CarRental_list ul.head li.li03 {left:455px;}
+.CarRental_right div.CarRental_list ul.head li.li04 {left:575px;}
+.CarRental_right div.CarRental_list ul.content {display:inline-block;}
+.CarRental_right div.CarRental_list ul.content li {float:left; width:713px; height:99px; border-bottom:1px #ccc solid;}
+.CarRental_right div.CarRental_list ul.content li:hover {background:#F9F9F9;}
+.CarRental_right div.CarRental_list ul.content li div {height:99px; border-left:1px #ccc solid; margin-left:-1px; float:left; position:relative;}
+.CarRental_right div.CarRental_list ul.content li div.photo {width:160px;}
+.CarRental_right div.CarRental_list ul.content li div.photo img {position:absolute; top:3px; left:3px;}
+.CarRental_right div.CarRental_list ul.content li div.name {width:160px;}
+.CarRental_right div.CarRental_list ul.content li div.name span {position:absolute; top:35px; left:15px; font:13px Arial, "宋体"; color:#666;}
+.CarRental_right div.CarRental_list ul.content li div.name font {font-weight:800; color:#67a005;}
+.CarRental_right div.CarRental_list ul.content li div.birth {width:120px;}
+.CarRental_right div.CarRental_list ul.content li div.birth span {position:absolute; top:42px; left:15px; font:13px Arial, "宋体"; color:#333;}
+.CarRental_right div.CarRental_list ul.content li div.size {width:120px;}
+.CarRental_right div.CarRental_list ul.content li div.size span {position:absolute; top:23px; left:15px; font:13px/18px Arial, "宋体"; color:#333;}
+.CarRental_right div.CarRental_list ul.content li div.info {width:153px; font:13px Arial, "宋体"; color:#82572c;}
+.CarRental_right div.CarRental_list ul.content li div.info td {padding:0px 15px;}
+
+/*FreeTripBookingProcess*/
+.FT_BookingProcess div.FT_content div.head div.title span.ico, .FT_content ul.hotel_list li span.star, .FT_BookingProcess div.FT_schedule_content span.destination b, .FT_BookingProcess div.traffic_info_box div.head div.title span.ico, .FT_BookingProcess div.booking_submit a, .FT_BookingProcess div.FT_booking_submit a {background:url(../images/S_FreeTrip_puzzle.png);}
+
+.FT_BookingProcess {width:980px; padding:5px 0px;}
+.FT_BookingProcess div.FT_intro_border {width:972px; border:1px #619d00 solid; background:#cce5a3; padding:3px;}
+.FT_intro_border div.FT_intro_box {width:100%; height:210px; background:#fff; position:relative;}
+.FT_intro_border div.FT_intro_box img {position:absolute; left:15px; top:5px;}
+.FT_intro_border div.FT_intro_box a.title {position:absolute; left:315px; top:8px; width:600px; font:800 24px "微软雅黑", "黑体"; color:#39C; text-decoration:none;}
+.FT_intro_border div.FT_intro_box span.price {position:absolute; left:315px; top:42px; font:14px "微软雅黑", Arial; color:#bf000f;}
+.FT_intro_border div.FT_intro_box span.price font {font:26px Arial;}
+.FT_intro_border div.FT_intro_box span.date {position:absolute; left:315px; top:72px; font:12px Arial, "宋体"; color:#999;}
+.FT_intro_border div.FT_intro_box div.text {position:absolute; left:315px; top:110px; width:620px; height:67px; overflow:hidden; border-top:1px #ccc dashed; padding:8px 0px; font:13px/18px Arial, "宋体"; color:#666;}
+.FT_BookingProcess div.FT_content {width:978px; border:1px #ccc solid;}
+.FT_BookingProcess div.FT_content div.head {width:100%; height:43px; position:relative; border-bottom:1px #e5e5e5 dashed;}
+.FT_BookingProcess div.FT_content div.head div.title {position:absolute; bottom:12px; left:10px; font:16px/18px "微软雅黑", "黑体"; color:#619d00; text-indent:16px;}
+.FT_BookingProcess div.FT_content div.head div.title span.ico {position:absolute; bottom:3px; left:0px; width:12px; height:11px; display:block; background-position:0px 0px; overflow:hidden;}
+.FT_BookingProcess div.FT_content div.main {width:878px; padding:20px 50px;}
+.FT_BookingProcess div.FT_content div.main div.rule_title {font:800 16px/26px "微软雅黑", "黑体"; color:#000;}
+.FT_BookingProcess div.FT_content div.main p.rule_content {font:13px/22px Arial, "宋体"; color:#666; padding:5px 0 20px;}
+.FT_BookingProcess div.FT_content ul.hotel_list {width:840px; padding:15px 0px 5px 138px; position:relative;}
+.FT_BookingProcess div.FT_content ul.hotel_list span.title {position:absolute; left:0px; top:17px; width:120px; display:block; text-align:right; font:800 13px Arial, "宋体"; color:#000;}
+.FT_BookingProcess div.FT_content ul.hotel_list li {width:490px; height:30px; float:left;}
+.FT_BookingProcess div.FT_content ul.hotel_list li a {font:13px/20px Arial, "宋体"; color:#0064b1; text-decoration:none; float:left; padding-right:10px;}
+.FT_BookingProcess div.FT_content ul.hotel_list li span.star {width:20px; height:20px; display:block; float:left; margin-right:5px;}
+.FT_BookingProcess div.FT_content ul.hotel_list li span.full {background-position:-13px 0px;}
+.FT_BookingProcess div.FT_content ul.hotel_list li span.half {background-position:-34px 0px;}
+.FT_BookingProcess div.FT_content ul.hotel_list li span.empty {background-position:-55px 0px;}
+.FT_BookingProcess div.FT_info_border {width:972px; border:1px #d7d7d7 solid; background:#f5f5f5; padding:3px; float:left;}
+.FT_info_border div.FT_info_box {width:100%; height:130px; background:#fff; position:relative;}
+.FT_info_border div.FT_info_box span.title {position:absolute; left:10px; top:10px; font:800 13px/20px Arial, "宋体"; color:#5a9200;}
+.FT_info_border div.FT_info_box input {position:absolute; bottom:0px; width:40px; height:20px;background:#fff; border:1px #ccc solid;}
+.FT_info_border div.FT_info_box span.man_number {position:absolute; left:50px; top:50px; font:13px/20px Arial, "宋体"; color:#333;}
+.FT_info_border div.FT_info_box span.man_number_unit {position:absolute; left:140px; top:50px; font:13px/20px Arial, "宋体"; color:#333;}
+.FT_info_border div.FT_info_box span.child_number {position:absolute; left:210px; top:50px; font:13px/20px Arial, "宋体"; color:#333;}
+.FT_info_border div.FT_info_box span.child_number_unit {position:absolute; left:355px; top:50px; font:13px/20px Arial, "宋体"; color:#333;}
+.FT_info_border div.FT_info_box span.room_number {position:absolute; left:450px; top:50px; font:13px/20px Arial, "宋体"; color:#333;}
+.FT_info_border div.FT_info_box span.room_number_unit {position:absolute; left:550px; top:50px; font:13px/20px Arial, "宋体"; color:#333;}
+.FT_info_border div.FT_info_box b {position:absolute; left:10px; top:90px; width:950px; height:2px; border-top:1px #ddd dashed;}
+.FT_info_border div.FT_info_box span.text {position:absolute; top:100px; left:50px; width:850px;}
+.FT_info_border div.FT_info_box span.text p {font:13px/18px Arial, "宋体"; color:#666;}
+.FT_BookingProcess div.FT_schedule_box {width:978px; border:1px #ccc solid;}
+.FT_BookingProcess div.FT_schedule_box div.title {width:968px; height:21px; border-bottom:1px #ccc dashed; font:800 13px Arial, "宋体"; color:#5a9200; padding:18px 0 0 10px;}
+.FT_BookingProcess div.FT_schedule_content {width:978px; border-bottom:1px #ccc dashed; position:relative;}
+.FT_BookingProcess div.FT_schedule_content span.number {position:absolute; left:15px; top:6px; font:800 30px Arial; color:#b9d480; display:block;}
+.FT_BookingProcess div.FT_schedule_content span.destination {position:absolute; left:60px; top:12px; font:800 13px Arial, "宋体"; color:#000;}
+.FT_BookingProcess div.FT_schedule_content span.destination b {width:26px; height:15px; background-position:-75px 1px; display:inline-block;}
+.FT_BookingProcess div.FT_schedule_content ul {width:778px; padding:5px 0px 10px 200px; display:inline-block;}
+.FT_BookingProcess div.FT_schedule_content ul li {width:100%; height:36px; float:left; position:relative;}
+.FT_BookingProcess div.FT_schedule_content ul li span {position:absolute; font:13px Arial, "宋体"; color:#333;}
+.FT_BookingProcess div.FT_schedule_content ul li span.text01 {left:0px; top:9px;}
+.FT_BookingProcess div.FT_schedule_content ul li span.text02 {left:90px; top:9px; color:#666;}
+.FT_BookingProcess div.FT_schedule_content ul li span.text03 {left:280px; top:9px; color:#666;}
+.FT_BookingProcess div.FT_schedule_content ul li span input {position:absolute; left:80px; bottom:-1px; width:80px; height:18px; border:1px #ccc solid;}
+.FT_BookingProcess div.FT_booking_submit {width:980px; height:60px; position:relative;}
+.FT_BookingProcess div.FT_booking_submit span.previous {position:absolute; left:400px; top:15px; width:86px; height:25px; display:block;}
+.FT_BookingProcess div.FT_booking_submit span.next {position:absolute; top:25px; left:110px; width:86px; height:25px; display:block;}
+.FT_BookingProcess div.FT_booking_submit a {width:86px; height:25px; display:block; background-position:0px -22px; font:13px/25px "Arial", "宋体"; color:#fff; text-align:center; text-decoration:none;}
+.FT_BookingProcess div.FT_booking_submit a:hover {background-position:0px -47px;}
+
+.FT_BookingProcess div.FT_left div.FT_booking_submit {width:340px; height:80px; position:relative;}
+.FT_BookingProcess div.FT_left div.FT_booking_submit span.previous {position:absolute; top:25px; left:50px; width:86px; height:25px; display:block;}
+.FT_BookingProcess div.FT_left div.FT_booking_submit span.next {position:absolute; top:25px; left:160px; width:86px; height:25px; display:block;}
+.FT_BookingProcess div.FT_left div.FT_booking_submit a {width:86px; height:25px; display:block; background-position:0px -22px; font:13px/25px "Arial", "宋体"; color:#fff; text-align:center; text-decoration:none;}
+.FT_BookingProcess div.FT_left div.FT_booking_submit a:hover {background-position:0px -47px;}
+
+.FT_BookingProcess div.FT_right div.FT_content div.main div.rule_title {font:800 16px/26px "微软雅黑", "黑体"; color:#000;}
+.FT_BookingProcess div.FT_right div.FT_content div.main p.rule_content {font:13px/22px Arial, "宋体"; color:#666; padding:5px 0 20px;}
+.FT_BookingProcess div.FT_right div.FT_content ul.hotel_list {width:490px; padding:15px 0px 5px 138px; position:relative;}
+.FT_BookingProcess div.FT_right div.FT_content ul.hotel_list span.title {position:absolute; left:0px; top:17px; width:120px; display:block; text-align:right; font:800 13px Arial, "宋体"; color:#000;}
+.FT_BookingProcess div.FT_right div.FT_content ul.hotel_list li {width:490px; height:30px; float:left;}
+.FT_BookingProcess div.FT_right div.FT_content ul.hotel_list li a {font:13px/20px Arial, "宋体"; color:#0064b1; text-decoration:none; float:left; padding-right:10px;}
+.FT_BookingProcess div.FT_right div.FT_content ul.hotel_list li span.star {width:20px; height:20px; display:block; float:left; margin-right:5px;}
+.FT_BookingProcess div.FT_right div.FT_content ul.hotel_list li span.full {background-position:-13px 0px;}
+.FT_BookingProcess div.FT_right div.FT_content ul.hotel_list li span.half {background-position:-34px 0px;}
+.FT_BookingProcess div.FT_right div.FT_content ul.hotel_list li span.empty {background-position:-55px 0px;}
+
+.FT_BookingProcess div.book_head {width:100%; height:50px; position:relative; border-bottom:1px #ddd dashed; margin-bottom:5px;}
+.FT_BookingProcess div.book_head span.title {position:absolute; bottom:10px; left:10px; font:20px/22px "微软雅黑", "黑体"; color:#333;}
+.FT_BookingProcess div.book_head ul.FlowStep {position:absolute; bottom:20px; right:10px;}
+.FT_BookingProcess div.book_head ul.FlowStep li {width:82px; font:12px Arial, "宋体"; color:#333; float:left; position:relative; text-align:center;}
+.FT_BookingProcess div.book_head ul.FlowStep li span.light {position:absolute; bottom:-10px; left:1px; width:80px; height:8px; display:block; overflow:hidden;}
+.FT_BookingProcess div.book_head ul.FlowStep li span.off {background:#d2ea91;}
+.FT_BookingProcess div.book_head ul.FlowStep li span.on {background:#659f04;}
+.FT_BookingProcess div.traffic_info_box {width:978px; border:1px #ccc solid;}
+.FT_BookingProcess p.FreeTrip_explanation {width:100%; font:13px/32px Arial, "宋体"; color:#D50005;}
+.FT_BookingProcess div.traffic_info_box div.head {width:978px; height:43px; position:relative; border-bottom:1px #ccc solid; background:#f5f5f5;}
+.FT_BookingProcess div.traffic_info_box div.head div.title {position:absolute; left:20px; bottom:12px; font:700 16px/18px "微软雅黑", "黑体"; color:#619d00; text-indent:16px;}
+.FT_BookingProcess div.traffic_info_box div.head div.title span.ico {position:absolute; left:0px; bottom:2px; width:12px; height:11px; display:block; background-position:0px 0px; overflow:hidden;}
+.FT_BookingProcess div.traffic_info_box div.traffic_list {width:970px; padding:5px 0px;}
+.FT_BookingProcess div.traffic_info_box div.traffic_list p.title {font:800 13px Arial, "宋体"; color:#F07E00; padding:10px 30px 5px;}
+.FT_BookingProcess div.traffic_info_box div.traffic_list p.title span {font-weight:500; color:#999; padding-left:20px;}
+.FT_BookingProcess div.traffic_info_box div.traffic_list ul {display:inline-block;}
+.FT_BookingProcess div.traffic_info_box div.traffic_list ul.head li {height:24px; background:#999; float:left; font:13px/24px Arial, "宋体"; color:#fff; border-left:2px #fff solid; position:relative; text-indent:12px;}
+.FT_BookingProcess div.traffic_info_box div.traffic_list ul.head li span.star {font:14px Arial; color:#A80004;}
+.FT_BookingProcess div.traffic_info_box div.traffic_list ul.head li.li01 {width:305px;}
+.FT_BookingProcess div.traffic_info_box div.traffic_list ul.head li.li02 {width:155px;}
+.FT_BookingProcess div.traffic_info_box div.traffic_list ul.head li.li03 {width:155px;}
+.FT_BookingProcess div.traffic_info_box div.traffic_list ul.head li.li04 {width:155px;}
+.FT_BookingProcess div.traffic_info_box div.traffic_list ul.head li.li05 {width:155px;}
+.FT_BookingProcess div.traffic_info_box div.traffic_list ul.head li.li06 {width:155px;}
+.FT_BookingProcess div.traffic_info_box div.traffic_list ul.head li.li07 {width:28px;}
+.FT_BookingProcess div.traffic_info_box div.traffic_list ul.head li b {position:absolute; width:1px; height:1px; display:block; overflow:hidden; background:#fbfbfb;}
+.FT_BookingProcess div.traffic_info_box div.traffic_list ul.head li b.lt {top:0px; left:0px;}
+.FT_BookingProcess div.traffic_info_box div.traffic_list ul.head li b.rt {top:0px; right:0px;}
+.FT_BookingProcess div.traffic_info_box div.traffic_list ul.head li b.lb {bottom:0px; left:0px;}
+.FT_BookingProcess div.traffic_info_box div.traffic_list ul.head li b.rb {bottom:0px; right:0px;}
+.FT_BookingProcess div.traffic_info_box div.traffic_list ul.content li {width:958px; height:50px; float:left; position:relative; border-bottom:1px #ccc dashed; margin-left:5px;}
+.FT_BookingProcess div.traffic_info_box div.traffic_list ul.content li:hover {background:#f8f8f8;}
+.FT_BookingProcess div.traffic_info_box div.traffic_list ul.content li input.select_button {position:absolute; left:5px; bottom:20px;}
+.FT_BookingProcess div.traffic_info_box div.traffic_list ul.content li span {position:absolute; bottom:16px; font:13px/20px Arial, "宋体"; color:#666;}
+.FT_BookingProcess div.traffic_info_box div.traffic_list ul.content li span.name {left:40px; font-weight:800; color:#333;}
+.FT_BookingProcess div.traffic_info_box div.traffic_list ul.content li span.IntervalTime {left:345px;}
+.FT_BookingProcess div.traffic_info_box div.traffic_list ul.content li span.time {left:502px; bottom:5px;}
+.FT_BookingProcess div.traffic_info_box div.traffic_list ul.content li span.type {left:662px;}
+.FT_BookingProcess div.traffic_info_box div.traffic_list ul.content li span.state {left:817px;}
+.FT_BookingProcess div.traffic_info_box div.traffic_list ul.content li span.wait {color:#BB0004;}
+.FT_BookingProcess div.traffic_info_box div.traffic_list ul.content li span.sure {color:#619d00;}
+.FT_BookingProcess div.traffic_info_box div.hotel_list {width:970px; padding:5px 0px;}
+.FT_BookingProcess div.traffic_info_box div.hotel_list p.title {font:800 13px Arial, "宋体"; color:#F07E00; padding:10px 30px 5px;}
+.FT_BookingProcess div.traffic_info_box div.hotel_list p.title span {font-weight:500; color:#999; padding-left:20px;}
+.FT_BookingProcess div.traffic_info_box div.hotel_list ul {display:inline-block;}
+.FT_BookingProcess div.traffic_info_box div.hotel_list ul.head li {height:24px; background:#999; float:left; font:13px/24px Arial, "宋体"; color:#fff; border-left:2px #fff solid; position:relative; text-indent:12px;}
+.FT_BookingProcess div.traffic_info_box div.hotel_list ul.head li span.star {font:14px Arial; color:#A80004;}
+.FT_BookingProcess div.traffic_info_box div.hotel_list ul.head li.li01 {width:305px;}
+.FT_BookingProcess div.traffic_info_box div.hotel_list ul.head li.li02 {width:155px;}
+.FT_BookingProcess div.traffic_info_box div.hotel_list ul.head li.li03 {width:155px;}
+.FT_BookingProcess div.traffic_info_box div.hotel_list ul.head li.li04 {width:155px;}
+.FT_BookingProcess div.traffic_info_box div.hotel_list ul.head li.li05 {width:155px;}
+.FT_BookingProcess div.traffic_info_box div.hotel_list ul.head li.li06 {width:155px;}
+.FT_BookingProcess div.traffic_info_box div.hotel_list ul.head li.li07 {width:28px;}
+.FT_BookingProcess div.traffic_info_box div.hotel_list ul.head li b {position:absolute; width:1px; height:1px; display:block; overflow:hidden; background:#fbfbfb;}
+.FT_BookingProcess div.traffic_info_box div.hotel_list ul.head li b.lt {top:0px; left:0px;}
+.FT_BookingProcess div.traffic_info_box div.hotel_list ul.head li b.rt {top:0px; right:0px;}
+.FT_BookingProcess div.traffic_info_box div.hotel_list ul.head li b.lb {bottom:0px; left:0px;}
+.FT_BookingProcess div.traffic_info_box div.hotel_list ul.head li b.rb {bottom:0px; right:0px;}
+.FT_BookingProcess div.traffic_info_box div.hotel_list ul.content li {width:958px; height:35px; float:left; position:relative; border-bottom:1px #ccc dashed; margin-left:5px;}
+.FT_BookingProcess div.traffic_info_box div.hotel_list ul.content li:hover {background:#f8f8f8;}
+.FT_BookingProcess div.traffic_info_box div.hotel_list ul.content li input.select_button {position:absolute; left:5px; bottom:10px;}
+.FT_BookingProcess div.traffic_info_box div.hotel_list ul.content li span {position:absolute; bottom:6px; font:13px/20px Arial, "宋体"; color:#666;}
+.FT_BookingProcess div.traffic_info_box div.hotel_list ul.content li span.name {left:40px; font-weight:800; color:#333;}
+.FT_BookingProcess div.traffic_info_box div.hotel_list ul.content li span.IntervalTime {left:345px;}
+.FT_BookingProcess div.traffic_info_box div.hotel_list ul.content li a.breakfast {position:absolute; left:502px; bottom:6px; font:13px/20px Arial, "宋体"; color:#333;}
+.FT_BookingProcess div.traffic_info_box div.hotel_list ul.content li a.breakfast:hover {color:#F07E00;}
+.FT_BookingProcess div.traffic_info_box div.hotel_list ul.content li span.type {left:662px;}
+.FT_BookingProcess div.traffic_info_box div.hotel_list ul.content li span.state {left:817px;}
+.FT_BookingProcess div.traffic_info_box div.hotel_list ul.content li span.wait {color:#BB0004;}
+.FT_BookingProcess div.traffic_info_box div.hotel_list ul.content li span.sure {color:#619d00;}
+.FT_BookingProcess div.traffic_info_box div.ticket_list {width:970px; padding:5px 0px;}
+.FT_BookingProcess div.traffic_info_box div.ticket_list p.title {font:800 13px Arial, "宋体"; color:#F07E00; padding:10px 30px 5px;}
+.FT_BookingProcess div.traffic_info_box div.ticket_list p.title span {font-weight:500; color:#999; padding-left:20px;}
+.FT_BookingProcess div.traffic_info_box div.ticket_list ul {display:inline-block;}
+.FT_BookingProcess div.traffic_info_box div.ticket_list ul.head li {height:24px; background:#999; float:left; font:13px/24px Arial, "宋体"; color:#fff; border-left:2px #fff solid; position:relative; text-indent:12px;}
+.FT_BookingProcess div.traffic_info_box div.ticket_list ul.head li span.star {font:14px Arial; color:#A80004;}
+.FT_BookingProcess div.traffic_info_box div.ticket_list ul.head li.li01 {width:220px;}
+.FT_BookingProcess div.traffic_info_box div.ticket_list ul.head li.li02 {width:135px;}
+.FT_BookingProcess div.traffic_info_box div.ticket_list ul.head li.li03 {width:290px;}
+.FT_BookingProcess div.traffic_info_box div.ticket_list ul.head li.li04 {width:80px;}
+.FT_BookingProcess div.traffic_info_box div.ticket_list ul.head li.li05 {width:80px;}
+.FT_BookingProcess div.traffic_info_box div.ticket_list ul.head li.li06 {width:150px;}
+.FT_BookingProcess div.traffic_info_box div.ticket_list ul.head li b {position:absolute; width:1px; height:1px; display:block; overflow:hidden; background:#fbfbfb;}
+.FT_BookingProcess div.traffic_info_box div.ticket_list ul.head li b.lt {top:0px; left:0px;}
+.FT_BookingProcess div.traffic_info_box div.ticket_list ul.head li b.rt {top:0px; right:0px;}
+.FT_BookingProcess div.traffic_info_box div.ticket_list ul.head li b.lb {bottom:0px; left:0px;}
+.FT_BookingProcess div.traffic_info_box div.ticket_list ul.head li b.rb {bottom:0px; right:0px;}
+.FT_BookingProcess div.traffic_info_box div.ticket_list ul.content li {width:958px; float:left; position:relative; border-bottom:1px #ccc dashed; margin-left:5px; display:inline-block;}
+.FT_BookingProcess div.traffic_info_box div.ticket_list ul.content li:hover {background:#f8f8f8;}
+.FT_BookingProcess div.traffic_info_box div.ticket_list ul.content li span {position:absolute; top:12px; font:13px/16px Arial, "宋体"; color:#666;}
+.FT_BookingProcess div.traffic_info_box div.ticket_list ul.content li span.name {left:10px; font-weight:800; color:#333;}
+.FT_BookingProcess div.traffic_info_box div.ticket_list ul.content li span.price {left:230px; top:5px;}
+.FT_BookingProcess div.traffic_info_box div.ticket_list ul.content li p.remark {width:270px; font:13px/16px Arial, "宋体"; color:#666; padding:5px 0 5px 368px; float:left; word-break:break-all;}
+.FT_BookingProcess div.traffic_info_box div.ticket_list ul.content li div.block {width:10px; height:40px; float:left;}
+.FT_BookingProcess div.traffic_info_box div.ticket_list ul.content li select {position:absolute; top:9px;}
+.FT_BookingProcess div.traffic_info_box div.ticket_list ul.content li select.man_number {left:660px;}
+.FT_BookingProcess div.traffic_info_box div.ticket_list ul.content li select.child_number {left:740px;}
+.FT_BookingProcess div.traffic_info_box div.ticket_list ul.content li input.date {position:absolute; left:824px; top:10px; width:120px; height:20px; border:1px #ccc solid;}
+.FT_BookingProcess div.traffic_info_box div.ticket_list ul.content li span.wait {color:#BB0004;}
+.FT_BookingProcess div.traffic_info_box div.ticket_list ul.content li span.sure {color:#619d00;}
+.FT_BookingProcess div.traffic_info_box div.addition_list {width:970px; padding:5px 0px;}
+.FT_BookingProcess div.traffic_info_box div.addition_list p.title {font:800 13px Arial, "宋体"; color:#F07E00; padding:10px 30px 5px;}
+.FT_BookingProcess div.traffic_info_box div.addition_list p.title span {font-weight:500; color:#999; padding-left:20px;}
+.FT_BookingProcess div.traffic_info_box div.addition_list ul {display:inline-block;}
+.FT_BookingProcess div.traffic_info_box div.addition_list ul.head li {height:24px; background:#999; float:left; font:13px/24px Arial, "宋体"; color:#fff; border-left:2px #fff solid; position:relative; text-indent:12px;}
+.FT_BookingProcess div.traffic_info_box div.addition_list ul.head li span.star {font:14px Arial; color:#A80004;}
+.FT_BookingProcess div.traffic_info_box div.addition_list ul.head li.li01 {width:220px;}
+.FT_BookingProcess div.traffic_info_box div.addition_list ul.head li.li02 {width:135px;}
+.FT_BookingProcess div.traffic_info_box div.addition_list ul.head li.li03 {width:80px;}
+.FT_BookingProcess div.traffic_info_box div.addition_list ul.head li.li04 {width:290px;}
+.FT_BookingProcess div.traffic_info_box div.addition_list ul.head li.li05 {width:80px;}
+.FT_BookingProcess div.traffic_info_box div.addition_list ul.head li.li06 {width:150px;}
+.FT_BookingProcess div.traffic_info_box div.addition_list ul.head li b {position:absolute; width:1px; height:1px; display:block; overflow:hidden; background:#fbfbfb;}
+.FT_BookingProcess div.traffic_info_box div.addition_list ul.head li b.lt {top:0px; left:0px;}
+.FT_BookingProcess div.traffic_info_box div.addition_list ul.head li b.rt {top:0px; right:0px;}
+.FT_BookingProcess div.traffic_info_box div.addition_list ul.head li b.lb {bottom:0px; left:0px;}
+.FT_BookingProcess div.traffic_info_box div.addition_list ul.head li b.rb {bottom:0px; right:0px;}
+.FT_BookingProcess div.traffic_info_box div.addition_list ul.content li {width:958px; float:left; position:relative; border-bottom:1px #ccc dashed; margin-left:5px; display:inline-block;}
+.FT_BookingProcess div.traffic_info_box div.addition_list ul.content li:hover {background:#f8f8f8;}
+.FT_BookingProcess div.traffic_info_box div.addition_list ul.content li span {position:absolute; top:12px; font:13px/16px Arial, "宋体"; color:#666;}
+.FT_BookingProcess div.traffic_info_box div.addition_list ul.content li span.name {left:10px; font-weight:800; color:#333;}
+.FT_BookingProcess div.traffic_info_box div.addition_list ul.content li span.price {left:230px;}
+.FT_BookingProcess div.traffic_info_box div.addition_list ul.content li span.unit {left:365px;}
+.FT_BookingProcess div.traffic_info_box div.addition_list ul.content li p.remark {width:270px; font:13px/16px Arial, "宋体"; color:#666; padding:5px 0 5px 448px; float:left; word-break:break-all;}
+.FT_BookingProcess div.traffic_info_box div.addition_list ul.content li div.block {width:10px; height:40px; float:left;}
+.FT_BookingProcess div.traffic_info_box div.addition_list ul.content li select {position:absolute; top:9px;}
+.FT_BookingProcess div.traffic_info_box div.addition_list ul.content li select.man_number {left:660px;}
+.FT_BookingProcess div.traffic_info_box div.addition_list ul.content li select.child_number {left:740px;}
+.FT_BookingProcess div.traffic_info_box div.addition_list ul.content li input.date {position:absolute; left:824px; top:10px; width:120px; height:20px; border:1px #ccc solid;}
+.FT_BookingProcess div.traffic_info_box div.addition_list ul.content li span.wait {color:#BB0004;}
+.FT_BookingProcess div.traffic_info_box div.addition_list ul.content li span.sure {color:#619d00;}
+.FT_BookingProcess div.booking_submit {width:980px; height:50px; position:relative;}
+.FT_BookingProcess div.booking_submit span.previous {position:absolute; top:10px; left:350px; width:86px; height:25px; display:block;}
+.FT_BookingProcess div.booking_submit span.next {position:absolute; top:10px; left:450px; width:86px; height:25px; display:block;}
+.FT_BookingProcess div.booking_submit a {width:86px; height:25px; display:block; background-position:0px -22px; font:13px/25px "Arial", "宋体"; color:#fff; text-align:center; text-decoration:none;}
+.FT_BookingProcess div.booking_submit a:hover {background-position:0px -47px;}
+.FT_BookingProcess div.traffic_info_box span.search {width:600px; display:block; font:13px/16px Arial, "宋体"; color:#333; padding:15px 0px 10px 15px; position:relative;}
+.FT_BookingProcess div.traffic_info_box span.search input.search {position:absolute; bottom:8px; left:160px; background:#fff; border:1px #ccc solid; width:120px; height:20px; font:13px/20px Arial, "宋体"; color:#666;}
+.FT_BookingProcess div.traffic_info_box span.search span.TenantNumber {position:absolute; bottom:11px; left:300px;}
+.FT_BookingProcess div.traffic_info_box span.search span.TenantNumber b {color:#FF8600;}
+.FT_BookingProcess div.traffic_info_box div.client_list {width:970px; padding:5px 0px;}
+.FT_BookingProcess div.traffic_info_box div.client_list div.friend_list {width:100%; border-bottom:1px #E4E4E4 solid; margin-bottom:5px;}
+.FT_BookingProcess div.traffic_info_box div.client_list div.friend_list ul.list {width:100%; display:inline-block;}
+.FT_BookingProcess div.traffic_info_box div.client_list div.friend_list li.border {width:154px; height:30px; border:1px #fff solid; float:left; padding-left:5px;}
+.FT_BookingProcess div.traffic_info_box div.client_list div.friend_list span.box{width:151px; height:24px; border:1px #999 solid; display:block; position:relative; font:13px/26px "Arial", "宋体"; color:#333; text-indent:23px;}
+.FT_BookingProcess div.traffic_info_box div.client_list div.friend_list span.box input {position:absolute; bottom:4px; left:5px;}
+.FT_BookingProcess div.traffic_info_box div.client_list div.friend_list ol.HideContent {display:none; width:100%; overflow:hidden;}
+.FT_BookingProcess div.traffic_info_box div.client_list div.friend_list div.HideButton {width:70px; border:1px #DDD solid; border-bottom:none; font:13px/16px Arial, "宋体"; color:#82A200; text-decoration:none; background:#fff; cursor:pointer; text-align:center;}
+.FT_BookingProcess div.traffic_info_box div.client_list p.title {font:800 13px Arial, "宋体"; color:#F07E00; padding:10px 30px 5px;}
+.FT_BookingProcess div.traffic_info_box div.client_list p.title span {font-weight:500; color:#999; padding-left:20px;}
+.FT_BookingProcess div.traffic_info_box div.client_list ul {display:inline-block;}
+.FT_BookingProcess div.traffic_info_box div.client_list ul.head li {height:24px; background:#999; float:left; font:13px/24px Arial, "宋体"; color:#fff; border-left:2px #fff solid; position:relative; text-indent:12px;}
+.FT_BookingProcess div.traffic_info_box div.client_list ul.head li span.star {font:14px Arial; color:#A80004;}
+.FT_BookingProcess div.traffic_info_box div.client_list ul.head li.li01 {width:130px;}
+.FT_BookingProcess div.traffic_info_box div.client_list ul.head li.li02 {width:100px;}
+.FT_BookingProcess div.traffic_info_box div.client_list ul.head li.li03 {width:185px;}
+.FT_BookingProcess div.traffic_info_box div.client_list ul.head li.li04 {width:150px;}
+.FT_BookingProcess div.traffic_info_box div.client_list ul.head li.li05 {width:130px;}
+.FT_BookingProcess div.traffic_info_box div.client_list ul.head li.li06 {width:150px;}
+.FT_BookingProcess div.traffic_info_box div.client_list ul.head li.li07 {width:110px;}
+.FT_BookingProcess div.traffic_info_box div.client_list ul.head li b {position:absolute; width:1px; height:1px; display:block; overflow:hidden; background:#fbfbfb;}
+.FT_BookingProcess div.traffic_info_box div.client_list ul.head li b.lt {top:0px; left:0px;}
+.FT_BookingProcess div.traffic_info_box div.client_list ul.head li b.rt {top:0px; right:0px;}
+.FT_BookingProcess div.traffic_info_box div.client_list ul.head li b.lb {bottom:0px; left:0px;}
+.FT_BookingProcess div.traffic_info_box div.client_list ul.head li b.rb {bottom:0px; right:0px;}
+.FT_BookingProcess div.traffic_info_box div.client_list ul.content li {width:958px; height:40px; float:left; position:relative; border-bottom:1px #ccc dashed; margin-left:5px; display:inline-block;}
+.FT_BookingProcess div.traffic_info_box div.addition_list ul.content li:hover {background:#f8f8f8;}
+.FT_BookingProcess div.traffic_info_box div.client_list ul.content li input {position:absolute; top:10px; height:20px; border:1px #ccc solid;}
+.FT_BookingProcess div.traffic_info_box div.client_list ul.content li input.name {left:8px; width:100px;}
+.FT_BookingProcess div.traffic_info_box div.client_list ul.content li span.sort {position:absolute; left:140px; top:12px; font:13px/16px Arial, "宋体"; color:#666;}
+.FT_BookingProcess div.traffic_info_box div.client_list ul.content li input.papers {left:243px; width:160px;}
+.FT_BookingProcess div.traffic_info_box div.client_list ul.content li input.phone {left:430px; width:120px;}
+.FT_BookingProcess div.traffic_info_box div.client_list ul.content li input.nationality {left:580px; width:90px;}
+.FT_BookingProcess div.traffic_info_box div.client_list ul.content li input.born {left:713px; width:120px;}
+.FT_BookingProcess div.traffic_info_box div.client_list ul.content li select.sex {position:absolute; left:865px; top:9px;}
+.FT_BookingProcess div.traffic_info_box div.contact_list {width:970px; padding:5px 0px;}
+.FT_BookingProcess div.traffic_info_box div.contact_list p.title {font:800 13px Arial, "宋体"; color:#F07E00; padding:10px 30px 5px;}
+.FT_BookingProcess div.traffic_info_box div.contact_list p.title span {font-weight:500; color:#999; padding-left:20px;}
+.FT_BookingProcess div.traffic_info_box div.contact_list ul {display:inline-block;}
+.FT_BookingProcess div.traffic_info_box div.contact_list ul.head li {height:24px; background:#999; float:left; font:13px/24px Arial, "宋体"; color:#fff; border-left:2px #fff solid; position:relative; text-indent:12px;}
+.FT_BookingProcess div.traffic_info_box div.contact_list ul.head li span.star {font:14px Arial; color:#A80004;}
+.FT_BookingProcess div.traffic_info_box div.contact_list ul.head li.li01 {width:140px;}
+.FT_BookingProcess div.traffic_info_box div.contact_list ul.head li.li02 {width:140px;}
+.FT_BookingProcess div.traffic_info_box div.contact_list ul.head li.li03 {width:140px;}
+.FT_BookingProcess div.traffic_info_box div.contact_list ul.head li.li04 {width:140px;}
+.FT_BookingProcess div.traffic_info_box div.contact_list ul.head li.li05 {width:250px;}
+.FT_BookingProcess div.traffic_info_box div.contact_list ul.head li.li06 {width:147px;}
+.FT_BookingProcess div.traffic_info_box div.contact_list ul.head li b {position:absolute; width:1px; height:1px; display:block; overflow:hidden; background:#fbfbfb;}
+.FT_BookingProcess div.traffic_info_box div.contact_list ul.head li b.lt {top:0px; left:0px;}
+.FT_BookingProcess div.traffic_info_box div.contact_list ul.head li b.rt {top:0px; right:0px;}
+.FT_BookingProcess div.traffic_info_box div.contact_list ul.head li b.lb {bottom:0px; left:0px;}
+.FT_BookingProcess div.traffic_info_box div.contact_list ul.head li b.rb {bottom:0px; right:0px;}
+.FT_BookingProcess div.traffic_info_box div.contact_list ul.content li {width:958px; height:40px; float:left; position:relative; border-bottom:1px #ccc dashed; margin-left:5px; display:inline-block;}
+.FT_BookingProcess div.traffic_info_box div.contact_list ul.content li:hover {background:#f8f8f8;}
+.FT_BookingProcess div.traffic_info_box div.contact_list ul.content li input {position:absolute; top:10px; height:20px; border:1px #ccc solid;}
+.FT_BookingProcess div.traffic_info_box div.contact_list ul.content li input.name {left:8px; width:80px;}
+.FT_BookingProcess div.traffic_info_box div.contact_list ul.content li input.mobile {left:152px; width:120px;}
+.FT_BookingProcess div.traffic_info_box div.contact_list ul.content li input.phone {left:292px; width:120px;}
+.FT_BookingProcess div.traffic_info_box div.contact_list ul.content li input.email {left:430px; width:120px;}
+.FT_BookingProcess div.traffic_info_box div.contact_list ul.content li input.address {left:580px; width:220px;}
+.FT_BookingProcess div.traffic_info_box div.contact_list ul.content li input.fax {left:830px; width:120px;}
+.FT_BookingProcess div.traffic_info_box ul.invoice_content {width:938px; display:inline-block; position:relative; padding:10px 20px;}
+.FT_BookingProcess div.traffic_info_box ul.invoice_content li {width:100%; padding:15px 0px 6px; border-bottom:1px #E4E4E4 dashed; display:inline-block; float:left;}
+.FT_BookingProcess div.traffic_info_box ul.invoice_content li span.text {display:block; float:left; font:13px "Arial", "宋体"; color:#333; position:relative;}
+.FT_BookingProcess div.traffic_info_box ul.invoice_content li span.text span.star {position:absolute; bottom:0px; left:-6px; font:14px Arial; color:#A80004;}
+.FT_BookingProcess div.traffic_info_box ul.invoice_content li span.radio {display:block; float:left; font:13px "Arial", "宋体"; color:#333; position:relative; text-indent:28px;}
+.FT_BookingProcess div.traffic_info_box ul.invoice_content li span.radio input {position:absolute; bottom:2px; left:13px; *bottom:-1px; *left:10px; border:0px;}
+.FT_BookingProcess div.traffic_info_box ul.invoice_content li span.text input {position:absolute; bottom:-2px; left:70px; height:20px; border:1px #ccc solid; font:13px/20px "Arial", "宋体"; color:#333;}
+.FT_BookingProcess div.traffic_info_box ul.invoice_content li span.text input.input01 {width:220px;}
+.FT_BookingProcess div.traffic_info_box ul.invoice_content li span.text input.input02 {width:300px;}
+.FT_BookingProcess div.traffic_info_box ul.invoice_content li span.text input.input03 {width:120px;}
+.FT_BookingProcess div.traffic_info_box ul.invoice_content li span.text select {position:absolute; bottom:-3px; left:70px; font:13px/20px "Arial", "宋体"; color:#333;}
+.FT_BookingProcess div.traffic_info_box ul.invoice_content li span.text01 {width:320px;}
+.FT_BookingProcess div.traffic_info_box ul.invoice_content li span.text02 {width:400px;}
+.FT_BookingProcess div.traffic_info_box ul.invoice_content li p {font:13px/18px "Arial", "宋体"; color:#666;}
+.FT_BookingProcess div.traffic_info_box ul.invoice_content li p.red {color:#BF0005;}
+.FT_BookingProcess div.traffic_info_box div.traffic_result_list {width:970px; padding:5px 0px;}
+.FT_BookingProcess div.traffic_info_box div.traffic_result_list p.title {font:800 13px Arial, "宋体"; color:#F07E00; padding:10px 30px 5px;}
+.FT_BookingProcess div.traffic_info_box div.traffic_result_list p.title span {font-weight:500; color:#999; padding-left:20px;}
+.FT_BookingProcess div.traffic_info_box div.traffic_result_list ul {display:inline-block;}
+.FT_BookingProcess div.traffic_info_box div.traffic_result_list ul.head li {height:24px; background:#999; float:left; font:13px/24px Arial, "宋体"; color:#fff; border-left:2px #fff solid; position:relative; text-indent:12px;}
+.FT_BookingProcess div.traffic_info_box div.traffic_result_list ul.head li span.star {font:14px Arial; color:#A80004;}
+.FT_BookingProcess div.traffic_info_box div.traffic_result_list ul.head li.li01 {width:155px;}
+.FT_BookingProcess div.traffic_info_box div.traffic_result_list ul.head li.li02 {width:150px;}
+.FT_BookingProcess div.traffic_info_box div.traffic_result_list ul.head li.li03 {width:150px;}
+.FT_BookingProcess div.traffic_info_box div.traffic_result_list ul.head li.li04 {width:140px;}
+.FT_BookingProcess div.traffic_info_box div.traffic_result_list ul.head li.li05 {width:140px;}
+.FT_BookingProcess div.traffic_info_box div.traffic_result_list ul.head li.li06 {width:140px;}
+.FT_BookingProcess div.traffic_info_box div.traffic_result_list ul.head li.li07 {width:80px;}
+.FT_BookingProcess div.traffic_info_box div.traffic_result_list ul.head li b {position:absolute; width:1px; height:1px; display:block; overflow:hidden; background:#fbfbfb;}
+.FT_BookingProcess div.traffic_info_box div.traffic_result_list ul.head li b.lt {top:0px; left:0px;}
+.FT_BookingProcess div.traffic_info_box div.traffic_result_list ul.head li b.rt {top:0px; right:0px;}
+.FT_BookingProcess div.traffic_info_box div.traffic_result_list ul.head li b.lb {bottom:0px; left:0px;}
+.FT_BookingProcess div.traffic_info_box div.traffic_result_list ul.head li b.rb {bottom:0px; right:0px;}
+.FT_BookingProcess div.traffic_info_box div.traffic_result_list ul.content li {width:958px; height:40px; float:left; position:relative; border-bottom:1px #ccc dashed; margin-left:5px; display:inline-block;}
+.FT_BookingProcess div.traffic_info_box div.traffic_result_list ul.content li:hover {background:#f8f8f8;}
+.FT_BookingProcess div.traffic_info_box div.traffic_result_list ul.content span {position:absolute; top:12px; font:13px/16px Arial, "宋体"; color:#666;}
+.FT_BookingProcess div.traffic_info_box div.traffic_result_list ul.content span.list01 {left:10px;}
+.FT_BookingProcess div.traffic_info_box div.traffic_result_list ul.content span.list02 {left:165px;}
+.FT_BookingProcess div.traffic_info_box div.traffic_result_list ul.content span.list03 {left:318px;}
+.FT_BookingProcess div.traffic_info_box div.traffic_result_list ul.content span.list04 {left:470px;}
+.FT_BookingProcess div.traffic_info_box div.traffic_result_list ul.content span.list05 {left:614px;}
+.FT_BookingProcess div.traffic_info_box div.traffic_result_list ul.content span.list06 {left:755px;}
+.FT_BookingProcess div.traffic_info_box div.traffic_result_list ul.content span.list07 {left:897px;}
+.FT_BookingProcess div.traffic_info_box div.hotel_result_list {width:970px; padding:5px 0px;}
+.FT_BookingProcess div.traffic_info_box div.hotel_result_list p.title {font:800 13px Arial, "宋体"; color:#F07E00; padding:10px 30px 5px;}
+.FT_BookingProcess div.traffic_info_box div.hotel_result_list p.title span {font-weight:500; color:#999; padding-left:20px;}
+.FT_BookingProcess div.traffic_info_box div.hotel_result_list ul {display:inline-block;}
+.FT_BookingProcess div.traffic_info_box div.hotel_result_list ul.head li {height:24px; background:#999; float:left; font:13px/24px Arial, "宋体"; color:#fff; border-left:2px #fff solid; position:relative; text-indent:12px;}
+.FT_BookingProcess div.traffic_info_box div.hotel_result_list ul.head li span.star {font:14px Arial; color:#A80004;}
+.FT_BookingProcess div.traffic_info_box div.hotel_result_list ul.head li.li01 {width:382px;}
+.FT_BookingProcess div.traffic_info_box div.hotel_result_list ul.head li.li02 {width:280px;}
+.FT_BookingProcess div.traffic_info_box div.hotel_result_list ul.head li.li03 {width:120px;}
+.FT_BookingProcess div.traffic_info_box div.hotel_result_list ul.head li.li04 {width:180px;}
+.FT_BookingProcess div.traffic_info_box div.hotel_result_list ul.head li b {position:absolute; width:1px; height:1px; display:block; overflow:hidden; background:#fbfbfb;}
+.FT_BookingProcess div.traffic_info_box div.hotel_result_list ul.head li b.lt {top:0px; left:0px;}
+.FT_BookingProcess div.traffic_info_box div.hotel_result_list ul.head li b.rt {top:0px; right:0px;}
+.FT_BookingProcess div.traffic_info_box div.hotel_result_list ul.head li b.lb {bottom:0px; left:0px;}
+.FT_BookingProcess div.traffic_info_box div.hotel_result_list ul.head li b.rb {bottom:0px; right:0px;}
+.FT_BookingProcess div.traffic_info_box div.hotel_result_list ul.content li {width:958px; height:40px; float:left; position:relative; border-bottom:1px #ccc dashed; margin-left:5px; display:inline-block;}
+.FT_BookingProcess div.traffic_info_box div.hotel_result_list ul.content li:hover {background:#f8f8f8;}
+.FT_BookingProcess div.traffic_info_box div.hotel_result_list ul.content span {position:absolute; top:12px; font:13px/16px Arial, "宋体"; color:#666;}
+.FT_BookingProcess div.traffic_info_box div.hotel_result_list ul.content span.list01 {left:10px;}
+.FT_BookingProcess div.traffic_info_box div.hotel_result_list ul.content span.list02 {left:394px;}
+.FT_BookingProcess div.traffic_info_box div.hotel_result_list ul.content span.list03 {left:675px;}
+.FT_BookingProcess div.traffic_info_box div.hotel_result_list ul.content span.list04 {left:798px;}
+.FT_BookingProcess div.traffic_info_box div.addition_result_list {width:970px; padding:5px 0px;}
+.FT_BookingProcess div.traffic_info_box div.addition_result_list p.title {font:800 13px Arial, "宋体"; color:#F07E00; padding:10px 30px 5px;}
+.FT_BookingProcess div.traffic_info_box div.addition_result_list p.title span {font-weight:500; color:#999; padding-left:20px;}
+.FT_BookingProcess div.traffic_info_box div.addition_result_list ul {display:inline-block;}
+.FT_BookingProcess div.traffic_info_box div.addition_result_list ul.head li {height:24px; background:#999; float:left; font:13px/24px Arial, "宋体"; color:#fff; border-left:2px #fff solid; position:relative; text-indent:12px;}
+.FT_BookingProcess div.traffic_info_box div.addition_result_list ul.head li span.star {font:14px Arial; color:#A80004;}
+.FT_BookingProcess div.traffic_info_box div.addition_result_list ul.head li.li01 {width:280px;}
+.FT_BookingProcess div.traffic_info_box div.addition_result_list ul.head li.li02 {width:480px;}
+.FT_BookingProcess div.traffic_info_box div.addition_result_list ul.head li.li03 {width:203px;}
+.FT_BookingProcess div.traffic_info_box div.addition_result_list ul.head li b {position:absolute; width:1px; height:1px; display:block; overflow:hidden; background:#fbfbfb;}
+.FT_BookingProcess div.traffic_info_box div.addition_result_list ul.head li b.lt {top:0px; left:0px;}
+.FT_BookingProcess div.traffic_info_box div.addition_result_list ul.head li b.rt {top:0px; right:0px;}
+.FT_BookingProcess div.traffic_info_box div.addition_result_list ul.head li b.lb {bottom:0px; left:0px;}
+.FT_BookingProcess div.traffic_info_box div.addition_result_list ul.head li b.rb {bottom:0px; right:0px;}
+.FT_BookingProcess div.traffic_info_box div.addition_result_list ul.content li {width:958px; height:40px; float:left; position:relative; border-bottom:1px #ccc dashed; margin-left:5px; display:inline-block;}
+.FT_BookingProcess div.traffic_info_box div.addition_result_list ul.content li:hover {background:#f8f8f8;}
+.FT_BookingProcess div.traffic_info_box div.addition_result_list ul.content span {position:absolute; top:12px; font:13px/16px Arial, "宋体"; color:#666;}
+.FT_BookingProcess div.traffic_info_box div.addition_result_list ul.content span.list01 {left:10px;}
+.FT_BookingProcess div.traffic_info_box div.addition_result_list ul.content span.list02 {left:293px;}
+.FT_BookingProcess div.traffic_info_box div.addition_result_list ul.content span.list03 {left:773px;}
+.FT_BookingProcess div.traffic_info_box div.ticket_result_list {width:970px; padding:5px 0px;}
+.FT_BookingProcess div.traffic_info_box div.ticket_result_list p.title {font:800 13px Arial, "宋体"; color:#F07E00; padding:10px 30px 5px;}
+.FT_BookingProcess div.traffic_info_box div.ticket_result_list p.title span {font-weight:500; color:#999; padding-left:20px;}
+.FT_BookingProcess div.traffic_info_box div.ticket_result_list ul {display:inline-block;}
+.FT_BookingProcess div.traffic_info_box div.ticket_result_list ul.head li {height:24px; background:#999; float:left; font:13px/24px Arial, "宋体"; color:#fff; border-left:2px #fff solid; position:relative; text-indent:12px;}
+.FT_BookingProcess div.traffic_info_box div.ticket_result_list ul.head li span.star {font:14px Arial; color:#A80004;}
+.FT_BookingProcess div.traffic_info_box div.ticket_result_list ul.head li.li01 {width:265px;}
+.FT_BookingProcess div.traffic_info_box div.ticket_result_list ul.head li.li02 {width:150px;}
+.FT_BookingProcess div.traffic_info_box div.ticket_result_list ul.head li.li03 {width:120px;}
+.FT_BookingProcess div.traffic_info_box div.ticket_result_list ul.head li.li04 {width:110px;}
+.FT_BookingProcess div.traffic_info_box div.ticket_result_list ul.head li.li05 {width:110px;}
+.FT_BookingProcess div.traffic_info_box div.ticket_result_list ul.head li.li06 {width:100px;}
+.FT_BookingProcess div.traffic_info_box div.ticket_result_list ul.head li.li07 {width:100px;}
+.FT_BookingProcess div.traffic_info_box div.ticket_result_list ul.head li b {position:absolute; width:1px; height:1px; display:block; overflow:hidden; background:#fbfbfb;}
+.FT_BookingProcess div.traffic_info_box div.ticket_result_list ul.head li b.lt {top:0px; left:0px;}
+.FT_BookingProcess div.traffic_info_box div.ticket_result_list ul.head li b.rt {top:0px; right:0px;}
+.FT_BookingProcess div.traffic_info_box div.ticket_result_list ul.head li b.lb {bottom:0px; left:0px;}
+.FT_BookingProcess div.traffic_info_box div.ticket_result_list ul.head li b.rb {bottom:0px; right:0px;}
+.FT_BookingProcess div.traffic_info_box div.ticket_result_list ul.content li {width:958px; height:40px; float:left; position:relative; border-bottom:1px #ccc dashed; margin-left:5px; display:inline-block;}
+.FT_BookingProcess div.traffic_info_box div.ticket_result_list ul.content li:hover {background:#f8f8f8;}
+.FT_BookingProcess div.traffic_info_box div.ticket_result_list ul.content span {position:absolute; top:12px; font:13px/16px Arial, "宋体"; color:#666;}
+.FT_BookingProcess div.traffic_info_box div.ticket_result_list ul.content span.list01 {left:10px;}
+.FT_BookingProcess div.traffic_info_box div.ticket_result_list ul.content span.list02 {left:277px;}
+.FT_BookingProcess div.traffic_info_box div.ticket_result_list ul.content span.list03 {left:430px;}
+.FT_BookingProcess div.traffic_info_box div.ticket_result_list ul.content span.list04 {left:553px;}
+.FT_BookingProcess div.traffic_info_box div.ticket_result_list ul.content span.list05 {left:664px;}
+.FT_BookingProcess div.traffic_info_box div.ticket_result_list ul.content span.list06 {left:775px;}
+.FT_BookingProcess div.traffic_info_box div.ticket_result_list ul.content span.list07 {left:875px;}
+.FT_BookingProcess div.traffic_info_box div.client_result_list {width:970px; padding:5px 0px;}
+.FT_BookingProcess div.traffic_info_box div.client_result_list p.title {font:800 13px Arial, "宋体"; color:#F07E00; padding:10px 30px 5px;}
+.FT_BookingProcess div.traffic_info_box div.client_result_list p.title span {font-weight:500; color:#999; padding-left:20px;}
+.FT_BookingProcess div.traffic_info_box div.client_result_list ul {display:inline-block;}
+.FT_BookingProcess div.traffic_info_box div.client_result_list ul.head li {height:24px; background:#999; float:left; font:13px/24px Arial, "宋体"; color:#fff; border-left:2px #fff solid; position:relative; text-indent:12px;}
+.FT_BookingProcess div.traffic_info_box div.client_result_list ul.head li span.star {font:14px Arial; color:#A80004;}
+.FT_BookingProcess div.traffic_info_box div.client_result_list ul.head li.li01 {width:265px;}
+.FT_BookingProcess div.traffic_info_box div.client_result_list ul.head li.li02 {width:80px;}
+.FT_BookingProcess div.traffic_info_box div.client_result_list ul.head li.li03 {width:190px;}
+.FT_BookingProcess div.traffic_info_box div.client_result_list ul.head li.li04 {width:110px;}
+.FT_BookingProcess div.traffic_info_box div.client_result_list ul.head li.li05 {width:110px;}
+.FT_BookingProcess div.traffic_info_box div.client_result_list ul.head li.li06 {width:100px;}
+.FT_BookingProcess div.traffic_info_box div.client_result_list ul.head li.li07 {width:100px;}
+.FT_BookingProcess div.traffic_info_box div.client_result_list ul.head li b {position:absolute; width:1px; height:1px; display:block; overflow:hidden; background:#fbfbfb;}
+.FT_BookingProcess div.traffic_info_box div.client_result_list ul.head li b.lt {top:0px; left:0px;}
+.FT_BookingProcess div.traffic_info_box div.client_result_list ul.head li b.rt {top:0px; right:0px;}
+.FT_BookingProcess div.traffic_info_box div.client_result_list ul.head li b.lb {bottom:0px; left:0px;}
+.FT_BookingProcess div.traffic_info_box div.client_result_list ul.head li b.rb {bottom:0px; right:0px;}
+.FT_BookingProcess div.traffic_info_box div.client_result_list ul.content li {width:958px; height:40px; float:left; position:relative; border-bottom:1px #ccc dashed; margin-left:5px; display:inline-block;}
+.FT_BookingProcess div.traffic_info_box div.client_result_list ul.content li:hover {background:#f8f8f8;}
+.FT_BookingProcess div.traffic_info_box div.client_result_list ul.content span {position:absolute; top:12px; font:13px/16px Arial, "宋体"; color:#666;}
+.FT_BookingProcess div.traffic_info_box div.client_result_list ul.content span.list01 {left:10px;}
+.FT_BookingProcess div.traffic_info_box div.client_result_list ul.content span.list02 {left:277px;}
+.FT_BookingProcess div.traffic_info_box div.client_result_list ul.content span.list03 {left:360px;}
+.FT_BookingProcess div.traffic_info_box div.client_result_list ul.content span.list04 {left:553px;}
+.FT_BookingProcess div.traffic_info_box div.client_result_list ul.content span.list05 {left:664px;}
+.FT_BookingProcess div.traffic_info_box div.client_result_list ul.content span.list06 {left:775px;}
+.FT_BookingProcess div.traffic_info_box div.client_result_list ul.content span.list07 {left:875px;}
+.FT_BookingProcess div.traffic_info_box div.contact_result_list ul.list {width:489px; float:left; display:inline-block;}
+.FT_BookingProcess div.traffic_info_box div.contact_result_list ul.list li {width:489px; height:30px; border-bottom:1px #ddd dashed; position:relative;}
+.FT_BookingProcess div.traffic_info_box div.contact_result_list ul.list li span.text01 {position:absolute; left:150px; bottom:5px; font:13px Arial, "宋体"; color:#333;}
+.FT_BookingProcess div.traffic_info_box div.explain_result_list {position:relative; width:100%; height:210px;}
+.FT_BookingProcess div.traffic_info_box div.explain_result_list textarea.explain {position:absolute; left:140px; top:15px; width:700px; height:170px;}
+.FT_BookingProcess div.traffic_info_box div.contract_result_list {position:relative; width:100%; height:320px;}
+.FT_BookingProcess div.traffic_info_box div.contract_result_list iframe.contract {position:absolute; left:140px; top:15px;}
+.FT_BookingProcess div.traffic_info_box div.contract_result_list textarea.FT_contract {position:absolute; left:140px; top:15px; width:700px; height:250px; font:13px/18px Arial, "宋体"; color:#333;}
+.FT_BookingProcess div.traffic_info_box div.contract_result_list input.click {position:absolute; left:140px; top:293px; width:14px; height:14px;}
+.FT_BookingProcess div.traffic_info_box div.contract_result_list span.text {position:absolute; left:160px; top:293px; font:13px Arial, "宋体"; color:#666;}
+
+/*GroupBuying*/
+.GroupBuying b, .dashed_border div.main_body div.BookingButton, .dashed_border div.main_body div.BookingButton a, .dashed_border div.main_body div.info02_box div.clock_border, .GB_left div.GB_content02 div.head, .GB_left div.GB_content02 b, .GB_left div.GB_content02 div.head span.title, .GroupBuying div.GB_right div.content03 ul.grade_list li span.star, .GroupBuying div.GB_right div.content04 div.special_photo a {background:url(../images/S_GroupBuying_puzzle.png);}
+
+.GroupBuying {width:980px; background:#addbd0; padding:10px 0px; position:relative;}
+.GroupBuying b {position:absolute; width:10px; height:10px; overflow:hidden;}
+.GroupBuying b.lt {top:0px; left:0px; background-position:0px -82px;}
+.GroupBuying b.lb {bottom:0px; left:0px; background-position:0px -92px;}
+.GroupBuying b.rt {top:0px; right:0px; background-position:-10px -82px;}
+.GroupBuying b.rb {bottom:0px; right:0px; background-position:-10px -92px;}
+.GroupBuying div.GB_left {width:700px; float:left;}
+.GB_left div.GB_content01 {width:680px; background:#fff;}
+.GB_left div.GB_content01 div.dashed_border {width:678px; border:1px #8ccdbd dashed;}
+.GB_left div.GB_content01 div.dashed_border p.main_title {font:24px/34px "微软雅黑", "黑体"; color:#339cb6; padding:10px 20px 0px 20px;}
+.GB_left div.GB_content01 div.dashed_border p.main_intro {font:16px/20px "微软雅黑", "黑体"; color:#3333; padding:0px 20px 10px; text-indent:2em;}
+.GB_left div.GB_content01 div.dashed_border div.main_body {width:678px; height:290px; position:relative;}
+.GB_left div.GB_content01 div.dashed_border div.main_body div.BookingButton {position:absolute; top:5px; left:-5px; width:210px; height:81px; background-position:0px 0px;}
+.GB_left div.GB_content01 div.dashed_border div.main_body div.BookingButton span.text {position:absolute; top:22px; left:8px; font:28px "微软雅黑", "黑体"; color:#fff;}
+.GB_left div.GB_content01 div.dashed_border div.main_body div.BookingButton a {position:absolute; top:18px; left:112px; width:92px; height:47px; display:block; background-position:-211px 0px;}
+.GB_left div.GB_content01 div.dashed_border div.main_body div.BookingButton a:hover {background-position:-211px -48px;}
+.GB_left div.GB_content01 div.dashed_border div.main_body div.info01_border {position:absolute; top:86px; left:5px; width:193px; border:1px #97bdc7 solid; border-top:none;}
+.GB_left div.GB_content01 div.dashed_border div.main_body div.info01_border div.info01_box {width:191px; height:70px; border:1px #fff solid; background:#e4edef; border-top:none; position:relative;}
+.GB_left div.GB_content01 div.dashed_border div.main_body div.info01_box span.text01 {position:absolute; top:20px; left:10px; font:12px Arial, "宋体"; color:#333;}
+.GB_left div.GB_content01 div.dashed_border div.main_body div.info01_box span.text02 {position:absolute; top:20px; left:75px; font:12px Arial, "宋体"; color:#333;}
+.GB_left div.GB_content01 div.dashed_border div.main_body div.info01_box span.text03 {position:absolute; top:20px; left:130px; font:12px Arial, "宋体"; color:#333;}
+.GB_left div.GB_content01 div.dashed_border div.main_body div.info01_box span font {font:13px "微软雅黑", "黑体"; color:#000;}
+.GB_left div.GB_content01 div.dashed_border div.main_body div.info02_border {position:absolute; top:166px; left:5px; width:193px; border:1px #97bdc7 solid;}
+.GB_left div.GB_content01 div.dashed_border div.main_body div.info02_border div.info02_box {width:191px; height:115px; border:1px #fff solid; background:#e4edef; position:relative;}
+.GB_left div.GB_content01 div.dashed_border div.main_body div.info02_box div.clock_border {position:absolute; top:10px; left:3px; width:185px; height:40px; background-position:0px -103px;}
+.GB_left div.GB_content01 div.dashed_border div.main_body div.info02_box div.clock_border input {position:absolute; top:4px; width:32px; height:32px; background:none; border:0px; font:22px/32px Arial; color:#333; text-align:center;}
+.GB_left div.GB_content01 div.dashed_border div.main_body div.info02_box div.clock_border input.day {left:11px;}
+.GB_left div.GB_content01 div.dashed_border div.main_body div.info02_box div.clock_border input.hour {left:55px;}
+.GB_left div.GB_content01 div.dashed_border div.main_body div.info02_box div.clock_border input.minute {left:99px;}
+.GB_left div.GB_content01 div.dashed_border div.main_body div.info02_box div.clock_border input.second {left:143px;}
+.GB_left div.GB_content01 div.dashed_border div.main_body div.info02_box div.clock_border span.text {position:absolute; top:43px; font:13px Arial, "宋体"; color:#666;}
+.GB_left div.GB_content01 div.dashed_border div.main_body div.info02_box div.clock_border span.day {left:19px;}
+.GB_left div.GB_content01 div.dashed_border div.main_body div.info02_box div.clock_border span.hour {left:63px;}
+.GB_left div.GB_content01 div.dashed_border div.main_body div.info02_box div.clock_border span.minute {left:106px;}
+.GB_left div.GB_content01 div.dashed_border div.main_body div.info02_box div.clock_border span.second {left:150px;}
+.GB_left div.GB_content01 div.dashed_border div.main_body div.info02_box div.people {position:absolute; top:85px; left:20px; font:13px Arial, "宋体"; color:#333;}
+.GB_left div.GB_content01 div.dashed_border div.main_body div.info02_box div.people span.number {position:absolute; bottom:-4px; left:65px; font:22px Arial; color:#288ca7;}
+.GB_left div.GB_content01 div.dashed_border div.main_body div.product_photo {position:absolute; top:0px; left:205px;}
+.GB_left div.GB_content02 {width:680px; position:relative; background:#fff url(../images/GB_content_right_bg.jpg) repeat-y right top;}
+.GB_left div.GB_content02 b {position:absolute; width:10px; height:10px; overflow:hidden;}
+.GB_left div.GB_content02 b.lt {left:0px; top:0px; background-position:-21px -82px;}
+.GB_left div.GB_content02 b.lb {left:0px; bottom:0px; background-position:-21px -92px;}
+.GB_left div.GB_content02 b.rt {right:0px; top:0px; background-position:-31px -82px;}
+.GB_left div.GB_content02 b.rb {right:0px; bottom:0px; background-position:-31px -92px;}
+.GB_left div.GB_content02 div.head {width:680px; height:32px; background-position:0px -144px; clear:both;}
+.GB_left div.GB_content02 div.head span.title {position:absolute; top:1px; left:10px; width:90px; height:31px; display:block; background-position:-210px -96px;}
+.GB_left div.GB_content02 div.content_left {width:500px; float:left;}
+.GB_left div.GB_content02 div.content_right {width:180px; float:left;}
+.GB_left div.GB_content02 div.content_right div.title {font:800 13px Arial, "宋体"; color:#333; padding:10px 20px;}
+.GB_left div.GB_content02 div.content_right div.pay_list {width:180px; text-align:center; padding:5px 0px 20px;}
+.GB_left div.GB_content02 div.content_right div.pay_list p {font:13px/26px Arial, "宋体"; color:#333;}
+.GroupBuying div.GB_right {width:280px; float:left;}
+.GroupBuying div.GB_right div.content03 {width:270px; background:#fff; float:left;}
+.GroupBuying div.GB_right div.content03 p.title {font:12px Arial; color:#999; padding:10px 15px;}
+.GroupBuying div.GB_right div.content03 p.title font {font:800 12px Arial, "宋体"; color:#349db7;}
+.GroupBuying div.GB_right div.content03 p.content {font:13px Arial, "宋体"; color:#333; padding:4px 15px 5px 80px; position:relative;}
+.GroupBuying div.GB_right div.content03 p.content span.name {position:absolute; top:4px; left:15px; _left:-67px; color:#777;}
+.GroupBuying div.GB_right div.content03 p.grade_title {font:800 13px Arial; color:#000; padding:20px 15px 5px;}
+.GroupBuying div.GB_right div.content03 ul.grade_list {width:270px; display:inline-block; padding-bottom:20px;}
+.GroupBuying div.GB_right div.content03 ul.grade_list li {width:270px; height:28px; float:left; position:relative;}
+.GroupBuying div.GB_right div.content03 ul.grade_list li span.name {position:absolute; bottom:6px; left:15px; font:13px Arial, "宋体"; color:#999;}
+.GroupBuying div.GB_right div.content03 ul.grade_list li div.star {position:absolute; bottom:6px; left:55px;}
+.GroupBuying div.GB_right div.content03 ul.grade_list li span.star {width:18px; height:18px; display:block; float:left; overflow:hidden; background-position:-285px -177px; margin-right:3px;}
+.GroupBuying div.GB_right div.content03 p.intro {width:220px; padding:10px 8px; border-top:1px #ccc dashed; text-indent:1.5em; font:13px Arial, "宋体"; color:#666;}
+.GroupBuying div.GB_right div.content04 {width:275px;}
+.GroupBuying div.GB_right div.content04 div.special_photo {width:275px; height:136px; position:relative;}
+.GroupBuying div.GB_right div.content04 div.special_photo a {position:absolute; top:0px; left:0px; width:275px; height:126px; display:block; background-position:0px -177px;}
+
+/*MemberCenter*/
+S_MC_body {width:980px; padding:5px 0px;}
+S_MC_body div.MC_body_left {width:225px; float:left;}
+S_MC_body div.MC_body_right {width:755px; float:left;}
+S_MC_body div.MC_body_left div.left_menu_list_border {width:218px; border:1px #ccc solid;}
+
+/*search*/
+
+.FreeTrip_search_list {width:978px;}
+
+/*20120807添加修改*/
+
+.FreeTrip_search_list li {width:978px; height:200px; border-bottom:1px #ccc dashed; position:relative; margin-bottom:10px;}
+
+/*20120807添加修改*/
+
+.FreeTrip_search_list li span.title {position:absolute; left:5px; top:5px; width:968px; height:26px; background:#eee; font:18px "微软雅黑", "黑体"; color:#4d8f00; text-indent:10px;}
+
+.FreeTrip_search_list li a.title {position:absolute; left:5px; top:5px; width:968px; height:26px; background:#eee; font:18px "微软雅黑", "黑体"; color:#4d8f00; text-indent:10px; text-decoration:none;}
+
+.FreeTrip_search_list li img.photo {position:absolute; left:5px; top:35px;}
+
+.FreeTrip_search_list li span {position:absolute; font:13px Arial, "宋体";}
+
+.FreeTrip_search_list li span.price_name {left:230px; top:38px; font-weight:800; color:#000;}
+
+.FreeTrip_search_list li span.price {left:280px; top:35px; color:#333;}
+
+.FreeTrip_search_list li span.price b {font:800 18px Arial; color:#C40005; padding-left:3px;}
+
+.FreeTrip_search_list li span.time_name {left:230px; top:58px; font-weight:800; color:#000;}
+
+.FreeTrip_search_list li span.time {left:305px; top:58px; color:#333;}
+
+.FreeTrip_search_list li span.intro_name {left:230px; top:88px; font-weight:800; color:#000;}
+
+/*20120807添加修改*/
+
+.FreeTrip_search_list li p.intro {position:absolute; left:230px; top:108px; width:700px; font:13px Arial, "宋体"; color:#333; text-indent:2em; height:62px;overflow:hidden; line-height:1.2em;}
+
+.FreeTrip_search_list li a#showUp{ bottom:10px; right:60px; position:absolute;}
+
+/*20120807添加修改*/
+
+/*error*/
+.error_head div.error_head_box div.logo, .error_content ul li b {background:url(../images/error_puzzle.jpg) no-repeat;}
+
+.error_head {width:100%; height:109px; background:#f9f9f9; border-bottom:1px #cfcfcf solid; position:relative;}
+.error_head b {position:absolute; left:0px; bottom:0px; width:100%; height:1px; background:#fff; overflow:hidden;}
+.error_head div.error_head_box {width:980px; height:108px; position:relative;}
+.error_head div.error_head_box div.logo {position:absolute; left:120px; top:27px; width:195px; height:70px; background-position:0px 0px;}
+.error_head div.error_head_box div.title {position:absolute; left:330px; top:27px; font:28px "微软雅黑", "黑体"; color:#000;}
+.error_head div.error_head_box div.title span {color:#009944;}
+.error_head div.error_head_box p {position:absolute; left:330px; top:65px; font:14px Arial, "宋体"; color:#333;}
+.error_content {width:980px; position:relative;}
+.error_content dl {width:740px; font:800 14px Arial, "宋体"; color:#333; padding:40px 0px 10px;}
+.error_content ul {width:740px;}
+.error_content ul li {float:left; width:740px; font:14px/24px Arial, "宋体"; color:#666; text-indent:16px; position:relative;}
+.error_content ul li b {position:absolute; left:0px; bottom:9px; width:6px; height:5px; overflow:hidden; background-position:-196px 0px;}
+.error_content dd {width:740px; font:14px Arial, "宋体"; color:#333; padding:10px 0px 40px;}
+.error_select {width:100%; border-top:1px #ccc dashed; border-bottom:1px #ccc dashed;}
+.error_select div.box {width:980px; padding-bottom:15px;}
+.error_select div.box dl {width:740px; font:14px Arial, "宋体"; color:#666; padding:15px 0px 5px;}
+.error_select div.box a {display:block; font:14px/22px Arial, "宋体"; color:#7A0; margin-left:120px;}
+.error_select div.box a:hover {color:#397300;}
+.error_bottom {width:100%; background:#f9f9f9;}
+.error_bottom div.box {width:980px; padding-bottom:50px;}
+.error_bottom div.box ul {width:700px; position:relative; padding:12px 0 0 70px;}
+.error_bottom div.box ul div.title {position:absolute; left:0px; bottom:0px; font:14px/16px Arial, "宋体"; color:#333;}
+.error_bottom div.box ul li {float:left; padding:0px 10px; border-right:1px #ccc solid; font:14px/16px Arial, "宋体";}
+.error_bottom div.box ul li a {font:14px Arial, "宋体"; color:#7A0;}
+.error_bottom div.box ul li a:hover {color:#397300;}
+
+/*NewsList*/
+ol.news_navigation, ol.news_navigation li a:hover {background:url(../images/NewsNavigation_puzzle.png);}
+
+.S_NewsList_main {width:980px;}
+ol.news_navigation {width:980px; height:28px; position:relative;}
+ol.news_navigation b {position:absolute; width:1px; height:1px; display:block; overflow:hidden; background:#fff;}
+ol.news_navigation b.lt {left:0px; top:0px;}
+ol.news_navigation b.rt {right:0px; top:0px;}
+ol.news_navigation b.lb {left:0px; bottom:0px;}
+ol.news_navigation b.rb {right:0px; bottom:0px;}
+ol.news_navigation li {float:left;}
+ol.news_navigation li a {display:block; padding:0px 15px; font:13px/28px Arial, "宋体"; color:#fff; text-decoration:none;}
+ol.news_navigation li a:hover {background-position:0px -28px;}
+.S_NewsList_main ul {width:980px; display:inline-block;}
+.S_NewsList_main ul li {width:980px; height:32px; font:13px Arial, "宋体"; border-bottom:1px #ddd dashed; position:relative;}
+.S_NewsList_main ul li:hover {background:#5383be;}
+.S_NewsList_main ul li b {position:absolute; left:10px; bottom:11px; width:4px; height:4px; overflow:hidden; background:#619d00;}
+.S_NewsList_main ul li:hover b {background:#acc9ee;}
+.S_NewsList_main ul li a {position:absolute; left:25px; bottom:6px; color:#333; text-decoration:none;}
+.S_NewsList_main ul li:hover a {color:#fff;}
+.S_NewsList_main ul li a:hover {text-decoration:underline;}
+.S_NewsList_main ul li span {position:absolute; right:10px; bottom:6px; color:#999;}
+.S_NewsList_main ul li:hover span {color:#acc9ee;}
+.S_NewsList_main div.NewsList_PageButton {width:980px; height:30px; text-align:center; font:12px Arial, "宋体"; padding-top:15px;}
+.S_NewsList_main div.NewsList_PageButton span {color:#999; margin-right:7px;}
+.S_NewsList_main div.NewsList_PageButton span b {color:#000; padding:0px 2px;}
+.S_NewsList_main div.NewsList_PageButton span b.red {color:#BF0005;}
+.S_NewsList_main div.NewsList_PageButton a {color:#666; text-decoration:none; padding:0px 3px; display:inline-block; margin-right:5px;}
+.S_NewsList_main div.NewsList_PageButton a:hover {text-decoration:underline;}
+.S_NewsList_main div.NewsList_PageButton a.hover {background:#619d00; color:#fff; text-decroation:none;}
+
+/*NewsDetail*/
+.S_NewsDetail_main {width:978px; border:1px #ccc solid;}
+.S_NewsDetail_main div.NewsDetail_left {float:left; width:730px; border-right:1px #ccc solid;}
+.NewsDetail_left div.NewsDetail_title {width:705px; height:80px; border-bottom:1px #ccc solid; position:relative;}
+.NewsDetail_left div.NewsDetail_title h1 {position:absolute; left:10px; top:16px; font:26px "微软雅黑", "黑体";}
+.NewsDetail_left div.NewsDetail_title span {position:absolute; left:10px; top:55px; font:13px Arial, "宋体"; color:#999;	}
+.NewsDetail_left div.NewsDetail_title span b {color:#C60005;}
+.NewsDetail_left div.NewsDetail_text {padding:30px 30px; font:14px/20px Arial, "宋体"; color:#666;}
+.S_NewsDetail_main div.NewsDetail_right {float:left; width:247px; border-left:1px #ccc solid; margin-left:-1px;}
+.S_NewsDetail_main div.NewsDetail_right div.NewsDetail_gadgets {width:247px; position:relative;}
+.S_NewsDetail_main div.NewsDetail_right div.NewsDetail_gadgets h1 {font:14px Arial, "宋体"; color:#006600; line-height:150%; padding:10px 0px 10px 20px;}
+.S_NewsDetail_main div.NewsDetail_right div.NewsDetail_gadgets h1 span {color:#666; font-size:12px;}
+.S_NewsDetail_main div.NewsDetail_right div.NewsDetail_gadgets h1 span a {color:#336699; text-decoration:none;}
+.S_NewsDetail_main div.NewsDetail_right div.NewsDetail_gadgets ul {width:219px;}
+.S_NewsDetail_main div.NewsDetail_right div.NewsDetail_gadgets ul li {float:left; width:100%; font:13px/28px Arial, "宋体"; color:#666; word-break:keep-all;white-space:nowrap; overflow:hidden; border-bottom:1px #ccc dashed;}
+.S_NewsDetail_main div.NewsDetail_right div.NewsDetail_gadgets ul li a {color:#336699; text-decoration:none;}
+.S_NewsDetail_main div.NewsDetail_right div.NewsDetail_gadgets ul li a:hover {background:#619d00; color:#fff;}
+.S_NewsDetail_main div.NewsDetail_right div.NewsDetail_right_content {width:227px; padding-top:10px; overflow:hidden;}
+
+/*HotelDetail*/
+/*20120821改动*/
+div.star_box span.star, .HotelDetail_main div.index_right div.HotelList_box div.list_head a, .HotelText_box div.head div.title span.ico,div.star_box{background: url(../images/HotelDetail_puzzle.png);}
+/*20120821改动*/
+
+.HotelDetail_main {width:980px; padding:5px 0 5px 0;}
+.HotelDetail_main div.index_left {float:left; width:225px;}
+.HotelDetail_main div.index_left div.HotelDetail_information {float:left; width:210px; padding:4px; border:1px #ccc solid;}
+.HotelDetail_main div.index_left div.HotelDetail_information h1 {width:200px; font:18px "微软雅黑", "黑体"; color:#467200; word-break:break-all; padding:5px 0px;}
+/*20120821改动*/
+.HotelDetail_main div.index_left div.HotelDetail_information div.star_box {width:80px; padding:0px 0px 5px;}
+/*20120821改动*/
+.HotelDetail_main div.index_left div.HotelDetail_information div.star_box span.star {width:20px; height:20px; display:block; float:left; margin-right:5px;}
+.HotelDetail_main div.index_left div.HotelDetail_information div.star_box span.full {background-position:0px 0px;}
+.HotelDetail_main div.index_left div.HotelDetail_information div.star_box span.half {background-position:-21px 0px;}
+.HotelDetail_main div.index_left div.HotelDetail_information div.star_box span.empty {background-position:-42px 0px;}
+.HotelDetail_main div.index_left div.HotelDetail_information p.intro {width:200px; height:135px; font:13px/18px Arial, "宋体"; color:#666; padding:10px 0px; overflow:hidden;}
+.HotelDetail_main div.index_left div.HotelDetail_information div.info_list {width:200px; padding-top:8px; border-bottom:1px #ddd dashed; font:13px/20px Arial, "宋体"; color:#666;}
+.HotelDetail_main div.index_left div.HotelDetail_information div.info_list b {color:#333; padding-right:5px;}
+.HotelDetail_main div.index_right {float:left; width:755px;}
+.HotelDetail_main div.index_right div.HotelList_box {width:753px; border:1px #ccc solid;}
+.HotelDetail_main div.index_right div.HotelList_box div.list_head {width:100%; height:80px; position:relative;}
+.HotelDetail_main div.index_right div.HotelList_box div.list_head span {position:absolute; font:13px Arial, "宋体"; color:#333;}
+.HotelDetail_main div.index_right div.HotelList_box div.list_head span.text {left:10px; top:10px;}
+.HotelDetail_main div.index_right div.HotelList_box div.list_head span.CheckIn_date {left:10px; top:45px;}
+.HotelDetail_main div.index_right div.HotelList_box div.list_head span.CheckOut_date {left:280px; top:45px;}
+.HotelDetail_main div.index_right div.HotelList_box div.list_head span.warning {left:510px; top:45px; color:#CA0005;}
+.HotelDetail_main div.index_right div.HotelList_box div.list_head span input {position:absolute; right:-140px; top:-4px; width:130px; height:22px; border:1px #ccc solid; line-height:22px;}
+.HotelDetail_main div.index_right div.HotelList_box div.list_head a {position:absolute; right:20px; top:40px; width:86px; height:25px; background-position:-63px 0px; font:800 13px/25px Arial, "宋体"; color:#fff; text-align:center; text-decoration:none;}
+.HotelDetail_main div.index_right div.HotelList_box div.list_head a:hover {background-position:-63px -25px;}
+.HotelDetail_main div.index_right div.HotelList_box ol {width:745px;}
+.HotelDetail_main div.index_right div.HotelList_box ol li {float:left; height:24px; background:#444; padding:0px 10px; font:12px/24px Arial, "宋体"; color:#fff; position:relative; border-right:2px #fff solid;}
+.HotelDetail_main div.index_right div.HotelList_box ol li b {position:absolute; width:1px; height:1px; background:#fff; overflow:hidden;}
+.HotelDetail_main div.index_right div.HotelList_box ol li b.lt {left:0px; top:0px;}
+.HotelDetail_main div.index_right div.HotelList_box ol li b.rt {right:0px; top:0px;}
+.HotelDetail_main div.index_right div.HotelList_box ol li b.lb {left:0px; bottom:0px;}
+.HotelDetail_main div.index_right div.HotelList_box ol li b.rb {right:0px; bottom:0px;}
+.HotelDetail_main div.index_right div.HotelList_box ol li.head01 {width:295px;}
+.HotelDetail_main div.index_right div.HotelList_box ol li.head02 {width:155px;}
+.HotelDetail_main div.index_right div.HotelList_box ol li.head03 {width:50px;}
+.HotelDetail_main div.index_right div.HotelList_box ol li.head04 {width:70px;}
+.HotelDetail_main div.index_right div.HotelList_box ol li.head05 {width:205px;}
+.HotelDetail_main div.index_right div.HotelList_box ol li.head06 {width:58px;}
+.HotelDetail_main div.index_right div.HotelList_box ol li.head07 {width:134px;}
+.HotelDetail_main div.index_right div.HotelList_box ol li.head08 {width:50px;}
+.HotelDetail_main div.index_right div.HotelList_box ol li.head11 {width:105px;}
+.HotelDetail_main div.index_right div.HotelList_box ol li.head12 {width:70px;}
+.HotelDetail_main div.index_right div.HotelList_box ol li.head13 {width:95px;}
+.HotelDetail_main div.index_right div.HotelList_box ol li.head14 {width:40px;}
+.HotelDetail_main div.index_right div.HotelList_box ol li.head15 {width:55px;}
+.HotelDetail_main div.index_right div.HotelList_box ol li.head16 {width:175px;}
+.HotelDetail_main div.index_right div.HotelList_box ol li.head17 {width:50px;}
+.HotelDetail_main div.index_right div.HotelList_box ul {width:745px; padding-bottom:5px;}
+.HotelDetail_main div.index_right div.HotelList_box ul li {float:left; width:745px; border-bottom:1px #ddd dashed; position:relative;}
+.HotelDetail_main div.index_right div.HotelList_box ul li div {position:absolute; font:13px/16px Arial, "宋体"; color:#666; overflow:hidden;}
+.HotelDetail_main div.index_right div.HotelList_box ul li div.li_content01 {left:8px; top:10px; width:295px; color:#333; font-weight:800;}
+.HotelDetail_main div.index_right div.HotelList_box ul li div.li_content02 {left:320px; top:10px; width:155px;}
+.HotelDetail_main div.index_right div.HotelList_box ul li div.li_content03 {left:495px; top:10px; width:50px; color:#999;}
+.HotelDetail_main div.index_right div.HotelList_box ul li div.li_content04 {left:563px; top:10px; width:70px; color:#999;}
+.HotelDetail_main div.index_right div.HotelList_box ul li div.li_content05 {left:470px; top:10px; width:205px;}
+.HotelDetail_main div.index_right div.HotelList_box ul li div.li_content06 {left:455px; top:10px; width:60px;}
+.HotelDetail_main div.index_right div.HotelList_box ul li div.li_content11 {left:8px; top:10px; width:116px; color:#333; font-weight:800;}
+.HotelDetail_main div.index_right div.HotelList_box ul li div.li_content12 {left:136px; top:10px; width:80px;}
+.HotelDetail_main div.index_right div.HotelList_box ul li div.li_content13 {left:228px; top:10px; width:105px; color:#999;}
+.HotelDetail_main div.index_right div.HotelList_box ul li div.li_content14 {left:344px; top:10px; width:100px; color:#999;}
+.HotelDetail_main div.index_right div.HotelList_box ul li div.li_content15 {left:407px; top:10px; width:40px;}
+.HotelDetail_main div.index_right div.HotelList_box ul li div span.text01 {color:#333; padding-left:2px;}
+.HotelDetail_main div.index_right div.HotelList_box ul li div span.text02 {color:#8C0000; padding-left:2px;}
+.HotelDetail_main div.index_right div.HotelList_box ul li h1 {float:left; width:525px; height:30px;}
+.HotelDetail_main div.index_right div.HotelList_box ul li h3 {float:left; width:485px; height:30px;}
+.HotelDetail_main div.index_right div.HotelList_box ul li p.explain01 {float:left; width:143px; font:13px/16px Arial, "宋体"; color:#666; padding:10px 0px;}
+.HotelDetail_main div.index_right div.HotelList_box ul li p.explain02 {float:left; width:180px; font:13px/16px Arial, "宋体"; color:#666; padding:10px 0px;}
+.HotelDetail_main div.index_right div.HotelList_box ul li a.book {position:absolute; left:685px; top:8px; padding:0px 10px; font:13px/20px Arial, "宋体"; color:#fff; background:#64a200; text-decoration:none;}
+.HotelDetail_main div.index_right div.HotelList_box ul li a.book:hover {background:#77b119;}
+.HotelDetail_main div.index_right div.HotelList_box ul li a.book b {position:absolute; width:1px; height:1px; background:#fff; overflow:hidden;}
+.HotelDetail_main div.index_right div.HotelList_box ul li a.book b.lt {left:0px; top:0px;}
+.HotelDetail_main div.index_right div.HotelList_box ul li a.book b.rt {right:0px; top:0px;}
+.HotelDetail_main div.index_right div.HotelList_box ul li a.book b.lb {left:0px; bottom:0px;}
+.HotelDetail_main div.index_right div.HotelList_box ul li a.book b.rb {right:0px; bottom:0px;}
+.HotelDetail_main div.index_right div.HotelList_box ul li h2 {width:100%; font:20px/70px "微软雅黑", "黑体"; color:#558301; text-align:center; display:block;}
+.HotelDetail_main div.index_right div.HotelText_box {width:753px; border:1px #ccc solid;}
+.HotelDetail_main div.index_right div.HotelText_box div.head {width:100%; height:43px; position:relative; border-bottom:1px #e5e5e5 dashed;}
+.HotelDetail_main div.index_right div.HotelText_box div.head div.title {position:absolute; bottom:12px; left:10px; font:16px/18px "微软雅黑", "黑体"; color:#619d00; text-indent:16px;}
+.HotelDetail_main div.index_right div.HotelText_box div.head div.title span.ico {position:absolute; bottom:3px; left:0px; width:12px; height:11px; display:block; background-position:0px -21px; overflow:hidden;}
+.HotelDetail_main div.index_right div.HotelText_box ul.HotelIntro_content {width:715px; padding:6px 0px;}
+.HotelDetail_main div.index_right div.HotelText_box ul.HotelIntro_content li {padding:7px 0px 6px 73px; font:13px Arial, "宋体"; color:#666; position:relative; float:left; clear:both;}
+.HotelDetail_main div.index_right div.HotelText_box ul.HotelIntro_content li b {position:absolute; left:0px; top:7px; color:#333;}
+.HotelDetail_main div.index_right div.HotelText_box ul.HotelDistance {width:735px; background:#f2f2f2; border:1px #ddd solid;}
+.HotelDetail_main div.index_right div.HotelText_box ul.HotelDistance li {float:left; padding:6px 10px; font:13px Arial, "宋体"; color:#333;}
+.HotelDetail_main div.index_right div.HotelText_box ul.HotelDistance li span {color:#619B00;}
+.HotelDetail_main div.index_right div.HotelDetail_slide {float:left; width:373px; height:331px; border:1px #ccc solid; margin-right:5px;}
+.HotelDetail_slide #photos {visibility: hidden;}
+.HotelDetail_slide div.panel {width:363px; height:260px; padding:5px;}
+.HotelDetail_slide div.panel img {width:363px; height:260px;}
+.HotelDetail_slide ul.filmstrip img {width:60px; height:60px;}
+.HotelDetail_main div.index_right div.HotelDetail_map {float:left; width:365px; height:323px; border:1px #ccc solid; padding:4px;}
+.HotelDetail_main div.index_right div.HotelDetail_map span {width:100%; display:block; overflow:hidden;}
+
+/*hotel channel*/
+.HotelBook_box div.content h1, .HotelBook_box div.content a.button, .HotelChannel_left div.HotelBrand_box h1 b, .S_hotel_channel div.HotelChannel_right div.product_box span.ico, .HotelChannel_right div.product_box div.product_centent ul li div.star_box b.star, .HotelChannel_right div.product_box div.product_centent ul li span.price_ico, .HotelChannel_left div.HotelCity_box h1 b, .HotelChannel_right div.product_box div.SlidePhoto span#prev, .HotelChannel_right div.product_box div.SlidePhoto span#next {background:url(../images/S_HotelSubpage_puzzle.png);}
+
+.S_hotel_channel {width:980px; padding-top:5px;}
+.S_hotel_channel div.HotelChannel_left {float:left; width:305px;}
+.S_hotel_channel div.HotelChannel_left div.HotelBook_box {float:left; width:300px; background:#ddd; padding-bottom:3px;}
+.S_hotel_channel div.HotelChannel_left div.HotelBook_box div.top_border {width:100%; height:5px; overflow:hidden; background:#a0d34d;}
+.S_hotel_channel div.HotelChannel_left div.HotelBook_box div.content {width:294px; background:#fff; padding-bottom:10px;}
+.S_hotel_channel div.HotelChannel_left div.HotelBook_box div.content h1 {width:100%; height:31px; font:16px/30px "微软雅黑", "黑体"; color:#000; text-indent:30px; background-position:0px 0px;}
+.S_hotel_channel div.HotelChannel_left div.HotelBook_box div.content ul {width:100%; padding:5px 0px 15px;}
+.S_hotel_channel div.HotelChannel_left div.HotelBook_box div.content ul li {width:100%; height:36px; position:relative;}
+.S_hotel_channel div.HotelChannel_left div.HotelBook_box div.content ul li span {position:absolute; left:0px; bottom:10px; width:80px; display:block; font:13px Arial, "宋体"; color:#666; text-align:right;}
+.S_hotel_channel div.HotelChannel_left div.HotelBook_box div.content ul li input {position:absolute; left:95px; bottom:6px; width:160px; height:20px; font:13px Arial, "宋体"; color:#666; border:1px #ccc solid;}
+.S_hotel_channel div.HotelChannel_left div.HotelBook_box div.content ul li select {position:absolute; left:95px; bottom:8px; width:160px; height:20px; font:13px Arial, "宋体"; color:#666; border:1px #ccc solid;}
+.S_hotel_channel div.HotelChannel_left div.HotelBook_box div.content a.button {width:72px; height:29px; display:block; background-position:0px -32px; margin-left:120px;}
+.S_hotel_channel div.HotelChannel_left div.HotelBook_box div.content a.button:hover {background-position:0px -61px;}
+.S_hotel_channel div.HotelChannel_left div.HotelBrand_box {float:left; width:298px; border:1px #ccc solid;}
+.S_hotel_channel div.HotelChannel_left div.HotelBrand_box h1 {width:100%; height:30px; border-bottom:1px #ddd dashed; font:16px/30px "微软雅黑", "黑体"; color:#619D00; text-indent:26px; position:relative;}
+.S_hotel_channel div.HotelChannel_left div.HotelBrand_box h1 b {position:absolute; left:10px; bottom:8px; width:12px; height:11px; background-position:-73px -32px;}
+.S_hotel_channel div.HotelChannel_left div.HotelBrand_box h1 span {position:absolute; left:70px; bottom:7px; font:12px/14px "宋体"; color:#999;}
+.S_hotel_channel div.HotelChannel_left div.HotelBrand_box ul {width:288px;}
+.S_hotel_channel div.HotelChannel_left div.HotelBrand_box ul li {float:left; width:96px; height:116px; border-bottom:1px #ccc dashed;}
+.S_hotel_channel div.HotelChannel_left div.HotelBrand_box ul li a {width:80px; height:116px; display:block; margin-left:8px; text-decoration:none;}
+.S_hotel_channel div.HotelChannel_left div.HotelBrand_box ul li a img {width:80px; height:80px;}
+.S_hotel_channel div.HotelChannel_left div.HotelBrand_box ul li a span {width:80px; display:block; font:13px/20px Arial, "宋体"; color:#333; text-align:center;}
+.S_hotel_channel div.HotelChannel_left div.HotelBrand_box ul li a:hover span {color:#619D00; text-decoration:underline;}
+.S_hotel_channel div.HotelChannel_left div.HotelCity_box {float:left; width:298px; border:1px #ccc solid;}
+.S_hotel_channel div.HotelChannel_left div.HotelCity_box h1 {width:100%; height:30px; border-bottom:1px #ddd dashed; font:16px/30px "微软雅黑", "黑体"; color:#619D00; text-indent:26px; position:relative;}
+.S_hotel_channel div.HotelChannel_left div.HotelCity_box h1 b {position:absolute; left:10px; bottom:8px; width:12px; height:11px; background-position:-73px -32px;}
+.S_hotel_channel div.HotelChannel_left div.HotelCity_box ul {width:288px; padding:5px 0px;}
+.S_hotel_channel div.HotelChannel_left div.HotelCity_box ul li {float:left; padding:3px 0px;}
+.S_hotel_channel div.HotelChannel_left div.HotelCity_box ul li a {font:13px/16px Arial, "宋体"; color:#999; padding:0px 10px; text-decoration:none;}
+.S_hotel_channel div.HotelChannel_left div.HotelCity_box ul:hover li a {color:#457D00;}
+.S_hotel_channel div.HotelChannel_left div.HotelCity_box ul li a:hover {background:#333; color:#fff;}
+.S_hotel_channel div.HotelChannel_right {float:left; width:675px;}
+.S_hotel_channel div.HotelChannel_right div.SlideShow div.KSS_titleBox, .S_hotel_channel div.HotelChannel_right div.SlideShow div.KSS_titleBar {display:none;}
+.S_hotel_channel div.HotelChannel_right div.product_box {width:100%;}
+.S_hotel_channel div.HotelChannel_right div.product_box div.head {width:675px; height:38px; border-bottom:2px #000 solid; position:relative;}
+.S_hotel_channel div.HotelChannel_right div.product_box div.head span {position:absolute; display:block;}
+.S_hotel_channel div.HotelChannel_right div.product_box div.head span.ico {bottom:0px; left:0px; width:50px; height:33px;}
+.S_hotel_channel div.HotelChannel_right div.product_box div.head span.ico01 {background-position:-86px -32px;}
+.S_hotel_channel div.HotelChannel_right div.product_box div.head span.ico02 {background-position:-137px -32px;}
+.S_hotel_channel div.HotelChannel_right div.product_box div.head span.ico03 {background-position:-188px -32px;}
+.S_hotel_channel div.HotelChannel_right div.product_box div.head span.title {bottom:4px; _bottom:1px; left:50px; font:16px/18px "微软雅黑", "黑体"; color:#000;}
+.S_hotel_channel div.HotelChannel_right div.product_box div.head ul {position:absolute; right:0px; bottom:0px;}
+.S_hotel_channel div.HotelChannel_right div.product_box div.head ul li {float:left; padding:0px 5px; font:13px/20px Arial, "宋体"; color:#666; cursor:pointer; position:relative;}
+.S_hotel_channel div.HotelChannel_right div.product_box div.head ul li.hover {background:#619D00; color:#fff;}
+.S_hotel_channel div.HotelChannel_right div.product_box div.head ul li.hover b {position:absolute; width:1px; height:1px; background:#fff; display:block; overflow:hidden;}
+.S_hotel_channel div.HotelChannel_right div.product_box div.head ul li.hover b.lt {left:0px; top:0px;}
+.S_hotel_channel div.HotelChannel_right div.product_box div.head ul li.hover b.rt {right:0px; top:0px;}
+.S_hotel_channel div.HotelChannel_right div.product_box div.product_centent {width:100%;}
+.S_hotel_channel div.HotelChannel_right div.product_box div.product_centent ul {display:none; width:675px;}
+.S_hotel_channel div.HotelChannel_right div.product_box div.product_centent ul.block {display:block;}
+.S_hotel_channel div.HotelChannel_right div.product_box div.product_centent ul li {float:left; width:337px; height:50px; border-bottom:1px #ddd dashed; position:relative;}
+.S_hotel_channel div.HotelChannel_right div.product_box div.product_centent ul li div.name {position:absolute; left:10px; bottom:23px; font:16px/18px "微软雅黑", "黑体"; color:#999;}
+.S_hotel_channel div.HotelChannel_right div.product_box div.product_centent ul li div.name a {color:#333; text-decoration:none;}
+.S_hotel_channel div.HotelChannel_right div.product_box div.product_centent ul li div.name a:hover {color:#619D00; border-bottom:1px #ccc dashed;}
+.S_hotel_channel div.HotelChannel_right div.product_box div.product_centent ul li div.city {position:absolute; left:10px; bottom:5px; font:13px Arial, "宋体"; color:#999;}
+.S_hotel_channel div.HotelChannel_right div.product_box div.product_centent ul li div.star_box {position:absolute; left:10px; bottom:5px; display:inline-block;}
+.S_hotel_channel div.HotelChannel_right div.product_box div.product_centent ul li div.star_box b.star {width:16px; height:16px; display:block; float:left; margin-right:3px;}
+.S_hotel_channel div.HotelChannel_right div.product_box div.product_centent ul li div.star_box b.full {background-position:-86px -66px;}
+.S_hotel_channel div.HotelChannel_right div.product_box div.product_centent ul li div.star_box b.half {background-position:-103px -66px;}
+.S_hotel_channel div.HotelChannel_right div.product_box div.product_centent ul li div.star_box b.empty {background-position:-120px -66px;}
+.S_hotel_channel div.HotelChannel_right div.product_box div.product_centent ul li span.price_ico {position:absolute; left:260px; bottom:7px; width:8px; height:10px; display:block; overflow:hidden; background-position:-137px -66px;}
+.S_hotel_channel div.HotelChannel_right div.product_box div.product_centent ul li span.price {position:absolute; left:270px; bottom:4px; font:800 16px/18px "Arial"; color:#f46200;}
+.S_hotel_channel div.HotelChannel_right div.product_box div.SlidePhoto {width:675px; height:155px; float:left; position:relative;}
+.S_hotel_channel div.HotelChannel_right div.product_box div.SlidePhoto span#prev {position:absolute; top:5px; left:0px; width:17px; height:150px; display:block; background-position:-291px 0px; overflow:hidden; cursor:pointer;}
+.S_hotel_channel div.HotelChannel_right div.product_box div.SlidePhoto span#prev:hover {background-position:-327px 0px;}
+.S_hotel_channel div.HotelChannel_right div.product_box div.SlidePhoto span#next {position:absolute; top:5px; right:0px; width:17px; height:150px; display:block; background-position:-309px 0px; overflow:hidden; cursor:pointer;}
+.S_hotel_channel div.HotelChannel_right div.product_box div.SlidePhoto span#next:hover {background-position:-345px 0px;}
+.S_hotel_channel div.HotelChannel_right div.product_box div.SlidePhoto div#box {position:absolute; left:20px; top:5px; width:630px; height:150px; overflow:hidden;}
+.S_hotel_channel div.HotelChannel_right div.product_box div.SlidePhoto div#box li {width:208px; height:150px; float:left; position:relative; padding:0px 2px 0px 2px;}
+.S_hotel_channel div.HotelChannel_right div.product_box div.SlidePhoto div#box li a {position:absoliute; left:0px; top:0px; width:145px; height:150px; display:block; z-index:20;}
+.S_hotel_channel div.HotelChannel_right div.product_box div.SlidePhoto div#box li img {position:absolute; left:0px; top:0px; z-index:10; width:208px; height:110px;}
+.S_hotel_channel div.HotelChannel_right div.product_box div.SlidePhoto div#box li div.text_box {position:absolute; left:5px; top:111px; width:200px; height:39px; background-position:0px -97px;}
+.S_hotel_channel div.HotelChannel_right div.product_box div.SlidePhoto div#box li div.text_box dd {position:absolute; left:5px; top:5px; width:200px; font:13px Arial, "宋体"; color:#333; white-space:nowarp; overflow:hidden; text-align:left;}
+.S_hotel_channel div.HotelChannel_right div.product_box div.SlidePhoto div#box li div.text_box dt {position:absolute; left:5px; top:20px; width:135px; font:13px Arial; color:#999; text-align:left;}
+.S_hotel_channel div.HotelChannel_right div.product_box div.SlidePhoto div#box li div.text_box dt span {color:#ffcd20; text-align:left;}
+/*20120821新增项目*/
+.HotelDetail_main div.index_right div.HotelText_box ul.HotelIntro_content li {padding:7px 0px 6px 73px; font:13px Arial, "宋体"; color:#666; position:relative; float:left; clear:both; width:642px;}
+.HotelDetail_main div.index_right div.HotelText_box ul.HotelDistance li{float: expression(this.previousSibling==null?'none':'left');}
+.HotelDetail_main div.index_right div.HotelText_box ul.HotelDistance li:first-child{ float:none;}
+.HotelDetail_main div.index_right div.HotelList_box ul li a.book{ left: 675px;}
+div.star_box{ width:80px; height:16px; margin:0;}
+ div.star01{ background-position:-154px 0;}
+ div.star02{ background-position:-241px 0;}
+ div.star03{ background-position:-327px 0;}
+ div.star04{ background-position:-413px 0;}
+ div.star05{ background-position:-154px -24px;}
+ div.star06{ background-position:-241px -24px;}
+ div.star07{ background-position:-327px -24px;}
+ div.star08{ background-position:-413px -24px;}
+ div.star09{ background-position:-154px -48px;}
+/*20120821新增项目*/
+
+/*hotel search*/
+.FreeTrip_search_list li a.title div.star_box b.star {background:url(../images/S_HotelSearch_puzzle.png);}
+
+.gzl02_search_content div.content_01 div.input_box {float:left; width:220px; height:30px; position:relative;}
+.gzl02_search_content div.content_01 div.input_box span.text {position:absolute; left:20px; top:15px; font:13px Arial, "宋体"; color:#666;}
+.gzl02_search_content div.content_01 div.input_box input.hotel_input01 {position:absolute; left:90px; top:12px; width:120px; border:1px #ccc solid; font:13px/20px Arial, "宋体"; color:#666;}
+/*20120821新增项目*/
+.FreeTrip_search_list li a.title div.star_box {position:absolute; right:10px; top:3px; width:80px; height:21px;}
+/*20120821新增项目*/
+.FreeTrip_search_list li a.title div.star_box b.star {width:20px; height:20px; display:block; float:left; margin-right:5px;}
+.FreeTrip_search_list li a.title div.star_box b.full {background-position:0px 0px;}
+.FreeTrip_search_list li a.title div.star_box b.half {background-position:-21px 0px;}
+.FreeTrip_search_list li a.title div.star_box b.empty {background-position:-42px 0px;}
+
+.none_01 {clear:both;}
+.none_02 {clear:both; height:5px; overflow:hidden;}
+.none_03 {clear:both; height:10px; overflow:hidden;}
+.HotelDetail_main div.index_left div.HotelDetail_information a#show {
+    float: right;
+    margin-right: 10px;
+}
+div, ul, ol, li, img, p, b, input, button, dl, dd, dt, h1 {
+    border: 0 none;
+    margin: 0 auto;
+    padding: 0;
+}
+.FreeTrip_search_list li a#showUp {
+    bottom: 10px;
+    position: absolute;
+    right: 60px;
+}
+/*search*/
+.FreeTrip_search_list {width:978px;}
+/*20120807添加修改*/
+.FreeTrip_search_list li {width:978px; height:200px; border-bottom:1px #ccc dashed; position:relative; margin-bottom:10px;}
+/*20120807添加修改*/
+.FreeTrip_search_list li span.title {position:absolute; left:5px; top:5px; width:968px; height:26px; background:#eee; font:18px "微软雅黑", "黑体"; color:#4d8f00; text-indent:10px;}
+.FreeTrip_search_list li a.title {position:absolute; left:5px; top:5px; width:968px; height:26px; background:#eee; font:18px "微软雅黑", "黑体"; color:#4d8f00; text-indent:10px; text-decoration:none;}
+.FreeTrip_search_list li img.photo {position:absolute; left:5px; top:35px;}
+.FreeTrip_search_list li span {position:absolute; font:13px Arial, "宋体";}
+.FreeTrip_search_list li span.price_name {left:230px; top:38px; font-weight:800; color:#000;}
+.FreeTrip_search_list li span.price {left:280px; top:35px; color:#333;}
+.FreeTrip_search_list li span.price b {font:800 18px Arial; color:#C40005; padding-left:3px;}
+.FreeTrip_search_list li span.time_name {left:230px; top:58px; font-weight:800nno; color:#000;}
+.FreeTrip_search_list li span.time {left:305px; top:58px; color:#333;}
+.FreeTrip_search_list li span.intro_name {left:230px; top:88px; font-weight:800; color:#000;}
+/*20120821添加修改*/
+.FreeTrip_search_list li p.intro {position:absolute; left:230px; top:108px; width:700px; font:13px Arial, "宋体"; color:#333; text-indent:2em; height:62px;overflow:hidden; line-height:1.2em;height:60px !important;}
+.FreeTrip_search_list li a#showUp{ bottom:10px; right:60px; position:absolute;}
+/*20120821添加修改*/ 
+
+/*FreeTrip自由行改版 20120630_Edit*/
+.S_subpage div.S_subpage_left div.left_list a.newItemBtn{ background:url(../images/newItemBtn_puzzle.png) no-repeat;}
+.S_subpage .topAds{ width:inherit; height:168px; margin-bottom:5px;}
+.S_subpage div.S_subpage_left div.left_list a.newItemBtn{ width:190px; display:block; height:125px; text-indent:-9000px;}
+.S_subpage div.S_subpage_left div.left_list a.num01{ background-position:0 0;}
+.S_subpage div.S_subpage_left div.left_list a.num02{ background-position:0 -130px;}
+.S_subpage div.S_subpage_left div.left_list a.num01:hover{ background-position:-196px 0;}
+.S_subpage div.S_subpage_left div.left_list a.num02:hover{ background-position:-196px -130px;}
+.S_subpage div.S_subpage_left div.fixBg{ background-color:#fff;}
+
+/*20120924首页修改*/
+.S_index_content div.content_left div.product div.image{width:173px;height:192px; margin-top:5px;}
+.S_index_content div.content_left div.product ul.list{ width:480px; margin-left:5px;}
+.S_index_content div.content_left div.product ul.list span.price_ico{left:425px;}
+.S_index_content div.content_left div.product ul.list span.price{left:435px;}
+.S_index_content div.content_left div.product div.image img{ width:168px; height:187px;}
+
+/*20120924客服按钮修改*/
+#full{display:none;}
+#full2{width:85px;height:98px;right:5px;POSITION:fixed;_POSITION:absolute;TOP:48%;z-index:2001;overflow:hidden;_bottom:auto;_top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight/2-49));}
+.S_index_CustomerService a {width:85px;height:98px;background:url(../images/S_index_puzzle_01.png) no-repeat;}
+.S_index_CustomerService a{display:block;background-position:0px 0px;}
+.S_index_CustomerService a:hover{background-position:-87px 0px;}
+.S_index_head{overflow:hidden;}
+* html,* html body /* 修正IE6振动bug */{background-image:url(about:blank);background-attachment:fixed;}
+.S_index_CustomerService div.static{position:relative;width:85px;height:98px;}
+.S_index_CustomerService a {width: 85px; height: 98px; background: url(../images/S_index_puzzle_01.png) no-repeat; background-position: 0px 0px;}
+.S_index_CustomerService div.static a.close{width:15px; height:15px; position:absolute; background:none;cursor:pointer; top:0; right:0;}
+.S_index_CustomerService a:hover{background-position: -87px 0px;}
+
+
+.caution{ width:643px; border:1px solid #ccc; margin-bottom:10px; padding:10px 15px; background-color:#FFC;}
+.caution ul li{ margin-bottom:5px; color:#DD0005;}
+.caution h3{ font-size:14px; color:#333;}

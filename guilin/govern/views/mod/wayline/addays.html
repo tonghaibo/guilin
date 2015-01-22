@@ -1,0 +1,56 @@
+<?php Y_Widget::display('header',array('b_info'=>$this->id)); ?>
+<?php Y_Widget::display('top'); ?>
+<!--content -->
+<div id="content">
+	<?php Y_Widget::display('tips',array('b_info'=>$this->id)); ?>
+	<!--main -->
+	<div class="main clearfix">
+	<?php Y_Widget::display('left'); ?>
+	<!--box开始 -->
+	<div id="box" class="clearfix">
+<!-- 这里写内容-->
+<div><span class="label label-green">基本信息</span><span class="label label-red">行程安排</span></div>
+<form action="#" method="post" id="addHotel">
+<table class="st nob">
+<?php 
+for($i=1;$i<=$hidata['days'];$i++){
+echo '<tr>';
+echo '<td class="title">';
+echo '第'.$i.'天：</td>';
+echo '<td><input name="name'.$i.'" type="text" class="w250" title="行程标题" onblur="checkLen(this,\'#name'.$i.'-tips\',2,30)" /></td>';
+echo '<td id="name'.$i.'-tips">请填行程标题30字内</td></tr>';
+echo '<tr><td class="title">具体安排：</td>';
+echo '<td><textarea  name="contents'.$i.'" class="w250 h100" title="具体行程" onblur="checkLen(this,\'#contents'.$i.'-tips\',10,300)" ></textarea></td>';
+echo '<td id="contents'.$i.'-tips">填写具体行程安排300字内</td></tr>';
+echo '<tr><td class="title">用餐：</td>';
+echo '<td><input type="checkbox" name="eat1'.$i.'" />早餐 <input type="checkbox" name="eat2'.$i.'" />中餐 <input type="checkbox" name="eat3'.$i.'" />晚餐</td>';
+echo '<td>请选择是否提供用餐</td></tr>';
+echo '<tr><td class="title">住宿</td>';
+echo '<td><input name="live'.$i.'" type="text" class="w250" title="住宿" /></td>';
+echo '<td>请填写住宿</td></tr>';
+if($i!==$hidata['days']){
+	echo '<tr><td colspan="3"><hr></td></tr>';
+}
+}
+ ?>
+<tr>
+<td></td>
+<td>
+<?php 
+foreach($hidata as $key=>$val){
+	echo '<input type="hidden" name="'.$key.'" value="'.$val.'" />';
+}
+ ?>
+ <input type="button" value="上一步"  class="btn" onclick="window.history.back()" />
+<input type="submit" value="确认添加"  class="btn btn-green" /></td>
+<td></td>
+</tr>
+</table>
+</form>
+<!-- 这里写内容结束-->
+	<!--box结束 -->
+	</div>
+	</div>
+	<!-- mainend-->
+</div>
+<?php Y_Widget::display('footer');?>

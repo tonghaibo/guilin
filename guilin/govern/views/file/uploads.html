@@ -1,0 +1,161 @@
+<?php Y_Widget::display('header',array('b_info'=>$this->id)); ?>
+<?php Y_Widget::display('top'); ?>
+<!--content -->
+<div id="content">
+	<?php Y_Widget::display('tips',array('b_info'=>$this->id)); ?>
+	<!--main -->
+	<div class="main clearfix">
+	<?php Y_Widget::display('left'); ?>
+	<!--box开始 -->
+	<div id="box" class="clearfix">
+<!-- 这里写内容-->
+<div class="box">
+<form>
+<input type="hidden" name="ac" value="<?php echo $this->get('ac');?>" />
+<input type="hidden" name="ro" value="<?php echo $this->get('ro'); ?>" />
+ID号：<input type="text" name="s_id" class="w100" value="<?php echo $this->get('s_id'); ?>" x-webkit-speech />
+发布时间：<input type="text" name="s_pubtime1" class="w100" onfocus="SelectDate(this)" value="<?php echo $this->get('s_pubtime1'); ?>" />
+~
+<input type="text" name="s_pubtime2" class="w100" onfocus="SelectDate(this)" value="<?php echo $this->get('s_pubtime2'); ?>" />
+
+发布者ID：<input type="text" name="s_uid" value="<?php echo $this->get('s_uid'); ?>" x-webkit-speech />
+<input type="checkbox" name="s_issys" value="1" />系统
+<?php 
+$slist = Ly_Items::getList('public','status');
+foreach($slist as $s){
+	echo '<input type="checkbox" name="s_status[]" value="'.$s['id'].'"';
+	if($_GET['s_status'] && in_array($s['id'],$_GET['s_status'])){
+		echo ' checked ';
+	}
+	echo ' />'.$s['name'];
+}
+ ?>
+<input type="submit" value="查找" class="btn btn-green" />
+</form>
+</div>
+<table class="st full" id="arealist">
+<thead>
+<tr>
+<th>ID号</th>
+<th>上传者</th>
+<th>文件</th>
+<th>描叙</th>
+<th>类型</th>
+<th>大小</th>
+<th>上传时间</th>
+<th>状态</th>
+<th>操作</th>
+</tr>
+<thead>
+<tbody>
+<?php 
+if($ulist){
+foreach($ulist as $val){
+	echo '<tr>';
+	echo '<td width="15%"><input type="checkbox" name="checkwid" value="'.$val['id'].'" />'.$val['id'].'</td>';
+	echo '<td width="18%">';
+	echo '<a href="?ro=file&ac=uploads&s_uid='.$val['uid'].'&s_issys='.$val['issys'].'">'.Ly_Uploads::getName($val['uid'],$val['issys']).'</a>';
+	echo '</td>';
+	echo '<td width="10%"><img  src="'.Y_Pr::image($val['path'],85,85).'" onclick="show(this)"  big="'.$val['path'].'"/></td>';
+	echo '<td width="18%">'.$val['des'].'</td>';
+	echo '<td width="5%" class="corange">'.$val['suffix'].'</td>';
+	echo '<td width="10%" class="cblue">'.Y_Pr::size($val['size']).'</td>';
+	echo '<td width="12%">'.date('Y-m-d H:i:s',$val['uptime']).'</td>';
+	echo '<td width="6%" class="showstatus" style="position:relative">';
+	echo '<div >'.$slist[$val['status']]['name'].'<span class="icon icon-desc"></span></div>';
+	echo '<ul class="dropmenu">';
+	foreach($slist as $s){
+		if($s['id']!=$val['status']){
+			echo '<li><a href="'.$this->getUrl().'&method=pass&id='.$val['id'].'&v='.$s['id'].'">'.$s['name'].'</a></li>';
+		}
+	}
+	echo '</ul>';
+	echo '</td>';
+	echo '<td>';
+	echo '<span class="icon icon-del" onclick="del('.$val['id'].')" title="删除"></span>';
+	echo '</td>';
+	
+	echo '</tr>';
+	
+}
+}
+?>
+</tbody>
+<tfoot>
+<tr><td colspan="5"><input type="checkbox" id="checkAll" onclick="checkall('checkwid','checkID')"/>全/反 
+<?php foreach($slist as $s){
+	echo '<a href="javascript:void(0)" onclick="checkUp('.$s['id'].')" class="no">'.$s['name'].'</a>&nbsp;&nbsp;&nbsp;';
+} ?>
+<input type="hidden" id="checkID" />
+</td><td colspan="5" style="text-align:right">
+<div id="ui-page"><?php echo $pages; ?></div>
+</td>
+</tr>
+</tfoot>
+</table>
+<div class="clear">&nbsp;</div>
+
+<!-- 这里写内容结束-->
+	<!--box结束 -->
+	</div>
+	</div>
+	<!-- mainend-->
+</div>
+<script type="text/javascript" src="public/js/calendar.js"></script>
+<script type="text/javascript" src="public/js/show.js"></script>
+<link rel="stylesheet" href="public/css/show/show.css" />
+<script type="text/javascript" src="public/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+//全选操作
+function checkUp(num){
+	var id = getIds('checkwid');
+	if(id==''){
+		show_msg.open('请先选择值！',4,2);
+		return;
+	}else{
+		show_comfirm.open(0,'确定要改变'+id+'这些项吗？',function(){
+			var url = '<?php echo $this->getUrl() ?>&method=pass&id='+id+'&v='+num;
+			window.location.href = url;
+		});
+	}
+};
+function del(num){
+	show_comfirm.open(120,'确定要删除该项吗？删除后讲无法复原',function(){
+			var url = '<?php echo $this->getUrl() ?>&method=del&id='+num;
+			window.location.href = url;
+		});
+}
+function upstatus(obj,num){
+	
+	var url = '<?php echo $this->getUrl() ?>&method=pass&wid='+num+'&v='+$(obj).val();
+	window.location.href = url;
+}
+function showTags(num){
+	var url = '?ro=mod&ac=tag&method=getTags&id='+num+'&t=w';
+	$.get(url,{},function(data){
+		var str = '<div style="padding:10px;">';
+		if(data!=''){
+			data = eval('('+data+')');
+			for(var a in data){
+				str += '<a href="javascript:void(0)">'+data[a].name+'</a>&nbsp;&nbsp;&nbsp;';
+			}
+			str += '<a href="?ro=mod&ac=tag&method=bind&id='+num+'&t=w">修改</a>';
+		}else{
+			str += '<span class="cred">暂且无任何标签！</span><a href="?ro=mod&ac=tag&method=bind&id='+num+'&t=w">添加</a>';
+		}
+		str += '</div>';
+		show_dialog.openHtml(str,'线路标签：',350,200);
+	});
+}
+$(document).ready(function(){
+$('td.showstatus').hover(function(){
+	$(this).children('ul').show();
+	//$(this).parent('div').addClass('checkB');
+},function(){
+	$(this).children('ul').hide();
+	//$(this).parent('div').removeClass('checkB');
+});
+$('#arealist').dataTable();
+});
+</script>
+<?php Y_Widget::display('footer');?>

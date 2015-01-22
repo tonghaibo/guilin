@@ -1,0 +1,228 @@
+<?php Y_Widget::display('header',$web); ?>
+<!-- top开始 -->
+<?php Y_Widget::display('top'); ?>
+<!-- top结束 -->
+<!-- nav开始 -->
+<?php Y_Widget::display('nav'); ?>
+<!-- nav结束 -->
+<!-- content开始 -->
+<div id="content" class="clearfix MiddleBox ">
+<div id="main" class="clearfix" style="position:relative">
+<div class="conall">
+<?php $areaname=Ly_Items::getName('public','area',$hotel['area']); ?>
+	<div class="ndwz">您的位置：<a href="hotel.html">旅游入住</a>&gt;<a href="hotel.html?area=<?php echo $hotel['area']; ?>"><?php echo $areaname; ?>酒店</a> &gt; <a href="hotel_detail.html?id=<?php echo $this->get('id'); ?>" title="<?php echo $hotel['name']; ?>"><?php echo $hotel['name']; ?></a></div>
+	<div id="new_conten">
+		<div id="newRight">
+		<form name="bookform" action="#" method="POST">
+		<div class="order_input mg_t8">
+			<div class="tit"><h3>客房信息</h3></div>
+			<div class="txt">
+			<ul>
+				<li>
+				<div class="txt99">入住房型：</div>
+					<div class="field99">
+					<select onchange="changValue()" id="allrooms" name="rid">
+						<?php 
+						foreach($rooms as $v){
+							echo '<option value="'.$v['rid'].'" price="'.$v['price'].'" ';
+							if($this->get('rid')==$v['rid']){
+								echo ' selected ';
+							}
+							echo '>'.$v['name'].'('.Ly_Items::getName('hotel_rooms','bed',$v['bed']).')'.$v['area'].'平方米</option>';
+						}
+						?>
+					</select>															
+					</div>
+				</li>				
+				<li>
+					<div class="txt99">入住日期：</div>
+					<div class="field99">
+						<input type="text"  onfocus="SelectDate(this)" value="<?php echo date('Y-m-d'); ?>"  name="starttime" id="starttime">
+					</div>
+				</li>				
+				<li>
+					<div class="txt99">入住天数：</div>
+					<div class="field99">
+						<select name="days" id="days" onchange="changValue()">
+						<?php 
+						for($i=1;$i<8;$i++){
+							echo '<option value="'.$i.'">'.$i.'天</option>';
+						}
+						?>
+						</select>
+					</div>
+				</li>				
+			<li>
+				<div class="txt99">房间数量：</div>
+				<div class="field99">
+					<select class="select" name="num" id="roomNum" onchange="changValue()">
+						<?php 
+						for($i=1;$i<=5;$i++){
+							echo '<option value="'.$i.'">'.$i.'间</option>';
+						}
+						?>
+					</select>
+				</div>
+			</li>				
+				<li style="line-height:24px;">
+						<div class="txt99">应付金额：</div>
+						<div class="field99">
+							<em class="price f18" id="totalprice"></em><i>(预订免费，入住后酒店前台付款)</i>
+							<input type="hidden" value="" name="price" id="price" />
+						</div>
+				</li>
+			</ul>		
+				</div>
+		</div>
+		<div class="order_input">
+		<div class="tit"><h3>入住信息</h3></div>
+		<div class="txt">
+		<ul>
+		<li>
+			<div class="txt99"><span class="red">*</span>入住人：</div>
+			<div class="field99">
+			<input type="text"  value="" id="name_str" name="name">
+			<span>(请务必保证与入住时所持证件上完全相同)</span>
+			</div>
+		</li>
+		<li><div class="txt99"><span class="red">*</span>联系人手机：</div>
+		<input type="text"  value=""  name="mobile" id="moblie_str">
+		<span>(用于接收确认信息)</span>
+		</li>
+		<li><div class="txt99"><span class="red">*</span>身份证件号：</div>
+		<input type="text" style="width:200px"  value=""  name="card" id="card_str">
+		<span>(用于入住核实信息)</span>
+		</li>
+		<li><div class="txt99">备注信息：</div>
+		<textarea style="width:200px;height:80px;margin-bottom:10px;" name="mark"></textarea>
+		<span>(留言给酒店)</span>
+		</li>
+		</ul>
+		<div class="tips1">付款方式：无需提前付款，直接到酒店前台付款<span><br>如果入住当天，不能在最晚保留时间前到店，请您事先联系酒店，协商房间的保留事宜，以免房间被过时取消。</span></div>
+		</div>
+		</div>
+		<div class="down">
+		<div class="line" style="margin-bottom:10px"></div>
+		<div style="color:gray;margin-top:10px;margin-bottom:10px">注：如需发票，请从酒店前台索取</div>				
+		<input type="submit" id="form_submit" value="提交订单" /><span class="mknow">预订须知</span>
+		</div>
+		<div class="fi_fill" style="display:none">
+		<h3>网上预订须知及条款</h3>
+		<p style="line-height:20px">
+		1)游桂林网的会员价是游桂林网与酒店签订的协议价，此价格包含了酒店服务费，但不包含酒店其它费用及税收。<br>
+		2)网上价格可能因为酒店原因会有所变更，请以最终确认为准。<br>
+		3)您的入住人数尽量与房间数量匹配，早餐与加床价格视各酒店规定有所不同。<br>
+		4)为方便您在酒店前台办理入住手续，请在预订时正确填写每位入住客人的真实姓名（请确保与所使用的有效证件上的姓名一致）。
+		5)当您需要预订多间客房时，须提供不少于所预订客房数量的实际入住人的信息，入住人姓名需要不同， 以方便预订确认。请不要为同一位入住人在同一入住日期，预订两间或更多的酒店客房。<br>
+		6)（如遇同行人员“同名”等特殊情况，请拨打游桂林网预订服务热线40076-40075，以帮您解决<br>
+		7)您所提出的特殊要求我们会及时地反馈给酒店并为您进行协调，但能否实现需要视酒店的实际情况而定，对于部分要求酒店会有可能加收相应费用。我们也会及时将酒店确认的情况反馈给您。<br>
+		8)提交订单后，在接到游桂林网按您所留下的联系方式发给您确认信息后，表示您的预订成功，已经为您在您所选择的酒店订到房间。<br>
+		9)在您填写预订单时，务必要留下准确的联系方式：座机电话、传真、手机号码或电子邮件地址，以便于游桂林网与您联系酒店预订的相关事宜。<br>
+		10)通常情况下，酒店的最早入住时间为14：00，最晚离店时间为正午12：00。如提前入住或推迟离店，酒店一般会加收一定的费用。<br>
+		11)部分酒店有规定，如您计划的最晚到达时间超过酒店设定的时间，须提供信用卡做担保。
+		12)如您在入住前或在入住期间需要延长住宿时间，请及时通知游桂林网，以帮您进行确认。如未通知游桂林网，且与酒店发生价格分歧，游桂林网将不负任何责任。<br>
+		13)如您因行程变化取消了酒店订单，但之后再次需要预订时，价格将有可能会变更，请以最新价格为准。新产生的订单游桂林网也需要重新向酒店确认并通知您。<br>
+		14)如您已经预订的酒店不能及时入住，请提前通知游桂林网。<br> 
+		</p>
+		</div>
+		</form>
+		</div><!--newRight-->
+		<div id="newLeft">
+			<div class="list_hot" style="margin-top:8px">
+		    	<div class="txt txt1">
+		    	<div style="font-size:12px;line-height:24px; height:50px; width:100%;" class="borderBottom">
+					<img  src="<?php echo Y_Pr::image($hotel['img'],88,66); ?>" style="float:left; margin-right:5px">		    		
+		    		<div style="vertical-align:top">
+						<p>
+							<a href="hotel_detail.html?id=<?php echo $this->get('id'); ?>" title="<?php echo $hotel['name']; ?>"><?php echo $hotel['name']; ?></a>
+														
+						</p>
+					</div>
+				</div>
+		    	<p style="font-size:13px;line-height:24px">地   址：<?php echo $hotel['address']; ?>		    	
+		    	</p>
+		    	<p style="font-size:13px;line-height:24px">星   级：<span class="star_bg_s"><span style="width:<?php echo $hotel['star']*12 ?>px;" class="star_top_s"></span></span></p>
+		    	<p style="font-size:13px;line-height:24px">类   型：<?php echo Ly_Items::getName('hotel','classes',$hotel['classes']); ?></p>
+		    	<p style="font-size:13px;line-height:24px">咨   询：<?php echo $hotel['contact']; ?></p>
+				</div>
+		        <div class="why_cncn">
+		    	<h5>为什么选择游桂林</h5>
+		        <dl>
+		        	<dt>保证低价</dt>
+		            <dd>网络预订最低价</dd>
+		            <dt>保证有房</dt>
+		            <dd>到店无房赔付首晚房费</dd>
+		            <dt>7*24小时服务</dt>
+		            <dd>提供优质服务，线上线下均可享受，服务热线：40076-40075</dd>
+		        </dl>
+		   	 	</div>
+		   	 </div>
+		</div>
+	</div>
+</div>
+</div>
+<!--mian结束 -->
+</div>
+<!-- content结束 -->
+<!-- footer开始 -->
+<?php Y_Widget::display('footer'); ?>
+<!-- footer结束 -->
+<script type="text/javascript" src="public/js/calendar.js"></script>
+<script type="text/javascript">
+function changValue(){
+	var v = parseFloat($('#allrooms').find(':selected').attr('price'))*parseInt($('#days').val())*parseInt($('#roomNum').val());
+	v = Math.round(v,2);
+	$('#totalprice').html('￥'+v);
+	$('#price').val(v);
+}
+$(function(){
+$('#totalprice').html('￥'+parseFloat($('#allrooms').find(':selected').attr('price')));
+$('#price').val(parseFloat($('#allrooms').find(':selected').attr('price')));
+$('#form_submit').click(function(){
+	//日期
+	var dd = $.trim($('#starttime').val());
+	dd = dd.split('-');
+	if(dd[1]>12 || dd[2]>31){
+		show_msg.open('您输入的日期不合法',3,2);
+		return false;
+	}
+	var y = <?php echo date('Y'); ?>;
+	var m = <?php echo date('m'); ?>;
+	var d = <?php echo date('d'); ?>;
+	if(dd[0]<y || dd[1]<m){
+		show_msg.open('请选择大于今天的日期',3,2);
+		return false;
+	}
+	if(!(dd[1]==m && dd[2]>=d)){
+		show_msg.open('请选择大于今天的日期',3,2);
+		return false;
+	}
+	
+	//入住人
+	var regix = /^[\u4e00-\u9fa5]{2,6}$/;
+	if(!regix.exec($.trim($('#name_str').val()))){
+		show_msg.open('请填写正确的入住人姓名',3,2);
+		return false;
+	}
+	//手机
+	var regix = /^0{0,1}1[3-9]{1}[0-9]{1}[0-9]{8}$/;
+	if(!regix.exec($.trim($('#moblie_str').val()))){
+		show_msg.open('请填写正确的联系人手机',3,2);
+		return false;
+	}
+	//身份证
+	var regix = /(^\d{15}$)|(^\d{17}(?:\d|x|X)$)/;
+	if(!regix.exec($.trim($('#card_str').val()))){
+		show_msg.open('请填写正确的身份证件号',3,2);
+		return false;
+	}
+});
+$('.mknow').toggle(function(){
+	$('.fi_fill').show();
+},function(){
+	$('.fi_fill').hide();
+});
+});
+</script>
+</body>
+</html>

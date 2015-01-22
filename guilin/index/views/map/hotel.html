@@ -1,0 +1,43 @@
+<?php
+if(!$info){
+echo '<div style="text-align:center"><img src="public/images/content_blank.png" /><a onclick="show_dialog.close()" href="javascript:void(0)">暂且没有匹配到任何数据！</a></div>';
+die;
+}
+?>
+<div>
+<?php
+$area = Ly_Items::getList('public','area');
+$type = Ly_Items::getList('hotel','classes');
+foreach($info as $v){
+echo '<div class="list clearfix">';
+echo '<div class="left img">';
+echo '<a href="hotel_detail.html?id='.$v['hid'].'" titlle="'.$v['name'].'" target="_blank">';
+echo '<img src="'.Y_Pr::image($v['img'],85,85).'">';
+echo '</a>';
+echo '</div>';
+echo '<div class="left ml10 des">';
+echo '<a href="hotel_detail.html?id='.$v['hid'].'" target="_blank">'.$v['name'].'</a>';
+if($v['area']){
+foreach($area as $j){
+if($j['id']==$v['area']){
+	echo '<p class="c666">地址：<a href="hotel.html?area='.$j['id'].'" target="_blank">'.$j['name'].'</a>'.$v['address'].'</p>';
+}
+}
+}else{
+echo '<p class="c666">地址：'.$v['address'].'</p>';
+}
+echo '<p class="c666">';
+if($v['star']){
+	echo '星级：<span class="star_bg_s" title="星级'.$v['star'].'"><span style="width:'.(12*$v['star']).'px;" class="star_top_s"></span></span>';
+}else{
+	echo '<span title="类型" class="c999">类型：'.$type[$v['classes']-1]['name'].'</span>';
+}
+echo '</p>';
+echo '<p class="c666">价格：<span class="cf60">'.$v['price'].'</span>元</p>';
+echo '</div></div>';
+}
+?>
+</div>
+<div style="clear:both;padding-top:10px;">
+<div class="Page1" style="text-align:left"><?php echo $pages; ?></div>
+</div>

@@ -1,0 +1,1 @@
+<?php {"pri":"gid","0":"gname","1":"leaderid","2":"power","3":"issuper","4":"members"}yes

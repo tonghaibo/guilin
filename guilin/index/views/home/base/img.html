@@ -1,0 +1,123 @@
+<dl class="set_area_list">
+<dd id="form-avatar">
+<div>清晰并且真实的头像照片可以更好的展现你的个人风采，让你成为万人迷。</div>
+<div class="padtop20">
+<div class="file_info">
+<input type="file" name="fileToUpload" id="fileToUpload" onchange="upimg(this)" class="text" />
+<img src="public/images/wait3.gif"  id="loadimg" style="display:none"/>
+</div>
+</div>
+<div class="c666 margtop20">支持jpg,jpeg,gif,png格式图片，图片尺寸不超过2M，最小尺寸185x185</div>
+<div class="padtop20 clearfix">
+<div class="photo left" style="padding:1px;" >
+<img src="public/images/noavatar_300.jpg"  d_src="<?php echo $user['userimg']; ?>" imgid="" id="reselected_img" >
+</div>
+<div class="file_info left">
+<p class="margbottom10">预览效果，以下三种尺寸都清晰才是最佳头像：</p>
+<div class="img_clip">
+<div class="clip max crop-preview" style="width:185px;height:185px;">
+<img title="大图片" src="<?php echo Ly_User::getUserimg($user['userimg'],185); ?>" alt="" class="noevent" style="width: 185px; height: 185px;"></div>
+<div class="clip mde crop-preview" style="width:85px;height:85px;">
+<img title="中等图片" src="<?php echo Ly_User::getUserimg($user['userimg'],185); ?>" alt="" class="noevent" style="width: 85px; height: 85px;"></div>
+<div class="clip min crop-preview" style="width:48px;height:48px;margin-right:0">
+<img title="小图片" src="<?php echo Ly_User::getUserimg($user['userimg'],185); ?>" alt="" class="noevent" style="width: 48px; height: 48px;"></div>
+</div>
+<div class="padtop20" style="clear:left;">
+<input class="btn_a f14" type="submit" onclick="sendcrop()" name="save_avatar" id="save-avatar" value="保存设置">
+</div>
+</div>
+</dd>
+</dl>
+<link rel="stylesheet" type="text/css" href="public/js/imgareaselect-0.9.9/css/imgareaselect-deprecated.css">
+<script type="text/javascript" src="public/js/imgareaselect-0.9.9/js/jquery.imgareaselect.pack.js"></script>
+<script type="text/javascript" src="public/js/ajaxfileupload.js"></script>
+<script type="text/javascript">
+function cropimg(obj){
+$('.img_clip img').attr({src:$(obj).attr('src')});
+$(obj).imgAreaSelect({
+handles: true,x1:0,x2:185,y1:0,y2:185,aspectRatio:'1:1',
+minWidth:80,
+maxWidth:200,
+onInit:function(img,se){
+var x = se.x2-se.x1;
+var y = se.y2-se.y1;
+var bw = img.width/x;
+var bh = img.height/y;
+$('.img_clip img').eq(0).css({'width':bw*185,'height':bh*185,'margin-left':'-'+(se.x1)*185/x+'px','margin-top':'-'+(se.y1)*185/y+'px'});
+$('.img_clip img').eq(1).css({'width':bw*85,'height':bh*85,'margin-left':'-'+(se.x1)*85/x+'px','margin-top':'-'+(se.y1)*85/y+'px'});
+$('.img_clip img').eq(2).css({'width':bw*48,'height':bh*48,'margin-left':'-'+(se.x1)*48/x+'px','margin-top':'-'+(se.y1)*48/y+'px'});
+},
+onSelectEnd:function(img,se){
+$(obj).attr({'x1':se.x1,'x2':se.x2,'y1':se.y1,'y2':se.y2});
+},
+onSelectChange:function(img,se){
+var x = se.x2-se.x1;
+var y = se.y2-se.y1;
+var bw = img.width/x;
+var bh = img.height/y;
+$('.img_clip img').eq(0).css({'width':bw*185,'height':bh*185,'margin-left':'-'+(se.x1)*185/x+'px','margin-top':'-'+(se.y1)*185/y+'px'});
+$('.img_clip img').eq(1).css({'width':bw*85,'height':bh*85,'margin-left':'-'+(se.x1)*85/x+'px','margin-top':'-'+(se.y1)*85/y+'px'});
+$('.img_clip img').eq(2).css({'width':bw*48,'height':bh*48,'margin-left':'-'+(se.x1)*48/x+'px','margin-top':'-'+(se.y1)*48/y+'px'});
+}
+});
+};
+function sendcrop(){
+	var img = $('#reselected_img');
+	if(img.attr('src')=='public/images/noavatar_300.jpg'){
+		show_msg.open('请先上传图片!',2,2);
+		return;
+	};
+	if(img.attr('imgid')==''){
+		show_msg.open('请先上传图片!',2,2);
+		return;
+	};
+	$.post('home_dobase.html?do=cropimg',{'x1':img.attr('x1'),'x2':img.attr('x2'),
+	'y1':img.attr('y1'),'y2':img.attr('y2'),'d_src':img.attr('d_src')+'',
+	'path':img.attr('src')},function(data){
+		if(data=='0'){
+			show_msg.open('修改个人头像成功！',2,1);
+			window.location.href="home_base.html?do=img";
+		}else{
+			show_msg.open('修改个人头像失败！',2,2);
+		}
+	});
+	return false;
+};
+function upimg(obj){
+var img = $(obj).val();
+var regx = /^.+.(gif|jpeg|jpg|png)/i;
+if(!regx.test(img)){
+	show_msg.open('只支持jpg,jpeg,gif,png格式图片',2,2);
+	return false;
+}
+$("#loadimg")
+	.ajaxStart(function(){
+		$(this).show();
+	})
+	.ajaxComplete(function(){
+		$(this).hide();
+	});
+	jQuery.ajaxFileUpload({
+		url:'home_upimg.html',
+		secureuri:false,
+		fileElementId:'fileToUpload',
+		dataType:'json',
+		data:{des:'个人头像'},
+		success: function (data, status){
+			if(typeof(data.error) != 'undefined'){
+				if(data.error != ''){
+					show_msg.open(data.msg,2,2);
+					return false;
+				}else{
+					$('#reselected_img').attr({'src':data.msg.path,'imgid':data.msg.id});
+					cropimg('#reselected_img');
+				}
+			}
+		},
+		error: function (data, status, e){
+			alert(e);
+		}
+	});
+	return false;
+}
+</script>

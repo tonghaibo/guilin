@@ -1,0 +1,232 @@
+<?php Y_Widget::display('header',$web); ?>
+<!-- top开始 -->
+<?php Y_Widget::display('top'); ?>
+<!-- top结束 -->
+<!-- nav开始 -->
+<?php Y_Widget::display('nav'); ?>
+<!-- nav结束 -->
+<!-- content开始 -->
+<div id="content" class="clearfix MiddleBox ">
+<div id="main" class="clearfix">
+<!-- 左侧开始-->
+<div class="area_side clearfix">
+<h2>我们的承诺</h2>
+<div class="items">
+<p class="des">
+我们将始终保持以身作则的态度，
+为广大用户提供最好玩，最实惠的旅游线路；
+每条线路我们都严格审核，对于不合格的将给予严厉惩罚；
+同时也欢迎广大用户监督被给予修改建议！
+</p>
+</div>
+<h2>实名认证机构</h2>
+<div class="items">
+<?php
+foreach(Ly_User_Apply::getList(8,3) as $u){
+	echo '<a href="user.html?uid='.$u['uid'].'">'.$u['cpname'].'</a>';
+}
+?>
+</div>
+<h2>精彩分享<a href="share.html" target="_blank" class="more_icon right">更多</a></h2>
+<ul class="t_wayline">
+<li>
+<a href="" title="广告"><img src="public/images/index_act.jpg" width="155px"/></a>
+</li>
+<?php
+foreach(Ly_Content::getHots(10) as $c){
+	echo '<li>';
+	echo '<a target="_blank" href="share_detail.html?id='.$c['id'].'"><span class="ftst c666">·</span>'.$c['title'].'</a>';
+	echo '</li>';
+}
+?>
+</ul>
+</div>
+<!-- 左侧结束 -->
+<!-- 内容开始-->
+<div class="area_main clearfix">
+<!--推荐3 -->
+<div class="top_tour clearfix">
+    <div class="top_pro">
+    <ul class="clearfix">
+        <li class="t_item">
+        <div class="t_wrap">
+        <span class="cu_icon">热门推荐</span>
+		<a href="wayline_detail.html?id=13" target="_blank"><img src="public/uploads/201211/28/50b612742d148.jpg@200_150.jpg" width="178px" height="134px"></a>
+        </div>
+        <p class="t_title"><a class="f_4e9700" href="wayline_detail.html?id=13" target="_blank">厦门双飞3日游入住特色旅馆，半自助，成人立减50</a></p>
+        <div class="t_price">
+        <span class="fl"><em class="f18">1779</em>元起</span>
+        </li>
+        <li class="t_item">
+        <div class="t_wrap">
+        <span class="cu_icon">热门推荐</span>
+        <a href="wayline_detail.html?id=12" target="_blank"><img src="public/uploads/201211/28/50b612422ab32.jpg@200_150.jpg" width="178px" height="134px"></a>
+		</div>
+		<p class="t_title"><a class="f_4e9700" href="wayline_detail.html?id=12" target="_blank">品小资左岸，电影三部曲，20人左右团</a></p>
+		<div class="t_price">
+		<span class="fl"><em class="f18">18699</em>元起</span>
+		</div>
+		</li>
+        <li class="t_item">
+        <div class="t_wrap">
+		<span class="cu_icon">热门推荐</span>
+		<a href="wayline_detail.html?id=15" target="_blank"><img src="public/uploads/201212/17/50ce7f6fdc3b1.jpg@200_150.jpg" width="178px" height="134px"></a>
+		</div>
+		<p class="t_title"><a class="f_4e9700" href="wayline_detail.html?id=15" target="_blank">超高性价比，销量冠军，每单立减300</a></p>
+		<div class="t_price">
+		<span class="fl"><em class="f18">2249</em>元起</span>
+		</div>
+		</li>
+        </ul>
+        </div>
+        <!--start nr_special-->
+        <div class="nr_special">
+          <div class="satisf">
+            <dl>
+              <dt>综合满意度：<a target="_blank" href="#q6">[?]</a></dt>
+              <dd>93%</dd>
+              <dd class="comments">已有109条点评</dd>
+            </dl>
+          </div>
+          <div class="spcl_infor">
+            <h3>
+			<span class="pr_3">独家产品</span>
+			<span>独立成团</span>
+			</h3>
+            <p>发布精彩旅游路线：</p>
+			<p class="margtop10"><b class="cf30 f14">123455</b>&nbsp;条</p>
+          </div>
+        </div>
+        <!--end nr_special-->
+      </div>
+<!-- 推荐3结束-->
+<!-- 导行-->
+<div class="cate_nav">
+<!--start prop_list-->
+<div class="prop_list">
+  <div class="prop_item">
+    <dl>
+      <dt>目的景点：</dt>
+      <dd>
+        <ul class="list_1">
+        <li>
+		  <a <?php if(!$this->get('tagid')){ echo ' class="cur_city" '; } ?> href="?tagid=0&days=<?php echo $this->get('days'); ?>&sort=<?php echo $this->get('sort').'&sText='.$this->get('sText').'&minPrice='.$this->get('minPrice').'&maxPrice='.$this->get('maxPrice'); ?>">不限</a>
+		</li>
+		<?php $tags = Ly_Tags::getHot(30,1);
+		foreach($tags as $v){
+			echo '<li><a href="?tagid='.$v['id'].'&days='.$this->get('days').'&sort='.$this->get('sort').'&sText='.$this->get('sText').'&minPrice='.$this->get('minPrice').'&maxPrice='.$this->get('maxPrice').'" ';
+			if($this->get('tagid')==$v['id']){
+				echo ' class="cur_city" ';
+			}
+			echo '>'.$v['name'].'</a></li>';
+		}
+		?>
+		</ul>
+      </dd>
+    </dl>
+  </div>
+  <div class="prop_item">
+    <dl>
+      <dt>行程天数：</dt>
+      <dd>
+        <ul class="list_3">
+          <li><a <?php if(!$this->get('days')){ echo ' class="cur_city" '; } ?> href="?days=0&tagid=<?php echo $this->get('tagid'); ?>&sort=<?php echo $this->get('sort').'&sText='.$this->get('sText').'&minPrice='.$this->get('minPrice').'&maxPrice='.$this->get('maxPrice'); ?>">不限</a></li>
+          <?php
+		  for($i=1;$i<=10;$i++){
+			 echo '<li><a ';
+			 if($i==$this->get('days')){
+				echo ' class="cur_city" ';
+			 }
+			 echo 'href="?days='.$i.'&tagid='.$this->get('tagid').'&sort='.$this->get('sort').'&sText='.$this->get('sText').'&minPrice='.$this->get('minPrice').'&maxPrice='.$this->get('maxPrice').'" >'.$i.'天内</a></li>';
+          
+		  }
+		  ?>
+        </ul>
+      </dd>
+    </dl>
+  </div>
+  <div class="prop_item">
+    <dl>
+      <dt>线路搜索：</dt>
+      <dd>
+        <ul class="list_3">
+		<form>
+		<input type="hidden" name="tagid" value="<?php echo $this->get('tagid'); ?>" />
+		<input type="hidden" name="days" value="<?php echo $this->get('days'); ?>" />
+        <input type="hidden" name="sort" value="<?php echo $this->get('sort'); ?>" />
+		  <li><input type="text" name="sText" class="txt" style="width:120px;" value="<?php  echo $this->get('sText'); ?>" /></li>
+		  <li>价格：<input type="text" class="txt" name="minPrice" value="<?php  echo $this->get('minPrice'); ?>" />-<input class="txt" type="text" name="maxPrice" value="<?php  echo $this->get('maxPrice'); ?>" /></li>
+			<li><input type="submit" class="btn" value="搜素" onmouseover="this.className='btnHover'" onmouseout="this.className='btn'"/></li>
+		</form>
+		</ul>
+      </dd>
+    </dl>
+  </div>
+</div>
+<!--end prop_list-->
+</div>
+<!-- 导行结束-->
+<!-- 列表-->
+<div class="filter">
+<span>查看</span>
+<a href="?days=<?php echo $this->get('days');?>&tagid=<?php echo $this->get('tagid');?>&sort=price" <?php if($this->get('sort')=='price'){ echo ' class="b orange" '; } ?>>按价格</a>
+<a href="?days=<?php echo $this->get('days');?>&tagid=<?php echo $this->get('tagid');?>&sort=ishot" <?php if($this->get('sort')=='ishot' || $this->get('sort')==''){ echo ' class="b orange" '; } ?>>按满意</a>
+<a href="?days=<?php echo $this->get('days');?>&tagid=<?php echo $this->get('tagid');?>&sort=comment" <?php if($this->get('sort')=='comment'){ echo ' class="b orange" '; } ?>>按评论</a>
+</div>
+<div class="list">
+<table>
+<?php 
+if($waylines){
+	foreach($waylines as $v){
+		echo '<tr class="l">';
+		echo '<td class="t1"><a target="_blank" href="wayline_detail.html?id='.$v['wid'].'"><img src="'.Y_Pr::image(Ly_Uploads::getUrl($v['img'],240,180)).'" /></a></td>';
+		echo '<td class="t2">';
+		echo '<a target="_blank" href="wayline_detail.html?id='.$v['wid'].'" class="title">'.$v['name'].'</a>';
+		echo '<div>';
+		echo '<span class="praise" title="满意度"><i class="cf60">'.($v['comment']?(round($v['mark']/($v['comment']*5),3))*100:100).'%</i></span>';
+		echo '&nbsp;&nbsp;<span class="message" title="评论">'.$v['comment'].'</span>';
+		echo '&nbsp;&nbsp;<span class="traffic" title="交通">'.$v['traffic'].'</span>';
+		echo '</div>';
+		echo '<div><a title="添加收藏" href="javascript:void(0)" onclick="addfavor('.$v['wid'].',\'w\')"><span class="favor">收藏 '.$v['shares'].'</span></a></div>';
+		echo '</td>';
+		echo '<td class="t3">';
+		echo '途经景点：';
+		$tgs = Ly_Tags_Bind::getTags(array('wid'=>$v['wid']));
+		if($tgs){
+			foreach($tgs as $j){
+				echo '<a href="?tagid='.$j['id'].'">'.$j['name'].'</a>&nbsp;&nbsp;';
+			}
+		}
+		echo '</td>';
+		echo '<td class="t4"><em>'.$v['price'].'<i>元起</i></em>';
+		echo '</td>';
+		echo '</tr>';
+	}
+	echo '<tr><td colspan="5"><div class="Page1">'.$pages.'</div></td></tr>';
+}else{
+	echo '<tr><td class="red" colspan="5">暂且没有更多的匹配数据了</td></tr>';
+}
+ ?>
+</table>
+</div>
+<!-- 列表结束-->
+</div>
+<!-- 内容结束-->
+</div>
+<!--mian结束 -->
+</div>
+<!-- content结束 -->
+<!-- footer开始 -->
+<?php Y_Widget::display('footer'); ?>
+<!-- footer结束 -->
+<script type="text/javascript">
+$(function(){
+$('.list tr.l').hover(function(){
+	$(this).addClass('hover');
+},function(){
+	$(this).removeClass('hover');
+});
+});
+</script>
+</body>
+</html>

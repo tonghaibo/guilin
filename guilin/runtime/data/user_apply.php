@@ -1,0 +1,1 @@
+<?php {"pri":"id","0":"uid","1":"gid","2":"card","3":"img","4":"applytime","5":"name","6":"mobile","7":"cpname","8":"cptel","9":"cpaddress","10":"status"}yes

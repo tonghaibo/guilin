@@ -1,0 +1,69 @@
+<?php Y_Widget::display('header',$web); ?>
+<!-- top开始 -->
+<?php Y_Widget::display('top'); ?>
+<!-- top结束 -->
+<!-- nav开始 -->
+<?php Y_Widget::display('nav'); ?>
+<!-- nav结束 -->
+<!-- content开始 -->
+<div id="content" class="clearfix MiddleBox ">
+<div id="main" class="clearfix">
+<?php Y_Widget::display('home_right',$user); ?>
+<!--you侧 -->
+<div class="area_main">
+<h2 id="box_title" class="dhead mgb10">
+   <a title="发给我的未读信件" <?php if(!in_array($this->get('do'),array('other','isread'))){ echo 'class="sel"'; } ?> href="javascript:void(0)"  onclick="changebox(this)" rel="me" p=1 load=0>未读信件</a>
+	<a title="发给我的已读信件" <?php if($this->get('do')=='isread'){ echo 'class="sel"'; } ?> href="javascript:void(0)"  onclick="changebox(this)" rel="isread" p=1 load=0>已读信件</a>
+	<a title="我发出去的" <?php if($this->get('do')=='other'){ echo 'class="sel"'; } ?> href="javascript:void(0)"  onclick="changebox(this)" rel="other" p=1 load=0>我发出去的</a>
+</h2>
+<div class="c_box"></div>
+<div class="c_box"></div>
+<div class="c_box"></div>
+</div>
+<!--you侧结束 -->
+</div>
+<!--mian结束 -->
+</div>
+<!-- content结束 -->
+<!-- footer开始 -->
+<?php Y_Widget::display('footer'); ?>
+<!-- footer结束 -->
+<script type="text/javascript">
+function changebox(obj,page){
+	if(typeof(page)=='undefined'){
+		var page = $(obj).attr('p');
+	}
+	$(obj).addClass('sel').siblings().removeClass('sel');
+	var i = $(obj).index();
+	$('.c_box').eq(i).show().siblings('.c_box').hide();
+	if($(obj).attr('p')!=page || $(obj).attr('load')==0){
+		$('.c_box').eq(i).html('<div style="text-align:center;padding-top:20px;"><img src="public/images/wait3.gif" /></div>');
+		$('.c_box').eq(i).load('home_domess.html?do='+$(obj).attr('rel')+'&page='+page,{});
+		$(obj).attr('p',page);
+		$(obj).attr('load',1);
+	}
+	
+}
+function _Page(page){
+	changebox('#box_title a.sel',page);
+	var mtrTop=$('#box_title').offset().top-65;
+    $("html,body").scrollTop(mtrTop);
+ };
+$(function(){
+	changebox('#box_title a.sel',1);
+});
+function readMsg(obj,id){
+$.get('home_domess.html?do=read',{'id':id},function(d){
+$(obj).html('已阅读').attr('onclick','');
+});	
+}
+function delMsg(obj,id){
+show_comfirm.open(0,'您确定要删除该信件吗？',function(){
+	$.get('home_domess.html?do=del',{'id':id,'t':$(obj).attr('type')},function(){
+		$(obj).parents('.c_mess').remove();
+	});
+});
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,281 @@
+<?php Y_Widget::display('header',array('b_info'=>$this->id)); ?>
+<?php Y_Widget::display('top'); ?>
+<!--content -->
+<div id="content">
+	<?php Y_Widget::display('tips',array('b_info'=>$this->id)); ?>
+	<!--main -->
+	<div class="main clearfix">
+	<?php Y_Widget::display('left'); ?>
+	<!--box开始 -->
+	<div id="box" class="clearfix">
+<!-- 这里写内容-->
+<table class="st full">
+<tr>
+<th>名称</th>
+<th>总数</th>
+<th>状态</th>
+<th>今日</th>
+<th>一周内</th>
+<th>本月</th>
+</tr>
+<?php 
+//全局
+$todaytime = strtotime(date('Y-m-d'));
+$zhou = strtotime(date('Y-m-d'))-(604800);
+$yue = strtotime(date('Y-m').'-1');
+$slist = Ly_Items::getList('public','status');
+ ?>
+<tr>
+<td class="ctitle">注册会员</td>
+<td>
+<?php 
+$user = Y_Db::init('user');
+echo '<a href="?ro=member&ac=member" target="_blank">'.$user->count().'</a>';
+?>
+</td>
+<td>
+<?php
+foreach(Ly_Items::getList('user','status') as $s){
+	echo $s['name'];
+	$user->where(array('status'=>$s['id']));
+	echo '(<span class="cred">'.$user->count().'</span>)&nbsp;&nbsp;&nbsp;';
+}
+
+?>
+</td>
+<td>
+<?php 
+echo '<span class="cred">'.$user->where(array('regtime>'=>$todaytime))->count().'</span>';
+ ?>
+</td>
+<td>
+<?php 
+echo '<span class="cred">'.$user->where(array('regtime>'=>$zhou))->count().'</span>';
+ ?>
+</td>
+<td>
+<?php 
+echo '<span class="cred">'.$user->where(array('regtime>'=>$yue))->count().'</span>';
+unset($user);
+ ?>
+</td>
+</tr>
+<tr>
+<td class="ctitle">文章发布</td>
+<td>
+<?php 
+$content = Y_Db::init('content');
+echo '<a href="?ro=mod&ac=content" target="_blank">'.$content->count().'</a>';
+?>
+</td>
+<td>
+<?php
+foreach($slist as $s){
+	echo $s['name'];
+	$content->where(array('status'=>$s['id']));
+	echo '(<span class="cred">'.$content->count().'</span>)&nbsp;&nbsp;&nbsp;';
+}
+
+?>
+</td>
+<td>
+<?php 
+echo '<span class="cred">'.$content->where(array('pubtime>'=>$todaytime))->count().'</span>';
+ ?>
+</td>
+<td>
+<?php 
+echo '<span class="cred">'.$content->where(array('pubtime>'=>$zhou))->count().'</span>';
+ ?>
+</td>
+<td>
+<?php 
+echo '<span class="cred">'.$content->where(array('pubtime>'=>$yue))->count().'</span>';
+unset($content);
+ ?>
+</td>
+</tr>
+<tr>
+<td class="ctitle">旅游线路</td>
+<td>
+<?php 
+$wayline = Y_Db::init('wayline');
+echo '<a href="?ro=mod&ac=wayline" target="_blank">'.$wayline->count().'</a>';
+?>
+</td>
+<td>
+<?php
+foreach($slist as $s){
+	echo $s['name'];
+	$wayline->where(array('status'=>$s['id']));
+	echo '(<span class="cred">'.$wayline->count().'</span>)&nbsp;&nbsp;&nbsp;';
+}
+
+?>
+</td>
+<td>
+<?php 
+echo '<span class="cred">'.$wayline->where(array('pubtime>'=>$todaytime))->count().'</span>';
+ ?>
+</td>
+<td>
+<?php 
+echo '<span class="cred">'.$wayline->where(array('pubtime>'=>$zhou))->count().'</span>';
+ ?>
+</td>
+<td>
+<?php 
+echo '<span class="cred">'.$wayline->where(array('pubtime>'=>$yue))->count().'</span>';
+unset($wayline);
+ ?>
+</td>
+</tr>
+<tr>
+<td class="ctitle">酒店发布</td>
+<td>
+<?php 
+$hotel = Y_Db::init('hotel');
+echo '<a href="?ro=mod&ac=hotel" target="_blank">'.$hotel ->count().'</a>';
+?>
+</td>
+<td>
+<?php
+foreach($slist as $s){
+	echo $s['name'];
+	$hotel ->where(array('status'=>$s['id']));
+	echo '(<span class="cred">'.$hotel ->count().'</span>)&nbsp;&nbsp;&nbsp;';
+}
+
+?>
+</td>
+<td>
+<?php 
+echo '<span class="cred">'.$hotel ->where(array('pubtime>'=>$todaytime))->count().'</span>';
+ ?>
+</td>
+<td>
+<?php 
+echo '<span class="cred">'.$hotel ->where(array('pubtime>'=>$zhou))->count().'</span>';
+ ?>
+</td>
+<td>
+<?php 
+echo '<span class="cred">'.$hotel ->where(array('pubtime>'=>$yue))->count().'</span>';
+unset($hotel );
+ ?>
+</td>
+</tr>
+<tr>
+<td class="ctitle">附件上传</td>
+<td>
+<?php 
+$uploads = Y_Db::init('uploads');
+echo '<a href="?ro=file&ac=uploads" target="_blank">'.$uploads->count().'</a>';
+?>
+</td>
+<td>
+<?php
+foreach($slist as $s){
+	echo $s['name'];
+	$uploads->where(array('status'=>$s['id']));
+	echo '(<span class="cred">'.$uploads->count().'</span>)&nbsp;&nbsp;&nbsp;';
+}
+
+?>
+</td>
+<td>
+<?php 
+echo '<span class="cred">'.$uploads->where(array('uptime>'=>$todaytime))->count().'</span>';
+ ?>
+</td>
+<td>
+<?php 
+echo '<span class="cred">'.$uploads->where(array('uptime>'=>$zhou))->count().'</span>';
+ ?>
+</td>
+<td>
+<?php 
+echo '<span class="cred">'.$uploads->where(array('uptime>'=>$yue))->count().'</span>';
+unset($uploads);
+ ?>
+</td>
+</tr>
+<tr>
+<td class="ctitle">酒店订单</td>
+<td>
+<?php 
+$olist = Ly_Items::getList('order','status');
+$hotel = Y_Db::init('hotel_order');
+echo '<a href="?ro=order&ac=hotel" target="_blank">'.$hotel->count().'</a>';
+?>
+</td>
+<td>
+<?php
+foreach($olist as $s){
+	echo $s['name'];
+	$hotel->where(array('status'=>$s['id']));
+	echo '(<span class="cred">'.$hotel->count().'</span>)&nbsp;&nbsp;&nbsp;';
+}
+
+?>
+</td>
+<td>
+<?php 
+echo '<span class="cred">'.$hotel->where(array('ordertime>'=>$todaytime))->count().'</span>';
+ ?>
+</td>
+<td>
+<?php 
+echo '<span class="cred">'.$hotel->where(array('ordertime>'=>$zhou))->count().'</span>';
+ ?>
+</td>
+<td>
+<?php 
+echo '<span class="cred">'.$hotel->where(array('ordertime>'=>$yue))->count().'</span>';
+unset($hotel);
+ ?>
+</td>
+</tr>
+<tr>
+<td class="ctitle">线路订单</td>
+<td>
+<?php 
+$wayline = Y_Db::init('wayline_order');
+echo '<a href="?ro=order&ac=wayline" target="_blank">'.$wayline->count().'</a>';
+?>
+</td>
+<td>
+<?php
+foreach($olist as $s){
+	echo $s['name'];
+	$wayline->where(array('status'=>$s['id']));
+	echo '(<span class="cred">'.$wayline->count().'</span>)&nbsp;&nbsp;&nbsp;';
+}
+
+?>
+</td>
+<td>
+<?php 
+echo '<span class="cred">'.$wayline->where(array('ordertime>'=>$todaytime))->count().'</span>';
+ ?>
+</td>
+<td>
+<?php 
+echo '<span class="cred">'.$wayline->where(array('ordertime>'=>$zhou))->count().'</span>';
+ ?>
+</td>
+<td>
+<?php 
+echo '<span class="cred">'.$wayline->where(array('ordertime>'=>$yue))->count().'</span>';
+unset($wayline);
+ ?>
+</td>
+</tr>
+</table>
+<!-- 这里写内容结束-->
+	<!--box结束 -->
+	</div>
+	</div>
+	<!-- mainend-->
+</div>
+<?php Y_Widget::display('footer');?>

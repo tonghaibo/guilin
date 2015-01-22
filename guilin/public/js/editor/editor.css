@@ -1,0 +1,216 @@
+.editor{
+margin:5px 0;
+width: 630px;
+display: inline-block;
+background: #ebeff8;
+border: 1px #d4d7e6 solid;
+padding: 5px;
+position:relative;
+}
+.editor_hd{
+height:25px;
+line-height: 25px;
+position: relative;
+overflow: hidden;
+zoom: 1;
+}
+.editor textarea{
+width:618px;
+border: 1px solid #d4d7e6;
+padding: 5px;
+font-size: 12px;
+color: #333;
+background:#fff;
+height:200px;
+}
+.editor .icon{
+display: inline-block!important;
+text-indent: -99999px;
+overflow: hidden;
+width: 16px;
+height: 16px;
+cursor: pointer;
+vertical-align: top;
+padding: 0;
+margin: 0;
+position: relative;
+background: url("editor.png") no-repeat;
+margin-right:5px;
+}
+.editor .icon_b{
+background-position: -16px 0;
+}
+.editor .icon_u{
+background-position: -48px 0;
+}
+.editor .icon_i{
+background-position: -32px 0;
+}
+.editor .icon_a{
+background-position: -80px 0;
+}
+.editor .icon_img{
+background-position: -96px 0;
+}
+.editor .icon_q{
+background-position: 0 0;
+}
+.editor .icon_face{
+background-position: -64px 0;
+}
+.editor .icon_font{
+background-position: -112px 0;
+}
+.editor .icon_br{
+background-position: -128px 0;
+}
+.editor_menu {
+position: absolute;
+top: 28px;
+left: 5px;
+white-space: nowrap;
+z-index: 9002;
+display:none;
+}
+.editor_menu_shadow {
+width: 100%;
+height: 100%;
+position: absolute;
+right: -2px;
+bottom: -2px;
+background-color: #000;
+opacity: .1;
+filter: alpha(opacity=10);
+z-index: -1;
+_display: none;
+}
+.editor_menu_content {
+border: 1px solid #ccc;
+padding: 5px;
+color: #333;
+background-color: #fff;
+}
+.editor_smiley_icons img {
+cursor: pointer;
+margin: 2px 5px;
+border: 1px solid #fff;
+}
+.editor_smiley_icons img:hover{
+border: 1px solid #2595B7;
+}
+.editor .close{
+text-align: right;
+}
+.editor .close a{
+_font-family: simsun;
+font-size: 13px;
+line-height: 16px;
+line-height: 1.333;
+text-align: center;
+zoom: 1;
+border-radius: 1px;
+text-decoration:none;
+padding:3px;
+color:#666;
+}
+.editor .close a:hover{
+color:#2595B7;
+}
+.editor .arrow{
+position: absolute;
+width: 16px;
+height: 17px;
+overflow: hidden;
+top: -12px;
+left:5px;
+}
+.arrow .arrow_out,.arrow .arrow_in {
+position: absolute;
+display: block;
+left: 0;
+top: 0;
+width: 0;
+height: 0;
+overflow: hidden;
+font-size: 0;
+line-height: 0;
+border: 6px dashed transparent;
+}
+.arrow .arrow_in{
+top: 1px;
+border-bottom: 6px solid #fff;
+}
+.arrow .arrow_out{
+top: 0;
+border-bottom: 6px solid #ccc;
+}
+.editor_menu .text{
+height:20px;
+line-height:20px;
+width:200px;
+color:#666;
+border:1px solid #ccc;
+}
+.editor_menu table{
+border:none;
+}
+.editor_menu table td{
+height:25px;
+text-align:left;
+vertical-align:middle;
+}
+.editor_menu button{
+padding: 1px 10px;
+line-height: 17px;
+border: 1px solid #72C1D8;
+background-color: #63C3E0;
+color:#fff;
+cursor:pointer;
+border-radius:2px;
+}
+.editor_menu button:hover{
+background-color:#61BCD7
+}
+.editor .img_list{
+padding:10px 0;
+}
+.editor .img_list li{
+float: left;
+width: 80px;
+height: 80px;
+margin: 0 20px 15px 0;
+display: inline;
+background-color: #f3f3f3;
+position: relative;
+text-align: center;
+border:1px solid #f3f3f3;
+}
+.editor .img_list li.sel{
+border-color:red;
+}
+.editor .img_list li div{
+display: table;
+overflow: hidden;
+width: 80px;
+height: 80px;
+}
+.editor .img_list li span{
+display: table-cell;
+vertical-align: middle;
+}
+.editor .img_list li img{
+vertical-align: middle;
+}
+.editor .img_list li .close{
+display: block;
+width: 14px;
+height: 14px;
+cursor: pointer;
+background: url(close1.png) no-repeat;
+text-indent: -9999px;
+line-height: 200px;
+overflow: hidden;
+position: absolute;
+top: -5px;
+right: -5px;
+}

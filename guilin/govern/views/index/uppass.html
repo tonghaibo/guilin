@@ -1,0 +1,59 @@
+<?php Y_Widget::display('header',array('b_info'=>$this->id)); ?>
+<?php Y_Widget::display('top'); ?>
+<!--content -->
+<div id="content">
+	<?php Y_Widget::display('tips',array('b_info'=>$this->id)); ?>
+	<!--main -->
+	<div class="main clearfix">
+	<?php Y_Widget::display('left'); ?>
+	<!--box开始 -->
+	<div id="box" class="clearfix">
+<!-- 这里写内容-->
+<form action="#" method="post" id="addAdmin">
+<table class="st nob">
+<tr>
+<td class="title"><span class="cred">*</span>原始密码：</td>
+<td><input type="password" id="oldpass" name="oldpass" class="w250" title="原始密码" onblur="checkPass(this,'#oldpass-tips')"/></td>
+<td class="info" id="oldpass-tips"></td>
+</tr>
+<tr>
+<td class="title"><span class="cred">*</span>新密码：</td>
+<td><input type="password" id="newpass" name="newpass" class="w250" title="新密码" onblur="checkPass(this,'#newpass-tips')"/></td>
+<td class="info" id="newpass-tips"></td>
+</tr>
+<tr>
+<td class="title"><span class="cred">*</span>重复新密码：</td>
+<td><input type="password" id="repass" name="repass" class="w250" title="重复新密码" onblur="checkPass(this,'#repass-tips')"/></td>
+<td class="info" id="repass-tips"></td>
+</tr>
+<tr>
+<td></td>
+<td><input type="button" value="添加" name="bt" class="btn btn-green" onclick="subadd()" /></td>
+<td></td>
+</tr>
+</table>
+</form>
+<!-- 这里写内容结束-->
+	<!--box结束 -->
+	</div>
+	</div>
+	<!-- mainend-->
+</div>
+<script type="text/javascript">
+function subadd(){
+	if(checkPass('#oldpass','#oldpass-tips') && checkPass('#newpass','#newpass-tips')){
+		if($('#newpass').val()!=$('#repass').val()){
+			alert('新密码两次输入不一致！');
+			return;
+		}
+		if($('#newpass').val()==$('#oldpass').val()){
+			alert('新密码两次输入不一致！');
+			return;
+		}
+		document.getElementById('addAdmin').submit();
+	}else{
+		return false;
+	}
+}
+</script>
+<?php Y_Widget::display('footer');?>

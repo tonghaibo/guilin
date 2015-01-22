@@ -1,0 +1,42 @@
+<div id="tab-head-guess">
+<p class="mgb20">
+在这里，我们会根据你的资料、旅游偏好、兴趣、位置等为你推荐你最有可能感兴趣的人；
+<br>----这里的人也许每天都在变，每天都期待你来看一看:)</p>
+<h2 class="main_t main_t_xh mgb20">
+<a href="javascript:void(0)"  class="btn_a btn_g f14 right" id="btn-follow-all" style="">关注全部</a>
+<a href="javascript:void(0)" class="btn_a f14 right mgr10" id="btn-rand-page" onclick="changelist(this)" p=1>换一批</a>
+<a href="javascript:void(0)" <?php if(!in_array($this->get('act'),array('wantgo','area'))){ echo 'class="tab orange" act=1'; }else{ echo 'class="tab l_pink"'; } ?>  href="javascript:void(0)"  onclick="changesubbox(this)" rel="vip" p=1 load='x'>认证用户</a>
+<a href="javascript:void(0)" <?php if($this->get('act')=='wantgo'){ echo 'class="tab orange" act=1'; }else{ echo 'class="tab l_pink"'; } ?>  href="javascript:void(0)"  onclick="changesubbox(this)" rel="wantgo" p=1 load='x'>想去相同的地方</a>
+<a href="javascript:void(0)" <?php if($this->get('act')=='area'){ echo 'class="tab orange" act=1'; }else{ echo 'class="tab l_pink"'; } ?>  href="javascript:void(0)"  onclick="changesubbox(this)" rel="area" p=1 load='x'>同一地区</a>
+</h2></div>
+<div class="sub_box">
+<div class="tab_box" style="display:none"></div>
+<div class="tab_box" style="display:none"></div>
+<div class="tab_box" style="display:none"></div>
+</div>
+<script type="text/javascript">
+function changesubbox(obj,page){
+	if(typeof(page)=='undefined'){
+		var page = $(obj).attr('p');
+	}
+	$('.main_t_xh a.tab').removeClass('orange').addClass('l_pink');
+	$(obj).addClass('orange').removeClass('l_pink').attr('act',1).siblings().attr('act',0);
+	var i = $('.main_t_xh a.tab').index(obj);
+	$('.tab_box').eq(i).show().siblings('.tab_box').hide();
+	if($(obj).attr('p')!=page || $(obj).attr('load')=='x'){
+		$('.tab_box').eq(i).html('<div style="text-align:center;padding-top:20px;"><img src="public/images/wait3.gif" /></div>');
+		$('.tab_box').eq(i).load('home_dofriend.html?do=changeguess&act='+$(obj).attr('rel')+'&page='+page,{});
+		$(obj).attr('p',page);
+		$(obj).attr('load','y');
+	}
+	
+}
+function changelist(obj){
+	var p = $(obj).attr('p');
+	changesubbox('.main_t_xh a.tab[act=1]',p);
+	$(obj).attr('p',p+1);
+}
+$(function(){
+	changesubbox('.main_t_xh a.tab[act=1]',1);
+});
+</script>

@@ -1,0 +1,60 @@
+<?php Y_Widget::display('header',array('b_info'=>$this->id)); ?>
+<?php Y_Widget::display('top'); ?>
+<!--content -->
+<div id="content">
+	<?php Y_Widget::display('tips',array('b_info'=>$this->id)); ?>
+	<!--main -->
+	<div class="main clearfix">
+	<?php Y_Widget::display('left'); ?>
+	<!--box开始 -->
+	<div id="box" class="clearfix">
+<!-- 这里写内容-->
+<table class="st full">
+<tr>
+<th width="7%">组等级</th>
+<th width="15%">组名称</th>
+<th width="10%">积分限制</th>
+<th width="8%">文章(日)</th>
+<th width="10%">粉丝数(总)</th>
+<th width="10%">关注数(总)</th>
+<th width="7%">收集数</th>
+<th width="13%">发私信数(日)</th>
+<th width="15%">访问者记录数(日)</th>
+<th width="5%">操作</th>
+</tr>
+<?php 
+if($rlist){
+foreach($rlist as $val){
+	echo '<tr><form method="get" action="#" id="fr'.$val['rid'].'" >';
+	echo '<input type="hidden" name="ro" value="member" />';
+	echo '<input type="hidden" name="ac" value="group" />';
+	echo '<input type="hidden" name="method" value="edit">';
+	echo '<input type="hidden" name="rid" value="'.$val['rid'].'">';
+	echo '<td>'.$val['rid'].'</td>';
+	echo '<td><input type="text" name="name" value="'.$val['name'].'" /></td>';
+	echo '<td><input type="text" name="rank" class="w80" value="'.$val['rank'].'" /></td>';
+	echo '<td><input type="text" name="share" class="w50" value="'.$val['share'].'" /></td>';
+	echo '<td><input type="text" name="follow" class="w50" value="'.$val['follow'].'" /></td>';
+	echo '<td><input type="text" name="attention" class="w50" value="'.$val['attention'].'" /></td>';
+	echo '<td><input type="text" name="collect" class="w50" value="'.$val['collect'].'" /></td>';
+	echo '<td><input type="text" name="message" class="w50" value="'.$val['message'].'" /></td>';
+	echo '<td><input type="text" name="visits" class="w50" value="'.$val['visits'].'" /></td>';
+	echo '<td><a href="javascript:void(0)" onclick="save('.$val['rid'].')" title="保存"><span class="icon icon-save"></span></a></td>';
+	echo '</form></tr>';
+}
+}
+?>
+</table>
+<!-- 这里写内容结束-->
+	<!--box结束 -->
+	</div>
+	</div>
+	<!-- mainend-->
+</div>
+<script type="text/javascript">
+function save(id){
+	id = 'fr'+id;
+	document.getElementById(id).submit();
+}
+</script>
+<?php Y_Widget::display('footer');?>

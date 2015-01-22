@@ -1,0 +1,46 @@
+<?php 
+if($info){
+	foreach($info as $v){
+		echo '<div class="share_item clearfix">';
+		echo '<div class="user_info">';
+		echo '<div class="date">';
+		echo '<span class="month">'.date('m',$v['pubtime']).'月</span>';
+		echo '<span class="day">'.date('d',$v['pubtime']).'</span>';
+		echo '</div>';
+		echo '</div>';
+		echo '<div class="share_info">';
+		echo '<p class="title">';
+		echo '<span class="c999 right">'.Y_Date::timeDiff($v['pubtime']).'</span>发布了分享：';
+		echo '<a class="mr10" title="'.$v['title'].'" target="_blank" href="share_detail.html?id='.$v['id'].'">'.$v['title'].'</a>';
+		echo '</p>';
+		echo '<div class="clearfix">';
+		echo '<a class="share_pto" target="_blank" title="" href="share_detail.html?id='.$v['id'].'">';
+		echo '<img  src="'.Y_Pr::image(Ly_Uploads::getUrl($v['img']),148,148).'">';
+		echo '</a>';
+		echo '<div class="share_txt">';
+		echo '<p>'.Y_Pr::substr(Y_Pr::html($v['content']),0,200).'</p>';
+		echo '<p><a href="share_detail.html?id='.$v['id'].'" title="点击查看详细" target="_blank">&gt;&gt; 点击查看详细</a></p>';
+		echo '</div>';
+		echo '</div>';
+		echo '<div class="margtop20 clearfix">';
+		echo '<div class="action">';
+		echo '<a class="message mr10" target="_blank" title="评论" href="share_detail.html?id='.$v['id'].'#commentAnchor">评论:'.$v['comments'].'</a>';
+		echo '<a  class="favor mgr10 click_action_favorite" title="收藏数" href="javascript:///">收藏:'.$v['shares'].'</a>';
+		echo '</div>';
+		$tags = Ly_Tags_Bind::getTags(array('cid'=>$v['id']));
+		if($tags){
+			echo '<p class="tags">标签：';
+			foreach($tags as $t){
+				echo '<a class="btn_a" title="'.$t['name'].'" target="_blank" href="share.html?tagid='.$t['id'].'">'.$t['name'].'</a>&nbsp;&nbsp;';
+			}
+			echo '</p>';
+		}
+		echo '</div>';
+		echo '</div>';
+		echo '</div>';
+	}
+	echo '<div class="Page1">'.$pages.'</div>';
+}else{
+	echo '暂且没有任何数据';
+}
+ ?>

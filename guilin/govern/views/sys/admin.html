@@ -1,0 +1,42 @@
+<?php Y_Widget::display('header',array('b_info'=>$this->id)); ?>
+<?php Y_Widget::display('top'); ?>
+<!--content -->
+<div id="content">
+	<?php Y_Widget::display('tips',array('b_info'=>$this->id)); ?>
+	<!--main -->
+	<div class="main clearfix">
+	<?php Y_Widget::display('left'); ?>
+	<!--box开始 -->
+	<div id="box" class="clearfix">
+<!-- 这里写内容-->
+<table class="st full">
+<tr >
+<th>ID号</th>
+<th>登录帐号</th>
+<th>真实名字</th>
+<th>所属组</th>
+<th>登录允许</th>
+<th>操作</th>
+</tr>
+<?php 
+if($alist){
+foreach($alist as $val){
+	echo '<tr>';
+	echo '<td>'.$val['id'].'</td>';
+	echo '<td>'.$val['name'].'</td>';
+	echo '<td>'.$val['realname'].'</td>';
+	echo '<td>'.Ly_Group::getGname($val['groupid']).'</td>';
+	echo '<td>'.($val['flag']?'<span class="icon icon-ok"></span>':'<span class="icon icon-error"></span>').'</td>';
+	echo '<td><a href="'.$this->getUrl().'&method=edit&id='.$val['id'].'" class="no"><span class="icon icon-edit"></span>编辑</a>  <a href="'.$this->getUrl().'&method=del&id='.$val['id'].'" title="" class="no"><span class="icon icon-del"></span>删除</a>  <a href="'.$this->getUrl().'&method=pass&id='.$val['id'].'" title="" class="no"><span class="icon icon-password"></span>修改密码</a></td>';
+	echo '</tr>';
+}
+}
+?>
+</table>
+<!-- 这里写内容结束-->
+	<!--box结束 -->
+	</div>
+	</div>
+	<!-- mainend-->
+</div>
+<?php Y_Widget::display('footer');?>

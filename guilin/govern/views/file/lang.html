@@ -1,0 +1,86 @@
+<?php Y_Widget::display('header',array('b_info'=>$this->id)); ?>
+<?php Y_Widget::display('top'); ?>
+<!--content -->
+<div id="content">
+	<?php Y_Widget::display('tips',array('b_info'=>$this->id)); ?>
+	<!--main -->
+	<div class="main clearfix">
+	<?php Y_Widget::display('left'); ?>
+	<!--box开始 -->
+	<div id="box" class="clearfix">
+<!-- 这里写内容-->
+<div class="box box-info">
+语言文件列表
+</div>
+<table class="st full" id="html_list">
+<th>文件名</th>
+<th>类型</th>
+<th>大小</th>
+<th>创建时间</th>
+<th>修改时间</th>
+<th>访问时间</th>
+<th>操作</th>
+<?php 
+if($html){
+	foreach($html as $val){
+		echo '<tr class="list">';
+		echo '<td>'.($val['type']=='dir'?'<span class="icon icon-dir"></span>':'<span class="icon icon-file"></span>').$val['name'].'</td>';
+		echo '<td>'.($val['type']=='dir'?'目录':'文件').'</td>';
+		echo '<td>'.Y_Pr::size($val['size']).'</td>';
+		echo '<td>'.date('Y-m-d H:i:s',$val['ctime']).'</td>';
+		echo '<td>'.date('Y-m-d H:i:s',$val['mtime']).'</td>';
+		echo '<td>'.date('Y-m-d H:i:s',$val['atime']).'</td>';
+		echo '<td>';
+		echo '<span class="icon icon-edit" title="编辑" onclick="edit(\''.$val['name'].'\')" ></span>';
+		echo '</td>';
+		echo '</tr>';
+	}
+}
+
+?>
+</table>
+<!-- 这里写内容结束-->
+	<!--box结束 -->
+	</div>
+	</div>
+	<!-- mainend-->
+</div>
+<script type="text/javascript" src="public/js/show.js"></script>
+<link rel="stylesheet" href="public/css/show/show.css" />
+<script type="text/javascript">
+function refresh(){
+	var tab = $('#html_list');
+	var dir = obj.html();
+	$.post('<?php echo $this->getUrl(); ?>',{},function(data){
+		$('#html_list tr.list').remove();
+		tab.append(data);
+		obj.html(dir);
+	});
+};
+function edit(name){
+	var dir = $('#html_dir').html();
+	$.post('<?php echo $this->getUrl(); ?>&method=edit',{'name':name},function(data){
+			var str = '<div style="padding:5px;"><textarea style="width:840px;height:445px;font-size:14px;border:1px solid #B8E2FB;" id="editcontent">';
+			str += data;
+			str += '</textarea></div>';
+			str += '<input type="hidden" value="'+name+'" id="editname" />';
+			str += '<p style="margin:10px;text-align:right"><button class="button8" onclick="save()">保存</button>&nbsp;&nbsp;&nbsp;<button class="button9" onclick="show_dialog.close()">取消</button></p>';
+			show_dialog.openHtml(str,'编辑'+name,860,550);
+	});
+};
+function save(){
+	var name = $('#editname').val();
+	var content = $('#editcontent').val();
+	$.post('<?php echo $this->getUrl(); ?>&method=edit',{'name':name,'content':content},function(data){
+		if(data==1){
+			show_msg.open('文件更新成功!',4,1);
+		}else{
+			show_msg.open('文件更新失败!',4,2);
+		}
+		refresh(type);
+	});
+	show_dialog.close();
+	
+};
+</script>
+<?php Y_Widget::display('footer');?>

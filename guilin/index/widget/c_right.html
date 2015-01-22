@@ -1,0 +1,20 @@
+<!--左侧 -->
+<div class="Main_left" id="box-float">
+<div class="div1" id="float">
+<?php 
+	$footerlist=Y::Lang('index','footer'); 
+	if($footerlist && is_array($footerlist)){
+		foreach($footerlist as $val){
+			echo '<h2 ';
+			if(Y::$controller.'_'.Y::$action.'.html'==$val['url']){
+				echo 'class="MenuHd MenuHd_Ac"';
+			}else{
+				echo 'class="MenuHd"';
+			}
+			echo '><a  href="'.$val['url'].'">'.$val['name'].'</a></h2>';
+		}
+	}
+	?>
+	</div>
+</div>
+<!--左侧结束 -->

@@ -1,0 +1,600 @@
+#Main{
+width: 922px;
+margin: 25px auto 15px;
+background: white;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+-ms-border-radius: 5px;
+border-radius: 5px;
+-webkit-box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
+-moz-box-shadow: 1px 2px 3px rgba(0,0,0,0.1);
+-ms-box-shadow: 1px 2px 3px rgba(0,0,0,0.1);
+box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
+padding: 34px 0 40px 48px;
+overflow: hidden;
+zoom: 1;
+}
+/*注册*/
+.M-bd {
+font-size: 24px;
+font-family: Microsoft YaHei;
+}
+.ul-hd {
+padding-top: 40px;
+clear: both;
+width: 100%;
+float: left;
+}
+.ul-hd .rtable-t {
+height: 30px;
+line-height: 30px;
+width: 95px;
+color: #666;
+text-align: right;
+font-family: SimSun;
+word-spacing: 0.3em;
+font-size: 14px;
+}
+.ul-hd .rt-b {
+color: #FE0000;
+font-size: 12px;
+}
+.ul-hd li {
+float: left;
+margin-bottom: 20px;
+width: 100%;
+}
+#M-left {
+width: 645px;
+padding-top: 10px;
+float: left;
+border-right: 1px solid #E5E5E5;
+}
+.li-input {
+width: 240px;
+height: 28px;
+float: left;
+border: 1px solid #AAA;
+line-height: 28px;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+-ms-border-radius: 3px;
+border-radius: 3px;
+color: #666;
+padding: 0 5px;
+font-size: 14px;
+color: #666;
+}
+.li-iptwo {
+width: 110px;
+}
+.yz-img {
+display: block;
+float: left;
+margin-left: 15px;
+}
+.li-Prompt {
+margin-left: 18px;
+}
+.li-fail-span, .li-fail-spanb, .li-ok-span, .li-okb-span, .li-Gray-span {
+display: block;
+height: 30px;
+line-height: 30px;
+color: red;
+background: url(../images/bd3.gif) left -103px no-repeat;
+padding-left: 23px;
+}
+.li-Gray-span {
+background: none;
+color: #888;
+padding: 0;
+}
+.li-ok-span {
+background-position: left -136px;
+}
+.other-li {
+float: left;
+line-height: 15px;
+margin-left: 15px;
+cursor: pointer;
+}
+.other-li a {
+text-decoration: underline;
+}
+.ul-hd .rtable-lnow {
+float: left;
+line-height: 0;
+height: 16px;
+}
+.bc-dx {
+overflow: hidden;
+zoom: 1;
+line-height: 16px;
+}
+.bc_check {
+float: left;
+width: 14px;
+height: 14px;
+margin: 1px 0 0 0;
+cursor: pointer;
+}
+.bc_lab2 {
+float: left;
+padding: 0px 0px 0 5px;
+margin: 1px 0 0 0 9;
+cursor: pointer;
+}
+
+.ul-hd .mnone {
+margin: 0;
+}
+.ul-hd .rtable-t {
+height: 30px;
+line-height: 30px;
+width: 95px;
+color: #666;
+text-align: right;
+font-family: SimSun;
+word-spacing: 0.3em;
+font-size: 14px;
+}
+.bc-dlu {
+height: 32px;
+float: left;
+}
+.butn_a, .butn_b, .butn_c, .butn_d {
+background: url(../images/bd2.gif) right -33px;
+display: inline-block;
+height: 32px;
+color: white;
+font-size: 14px;
+padding: 0 34px 0 30px;
+word-spacing: 0.5em;
+cursor: pointer;
+}
+.bc_butn_a, .bc_butn_b, .bc_butn_c, .bc_butn_d {
+height: 32px;
+background: url(../images/bd2.gif) 0 0 no-repeat;
+display: inline-block;
+padding: 0 0 0 5px;
+line-height: 32px;
+cursor: pointer;
+line-height: 35px	9;
+overflow: hidden;
+}
+.bc_butn_c {
+background-position: 0 -133px;
+cursor: auto;
+}
+.butn_c {
+background-position: right -167px;
+color: #999;
+cursor: auto;
+}
+.bc_butn_b {
+background-position: 0 -338px;
+_float: left;
+}
+.butn_b {
+background-position: right -372px;
+padding: 0 24px 0 20px;
+}
+.bc_butn_b:hover span {
+background-position: right -441px;
+}
+#M-right {
+padding: 40px 0 0 35px;
+float: left;
+}
+.M-r-title {
+display: block;
+font-size: 14px;
+color: #888;
+line-height: 20px;
+padding-bottom: 15px;
+}
+.R-two {
+font-size: 12px;
+}
+.other-numb {
+padding-top: 35px;
+}
+.o-nb-title {
+display: block;
+color: #888;
+}
+.other-numb a {
+display: block;
+height: 24px;
+background: url(../images/bd3.gif) 0 0 no-repeat;
+width: 100%;
+margin-top: 10px;
+}
+.other-numb .nb-sina {
+background-position: -116px 0px;
+}
+.other-numb .nb-qq {
+background-position: -122px -25px;
+}
+.other-numb .nb-renren {
+background-position: -130px -50px;
+}
+.other-numb .nb-kaixin {
+background-position: -148px -74px;
+}
+.bc-dlu .fgt-word {
+float: left;
+padding: 8px 0 0 10px;
+}
+/*注册成功*/
+.yz-left-box {
+width: 481px;
+float: left;
+background: #FBFBFB;
+background: -moz-linear-gradient(top, #FBFBFB 1%, #BBB 50%, #FBFBFB 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#FBFBFB), color-stop(50%,#BBB), color-stop(100%,#FBFBFB));
+background: -webkit-linear-gradient(top, #FBFBFB 1%,#BBB 50%,#FBFBFB 100%);
+background: -o-linear-gradient(top, #FBFBFB 1%,#BBB 50%,#FBFBFB 100%);
+background: -ms-linear-gradient(top, #FBFBFB 1%,#BBB 50%,#FBFBFB 100%);
+background: linear-gradient(top, #FBFBFB 1%,#BBB 50%,#FBFBFB 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fbfbfb', endColorstr='#fbfbfb',GradientType=0 );
+_background: #dadada;
+}
+.yz-left {
+width: 480px;
+background: white;
+padding-top: 25px;
+}
+.yz-pl{
+padding-left: 100px;
+overflow: hidden;
+margin-top:12px;
+zoom: 1;
+}
+.yz-con-b {
+height: 57px;
+background: url(../images/cg.gif) left center no-repeat;
+color: #666;
+font-size: 14px;
+padding: 0 40px 0 100px;
+line-height: 25px;
+}
+.yz-con-c {
+height: auto;
+background-position: left top;
+}
+.bc_butn_d {
+background-position: 0 -201px;
+}
+.bc_butn_d:hover span {
+background-position: right -303px;
+}
+.butn_d {
+background-position: right -235px;
+}
+.yz-other {
+height: 30px;
+line-height: 30px;
+border: 1px solid #DDD;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+-ms-border-radius: 5px;
+border-radius: 5px;
+background: #F8FCFD;
+padding: 0 10px;
+float: left;
+color: #666;
+word-spacing: 0.5em;
+}
+.yz-rightb {
+padding-top: 25px;
+}
+.yz-right {
+float: left;
+padding-left: 25px;
+width: 410px;
+position: relative;
+}
+.yz-ps {
+display: block;
+line-height: 25px;
+color: #666;
+}
+.yz-ti-b {
+bottom: -50px;
+}
+.yz-tis {
+display: inline-block;
+height: 44px;
+border: 1px solid #C2C5CA;
+background: #F1FCFE;
+padding: 0 10px;
+line-height: 44px;
+line-height: 47px	9;
+overflow: hidden;
+color: #666;
+-webkit-border-radius: 2px;
+-moz-border-radius: 2px;
+-ms-border-radius: 2px;
+border-radius: 2px;
+font-size: 14px;
+position: absolute;
+bottom: -25px;
+}
+/*找回密码*/
+.ul-hd .rtable-tb {
+width: 190px;
+}
+.yz-Sus {
+padding-left: 140px;
+height: 110px;
+background: url(../images/rn.gif) 0 0 no-repeat;
+margin-top: 30px;
+}
+.yz-Failure {
+background-position: 0 -112px;
+line-height: 110px;
+font-size: 14px;
+color: #666;
+word-spacing: 0.5em;
+position: relative;
+}
+/*轮播*/
+.tunbao{
+width: 663px;
+height: 310px;
+overflow: hidden;
+position: relative;
+}
+.img_show {
+width: 663px;
+height: 310px;
+overflow: hidden;
+}
+.img_show .item {
+position: absolute;
+}
+.img_info .title a {
+color: #333;
+font: 400 20px/1.6 "Microsoft Yahei","SimHei";
+}
+.img_info .img_num a.sel {
+background: #F60;
+border: 1px solid #F60;
+}
+.img_info {
+width: 100%;
+height: 95px;
+position: absolute;
+left: 0;
+bottom: 0;
+}
+.img_info .bg {
+width: 100%;
+height: 95px;
+background:#eee;
+opacity: 0.85;
+filter: alpha(opacity = 85);
+display: block;
+position: absolute;
+left: 0;
+bottom: 0;
+_bottom: -1px;
+}
+
+.img_info .title a {
+color: #333;
+font: 400 20px/1.6 "Microsoft Yahei","SimHei";
+}
+.img_info .title {
+margin-top: 8px;
+}
+.img_info .item {
+height: 95px;
+overflow: hidden;
+position: absolute;
+left: 10px;
+top: 0;
+z-index: 90;
+}
+.img_info  h3{
+display: block;
+font-size: 16px;
+font-weight: bold;
+}
+.img_info .img_num {
+position: absolute;
+top: 12px;
+right: 10px;
+z-index: 100;
+}
+.img_info .img_num a {
+width: 8px;
+height: 8px;
+display: inline-block;
+margin-right: 9px;
+font: 0/0 Arial;
+background: white;
+border: 1px solid #CCC;
+border-radius: 6px;
+}
+/*旅游达人*/
+.hot h2 {
+font: 400 18px/18px "Microsoft Yahei","SimHei";
+_line-height: 19px;
+margin-bottom:10px;
+color:#1E6A00;
+}
+.hot{
+height:250px;
+margin-top:30px;
+}
+.hot-top{
+float:left;
+width:188px;
+position:relative;
+}
+.hot-top .bg{
+height:50px;
+}
+.hot .name_up {
+line-height: 25px;
+bottom: 25px;
+font-size: 14px;
+left: 5px;
+position: absolute;
+}
+.hot .info {
+height: 25px;
+display: block;
+line-height: 25px;
+position: absolute;
+bottom: 0;
+left: 5px;
+overflow: hidden;
+}
+.bg {
+width: 100%;
+background: white;
+opacity: 0.75;
+filter: alpha(opacity=75);
+position: absolute;
+bottom: 0;
+left: 0;
+}
+.hot .list{
+float:right;
+width: 450px;
+}
+.hot .list ul{list-style:none}
+.hot .list ul li{
+width: 205px;
+float: left;
+margin: 0 20px 10px 0;
+}
+.hot .list ul li.last{margin:0}
+.hot .list .img{
+width: 70px;
+height: 70px;
+background: #EFEBDF;
+padding: 4px 4px 14px;
+margin-right: 8px;
+float: left;
+}
+.hot .list .text{
+overflow: hidden;
+zoom: 1;
+}
+.care_of, .cared_of {
+display: inline-block;
+padding: 0 4px;
+border: 1px solid;
+color: #666;
+height: 19px;
+line-height: 19px;
+background: white;
+}
+.care_of {
+border-color: #DCD1BD;
+}
+.cared_of {
+border-color: white;
+}
+/*列出头像*/
+.list_user{
+background:#EFEBDF;
+padding:5px 4px;
+overflow:hidden;
+}
+.list_user a{
+margin-right:5px;
+}
+/*右侧标签*/
+.rec_nav {
+height:310px;
+overflow:hidden;
+}
+.rec_nav h2 {
+font-size: 14px;
+padding-bottom:10px;
+zoom: 1;
+}
+.rec_nav b{
+display: inline-block;
+height: 22px;
+margin: 0 5px 5px 0;
+line-height: 22px;
+}
+.rec_nav p a{
+display: inline-block;
+height: 22px;
+margin: 0 5px 5px 0;
+line-height: 22px;
+background: #F2EFE8;
+padding: 0 10px;
+color: #666;
+}
+.rec_nav p a:hover{
+background: #F48F0B;
+color: white;
+text-decoration: none;
+}
+/*正在发生*/
+.happen{
+height:350px;
+margin-top:10px;
+overflow:hidden;
+}
+.happen  h2{
+font: 700 14px/14px "Microsoft Yahei","SimHei";
+color: #582E09;
+}
+.happen  li{
+margin: 10px 0 20px;
+padding-left: 10px;
+border-left: 2px solid #E9E9E9;
+line-height: 20px;
+color: #999;
+}
+.happen  li a{
+color:#369;
+}
+.happen  li a.name{
+color:#f60;
+margin-right:5px;
+}
+/*列出所有标签*/
+.listtag{
+margin-top:20px;
+overflow:hidden;
+}
+.listtag h2{
+font: 400 18px/18px "Microsoft Yahei","SimHei";
+color: #53C4F3;
+margin-bottom:10px;
+}
+.listtag  div.listimg{
+float:left;
+position:relative;
+margin-right:2px;
+margin-bottom:2px;
+padding:0px;
+}
+.listtag  div.listimg  img{
+width:185px;
+height:119px;
+margin:0;
+}
+.listtag  div.listimg  span{
+display:block;
+height:18x;
+line-height:18px;
+padding:0 4px;
+position:absolute;
+top:95px;
+left:0px;
+opacity: 0.60;
+filter: alpha(opacity=60);
+background:#333;
+color:#fff;
+}

@@ -1,0 +1,108 @@
+<!--zuo侧开始 -->
+<div class="area_side">
+<!--头像区 -->
+<div class="main_user_item">
+<div class="photo">
+<a target="_blank" href="user.html?uid=<?php echo $uid; ?>">
+<img class="noevent" src="<?php echo Ly_User::getUserimg($userimg,185); ?>" alt="<?php echo $name; ?>">
+</a>
+</div>
+<h2 class="user_name"><?php echo $name; ?></h2>
+<p class="dot_line">
+<span class="c999">积分</span>
+<span class="f10 orange"><?php echo $rank; ?></span>
+<span class="c999 ml5">等级</span>
+<span><a class="f10 orange" href="home_rank.html"><?php echo Ly_User_Rank::getName($ranklevel); ?></a></span>
+</p>
+<div class="attention_rltv">
+<ul class="clearfix">
+<li>
+    <a href="home_share.hmtl" title="分享"><span class="num"><?php echo $shares; ?></span>
+	<span class="c666">分享</span></a>
+</li>
+<li>
+    <a href="home_collect.html" title="收集"><span class="num"><?php echo $collect; ?></span>
+	<span class="c666">收集</span></a>
+</li>
+<li>
+    <a href="home_friend.html" title="关注"><span class="num"><?php echo $attention; ?></span>
+	<span class="c666">关注</span></a>
+</li>
+<li>
+    <a href="home_friend.html?do=follow" title="粉丝"><span class="num"><?php echo $follow; ?></span>
+	<span class="c666">粉丝</span></a>
+</li>
+</ul>
+</div>
+</div>
+<!--头像结束 -->
+<!--导向 -->
+<div class="public_manage clearfix">
+	<ul class="txt_list">
+    <li><a href="home_index.html" title="我的首页" class="<?php if(Y::$action=='index'){ echo ' sel'; } ?>"><i class="home_icon home_icon_index"></i>首页</a></li>
+    <li><a href="home_share.html" title="我的分享" class="<?php if(Y::$action=='share'){ echo ' sel'; } ?>"><i class="home_icon home_icon_share"></i>分享</a></li>
+    <li><a href="home_collect.html" title="我的收藏" class="<?php if(Y::$action=='collect'){ echo ' sel'; } ?>"><i class="home_icon home_icon_collect"></i>收藏</a></li>
+	<li><a href="home_order.html" title="我的订单" class="<?php if(Y::$action=='order'){ echo ' sel'; } ?>"><i class="home_icon home_icon_order"></i>订单</a></li>
+    <li><a href="home_mess.html" title="我的私信" class="<?php if(Y::$action=='mess'){ echo ' sel'; } ?>"><i class="home_icon"></i>私信</a></li>
+    <li><a href="home_friend.html" title="我的好友" class="<?php if(Y::$action=='friend'){ echo ' sel'; } ?>"><i class="home_icon home_icon_friend"></i>好友</a></li>
+	<li><a href="home_base.html" title="我的设置" class="<?php if(Y::$action=='base'){ echo ' sel'; } ?>"><i class="home_icon home_icon_base"></i>设置</a></li>
+	<li><a href="home_rank.html" title="我的等级" class="<?php if(Y::$action=='rank'){ echo ' sel'; } ?>"><i class="home_icon home_icon_rank"></i>等级</a></li>
+	<li><a href="home_notice.html" title="系统通知" class="<?php if(Y::$action=='notice'){ echo ' sel'; } ?>"><i class="home_icon home_icon_notice"></i>通知</a></li>
+    <?php 
+	if($grade==1 || $grade==2){
+		echo '<li><a href="home_hotel.html" title="我的酒店" class="'.(Y::$action=='hotel'?'sel':'').'"><i class="home_icon home_icon_hotel"></i>酒店</a></li>';
+	}
+	if($grade==1 || $grade==3){
+		echo '<li><a href="home_wayline.html" title="我的路线" class="'.(Y::$action=='wayline'?'sel':'').'"><i class="home_icon home_icon_wayline"></i>路线</a></li>';
+	}
+	?>
+	</ul>
+</div>
+<!--导向结束 -->
+<!--邀请 -->
+<div class="invite_notes mgb30" style="clear:both">
+<a href="home_friend.html?do=invite" title="" class="link">
+ <span class="jia"></span>
+ <span class="f14">邀请好友加入我们</span><br><span class="c666">100积分奖励</span>
+</a>
+</div>
+<!--邀请结束 -->
+<!--感兴趣 -->
+<div class="side_other" id="guess-box">
+	<h2 class="cb item_t">
+	<a class="other" href="home_friend.html?do=guess" title="更多">更多</a>
+	你可能感兴趣的人
+	</h2>
+	<ul class="shtlist img_text clearfix">
+	
+	<?php 
+	$muser = Y_Db::init('user');
+	$f = Y_Db::init('friend');
+	$f->where(array('uid'=>$uid));
+	$f->field("group_concat(fuid) as f ");
+	$f = $f->find();
+	if($f['f']){
+		$f = $uid.','.$f['f'];
+	}else{
+		$f = $uid;
+	}
+	$muser->where("uid not in({$f}) AND userimg!='' AND cityid!=0");
+	$muser->field(array('uid','name','userimg','ranklevel'));
+	$muser->limit(6)->order('ranklevel desc,uid desc');
+	$muser = $muser->select();
+	foreach($muser as $v){
+		echo '<li><div class="clearfix">';
+		echo '<a href="user.html?uid='.$v['uid'].'" title="'.$v['name'].'" target="_blank" class="img">';
+		echo '<img src="'.Ly_User::getUserimg($v['userimg'],48).'" alt=""></a>';
+		echo '<div class="text">';
+		echo '<p><a href="user.html?uid='.$v['uid'].'" title="buttpny" class="mgr10">'.$v['name'].'</a>';
+		echo '<a class="care_of" uid="'.$v['uid'].'" onclick="add_attention(this)" href="javascript:void(0)" title="加关注"><b class="orange">+</b>关注</a></p>';
+		echo '<p class="c999">'.Ly_User_Rank::getName($v['ranklevel']).'</p>';
+		echo '</div></div></li>';
+	}
+	?>
+	</ul>
+</div>
+<!--感兴趣结束 -->
+</div>
+<!--zuo侧结束 -->

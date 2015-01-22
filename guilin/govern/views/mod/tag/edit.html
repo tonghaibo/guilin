@@ -1,0 +1,223 @@
+<?php Y_Widget::display('header',array('b_info'=>$this->id)); ?>
+<?php Y_Widget::display('top'); ?>
+<!--content -->
+<div id="content">
+	<?php Y_Widget::display('tips',array('b_info'=>$this->id)); ?>
+	<!--main -->
+	<div class="main clearfix">
+	<?php Y_Widget::display('left'); ?>
+	<!--box开始 -->
+	<div id="box" class="clearfix">
+<!-- 这里写内容-->
+<form action="#" method="post" id="addMod" enctype="multipart/form-data">
+<table class="st nob">
+<tr>
+<td class="title"><span class="cred">*</span>父级ID：</td>
+<td>
+<select name="pid"><option value="0">--请选择--</option>
+<?php foreach($tlist as $val){
+	echo '<option value="'.$val['id'].'" ';
+	if($val['id']==$tinfo['pid']){
+		echo ' selected ';
+	}
+	echo ' >'.$val['name'].'</option>';
+} ?>
+</select>
+</td>
+<td class="info" id="rid-tips">请选择对应的父级ID，不选的话则为顶级</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">*</span>标签名称：</td>
+<td>
+<input type="text" id="name" name="name" value="<?php echo $tinfo['name']; ?>" class="w250" title="模块名称" onblur="checkLen(this,'#name-tips',2,20)" />
+</td>
+<td class="info" id="name-tips">请填写模块名称</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">*</span>经度纬度：</td>
+<td>
+<input type="text" id="lng" name="lng" class="w100" title="经度" value="<?php echo $tinfo['lng']; ?>" onblur="checkFloat(this,'#url-tips')" />
+<input type="text" id="lat" name="lat" class="w100" title="纬度" value="<?php echo $tinfo['lat']; ?>" onblur="checkFloat(this,'#url-tips')" />
+<span class="icon icon-map" id="cmap" title="地图" onclick="showMap()"></span>
+</td>
+<td class="info" id="url-tips">请点击图标选择经纬度</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">*</span>排序值：</td>
+<td><input type="text" class="w250" name="sort" value="<?php echo $tinfo['sort']; ?>" id="sort" title="排序值" value="0" onblur="checkNum(this,'#sort-tips')" /></td>
+<td class="info" id="sort-tips">填写排序值</td>
+</tr>
+<tr>
+<td></td>
+<td><?php if($tinfo['img']){ echo '<img src="'.$tinfo['img'].'"/>'; } ?></td>
+<td></td>
+</tr>
+<tr>
+<td class="title"><span class="cred">*</span>封面：</td>
+<td><input type="file" class="w250" name="img" id="img" title="封面" value="0" onblur="checkLen(this,'#img-tips',1,400)" /></td>
+<td class="info" id="img-tips">上传封面图片</td>
+</tr>
+<tr>
+<td class="title"><span class="cred">*</span>描叙：</td>
+<td><textarea  class="w250 h250" name="des" id="des" title="描叙" value="0" onblur="checkLen(this,'#des-tips',3,500)" ><?php echo $tinfo['des']; ?></textarea></td>
+<td class="info" id="des-tips">填写描叙</td>
+</tr>
+<tr>
+<td></td>
+<td><input type="button" value="添加" name="bt" class="btn btn-green" onclick="subadd()" /></td>
+<td></td>
+</tr>
+</table>
+</form>
+<div id="gg"></div>
+<!-- 这里写内容结束-->
+	<!--box结束 -->
+	</div>
+	</div>
+	<!-- mainend-->
+</div>
+<script type="text/javascript" src="public/js/show.js"></script>
+<link rel="stylesheet" href="public/css/show/show.css" />
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.3"></script>
+<script type="text/javascript">
+function showMap(){
+	var names = $('#name').val();
+	var str = '<div style="width:650px;position:relative">';
+	str += '<p style="clear:both;margin:5px;height:30px;">';
+	str += '<input type="text" id="sname" /><button class="button8">搜索</button> 如：酒店,风景</p>';
+	str += "<div id='bmap' style='width:100%;height:435px;'></div>";
+	str +='<div style="right:0;top:35px;width:14px;height:14px;overflow:hidden;position:absolute;">';
+	str += '<span class="icon icon-zan" id="bmappanel" style="float:right"></span>';
+	str +='<div id="sleft" style="background:#fcfcfc"></div></div>';
+	show_dialog.openHtml(str,'点击选择经纬度',660,500);
+	showBmap.obj= 'bmap';
+	showBmap.show();
+	$('button.button8').click(function(){
+		var name = $('#sname').val();
+		if(name!=''){
+			showBmap.search('sleft',name);
+		}
+	});
+	if(names!=''){
+		$('#sname').val(names);
+		//showBmap.search('sleft',names);
+	}
+}
+function subadd(){
+	if(checkLen('#name','#name-tips',2,20) && checkNum('#sort','#sort-tips')){
+		document.getElementById('addMod').submit();
+	}else{
+		return false;
+	}
+}
+var showBmap = {
+	obj:'',
+	map:'',
+	point:new BMap.Point(110.296457,25.279863),
+	show:function(){
+		this.map = new BMap.Map(this.obj);
+		this.map.setMinZoom(12);
+		//this.map.centerAndZoom(this.point,12);
+		this.map.centerAndZoom("桂林",12);   
+		this.map.enableScrollWheelZoom();
+		//this.add(this.point.lng,this.point.lat);
+		//增加卫星
+		this.map.addControl(new BMap.MapTypeControl({mapTypes: [BMAP_NORMAL_MAP,BMAP_HYBRID_MAP],anchor: BMAP_ANCHOR_TOP_LEFT}));
+		//缩放
+		//this.map.addControl(new BMap.NavigationControl({anchor: BMAP_ANCHOR_TOP_LEFT}));
+		this.map.addEventListener('click',this.click);
+		$('#bmappanel').toggle(function(){
+			$(this).removeClass('icon-zan').addClass('icon-sou');
+			$(this).parent().height(435).width('35%');
+		},function(){
+			$(this).removeClass('icon-sou').addClass('icon-zan');
+			$(this).parent().height(14).width(14);
+		});
+	},
+	add:function(lng,lat){
+		//加点
+		var myIcon = new BMap.Icon('public/images/admin/marker.png',new BMap.Size(18,28));
+		var marker = new BMap.Marker(new BMap.Point(lng,lat),{icon:myIcon});
+		marker.setIcon('public/images/admin/marker.gif');
+		this.map.addOverlay(marker);
+	},
+	search:function(obj,name,num){
+		//this.map.setZoom(20);
+		var options = {
+			 onSearchComplete:function(re){
+				if(local.getStatus()==BMAP_STATUS_SUCCESS){
+					var s = [];
+					var count = re.getCurrentNumPois();
+					var str = '';
+					for(var i=0;i<count;i++){
+						str += '<div class="result"><b class="corange">'+(i+1)+'</b>,<a href="javascript:void(0)" onclick="showBmap.move(\''+re.getPoi(i).point.lng+'\',\''+re.getPoi(i).point.lat+'\');'
+						str += 'showBmap.label(\''+re.getPoi(i).title+'\',\''+re.getPoi(i).point.lng+'\',\''+re.getPoi(i).point.lat+'\')">';
+						str += re.getPoi(i).title+'</a>';
+						str += '<span>('+re.getPoi(i).address+')</span>';
+						str += '</div>';
+					}
+					str += '<p>'+(re.getPageIndex()+1)+'/'+re.getNumPages()+'页&nbsp;&nbsp;'+'<a href="javascript:void(0)" onclick="BMap.I(\'TANGRAM__5n\').toPage(8);">上一页</a>&nbsp;&nbsp;<a href="javascript:void(0)" onclick="showBmap.search(\''+obj+'\',\'风景\','+(re.getPageIndex()+1)+')" >下一页</a></p>'
+					document.getElementById(obj).innerHTML = str;
+				}else{
+					document.getElementById(obj).innerHTML = '没有搜索到任何数据！';
+				}
+				$('#bmappanel').removeClass('icon-zan').addClass('icon-sou');
+				$('#bmappanel').parent().height(435).width('35%');
+			 }
+		};
+		var local =  new BMap.LocalSearch(this.map,{renderOptions: {map: this.map, panel: "sleft"}});
+		//var local =  new BMap.LocalSearch(this.map,options);
+		local.search(name);
+		$('#bmappanel').removeClass('icon-zan').addClass('icon-sou');
+		$('#bmappanel').parent().height(435).width('35%');
+	},
+	move:function(lng,lat){
+		var points = new BMap.Point(lng,lat);
+		this.map.panTo(points);
+	},
+	clear:function(){
+		this.map.clearOverlays();
+	},
+	info:function(lng,lat,content){
+		var info = new BMap.InfoWindow(content);
+		this.map.openInfoWindow(info,new BMap.Point(lng,lat));
+	},
+	click:function(e){
+		//备用
+		$('#lng').val(e.point.lng);
+		$('#lat').val(e.point.lat);
+	},
+	label:function(content,lng,lat){
+		var content1 = '<div class="marker" onmouseover="showBmap.cBack(this);" onmouseout="showBmap.cBacks(this)"><span class="l"></span><span class="w">'+content+'</span><span class="r"></span></div>';
+		var content2 = '<div class="marker"><span class="l1"></span><span class="w1">'+content+'</span><span class="r1"></span></div>';
+		var label = new BMap.Label(content1);
+		label.setStyle({border:'none',padding:'0px',background:'none'});
+		label.setPosition(new BMap.Point(lng,lat));
+		label.setOffset(new BMap.Size(0,-40));
+		this.map.addOverlay(label);
+		label.addEventListener('click', function(){
+			showBmap.info(lng,lat,showBmap.getAddress(lng,lat));
+		});
+	},
+	cBack:function(obj){
+		$(obj).children().addClass('ckb');
+	},
+	cBacks:function(obj){
+		$(obj).children().removeClass('ckb');
+	},
+	getAddress:function(lng,lat){
+		var gc = new BMap.Geocoder();
+		var str = '';
+		gc.getLocation(new BMap.Point(lng,lat),function(rs){
+			//alert(rs.address);
+			str += rs.address;
+			//str = addComp ;
+			/*str += addComp.city;
+			str += addComp.district;
+			str += addComp.street;
+			str += addComp.streetNumber;*/
+		});
+	}
+}
+</script>
+<?php Y_Widget::display('footer');?>

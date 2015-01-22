@@ -1,0 +1,80 @@
+<?php Y_Widget::display('header',array('b_info'=>$this->id)); ?>
+<?php Y_Widget::display('top'); ?>
+<!--content -->
+<div id="content">
+	<?php Y_Widget::display('tips',array('b_info'=>$this->id)); ?>
+	<!--main -->
+	<div class="main clearfix">
+	<?php Y_Widget::display('left'); ?>
+	<!--box开始 -->
+	<div id="box" class="clearfix">
+<!-- 这里写内容-->
+<div>
+<div class="box">最近登录</div>
+<table class="st full">
+<thead>
+<tr>
+<th width="30%">时间</th>
+<th width="30%">IP</th>
+<th width="60%">动态</th>
+</tr>
+</thead>
+<?php 
+if($login){
+	$i=0;
+	$num = count($login);
+	while($i<$num && $i<10){
+		if($login[$i]){
+			//判断
+			if($login[$i][2]==Y_Session::get('G_name')){
+			echo '<tr>';
+			echo '<td>'.date('Y/m/d H:i:s',$login[$i][1]).'</td>';
+			echo '<td>'.$login[$i][4].' <a  href="javascript:void(0)" onclick="show_ip(\''.$login[$i][4].'\')">查询</a></td>';
+			echo '<td>'.$login[$i][3].'</td>';
+			echo '</tr>';
+			}
+			$i++;
+		}
+	}
+}
+ ?>
+</table>
+<div class="box">最近的操作信息</div>
+<table class="st full">
+<thead>
+<tr>
+<th width="30%">时间</th>
+<th width="30%">IP</th>
+<th width="60%">操作模块</th>
+</tr>
+</thead>
+<?php 
+if($actions){
+	$i=0;
+	$num = count($actions);
+	while($i<$num && $i<15){
+		if($actions[$i]){
+			//判断
+			if($actions[$i][2]==Y_Session::get('G_name')){
+			echo '<tr>';
+			echo '<td>'.date('Y/m/d H:i:s',$actions[$i][1]).'</td>';
+			echo '<td>'.$actions[$i][5].' <a target="_blank" href="govern.php?ro=index&ac=ip&ip='.$actions[$i][5].'">查询</a></td>';
+			echo '<td>'.$actions[$i][3].'</td>';
+			echo '</tr>';
+			}
+			$i++;
+		}
+	}
+}
+ ?>
+</table>
+</div>
+<!-- 这里写内容结束-->
+	<!--box结束 -->
+	</div>
+	</div>
+	<!-- mainend-->
+</div>
+<script type="text/javascript" src="public/js/show.js"></script>
+<link rel="stylesheet" href="public/css/show/show.css" />
+<?php Y_Widget::display('footer');?>
